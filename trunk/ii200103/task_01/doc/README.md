@@ -28,15 +28,15 @@
 
 1. Оригинальное фото:
    <br><br><br>
-   ![nonlin](pictures/input.bmp)
+   ![nonlin](pictures/input.png)
 
 2. Зашумленное фото:
    <br><br><br>
-   ![nonlin](pictures/noise_input.bmp)
+   ![nonlin](pictures/noise_input.png)
 
 3. Обработанное фото:
    <br><br><br>
-   ![nonlin](pictures/clear_input.bmp)
+   ![nonlin](pictures/clear_input.png)
 
 **Пороговое значение в ходе тестирование было установлено на 128**
 
