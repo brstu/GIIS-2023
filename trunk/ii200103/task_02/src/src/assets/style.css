@@ -1,0 +1,19 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto;
+  width: 450px;
+  padding: 20px;
+  margin: auto;
+  margin-top: 200px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12), 0 0 6px rgba(0, 0, 0, 0.04);
+}
+.grid-item {
+  text-align: center;
+}
+.el-button {
+  width: 100px;
+}
