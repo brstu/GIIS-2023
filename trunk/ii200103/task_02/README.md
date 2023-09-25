@@ -6,19 +6,19 @@
 
 ## Реализация
 
-1. Главное окно:
+Главное окно:
    
    ![nonlin](images/main_window.png)
 
-2. Окно добавления:
+Окно добавления:
    
    ![nonlin](images/add_window.png)
 
-3. Пагинация:
+Пагинация:
    
    ![nonlin](images/pagination.png)
 
-4. Окно изменения:
+Окно изменения:
    
    ![nonlin](images/edit_window_part1.png)
    
@@ -26,19 +26,19 @@
    
    ![nonlin](images/edit_window_part2.png)
 
-5. Окно удаления:
+Окно удаления:
    
    ![nonlin](images/remove_window.png)
    
    ![nonlin](images/remove_window_alert.png)
 
-6. Окно поиска:
+Окно поиска:
    
    ![nonlin](images/find_window.png)
    
    ![nonlin](images/find_window_alert.png)
 
-7. Сохранение:
+Сохранение:
    
    ![nonlin](images/save_alert.png)
    
@@ -46,13 +46,13 @@
    
    ![nonlin](images/save_result.png)
 
-8. Загрузка:
+Загрузка:
    
    ![nonlin](images/load_window.png)
 
 Инструкция по применению:
 
-**Заранее установленный nvm or node js (В данном случае юзалась 14.13.1, Vue 2)**
+**Заранее установленный nvm or node js (В данном случае использовалась 14.13.1, Vue 2)**
 
 ```cmd
 cd task_02/src
