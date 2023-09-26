@@ -71,7 +71,6 @@ class ImageViewer(QMainWindow):
         options = QFileDialog.Options()
         options |= QFileDialog.ReadOnly
         file_name, _ = QFileDialog.getOpenFileName(self, "Open Image", "", "Image Files (*.png *.jpg *.jpeg *.bmp *.gif)", options=options)
-        
         if file_name:
             image_reader = QImageReader(file_name)
             image_reader.setAutoTransform(True)
@@ -159,8 +158,8 @@ class ImageViewer(QMainWindow):
             N -= 1
 
         # do filter here
-        for x in range(width):    
-            for y in range(height): 
+        for x in range(width):
+            for y in range(height):
                 # get grey scale QColor(img.pixel(x, y)).lightness()
                 pixel = QColor(img.pixel(x, y)).lightness()
                 if pixel == 0 or pixel == 255:
