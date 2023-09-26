@@ -17,8 +17,7 @@ namespace WinFormsApp1
 			///
 		}
 
-		private void oppenToolStripMenuItem_Click(object sender, EventArgs e)
-		{
+		private void oppenToolStripMenuItem_Click(object sender, EventArgs e) //окно выбора картинки
 			if (openFileDialog1.ShowDialog() == DialogResult.OK)
 			{
 				bitmapImage = new Bitmap(openFileDialog1.FileName);
@@ -29,7 +28,7 @@ namespace WinFormsApp1
 			}
 		}
 
-		private void button1_Click(object sender, EventArgs e)
+		private void button1_Click(object sender, EventArgs e) //добавление точек
 		{
 			Random rnd = new Random();
 
@@ -41,7 +40,7 @@ namespace WinFormsApp1
 			pictureBox1.Image = bitmapImage;
 		}
 
-		private void button2_Click(object sender, EventArgs e)
+		private void button2_Click(object sender, EventArgs e) //добавление линий
 		{
 			Random rnd = new Random();
 
@@ -60,10 +59,10 @@ namespace WinFormsApp1
 
 		}
 
-		private void button3_Click(object sender, EventArgs e)
+		private void button3_Click(object sender, EventArgs e) //фильтр
 		{
 			List<Pixel> pixels = new List<Pixel>(8);
-			for (int y = 1; y < bitmapImage.Height - 4; y++)
+			for (int y = 1; y < bitmapImage.Height - 4; y++) //проходим по всем пикселям картинки помимо боковых
 			{
 				for (int x = 3; x < bitmapImage.Width - 3; x++)
 				{
@@ -91,7 +90,7 @@ namespace WinFormsApp1
 						}
 					}
 
-					bitmapImage.SetPixel(x, y, Filtr(pixels));
+					bitmapImage.SetPixel(x, y, Filtr(pixels)); //замена цвета
 
 					pixels.Clear();
 				}
@@ -101,7 +100,7 @@ namespace WinFormsApp1
 		}
 
 		List<int> array = new List<int>();
-		private Color Filtr(List<Pixel> pixels)
+		private Color Filtr(List<Pixel> pixels) //замена цвета пикселя 
 		{
 			array.Clear();
 
@@ -124,7 +123,7 @@ namespace WinFormsApp1
 
 		}
 
-		private List<Pixel> GetPixels(Bitmap bitmap)
+		private List<Pixel> GetPixels(Bitmap bitmap)//получение пикселя
 		{
 			var pixels = new List<Pixel>(bitmap.Width * bitmap.Height);
 
