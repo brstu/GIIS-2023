@@ -20,7 +20,7 @@ def apply_row_median_filter(image, n):
             print(f'{start_x}\t{end_x}')
             print(f'{x=}\t{y=}')
             print(neighborhood)
-            print('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
+            print('@@@@@@@@@@@@@@@@@@@@@@')
 
             filtered_pixel = np.median(neighborhood, axis=0).astype(np.uint8)
 
@@ -42,7 +42,7 @@ def apply_column_median_filter(image, n):
             print(f'{start_y}\t{end_y}')
             print(f'{x=}\t{y=}')
             print(neighborhood)
-            print('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
+            print('@@@@@@@@@@@@@@@@@@@@@@')
 
             filtered_pixel = np.median(neighborhood, axis=0).astype(np.uint8)
 
@@ -67,7 +67,7 @@ def apply_cross_median_filter(image, n):
             print(f'{start_x=}\t{end_x=}\t{start_y}\t{end_y}')
             print(f'{x=}\t{y=}')
             print(f'{len(neighborhood)}\n{neighborhood=}')
-            print('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
+            print('@@@@@@@@@@@@@@@@@@@@@@')
 
             filtered_pixel = np.median(neighborhood, axis=(0, 1)).astype(np.uint8)
 
