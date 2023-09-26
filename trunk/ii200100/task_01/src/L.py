@@ -163,12 +163,10 @@ class ImageViewer(QMainWindow):
                     if self.column.isChecked():
                         # do v
                         pixels.extend(self.getkernelV(img, N, x, y, height))
-                    
                     if self.row.isChecked() or self.column.isChecked():
                         median = self.get_median(pixels)
                         pixel = median
                 new_image.setPixelColor(x, y, QColor(pixel, pixel, pixel))
-
         self.filter_image = new_image
         self.filter_label.setPixmap(QPixmap.fromImage(new_image))
 
