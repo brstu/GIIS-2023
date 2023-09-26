@@ -8,7 +8,7 @@ class ImageHelper:
             image_pixels = image_to_noise.load()
 
             count = 0
-            while(count < broken_pixels_count):
+            while (count < broken_pixels_count):
                 x_coordinate = random.randint(0, image.size[0] - 1)
                 y_coordinate = random.randint(0, image.size[1] - 1)
 
