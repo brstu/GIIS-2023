@@ -1,7 +1,6 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request
 import cv2
 import numpy as np
-import io
 import base64
 import random
 
@@ -23,10 +22,8 @@ def apply_row_median_filter(image, n):
             print(neighborhood)
             print('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
 
-            # Apply median filtering to the neighborhood along the row
             filtered_pixel = np.median(neighborhood, axis=0).astype(np.uint8)
 
-            # Replace the pixel value in the filtered image
             filtered_image[y, x, :] = filtered_pixel
 
     return filtered_image
@@ -47,10 +44,8 @@ def apply_column_median_filter(image, n):
             print(neighborhood)
             print('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
 
-            # Apply median filtering to the neighborhood along the column
             filtered_pixel = np.median(neighborhood, axis=0).astype(np.uint8)
 
-            # Replace the pixel value in the filtered image
             filtered_image[y, x, :] = filtered_pixel
 
     return filtered_image
@@ -74,10 +69,8 @@ def apply_cross_median_filter(image, n):
             print(f'{len(neighborhood)}\n{neighborhood=}')
             print('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
 
-            # Apply median filtering to the cross-shaped neighborhood
             filtered_pixel = np.median(neighborhood, axis=(0, 1)).astype(np.uint8)
 
-            # Replace the pixel value in the filtered image
             filtered_image[y, x, :] = filtered_pixel
 
     return filtered_image
@@ -94,7 +87,7 @@ def generate_noise_image(image, noise_level, noise_quantity):
     if noise_level == "high":
         noise_quantity *= 1000
 
-    if noise_level =="none":
+    if noise_level == "none":
         return noise_image
 
     for _ in range(noise_quantity):
@@ -102,13 +95,10 @@ def generate_noise_image(image, noise_level, noise_quantity):
         y = random.randint(0, height - 1)
 
         if noise_level == "low":
-            # Low noise: Randomly set pixel to black or white
             color = [0, 255][random.randint(0, 1)]
         elif noise_level == "medium":
-            # Medium noise: Randomly set pixel to black or white with higher probability for white
             color = [0, 255][random.randint(0, 3) > 0]
         else:
-            # High noise: Set pixel to white or black with equal probability
             color = [0, 255][random.randint(0, 1)]
 
         noise_image[y, x, :] = [color, color, color]
@@ -137,10 +127,8 @@ def upload_image():
             elif method == "cross":
                 filtered_image = apply_cross_median_filter(img, n)
 
-            # Generate noise image
             noise_image = generate_noise_image(img, noise_level, noise_quantity)
 
-            # Combine noise image with filtered image
             result_image = combine_images(filtered_image, noise_image)
 
             _, original_img_encoded = cv2.imencode(".png", img)  # Encode original image
@@ -152,7 +140,8 @@ def upload_image():
             _, filtered_img_encoded = cv2.imencode(".png", filtered_image)  # Encode filtered image
             filtered_image_base64 = base64.b64encode(filtered_img_encoded).decode("utf-8")
 
-            return render_template("filtered_image.html", original_image=original_image_base64, noisy_image=noisy_image_base64, filtered_image=filtered_image_base64)
+            return render_template("filtered_image.html", original_image=original_image_base64,
+                                   noisy_image=noisy_image_base64, filtered_image=filtered_image_base64)
 
     return render_template("upload.html")
 
