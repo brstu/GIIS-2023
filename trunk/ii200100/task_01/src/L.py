@@ -90,7 +90,6 @@ class ImageViewer(QMainWindow):
             img = self.clean_image.toImage()
         else:
             return
-        
         img = self.addSnPN(img)
 
         self.noisy_image = QPixmap.fromImage(img)
@@ -198,7 +197,7 @@ class ImageViewer(QMainWindow):
             N -= 1
 
         # do filter here
-        for x in range(width):    
+        for x in range(width):
             for y in range(height):
                 # get grey scale QColor(img.pixel(x, y)).lightness()
                 pixel = QColor(img.pixel(x, y)).lightness()
