@@ -141,21 +141,15 @@ class ImageViewer(QMainWindow):
 
     def filter(self):
         qimg = QImage(self.noisy_image)
-
         img = qimg.convertToFormat(QImage.Format_Grayscale8)
         width = img.width()
         height = img.height()
-
         new_image = QImage(width, height, QImage.Format_Grayscale8)
-        
-        
         N, _ = QInputDialog.getInt(self, "N?", "Enter:")
-        
         if N < 3:
             return
         if N % 2 == 0:
             N -= 1
-
         # do filter here
         for x in range(width):
             for y in range(height):
@@ -173,7 +167,6 @@ class ImageViewer(QMainWindow):
                     if self.row.isChecked() or self.column.isChecked():
                         median = self.get_median(pixels)
                         pixel = median
-
                 new_image.setPixelColor(x, y, QColor(pixel, pixel, pixel))
 
         self.filter_image = new_image
@@ -181,21 +174,15 @@ class ImageViewer(QMainWindow):
 
     def refilter(self):
         qimg = QImage(self.filter_image)
-
         img = qimg.convertToFormat(QImage.Format_Grayscale8)
         width = img.width()
         height = img.height()
-
         new_image = QImage(width, height, QImage.Format_Grayscale8)
-        
-        
         N, _ = QInputDialog.getInt(self, "N?", "Enter:")
-        
         if N < 3:
             return
         if N % 2 == 0:
             N -= 1
-
         # do filter here
         for x in range(width):
             for y in range(height):
@@ -209,12 +196,9 @@ class ImageViewer(QMainWindow):
                     if self.column.isChecked():
                         # do v
                         pixels.extend(self.getkernelV(img, N, x, y, height))
-                    
                     median = self.get_median(pixels)
                     pixel = median
-
                 new_image.setPixelColor(x, y, QColor(pixel, pixel, pixel))
-
         self.filter_image = new_image
         self.filter_label.setPixmap(QPixmap.fromImage(new_image))
 
