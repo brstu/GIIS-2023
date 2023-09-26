@@ -1,6 +1,5 @@
 from PyQt5.QtWidgets import QWidget, QVBoxLayout, QHBoxLayout, QPushButton, QRadioButton, QSlider, QFileDialog, QLabel, QProgressBar
 from PyQt5.QtCore import Qt
-from PyQt5.QtGui import QTransform
 from widgets.ImagesWidget import ImagesWidget
 from helpers.ImageHelper import ImageHelper
 from PIL import Image
@@ -106,15 +105,14 @@ class Window(QWidget):
 
     def _remove_noise_button_tapped(self):
         with Image.open(self._path) as image:
-            kernel_size = self._slider.value()
+            k_size = self._slider.value()
 
             if self._selected_kernel_option == 'both':
-                self._image_helper.median_filter(image, kernel_width=kernel_size, kernel_height=kernel_size, 
-                progress_handler=self._progress_bar.setValue(x))
+                self._image_helper.median_filter(image, kernel_width=k_size, kernel_height=k_size, progress_handler=self._progress_bar.setValue())
             elif self._selected_kernel_option == 'vertical':
-                self._image_helper.median_filter(image, kernel_height=kernel_size, progress_handler=print(x))
+                self._image_helper.median_filter(image, kernel_height=k_size, progress_handler=print())
             else:
-                self._image_helper.median_filter(image, kernel_width=kernel_size, progress_handler=print(x))
+                self._image_helper.median_filter(image, kernel_width=k_size, progress_handler=print())
 
             self._images_widget.set_unnoised_image()
 
