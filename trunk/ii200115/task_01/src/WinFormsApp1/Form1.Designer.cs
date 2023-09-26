@@ -67,7 +67,6 @@
 			splitContainer1.SplitterDistance = 779;
 			splitContainer1.SplitterWidth = 5;
 			splitContainer1.TabIndex = 0;
-			splitContainer1.SplitterMoved += splitContainer1_SplitterMoved;
 			// 
 			// pictureBox1
 			// 
