@@ -138,7 +138,7 @@ class ImageViewer(QMainWindow):
     def reset(self):
         self.noisy_image = None
         self.noisy_label.clear()
-    
+
     def filter(self):
         qimg = QImage(self.noisy_image)
 
@@ -178,7 +178,7 @@ class ImageViewer(QMainWindow):
 
         self.filter_image = new_image
         self.filter_label.setPixmap(QPixmap.fromImage(new_image))
-    
+
     def refilter(self):
         qimg = QImage(self.filter_image)
 
@@ -217,7 +217,7 @@ class ImageViewer(QMainWindow):
 
         self.filter_image = new_image
         self.filter_label.setPixmap(QPixmap.fromImage(new_image))
-    
+
     def getkernelH(self, img, N, y, x, width):
         n = 1
         pixels = []
