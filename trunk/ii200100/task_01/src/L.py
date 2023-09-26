@@ -234,14 +234,10 @@ class ImageViewer(QMainWindow):
         mid2 = sorted_lst[len(sorted_lst) // 2 - 1]
         median = (mid1 + mid2) / 2
         return int(median)
- 
 
-def main():
+
+if __name__ == "__main__":
     app = QApplication(sys.argv)
     viewer = ImageViewer()
     viewer.show()
     sys.exit(app.exec_())
-
-
-if __name__ == "__main__":
-    main()
