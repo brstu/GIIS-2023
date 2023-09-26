@@ -6,19 +6,14 @@
 
 ## Реализация
 
-1. Оригинальное фото:
-   <br><br><br>
-   ![nonlin](doc/pictures/laba.png)
+1.  Оригинальное фото:
+    <br><br><br>
+    ![nonlin](doc/pictures/laba.png)
 
-2. Зашумленное фото:
-   <br><br><br>
-   ![nonlin](doc/pictures/lab1.png)
+2.  Зашумленное фото:
+    <br><br><br>
+    ![nonlin](doc/pictures/lab1.png)
 
-3. Обработанное фото:
-   <br><br><br>
-   ![nonlin](doc/pictures/lab2.png)
-
-**Инструкция по применению:**
-
-
-
+3.  Обработанное фото:
+    <br><br><br>
+    ![nonlin](doc/pictures/lab2.png)

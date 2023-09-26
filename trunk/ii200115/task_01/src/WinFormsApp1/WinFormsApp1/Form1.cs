@@ -12,12 +12,8 @@ namespace WinFormsApp1
 			InitializeComponent();
 		}
 
-		private void splitContainer1_SplitterMoved(object sender, SplitterEventArgs e)
+		private void oppenToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			///
-		}
-
-		private void oppenToolStripMenuItem_Click(object sender, EventArgs e) //окно выбора картинки
 			if (openFileDialog1.ShowDialog() == DialogResult.OK)
 			{
 				bitmapImage = new Bitmap(openFileDialog1.FileName);
@@ -28,7 +24,7 @@ namespace WinFormsApp1
 			}
 		}
 
-		private void button1_Click(object sender, EventArgs e) //добавление точек
+		private void button1_Click(object sender, EventArgs e)
 		{
 			Random rnd = new Random();
 
@@ -40,7 +36,7 @@ namespace WinFormsApp1
 			pictureBox1.Image = bitmapImage;
 		}
 
-		private void button2_Click(object sender, EventArgs e) //добавление линий
+		private void button2_Click(object sender, EventArgs e)
 		{
 			Random rnd = new Random();
 
@@ -59,10 +55,10 @@ namespace WinFormsApp1
 
 		}
 
-		private void button3_Click(object sender, EventArgs e) //фильтр
+		private void button3_Click(object sender, EventArgs e)
 		{
 			List<Pixel> pixels = new List<Pixel>(8);
-			for (int y = 1; y < bitmapImage.Height - 4; y++) //проходим по всем пикселям картинки помимо боковых
+			for (int y = 1; y < bitmapImage.Height - 4; y++)
 			{
 				for (int x = 3; x < bitmapImage.Width - 3; x++)
 				{
@@ -70,11 +66,12 @@ namespace WinFormsApp1
 					{
 						if (i != 0)
 						{
-							pixels.Add(new Pixel()
-							{
-								color = bitmapImage.GetPixel(x, y + i),
-								point = new Point(x, y + i)
-							});
+							pixels.Add(
+								new Pixel()
+								{
+									color = bitmapImage.GetPixel(x, y + i),
+									point = new Point(x, y + i)
+								});
 						}
 					}
 
@@ -82,15 +79,16 @@ namespace WinFormsApp1
 					{
 						if (i != 0)
 						{
-							pixels.Add(new Pixel()
-							{
-								color = bitmapImage.GetPixel(x + i, y),
-								point = new Point(x + i, y)
-							});
+							pixels.Add(
+								new Pixel()
+								{
+									color = bitmapImage.GetPixel(x + i, y),
+									point = new Point(x + i, y)
+								});
 						}
 					}
 
-					bitmapImage.SetPixel(x, y, Filtr(pixels)); //замена цвета
+					bitmapImage.SetPixel(x, y, Filtr(pixels));
 
 					pixels.Clear();
 				}
@@ -100,29 +98,21 @@ namespace WinFormsApp1
 		}
 
 		List<int> array = new List<int>();
-		private Color Filtr(List<Pixel> pixels) //замена цвета пикселя 
+		private Color Filtr(List<Pixel> pixels)
 		{
 			array.Clear();
 
-			int i = 0;0
 			foreach (var item in pixels)
 			{
 				array.Add(item.color.ToArgb());
 			}
 			array.Sort();
 
-			if (array.Count % 2 == 1)
-			{
-				return Color.FromArgb(array[array.Count / 2]);
-			}
-			else
-			{
-				int s = (array[array.Count / 2] + array[(array.Count + 1) / 2]) / 2;
-				return Color.FromArgb(s);
-			}
+			int s = (array[array.Count / 2] + array[(array.Count + 1) / 2]) / 2;
+			return Color.FromArgb(s);
 		}
 
-		private List<Pixel> GetPixels(Bitmap bitmap)//получение пикселя
+		private List<Pixel> GetPixels(Bitmap bitmap)
 		{
 			var pixels = new List<Pixel>(bitmap.Width * bitmap.Height);
 
