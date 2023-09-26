@@ -8,15 +8,18 @@
 
 Оригинальное изображение:
 
-![korablik.jpg](doc%2Fpictures%2Fkorablik.jpg)
+<br><br><br>
+![nonlin](doc/pictures/korablik.png)
+
 ---
 Изображение зашумливается (сильно):
-
-![korablik_noise.png](doc%2Fpictures%2Fkorablik_noise.png)
+<br><br><br>
+![nonlin](doc/pictures/korablik_noise.png)
 ---
 Изображение после чистки фильтром
+<br><br><br>
+![nonlin](doc/pictures/korablik_clear.png)
 
-![korablik_clear.png](doc%2Fpictures%2Fkorablik_clear.png)
 ---
 
 Интерфейс приложения

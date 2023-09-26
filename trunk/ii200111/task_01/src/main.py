@@ -76,10 +76,6 @@ def apply_cross_median_filter(image, n):
     return filtered_image
 
 
-def combine_images(original_image, noise_image):
-    return cv2.addWeighted(original_image, 1, noise_image, 0.5, 0)
-
-
 def generate_noise_image(image, noise_level, noise_quantity):
     noise_image = image.copy()
     height, width, _ = noise_image.shape
@@ -128,8 +124,6 @@ def upload_image():
                 filtered_image = apply_cross_median_filter(img, n)
 
             noise_image = generate_noise_image(img, noise_level, noise_quantity)
-
-            result_image = combine_images(filtered_image, noise_image)
 
             _, original_img_encoded = cv2.imencode(".png", img)  # Encode original image
             original_image_base64 = base64.b64encode(original_img_encoded).decode("utf-8")
