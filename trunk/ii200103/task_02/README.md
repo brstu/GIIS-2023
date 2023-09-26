@@ -44,7 +44,13 @@
    
    **Содержимое сохраненного файла**
    
-   ![nonlin](images/save_result.png)
+   ```json
+   [
+      {
+      "name": "Nikita Seleznev",
+      "address": "Zhabinka city"
+      }
+   ]
 
 Загрузка:
    
