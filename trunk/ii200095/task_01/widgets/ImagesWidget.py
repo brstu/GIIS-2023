@@ -1,9 +1,4 @@
-from PyQt5.QtWidgets import (
-    QWidget,
-    QHBoxLayout,
-    QLabel,
-    QSpinBox
-)
+from PyQt5.QtWidgets import QWidget, QHBoxLayout, QLabel
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QPixmap
 

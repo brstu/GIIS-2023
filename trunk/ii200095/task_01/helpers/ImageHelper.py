@@ -7,16 +7,17 @@ class ImageHelper:
             image_to_noise = image.copy()
             image_pixels = image_to_noise.load()
 
-            for i in range(broken_pixels_count):
+            count = 0
+            while(count < broken_pixels_count):
                 x_coordinate = random.randint(0, image.size[0] - 1)
                 y_coordinate = random.randint(0, image.size[1] - 1)
 
                 image_pixels[x_coordinate, y_coordinate] = (0, 0, 0)
+                count += 1
 
             image_to_noise.save(path)
 
     def median_filter(self, image, progress_handler, kernel_width=1, kernel_height=1):
-        progress = 0
 
         image_to_unnoise = image.copy()
 
@@ -49,14 +50,12 @@ class ImageHelper:
                 green_colors.sort()
                 blue_colors.sort()
 
-                try:
-                    image_pixels[i, j] = (
-                        red_colors[len(red_colors) // 2],
-                        green_colors[len(green_colors) // 2],
-                        blue_colors[len(blue_colors) // 2]
-                    )
-                except:
-                    print('Wrong pixel')
+                image_pixels[i, j] = (
+                    red_colors[len(red_colors) // 2],
+                    green_colors[len(green_colors) // 2],
+                    blue_colors[len(blue_colors) // 2]
+                )
+
 
             count += 1
             progress_handler(int(((count * 100 / (image_width * image_height * 3)) - 0.014) * 1000))
