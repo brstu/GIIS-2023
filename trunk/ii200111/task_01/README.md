@@ -9,7 +9,7 @@
 Оригинальное изображение:
 
 <br><br><br>
-![nonlin](doc/pictures/korablik.png)
+![nonlin](doc/pictures/korablik.jpg)
 
 ---
 
