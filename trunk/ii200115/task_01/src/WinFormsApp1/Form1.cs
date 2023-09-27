@@ -62,12 +62,14 @@ namespace WinFormsApp1
 					{
 						if (i != 0)
 						{
-							arrayPixels.Add(
-								new Pixel()
+							arrayPixels.Add 
+							{
+								new Pixel
 								{
 									color = bitmapImage.GetPixel(x, y + i),
 									point = new Point(x, y + i)
-								});
+								}
+							}
 						}
 					}
 
