@@ -3,7 +3,7 @@ using System.Xml.Serialization;
 
 namespace WinFormsApp1
 {
-	public partial class Form1 : Form
+	public class Form1 : Form
 	{
 		Bitmap bitmapImage;
 		public Form1()
@@ -62,14 +62,12 @@ namespace WinFormsApp1
 					{
 						if (i != 0)
 						{
-							arrayPixels.Add 
-							{
+							arrayPixels.Add(
 								new Pixel
 								{
 									color = bitmapImage.GetPixel(x, y + i),
 									point = new Point(x, y + i)
-								}
-							}
+								});
 						}
 					}
 
@@ -78,7 +76,7 @@ namespace WinFormsApp1
 						if (i != 0)
 						{
 							arrayPixels.Add(
-								new Pixel()
+								new Pixel
 								{
 									color = bitmapImage.GetPixel(x + i, y),
 									point = new Point(x + i, y)
