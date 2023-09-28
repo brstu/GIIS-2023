@@ -9,6 +9,6 @@
 |5 |Галанин Сергей|[SergeyGalanin](https://github.com/SergeyGalanin)||||||||||||
 |6 |Жук Александра|[ZhukAlexandra](https://github.com/ZhukAlexandra)||||||||||||
 |7 |Ковалец Вячеслав|[slavenia](https://github.com/slavenia)||||||||||||
-|8 |Яковчик Денис|[ElGansoDorado](https://github.com/ElGansoDorado)|200115|:white_check_mark:||||||||||
+|8 |Яковчик Денис|[ElGansoDorado](https://github.com/ElGansoDorado)|200115|:white_check_mark:|:white_check_mark:|||||||||
 |9|Ковашевич Никита|[Gigantrusskoymisli](https://github.com/gigantrusskoymisli)||||||||||||
 |10|Федорук Александр|[Zhirbolostt](https://github.com/Zhirbolostt)||||||||||||

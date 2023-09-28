@@ -8,7 +8,7 @@
 
 1.  Оригинальное фото:
     <br><br><br>
-    ![nonlin](doc/pictures/laba.png)
+    ![nonlin](doc/pictures/laba.jpg)
 
 2.  Зашумленное фото:
     <br><br><br>
