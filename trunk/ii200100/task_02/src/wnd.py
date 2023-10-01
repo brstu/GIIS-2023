@@ -1,6 +1,9 @@
 import sys, pickle
 from enum import Enum
-from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QLineEdit, QTextEdit, QPushButton, QVBoxLayout, QGridLayout, QHBoxLayout, QMessageBox, QDialog, QFileDialog
+from PyQt5.QtWidgets import (
+    QApplication, QWidget, QLabel, QLineEdit, QTextEdit, QPushButton,
+    QVBoxLayout, QGridLayout, QHBoxLayout, QMessageBox, QDialog, QFileDialog
+)
 from PyQt5.QtCore import Qt
 
 
@@ -384,6 +387,6 @@ class AddressBook(QWidget):
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    addressBook = AddressBook()
-    addressBook.show()
+    address_book = AddressBook()
+    address_book.show()
     sys.exit(app.exec_())
