@@ -2,7 +2,7 @@ from flask import Flask, render_template, request
 import cv2
 import numpy as np
 import base64
-import random
+import secrets
 
 app = Flask(__name__)
 csrf = CSRFProtect()
@@ -91,15 +91,15 @@ def generate_noise_image(image, noise_level, noise_quantity):
         return noise_image
 
     for _ in range(noise_quantity):
-        x = random.randint(0, width - 1)
-        y = random.randint(0, height - 1)
+        x = secrets.randbelow(width)
+        y = secrets.randbelow(height)
 
         if noise_level == "low":
-            color = [0, 255][random.randint(0, 1)]
+            color = [0, 255][secrets.randbelow(2)]
         elif noise_level == "medium":
-            color = [0, 255][random.randint(0, 3) > 0]
+            color = [0, 255][secrets.randbelow(4) > 0]
         else:
-            color = [0, 255][random.randint(0, 1)]
+            color = [0, 255][secrets.randbelow(2)]
 
         noise_image[y, x, :] = [color, color, color]
 
