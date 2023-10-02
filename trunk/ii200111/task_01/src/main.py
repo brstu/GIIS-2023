@@ -3,13 +3,12 @@ import cv2
 import numpy as np
 import base64
 import secrets
-from csrf import csrf
 from Flask_wtf.csrf import CSRFProtect
 
 app = Flask(__name__)
 app.secret_key = secrets.token_hex(16)  # Set your secret key here
-csrf = CSRFProtect()
-csrf.init_app(app)
+c1srf = CSRFProtect()
+c1srf.init_app(app)
 app.config['WTF_CSRF_ENABLED'] = True
 
 DELIMITER = '@@@@@@@@@@@@@@@@@@@@@@'
