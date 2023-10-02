@@ -1,15 +1,17 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, flash
 import cv2
 import numpy as np
 import base64
 import secrets
 
 app = Flask(__name__)
+app.secret_key = secrets.token_hex(16)  # Set your secret key here
 csrf = CSRFProtect()
-csrf.init_app(app) # Compliant
-app.config['WTF_CSRF_ENABLED'] = True # Sensitive
+csrf.init_app(app)
+app.config['WTF_CSRF_ENABLED'] = True
 
 DELIMITER = '@@@@@@@@@@@@@@@@@@@@@@'
+
 
 def apply_row_median_filter(image, n):
     height, width, _ = image.shape
@@ -106,7 +108,7 @@ def generate_noise_image(image, noise_level, noise_quantity):
     return noise_image
 
 
-@app.route("/", methods=["GET", "POST"])
+@app.route("/", methods=["POST"])
 def upload_image():
     if request.method == "POST":
         image = request.files["image"]
@@ -115,7 +117,7 @@ def upload_image():
         noise_level = request.form["noise-level"]
         noise_quantity = int(request.form["noise-quantity"])
 
-        if image:
+        if image and is_allowed_file(image.filename):
             img_data = image.read()
             img_np_array = np.frombuffer(img_data, np.uint8)
             img = cv2.imdecode(img_np_array, cv2.IMREAD_COLOR)
@@ -140,8 +142,11 @@ def upload_image():
 
             return render_template("filtered_image.html", original_image=original_image_base64,
                                    noisy_image=noisy_image_base64, filtered_image=filtered_image_base64)
+        else:
+            flash("Invalid file format. Allowed formats are: png, jpg, jpeg, gif", "error")
     else:
         return render_template("upload.html")
+
 
 if __name__ == "__main__":
     app.run(debug=True)
