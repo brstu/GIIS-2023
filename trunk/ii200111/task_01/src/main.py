@@ -4,6 +4,7 @@ import numpy as np
 import base64
 import secrets
 from csrf import csrf
+from Flask_wtf.csrf import CSRFProtect
 
 app = Flask(__name__)
 app.secret_key = secrets.token_hex(16)  # Set your secret key here
