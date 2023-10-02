@@ -3,6 +3,7 @@ import cv2
 import numpy as np
 import base64
 import secrets
+from csrf import csrf
 
 app = Flask(__name__)
 app.secret_key = secrets.token_hex(16)  # Set your secret key here
@@ -117,7 +118,7 @@ def upload_image():
         noise_level = request.form["noise-level"]
         noise_quantity = int(request.form["noise-quantity"])
 
-        if image and is_allowed_file(image.filename):
+        if image:
             img_data = image.read()
             img_np_array = np.frombuffer(img_data, np.uint8)
             img = cv2.imdecode(img_np_array, cv2.IMREAD_COLOR)
