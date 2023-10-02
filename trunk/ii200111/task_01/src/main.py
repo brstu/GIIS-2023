@@ -7,7 +7,7 @@ import random
 app = Flask(__name__)
 csrf = CSRFProtect()
 csrf.init_app(app) # Compliant
-app.config['WTF_CSRF_ENABLED'] = False # Sensitive
+app.config['WTF_CSRF_ENABLED'] = True # Sensitive
 
 DELIMITER = '@@@@@@@@@@@@@@@@@@@@@@'
 
