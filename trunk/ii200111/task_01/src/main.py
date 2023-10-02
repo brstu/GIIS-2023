@@ -7,8 +7,8 @@ from Flask_wtf.csrf import CSRFProtect
 
 app = Flask(__name__)
 app.secret_key = secrets.token_hex(16)  # Set your secret key here
-c1srf = CSRFProtect()
-c1srf.init_app(app)
+csrf = CSRFProtect()
+csrf.init_app(app)
 app.config['WTF_CSRF_ENABLED'] = True
 
 DELIMITER = '@@@@@@@@@@@@@@@@@@@@@@'
