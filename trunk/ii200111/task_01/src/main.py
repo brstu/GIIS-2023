@@ -140,9 +140,8 @@ def upload_image():
 
             return render_template("filtered_image.html", original_image=original_image_base64,
                                    noisy_image=noisy_image_base64, filtered_image=filtered_image_base64)
-
-    return render_template("upload.html")
-
+    else:
+        return render_template("upload.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
