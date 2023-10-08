@@ -96,9 +96,9 @@ main {
     align-items: center;
     padding: 20px;
     position: fixed;
+    inset: 100px;
     top: 100px;
     bottom: 100px;
-    inset: 100px;
 }
 
 footer {
