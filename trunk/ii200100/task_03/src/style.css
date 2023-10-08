@@ -1,0 +1,187 @@
+/* style.css */
+
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #f1f1f1;
+}
+
+h1, h2, h3, p, ul, li {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #303441;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+}
+
+.header-link {
+    text-decoration: none;
+}
+
+.header-title {
+    color: #ff4848;
+    font-size: 44px;
+    margin: 0;
+}
+
+/* Navigation styles */
+.nav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+.nav-link {
+    text-decoration: none;
+    font-size: 26px;
+    color: #e2e2e2;
+    margin-right: 20px;
+}
+
+/* Main content styles */
+.main-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+.main-item {
+    margin-right: 20px;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.main-item-title {
+    color: #4d4d4d;
+}
+
+.main-item-subtitle {
+    color: #666;
+}
+
+.main-subtitle {
+    color: #333;
+}
+
+.main-sublist {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.main-sublist-item {
+    font-size: 24px;
+    color: #666;
+}
+
+main {
+    flex-grow: 1;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    position: fixed;
+    top: 100px;
+    bottom: 100px;
+    left: 100px;
+    right: 100px;
+}
+
+footer {
+    background-color: #303441;
+    color: #b4b4b4;
+    text-align: center;
+    padding: 20px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.footer-text {
+    margin: 0;
+}
+
+button {
+    width: 600px;
+    padding: 20px 30px;
+    font-size: 24px;
+    background-color: #dedede;
+    color: #7d7d7d;
+    border: 2px solid #7d7d7d;
+    cursor: pointer;
+    margin: 10px;
+}
+
+/* Style for the button grid container */
+.button-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* Style for each button row */
+.button-row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+/* Style for button links */
+.button-link {
+    text-decoration: none;
+    margin-right: 20px;
+}
+
+/* Style for each button */
+.grid-button {
+    padding: 15px 30px;
+    font-size: 26px;
+    background-color: #303441;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    margin: 10px;
+}
+
+/* Style for the button row */
+.button-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: auto;
+    width: 100%;
+}
+
+/* Style for small buttons */
+.small-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #303441;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    margin: 10px;
+}
+
+/* Style for the message display */
+#message {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 20px;
+}
