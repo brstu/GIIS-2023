@@ -27,18 +27,18 @@
     <main>
         <h1 id="S1Times" class="main-item-title">Специалист 1</h1>
         <div role="group" aria-label="S1Times" class="button-row">
-            <button class="small-button" onclick="showMessage('Запись на 8:00')">8:00</button>
-            <button class="small-button" onclick="showMessage('Запись на 9:00')">9:00</button>
-            <button class="small-button" onclick="showMessage('Запись на 10:00')">10:00</button>
-            <button class="small-button" onclick="showMessage('Запись на 11:00')">11:00</button>
-            <button class="small-button" onclick="showMessage('Запись на 12:00')">12:00</button>
-            <button class="small-button" onclick="showMessage('Запись на 13:00')">13:00</button>
-            <button class="small-button" onclick="showMessage('Запись на 15:00')">15:00</button>
-            <button class="small-button" onclick="showMessage('Запись на 16:00')">16:00</button>
-            <button class="small-button" onclick="showMessage('Запись на 17:00')">17:00</button>
-            <button class="small-button" onclick="showMessage('Запись на 18:00')">18:00</button>
-            <button class="small-button" onclick="showMessage('Запись на 19:00')">19:00</button>
-            <button class="small-button" onclick="showMessage('Запись на 20:00')">20:00</button>
+            <button aria-label="S1Times" class="small-button" onclick="showMessage('8:00')">8:00</button>
+            <button aria-label="S1Times" class="small-button" onclick="showMessage('9:00')">9:00</button>
+            <button aria-label="S1Times" class="small-button" onclick="showMessage('10:00')">10:00</button>
+            <button aria-label="S1Times" class="small-button" onclick="showMessage('11:00')">11:00</button>
+            <button aria-label="S1Times" class="small-button" onclick="showMessage('12:00')">12:00</button>
+            <button aria-label="S1Times" class="small-button" onclick="showMessage('13:00')">13:00</button>
+            <button aria-label="S1Times" class="small-button" onclick="showMessage('15:00')">15:00</button>
+            <button aria-label="S1Times" class="small-button" onclick="showMessage('16:00')">16:00</button>
+            <button aria-label="S1Times" class="small-button" onclick="showMessage('17:00')">17:00</button>
+            <button aria-label="S1Times" class="small-button" onclick="showMessage('18:00')">18:00</button>
+            <button aria-label="S1Times" class="small-button" onclick="showMessage('19:00')">19:00</button>
+            <button aria-label="S1Times" class="small-button" onclick="showMessage('20:00')">20:00</button>
         </div>
         <div id="message"></div>
     </main>
@@ -52,7 +52,7 @@
 <script>
     function showMessage(text) {
     const messageDiv = document.getElementById("message");
-    messageDiv.textContent = `Вы выбрали: ${text}`;
+    messageDiv.textContent = `Запись на: ${text}`;
 }
 </script>
 
