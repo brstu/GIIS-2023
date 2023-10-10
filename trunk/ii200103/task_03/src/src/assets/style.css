@@ -4,7 +4,7 @@ body {
 }
 
 .el-main {
-  padding: 0px;
+  padding: 0;
 }
 
 .logo-name {
@@ -20,7 +20,7 @@ body {
 }
 
 .el-icon-position {
-  color: #ffffff;
+  color: #fff;
   width: 25px;
   height: 100%;
   margin: auto;
@@ -61,7 +61,7 @@ body {
   width: 100%;
 }
 
-.el-button--info {
+.el-button-info {
   margin-left: 0;
   margin-top: 5px;
   margin-bottom: 10px;
@@ -71,7 +71,7 @@ body {
   border-color: #909399;
 }
 
-.el-button--success {
+.el-button-success {
   margin-left: 0;
   width: 100%;
   margin-top: 5px;
@@ -85,7 +85,7 @@ body {
   margin-top: 30px;
 }
 
-.el-button--primary {
+.el-button-primary {
   margin-left: 30px;
   color: #fff;
   background-color: #409eff;
@@ -99,10 +99,8 @@ body {
 .logo {
   color: white;
   font-family: fantasy;
-  /* font-size: 24px; */
   margin-right: auto;
   margin-top: auto;
-  /* margin-bottom: auto; */
 }
 
 .f-layout {
@@ -124,7 +122,7 @@ body {
   padding-top: 50px;
 }
 
-.page-title_1 {
+.page-title-1 {
   text-align: center;
   margin: 0 0 8px;
   color: white;
@@ -135,7 +133,7 @@ body {
   line-height: 3.5625rem;
 }
 
-.page-title_2 {
+.page-title-2 {
   text-align: center;
   margin: 0 0 8px;
   color: white;
@@ -153,7 +151,7 @@ body {
   font-size: 14px;
 }
 
-.page-header__tabs {
+.page-header-tabs {
   width: 100%;
   margin: 30px 0 40px;
 }
@@ -169,7 +167,6 @@ body {
   width: max-content;
   margin-left: auto;
   margin-right: auto;
-  /* margin-top: 20px; */
 }
 
 .popular-routes {
@@ -178,9 +175,8 @@ body {
   height: 100vh;
 }
 
-.main-popular-directions__destinations {
+.main-popular-directions-destinations {
   display: flex;
-  /* flex-wrap: wrap; */
   flex-direction: row;
   justify-content: space-between;
   align-items: flex-start;
@@ -191,7 +187,7 @@ body {
   flex-basis: calc(50% - 20px);
 }
 
-.main-popular-directions__destination-header {
+.main-popular-directions-destination-header {
   background: var(--main-popular-directions-destination);
   padding: 6px 14px 8px;
   border-radius: 10px;
@@ -201,7 +197,7 @@ body {
   position: relative;
 }
 
-.main-popular-directions__destination-flag {
+.main-popular-directions-destination-flag {
   width: 30px;
   height: 30px;
   margin-right: 10px;
@@ -213,17 +209,17 @@ body {
   width: 30px;
   height: 30px;
   border-radius: 100%;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 20%);
 }
 
-.main-popular-directions__destination-city-name {
+.main-popular-directions-destination-city-name {
   display: block;
   font-weight: 600;
   font-size: 0.875rem;
   margin: 0;
 }
 
-.main-popular-directions__destination-route {
+.main-popular-directions-destination-route {
   color: inherit;
   font-size: 0.75rem;
   overflow: hidden;
@@ -232,7 +228,7 @@ body {
   justify-content: space-between;
 }
 
-.main-popular-directions__destination-route-link {
+.main-popular-directions-destination-route-link {
   color: #0c73fe;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -243,12 +239,12 @@ body {
   display: flex;
 }
 
-.main-popular-directions__destination-route-name {
+.main-popular-directions-destination-route-name {
   text-overflow: ellipsis;
   overflow: hidden;
 }
 
-.main-popular-directions__destination-route-price {
+.main-popular-directions-destination-route-price {
   margin-left: auto;
   padding-left: 10px;
   text-transform: lowercase;
@@ -259,47 +255,47 @@ body {
   margin: auto;
 }
 
-.footer.--small {
+.footer-small {
   padding: 0;
   border: 0;
 }
 
-.footer__bottom {
+.footer-bottom {
   padding-top: 28px;
   padding-bottom: 30px;
 }
 
-.footer__inner {
+.footer-inner {
   max-width: 1280px;
   margin: auto;
 }
 
-.footer__side-spaces {
-  margin-left: 4.03226%;
-  margin-right: 4.03226%;
+.footer-side-spaces {
+  margin-left: 4.0323%;
+  margin-right: 4.0323%;
 }
 
-.footer__copy {
+.footer-copy {
   margin-top: 0;
   font-size: 0.8125rem;
   color: black;
   text-align: center;
 }
 
-.footer__links-list .--about {
+.footer-links-list-about {
   max-width: 410px;
   margin: auto;
   text-align: center;
 }
 
-.footer__links-list {
+.footer-links-list {
   list-style: none;
   margin: 0;
   padding: 0;
   color: black;
 }
 
-.footer__links-list li {
+.footer-links-list li {
   display: inline-block;
   margin-right: 6px;
   font-size: 0.9rem;
@@ -310,7 +306,7 @@ a {
   color: black;
 }
 
-.footer__links-list.--about li a:after {
+.footer-links-list-about li a:after {
   content: "•";
   display: inline-block;
   position: relative;
@@ -391,7 +387,7 @@ a {
 
 .date {
   color: #606266;
-  opacity: 70%;
+  opacity: 0.7;
 }
 
 .boxs-card-center {
