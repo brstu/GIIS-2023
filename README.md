@@ -2,7 +2,7 @@
 
 |№|ФИО|GitHub username|№ зачетки/студенческого|#0|#1|#2|#3|#4|#5|#6|#7|#8|
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-|1 |Дорошук Евгений|[hrshprivate](https://github.com/hrshprivate)|200103|:white_check_mark:|:white_check_mark:|:white_check_mark:||||||||
+|1 |Дорошук Евгений|[hrshprivate](https://github.com/hrshprivate)|200103|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|||||||
 |2 |Руцкий Илья|[ElXoce](https://github.com/ElXoce)|200111|:white_check_mark:|:white_check_mark:|||||||||
 |3 |Астапчик Евгений|[akayohonda](https://github.com/akayohonda)|200095|:white_check_mark:|:white_check_mark:|||||||||
 |4 |Селезнев Никита|[prophetam119](https://github.com/prophetam119)||||||||||||
