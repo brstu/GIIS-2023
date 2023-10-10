@@ -182,7 +182,7 @@ body {
   align-items: flex-start;
 }
 
-.main-popular-directions__destination {
+.main-popular-directions-destination {
   margin: 0 0 15px px;
   flex-basis: calc(50% - 20px);
 }
@@ -209,7 +209,6 @@ body {
   width: 30px;
   height: 30px;
   border-radius: 100%;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 20%);
 }
 
 .main-popular-directions-destination-city-name {
@@ -306,7 +305,7 @@ a {
   color: black;
 }
 
-.footer-links-list-about li a:after {
+.footer-links-list-about li a {
   content: "•";
   display: inline-block;
   position: relative;
@@ -478,13 +477,13 @@ a {
 .d-port {
   margin-top: 10px;
   color: #606266;
-  opacity: 70%;
+  opacity: 0.7;
 }
 
 .d-date {
   margin-top: 10px;
   color: #606266;
-  opacity: 70%;
+  opacity: 0.7;
 }
 
 .a-time {
@@ -496,14 +495,14 @@ a {
   margin-top: 10px;
   margin-left: auto;
   color: #606266;
-  opacity: 70%;
+  opacity: 0.7;
 }
 
 .a-date {
   margin-top: 10px;
   margin-left: auto;
   color: #606266;
-  opacity: 70%;
+  opacity: 0.7;
 }
 
 .available2 {
@@ -543,14 +542,12 @@ a {
 }
 
 .route-city {
-  margin-top: auto;
-  /* margin-bottom: auto; */
+  margin-top: auto;  
   font-weight: bold;
   font-size: 18px;
 }
 
 .route-airport {
-  /* margin-top: auto; */
   margin-bottom: auto;
   font-size: 13px;
   color: #909399;
