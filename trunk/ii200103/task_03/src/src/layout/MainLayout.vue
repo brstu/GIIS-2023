@@ -98,7 +98,6 @@
                 fill="currentColor"
               ></path></svg></span
         ></a>
-        <!-- <p class="logo">aviasales</p> -->
         <el-dropdown class="dropdown-profile">
           <i class="el-icon-user-solid"
             ><span class="text-header-menu">Профиль</span></i
