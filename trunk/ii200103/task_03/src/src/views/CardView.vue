@@ -486,7 +486,6 @@ export default {
   data() {
     return {
       option: "Авиабилеты",
-      value: "",
       date: "",
       radio: "Эконом",
       count: "",
@@ -568,7 +567,6 @@ export default {
 .additional-fields__label {
   /* height: auto; */
   overflow: hidden;
-  line-height: 1.25rem;
   white-space: nowrap;
   /* height: 60px; */
   width: 100%;

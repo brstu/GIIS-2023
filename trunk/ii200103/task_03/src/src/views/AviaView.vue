@@ -38,6 +38,7 @@
             data-src="https://static.aviasales.com/helios-assets/home_popular_directions/title_icon.svg"
             src="https://static.aviasales.com/helios-assets/home_popular_directions/title_icon.svg"
             data-loaded="true"
+            alt="icon_image"
           />
         </div>
         <div class="popular-route-text">
@@ -53,6 +54,7 @@
                       data-src="https://static.aviasales.com/helios-assets/flag/do.png"
                       src="https://static.aviasales.com/helios-assets/flag/do.png"
                       data-loaded="true"
+                      alt="flag_image"
                     />
                   </div>
                 </div>
@@ -165,6 +167,7 @@
                       data-src="https://static.aviasales.com/helios-assets/flag/fr.png"
                       src="https://static.aviasales.com/helios-assets/flag/fr.png"
                       data-loaded="true"
+                      alt="flag_image_second"
                     />
                   </div>
                 </div>
@@ -272,6 +275,7 @@
                       data-src="https://static.aviasales.com/helios-assets/flag/pr.png"
                       src="https://static.aviasales.com/helios-assets/flag/pr.png"
                       data-loaded="true"
+                      alt="flag_image_third"
                     />
                   </div>
                 </div>
@@ -433,13 +437,13 @@ export default {
   margin-right: 20px;
   max-width: 800px;
   padding: 16px;
-  margin: 0 auto 40px;
+  /* margin: 0 auto 40px; */
   padding-left: 24px;
   padding-right: 24px;
 }
 .second-text {
   padding-bottom: 12px;
-  font-family: black;
+  /* font-family: black; */
   font-weight: 400;
   font-size: 17px;
   line-height: 22px;
