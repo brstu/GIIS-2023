@@ -1,0 +1,9 @@
+Подготовка:
+	открыть консоль (от имени администратора), прописать:
+	 pip install opencv-python
+	 pip install numpy
+	 pip install matplotlib
+	 pip install PyQt5 (или pyqt5 не помню, надо эти заглавные делать чи не)
+Запуск:
+	тыкнуть main.py
+	 меняй image.jpg чи нада
