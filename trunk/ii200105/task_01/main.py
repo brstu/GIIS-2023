@@ -5,7 +5,7 @@ from PyQt5 import uic # интерфейс
 from PyQt5.QtWidgets import (
     QLabel, QSlider, QSpinBox, QPushButton, QDialog, QFileDialog, QApplication
 )
-import sys 
+import sys
 
 
 class MainWindow(QDialog): # класс окна, тут описан его функционал
@@ -60,7 +60,7 @@ class MainWindow(QDialog): # класс окна, тут описан его ф�
         self.showImage()
 
     def showImage(self, wndout = False): # показать картинку
-        if(wndout): 
+        if (wndout): 
             functions.show_image(self.image, "results")
         else:
             functions.show_image(self.image, "main window")

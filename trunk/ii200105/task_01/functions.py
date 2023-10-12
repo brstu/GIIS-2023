@@ -14,7 +14,7 @@ def noise(image, level): # шум
             print(str(int(progress))+"%")
         buff = progress
         for y, _ in enumerate(row):
-            if(random.randrange(0,(102-level)) == 1):
+            if (random.randrange(0,(102-level)) == 1):
                 '''
                 если выпала единица (а шанс меняем с помощью level, который берется со слайдера)
                 чем больше рейндж, тем меньше шанс единицы
@@ -41,7 +41,6 @@ def denoise(image, threshold, windowx, windowy):
         for y, _ in enumerate(row):
             # в это время для каждого пикселя смотрим соседей на расстоянии (размер окна \ 2)
             average_pixel, pixels_in_average = check_pixels(image, x, y, windowx, windowy)
-            
             # для всех соседей включая сам пиксель находим среднюю яркость
             average_brightness = (average_pixel[0] + average_pixel[1] + average_pixel[2]) / (pixels_in_average*3)
             average_pixel = [average_pixel[0]/(pixels_in_average), average_pixel[1]/(pixels_in_average), average_pixel[2]/(pixels_in_average)]
