@@ -14,11 +14,9 @@ def noise(image, level): # шум
             print(str(int(progress))+"%")
         buff = progress
         for y, _ in enumerate(row):
-            if (random.randrange(0,(102-level)) == 1):
-                '''
-                если выпала единица (а шанс меняем с помощью level, который берется со слайдера)
-                чем больше рейндж, тем меньше шанс единицы
-                '''
+            # если выпала единица (а шанс меняем с помощью level, который берется со слайдера)
+            if (random.randint(0,(102-level)) == 1):
+                # чем больше рейндж, тем меньше шанс единицы
                 random_v = random.randrange(1,5) #чем больше здесь выпало тем ярче пиксель
                 image[x][y] = [random_v*50,random_v*50,random_v*50]
     print('100%')

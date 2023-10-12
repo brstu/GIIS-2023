@@ -60,7 +60,7 @@ class MainWindow(QDialog): # класс окна, тут описан его ф�
         self.showImage()
 
     def showImage(self, wndout = False): # показать картинку
-        if (wndout): 
+        if (wndout):
             functions.show_image(self.image, "results")
         else:
             functions.show_image(self.image, "main window")
