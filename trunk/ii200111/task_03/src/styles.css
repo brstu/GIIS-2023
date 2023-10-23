@@ -1,0 +1,344 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    transition: background-color 0.5s;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    transition: background-color 0.5s;
+}
+
+nav {
+    background-color: #444;
+    transition: background-color 0.5s;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav li {
+    display: inline;
+    margin: 10px;
+    transition: background-color 0.5s;
+}
+
+nav a {
+    text-decoration: none;
+    color: #fff;
+    transition: color 0.5s;
+}
+
+section {
+    padding: 20px;
+    transition: background-color 0.5s;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    transition: background-color 0.5s;
+}
+
+nav a:hover,
+nav a:focus {
+    color: #ffcc00;
+}
+
+nav a:hover::before,
+nav a:focus::before {
+    content: '-> ';
+}
+
+#listings {
+    background-color: #f9f9f9;
+}
+
+#create-ad {
+    background-color: #e6f7ff;
+}
+
+#auctions {
+    background-color: #ffefcc;
+}
+
+#contact {
+    background-color: #ccf2ff;
+}
+
+#home-content {
+    background-color: #f5f5f5;
+    padding: 20px;
+}
+
+.news-item {
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+}
+
+.news-item h3 {
+    color: #333;
+    margin: 0;
+}
+
+.news-item p {
+    color: #666;
+}
+
+
+#home-content {
+    background-color: #f5f5f5;
+    padding: 20px;
+}
+
+.news-item {
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+}
+
+.news-item h3 {
+    color: #333;
+    margin: 0;
+}
+
+.news-item p {
+    color: #666;
+}
+
+#attractive-elements {
+    background-color: #333;
+    color: #fff;
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+.attractive-box {
+    text-align: center;
+    padding: 20px;
+    background-color: #ffcc00;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px #888;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.attractive-box:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 0px 20px #888;
+}
+
+.attractive-box h3 {
+    font-size: 1.5em;
+    margin: 10px 0;
+}
+
+.attractive-box p {
+    font-size: 1.2em;
+}
+
+#comments-purchases {
+    background-color: #f9f9f9;
+    padding: 20px;
+}
+
+.comment-purchase {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+}
+
+.comment, .purchase {
+    flex-basis: 48%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+}
+
+.comment p, .purchase p {
+    margin: 0;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-around;
+    flex-grow: 1;
+}
+
+.attractive-box {
+    text-align: center;
+    padding: 20px;
+    background-color: #ffcc00;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px #888;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.attractive-box:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 0px 20px #888;
+}
+
+.attractive-box h3 {
+    font-size: 1.5em;
+    margin: 10px 0;
+}
+
+.attractive-box p {
+    font-size: 1.2em;
+}
+
+.contact-info {
+    text-align: center;
+}
+
+.contact-info h3 {
+    font-size: 1.5em;
+    margin: 10px 0;
+}
+
+.contact-info {
+    text-align: center;
+}
+
+header h1 {
+    font-size: 2.5em;
+    color: #333;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    background-color: #ffcc00;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px #888;
+    transition: background-color 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+
+header h1:hover {
+    background-color: #333;
+    color: #fff;
+    transform: rotate(3deg);
+    box-shadow: 0px 0px 20px #333;
+}
+
+#contact-content {
+    background-color: #f9f9f9;
+    padding: 20px;
+    text-align: center;
+}
+
+#contact-content h2 {
+    font-size: 1.8em;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+#contact-content p {
+    font-size: 1.2em;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+#contact-content ul {
+    list-style: none;
+    padding: 0;
+}
+
+#contact-content ul li {
+    font-size: 1.2em;
+    color: #333;
+    margin: 5px 0;
+}
+
+#auctions-content {
+    background-color: #f5f5f5;
+    padding: 20px;
+    text-align: center;
+}
+
+#auctions-content h2 {
+    font-size: 1.8em;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.auction-item {
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    margin: 10px 0;
+}
+
+.auction-item h3 {
+    font-size: 1.5em;
+    color: #333;
+    margin: 5px 0;
+}
+
+.auction-item p {
+    font-size: 1.2em;
+    color: #666;
+    margin: 5px 0;
+}
+
+#listings-content {
+    background-color: #f9f9f9;
+    padding: 20px;
+    text-align: center;
+}
+
+#listings-content h2 {
+    font-size: 1.8em;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+thead {
+    background-color: #333;
+    color: #fff;
+}
+
+thead th {
+    padding: 10px;
+}
+
+tbody {
+    background-color: #fff;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tbody td {
+    padding: 10px;
+}
