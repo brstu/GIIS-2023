@@ -76,6 +76,6 @@
 
 ```cmd
 cd task_03/src
-npm i
+npm install
 npm run dev
 ```
