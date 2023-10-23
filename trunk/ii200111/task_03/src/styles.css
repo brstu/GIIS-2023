@@ -41,17 +41,9 @@ section {
     transition: background-color 0.5s;
 }
 
-footer {
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    padding: 10px;
-    transition: background-color 0.5s;
-}
-
 nav a:hover,
 nav a:focus {
-    color: #ffcc00;
+    color: #fc0;
 }
 
     nav a:hover::before,
@@ -117,15 +109,15 @@ nav a:focus {
 .attractive-box {
     text-align: center;
     padding: 20px;
-    background-color: #ffcc00;
+    background-color: #fc0;
     border-radius: 10px;
-    box-shadow: 0px 0px 10px #888;
+    box-shadow: 0 0 10px #888;
     transition: transform 0.2s, box-shadow 0.2s;
 }
 
     .attractive-box:hover {
         transform: scale(1.1);
-        box-shadow: 0px 0px 20px #888;
+        box-shadow: 0 0 20px #888;
     }
 
 .contact-info {
@@ -157,11 +149,11 @@ header h1 {
     font-size: 2.5em;
     color: #333;
     text-transform: uppercase;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    text-shadow: 2px 2px 4px rgba(0 0 0/ 30%);
     padding: 20px;
-    background-color: #ffcc00;
+    background-color: #fc0;
     border-radius: 10px;
-    box-shadow: 0px 0px 10px #888;
+    box-shadow: 0 0 10px #888;
     transition: background-color 0.2s, transform 0.2s, box-shadow 0.2s;
 }
 
@@ -169,7 +161,7 @@ header h1 {
         background-color: #333;
         color: #fff;
         transform: rotate(3deg);
-        box-shadow: 0px 0px 20px #333;
+        box-shadow: 0 0 20px #333;
     }
 
 #contact-content h2,
