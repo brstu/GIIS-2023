@@ -4,8 +4,8 @@ import random
 def show_img(image, window_name): # показать картинку
     cv2.imshow(window_name, image)
 
-def give_noises(image, level):
-     tmp = 0.1
+def give_noises(image, level = 1):
+    tmp = 0.1
     max_level = 102 - level
     random_range = (1, 5)
     for x, row in enumerate(image):
