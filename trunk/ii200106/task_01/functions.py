@@ -7,8 +7,8 @@ def show_img(image, window_name): # показать картинку
 def give_noises(image):
     if image:
         return image
-    else
-        return None
+    else:
+        return 1
 
 def distract_noises(image, t, x_width, y_width):
     tmp = 0.1
