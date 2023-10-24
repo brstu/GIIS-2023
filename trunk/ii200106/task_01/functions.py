@@ -4,20 +4,11 @@ import random
 def show_img(image, window_name): # показать картинку
     cv2.imshow(window_name, image)
 
-def give_noises(image, level):
-    tmp = 0.1
-    random_range = (1, 5)
-    for x, row in enumerate(image):
-        prog = x*100/len(image)
-        if int(tmp) != int(prog):
-            print(str(int(prog))+"%")
-        tmp = prog
-        for y, _ in enumerate(row):
-            if (random_level == 1):
-                random_v = random.randint(*random_range)
-                image[x][y] = [random_v*50, random_v*50, random_v*50]
-    print('100%')
-    return image
+def give_noises(image):
+    if image:
+        return image
+    else
+        return None
 
 def distract_noises(image, t, x_width, y_width):
     tmp = 0.1
