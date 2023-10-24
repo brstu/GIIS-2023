@@ -12,11 +12,7 @@ class AppWindow(QWidget):
 
     def _setup_ui(self):
         self.setWindowTitle("Remove image's noise")
-        self.setStyleSheet(
-            '''
-                background-color: white;
-            '''
-        )
+        self.setStyleSheet('''background-color: white;''')
         self.setGeometry(50, 50, 1300, 700)
         self._main_layout = QVBoxLayout()
         self._buttons_widget = QWidget()
@@ -60,11 +56,11 @@ class AppWindow(QWidget):
         button = QPushButton(text)
         button.clicked.connect(signal)
         button.setStyleSheet('''height: 50px;
-            background-color: black;
-            outline: none;
-            font-size: 24px;
-            color: white;
-            border-radius: 12px;''')
+        background-color: black;
+        outline: none;
+        font-size: 24px;
+        color: white;
+        border-radius: 12px;''')
         return button
     
     def _create_radio(self, text, axis, checked=False):
