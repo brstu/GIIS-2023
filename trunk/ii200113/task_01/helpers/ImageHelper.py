@@ -8,18 +8,18 @@ class ImageHelper:
             image_pixels_counter = image_to_noise_buff.load()
             count = 0
             while (count < broken_pixels_count):
-                x_coord = random.randint(0, abs(image.size[0] - 1))
-                y_coord = random.randint(0, abs(image.size[1] - 1))
+                x_coord = random.randint(0, int(abs(image.size[0] - 1)))
+                y_coord = random.randint(0, int(abs(image.size[1] - 1))
                 image_pixels_counter[x_coord, y_coord] = (0, 0, 0)
                 count += 1
             image_to_noise_buff.save(path)
 
-def get_pixel_colors(image, i, j):
+def get_pixel_colors(image, i, j, kernel_width):
     red_colors = []
     green_colors = [] 
     blue_colors = []
     for k_i in range(kernel_width):
-        if k_i + i + 1 < image_width:
+        if k_i + i + 1 < 5:
             r, g, b = image.getpixel((k_i + i + 1, j))
             red_colors.append(r)
             green_colors.append(g) 
@@ -43,7 +43,7 @@ def median_filter(image, progress_handler, kernel_width=1, kernel_height=1):
     width, height = image_copy.size
     for i in range(width):
         for j in range(height):
-            colors = get_pixel_colors(image_copy, i, j)  
+            colors = get_pixel_colors(image_copy, i, j, kernel_width)  
             r = get_median_color(colors[0])
             g = get_median_color(colors[1])
             b = get_median_color(colors[2])
