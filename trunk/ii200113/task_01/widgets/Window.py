@@ -40,8 +40,7 @@ class AppWindow(QWidget):
         self._kernel_slider.setStyleSheet('''background-color: gray;''')
         self._progress_bar = QProgressBar(self, minimum=0, maximum=100, textVisible=False)
         self._progress_bar.setValue(20)
-        self._progress_bar.setStyleSheet('''background-color: black;
-        height: 100px;''')
+        self._progress_bar.setStyleSheet('''background-color: black;height: 100px;''')
         self._main_layout.addWidget(self._images_widget, 6)
         self._main_layout.addWidget(self._radio_widget, 1)
         self._kernel_label = QLabel()
@@ -55,12 +54,7 @@ class AppWindow(QWidget):
     def _create_button(self, text, signal):
         button = QPushButton(text)
         button.clicked.connect(signal)
-        button.setStyleSheet('''height: 50px;
-        background-color: black;
-        outline: none;
-        font-size: 24px;
-        color: white;
-        border-radius: 12px;''')
+        button.setStyleSheet('''height: 50px;background-color: black;outline: none;font-size: 24px;color: white;border-radius: 12px;''')
         return button
     
     def _create_radio(self, text, axis, checked=False):
@@ -88,7 +82,6 @@ class AppWindow(QWidget):
             self.image_helper.median_filter(image, kernel_height=kernel_size)
         else:
             self.image_helper.median_filter(image, kernel_width=kernel_size)
-            
         self._images_widget.set_unnoised_image()
 
     def _add_noise_clicked(self):

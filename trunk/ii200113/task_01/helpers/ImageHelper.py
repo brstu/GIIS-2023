@@ -50,7 +50,7 @@ def median_filter(image, progress_handler, kernel_width=1, kernel_height=1):
             image_copy.putpixel((i, j), (r, g, b))
             count += 1
             progress_handler(count)
-    image_copy.save('unnoised_image.png')
+        image_copy.save('unnoised_image.png')
         image_to_unnoise_buff = image.copy()
         image_width_buff, image_height_buff = image_to_unnoise_buff.size
         image_pixels_counter = image_to_unnoise_buff.load()
