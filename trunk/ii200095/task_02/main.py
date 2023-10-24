@@ -1,7 +1,8 @@
 import sqlite3
 import tkinter as tk
+db_connect_str = 'D:\\second.db'
 
-conn = sqlite3.connect('D:\\second.db')
+conn = sqlite3.connect(db_connect_str)
 c = conn.cursor()
 c.execute("CREATE TABLE IF NOT EXISTS mytable (name text, date text)")
 conn.commit()
@@ -25,7 +26,7 @@ button_sort = tk.Button(window, text="Sort")
 
 def delete():
     name = entry_name.get()
-    conn = sqlite3.connect('D:\\second.db')
+    conn = sqlite3.connect(db_connect_str)
     cursor = conn.cursor()
     cursor.execute("DELETE FROM mytable WHERE name=?", (name,))
     conn.commit()
@@ -37,7 +38,7 @@ def update():
     new_age = entry_date.get()
 
     # Создаем подключение к базе данных
-    conn = sqlite3.connect('D:\\second.db')
+    conn = sqlite3.connect(db_connect_str)
     cursor = conn.cursor()
 
     cursor.execute("UPDATE mytable SET date=? WHERE name=?", (new_age, name))
@@ -48,7 +49,7 @@ def update():
 def show():
     listbox_name.delete(0, tk.END)
     listbox_date.delete(0, tk.END)
-    conn = sqlite3.connect('D:\\second.db')
+    conn = sqlite3.connect(db_connect_str)
     cursor = conn.cursor()
 
     # выполняем запрос и получаем результаты
@@ -63,7 +64,7 @@ def show():
 def save_data(name, date):
 
     # Запись данных в БД
-    conn = sqlite3.connect('D:\\second.db')
+    conn = sqlite3.connect(db_connect_str)
     cursor = conn.cursor()
     cursor.execute("INSERT INTO mytable(name, date) VALUES (?, ?)", (name, date))
     conn.commit()
@@ -77,7 +78,7 @@ def on_double_click(event):
 
 
 def sort():
-    conn = sqlite3.connect('D:\\second.db')
+    conn = sqlite3.connect(db_connect_str)
     cursor = conn.cursor()
 
     names = list(listbox_name.get(0, tk.END))
