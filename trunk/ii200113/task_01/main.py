@@ -1,5 +1,3 @@
-import sys
-from PyQt5.QtWidgets import QApplication
 from widgets.Window import Window
 
 def main_func():

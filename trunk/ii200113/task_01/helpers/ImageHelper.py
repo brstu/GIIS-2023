@@ -17,11 +17,11 @@ class ImageHelper:
 
             image_to_noise_buff.save(path)
 
-  def get_pixel_colors(image, i, j):
+def get_pixel_colors(image, i, j):
     red_colors = []
     green_colors = [] 
     blue_colors = []
-    
+
     for k_i in range(kernel_width):
         if k_i + i + 1 < image_width:
             r, g, b = image.getpixel((k_i + i + 1, j))

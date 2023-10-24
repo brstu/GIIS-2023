@@ -22,31 +22,31 @@ class Window(QWidget):
 
         self._layout_inicializator = QVBoxLayout()
 
-        self._buttons_widget = QWidget()
+        self._widget_setter = QWidget()
         self._buttons_layout_inicializator = QHBoxLayout()
 
         self._open_file_button = self._create_button('Open file', self._open_file_button_tapped)
         self._buttons_layout_inicializator.addWidget(self._open_file_button, 1)
         self._remove_noise_button = self._create_button('Remove noise', self._remove_noise_button_tapped)
         self._buttons_layout_inicializator.addWidget(self._remove_noise_button, 1)
-        self._create_noise_button = self._create_button('Create noise button', self._create_noise_button_tapped)
-        self._buttons_layout_inicializator.addWidget(self._create_noise_button, 1)
+        self._button_creator = self._create_button('Create noise button', self._button_creator_tapped)
+        self._buttons_layout_inicializator.addWidget(self._button_creator, 1)
 
-        self._buttons_widget.setLayout(self._buttons_layout_inicializator)
+        self._widget_setter.setLayout(self._buttons_layout_inicializator)
 
         self._images_widget = ImagesWidget()
 
         self._radio_widget_inicializator = QWidget()
-        self._radio_widget_inicializator_layout_inicializator = QHBoxLayout()
+        self._radio_widget_init = QHBoxLayout()
 
         self._h_kernel_button_inicializator = self._create_radio_button('Horizontal axis', 'horizontal')
         self._v_kernel_button_inicializator = self._create_radio_button('Vertical axis', 'vertical')
         self._both_axises_button = self._create_radio_button('Both', 'both', is_checked=True)
 
-        self._radio_widget_inicializator_layout_inicializator.addWidget(self._h_kernel_button_inicializator, 1, alignment=Qt.AlignmentFlag.AlignCenter)
-        self._radio_widget_inicializator_layout_inicializator.addWidget(self._v_kernel_button_inicializator, 1, alignment=Qt.AlignmentFlag.AlignCenter)
-        self._radio_widget_inicializator_layout_inicializator.addWidget(self._both_axises_button, 1, alignment=Qt.AlignmentFlag.AlignCenter)
-        self._radio_widget_inicializator.setLayout(self._radio_widget_inicializator_layout_inicializator)
+        self._radio_widget_init.addWidget(self._h_kernel_button_inicializator, 1, alignment=Qt.AlignmentFlag.AlignCenter)
+        self._radio_widget_init.addWidget(self._v_kernel_button_inicializator, 1, alignment=Qt.AlignmentFlag.AlignCenter)
+        self._radio_widget_init.addWidget(self._both_axises_button, 1, alignment=Qt.AlignmentFlag.AlignCenter)
+        self._radio_widget_inicializator.setLayout(self._radio_widget_init)
 
         self._slider_inicializator = QSlider(Qt.Orientation.Horizontal)
         self._slider_inicializator.setRange(1, 20)
@@ -73,7 +73,7 @@ class Window(QWidget):
         self._label1_inicializator.setText('Kernel size: 0')
         self._layout_inicializator.addWidget(self._label1_inicializator, 1)
         self._layout_inicializator.addWidget(self._slider_inicializator, 1)
-        self._layout_inicializator.addWidget(self._buttons_widget, 1)
+        self._layout_inicializator.addWidget(self._widget_setter, 1)
         self._layout_inicializator.addWidget(self._progress_barinicializator, 1)
 
         self.setLayout(self._layout_inicializator)
@@ -116,7 +116,7 @@ class Window(QWidget):
 
             self._images_widget.set_unnoised_image()
 
-    def _create_noise_button_tapped(self):
+    def _button_creator_tapped(self):
         self.ihi.noise_image(self._path, 900)
         self._images_widget.set_noised_image(self._path)
 
