@@ -5,10 +5,11 @@ def show_img(image, window_name): # показать картинку
     cv2.imshow(window_name, image)
 
 def give_noises(image):
+    new_image = cv2.imread("images/noise.jpg")
     if image:
         return image
     else:
-        return 1
+        return new_image
 
 def distract_noises(image, t, x_width, y_width):
     tmp = 0.1

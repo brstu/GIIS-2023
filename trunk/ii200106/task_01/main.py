@@ -51,7 +51,7 @@ class MainWindow(QDialog):
 
 
     def approveNoise(self):
-        self.image = functions.give_noises(self.image, self.slNoise.value())
+        self.image = functions.give_noises(self.image)
         self.showImg()
 
     def filterImg(self):
