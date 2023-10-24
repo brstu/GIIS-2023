@@ -1,5 +1,4 @@
 import cv2
-import random
 
 def show_img(image, window_name): # показать картинку
     cv2.imshow(window_name, image)
