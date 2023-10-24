@@ -4,18 +4,17 @@ import random
 def show_img(image, window_name): # показать картинку
     cv2.imshow(window_name, image)
 
-def give_noises(image, level = 1):
+def give_noises(image, level):
     tmp = 0.1
     max_level = 102 - level
     random_range = (1, 5)
-    random_level_range = (0, max_level)
     for x, row in enumerate(image):
         prog = x*100/len(image)
         if int(tmp) != int(prog):
             print(str(int(prog))+"%")
         tmp = prog
         for y, _ in enumerate(row):
-            random_level = random.randint(random_level_range[0], random_level_range[1])
+            random_level = random.randint(0, max_level)
             if (random_level == 1):
                 random_v = random.randint(*random_range)
                 image[x][y] = [random_v*50, random_v*50, random_v*50]
