@@ -13,13 +13,14 @@ def give_noises(image, level):
             print(str(int(prog))+"%")
         tmp = prog
         for y, _ in enumerate(row):
-            if (random.randint(0,(102-level)) == 1):
-                random_v = random.randrange(1, 5)
+            random_level = random.randint(0, (102-level))
+            if (random_level == 1):
+                random_v = random.randint(1, 5)
                 image[x][y] = [random_v*50, random_v*50, random_v*50]
     print('100%')
     return image
 
-def distract_noises(image, t, wX, wY):
+def distract_noises(image, t, width_X, width_Y):
     tmp = 0.1
     for x, row in enumerate(image):
         prog = x*100/len(image)
@@ -29,7 +30,7 @@ def distract_noises(image, t, wX, wY):
         tmp = prog
 
         for y, _ in enumerate(row):
-            avg_pixel, pixels_in_avg = check(image, x, y, wX, wY)
+            avg_pixel, pixels_in_avg = check(image, x, y, width_X, width_Y)
             avg_bright = (avg_pixel[0] + avg_pixel[1] + avg_pixel[2]) / (pixels_in_avg*3)
             avg_pixel = [avg_pixel[0]/(pixels_in_avg), avg_pixel[1]/(pixels_in_avg), avg_pixel[2]/(pixels_in_avg)]
             pixel_bright = (int(image[x][y][0]) + int(image[x][y][1]) + int(image[x][y][2])) / 3.0
@@ -38,11 +39,11 @@ def distract_noises(image, t, wX, wY):
     print('100%')
     return image
 
-def check(image, x, y, wX, wY):
+def check(image, x, y, width_X, width_Y):
     avg_pixel = [0,0,0]
     pixels_in_avg = 0
-    for x_ in range(int(-1*wX/2),int(wX/2) + 1):
-        for y_ in range(int(-1*wY/2),int(wY/2) + 1):
+    for x_ in range(int(-1*width_X/2),int(width_X/2) + 1):
+        for y_ in range(int(-1*width_Y/2),int(width_Y/2) + 1):
             if (x+x_>=0) and (y+y_>=0) and (x+x_<len(image)) and (y+y_<len(image[0])):
                 pixels_in_avg+=1
                 avg_pixel[0] += image[x+x_][y+y_][0]
