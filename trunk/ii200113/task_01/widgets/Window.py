@@ -10,6 +10,7 @@ class AppWindow(QWidget):
         self.image_helper = ImageHelper()
         self._setup_ui()
 
+
     def _setup_ui(self):
         self.setWindowTitle("Remove image's noise")
         self.setStyleSheet('''background-color: white;''')
@@ -51,12 +52,14 @@ class AppWindow(QWidget):
         self._main_layout.addWidget(self._progress_bar, 1)
         self.setLayout(self._main_layout)
 
+
     def _create_button(self, text, signal):
         button = QPushButton(text)
         button.clicked.connect(signal)
         button.setStyleSheet('''height: 50px;background-color: black;outline: none;font-size: 24px;color: white;border-radius: 12px;''')
         return button
     
+
     def _create_radio(self, text, axis, checked=False):
         radio = QRadioButton(text)
         radio.axis = axis
@@ -65,13 +68,16 @@ class AppWindow(QWidget):
         radio.setStyleSheet('color: black;')
         return radio
 
+
     def _on_radio_toggle(self):
         self._selected_axis = self.sender().axis
+
 
     def _open_file_clicked(self):
         path = QFileDialog.getOpenFileName(self, 'Open file', '', 'Image files (*.png)')[0]
         self._images_widget.set_noised_image(path)
         self._file_path = path
+
 
     def _remove_noise_clicked(self):
         image = Image.open(self._file_path)
@@ -84,12 +90,15 @@ class AppWindow(QWidget):
             self.image_helper.median_filter(image, kernel_width=kernel_size)
         self._images_widget.set_unnoised_image()
 
+
     def _add_noise_clicked(self):
         self.image_helper.noise_image(self._file_path, 900)
         self._images_widget.set_noised_image(self._file_path)
 
+
     def _on_kernel_change(self):
         self._kernel_label.setText(f'Kernel size: {self._kernel_slider.value()}')
+
 
     def _update_progress(self, value):
         self._progress_bar.setValue(value)

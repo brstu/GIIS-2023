@@ -9,7 +9,7 @@ class ImageHelper:
             count = 0
             while (count < broken_pixels_count):
                 x_coord = random.randint(0, int(abs(image.size[0] - 1)))
-                y_coord = random.randint(0, int(abs(image.size[1] - 1))
+                y_coord = random.randint(0, int(abs(image.size[1] - 1)))
                 image_pixels_counter[x_coord, y_coord] = (0, 0, 0)
                 count += 1
             image_to_noise_buff.save(path)
