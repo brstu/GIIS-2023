@@ -15,7 +15,7 @@ def give_noises(image, level = 1):
             print(str(int(prog))+"%")
         tmp = prog
         for y, _ in enumerate(row):
-            random_level = random.randint(*random_level_range)
+            random_level = random.randint(random_level_range[0], random_level_range[1])
             if (random_level == 1):
                 random_v = random.randint(*random_range)
                 image[x][y] = [random_v*50, random_v*50, random_v*50]
