@@ -1,7 +1,7 @@
 import sqlite3
 import tkinter as tk
 db_connect_str = 'D:\\second.db'
-conn = sqlite3.connect(db_connect_strdb_connect_str)
+conn = sqlite3.connect(db_connect_str)
 c = conn.cursor()
 c.execute("CREATE TABLE IF NOT EXISTS mytable (name text, date text)")
 conn.commit()
