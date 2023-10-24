@@ -8,7 +8,7 @@ class Window(QWidget):
     def __init__(self):
         super().__init__()
 
-        self._image_helper_inicializator = ImageHelper()
+        self.ihi = ImageHelper()
         self._setup_ui()
 
     def _setup_ui(self):
@@ -108,16 +108,16 @@ class Window(QWidget):
             k_size = self._slider_inicializator.value()
 
             if self._selected_kernel_option == 'both':
-                self._image_helper_inicializator.median_filter(image, kernel_width=k_size, kernel_height=k_size, progress_handler=self._progress_barinicializator.setValue())
+                self.ihi.median_filter(image, kernel_width=k_size, kernel_height=k_size, progress_handler=self._progress_barinicializator.setValue())
             elif self._selected_kernel_option == 'vertical':
-                self._image_helper_inicializator.median_filter(image, kernel_height=k_size, progress_handler=print())
+                self.ihi.median_filter(image, kernel_height=k_size)
             else:
-                self._image_helper_inicializator.median_filter(image, kernel_width=k_size, progress_handler=print())
+                self.ihi.median_filter(image, kernel_width=k_size)
 
             self._images_widget.set_unnoised_image()
 
     def _create_noise_button_tapped(self):
-        self._image_helper_inicializator.noise_image(self._path, 900)
+        self.ihi.noise_image(self._path, 900)
         self._images_widget.set_noised_image(self._path)
 
     def _radio_button_tapped(self):
