@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xml:lang="ru">
+<head>
+    <title>Участок 1</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <header>
+        <a href="Home.html" style="text-decoration: none;">
+            <h1 id="navMenuU1" style="color: #ff4848; font-size: 44px; margin: 0;">Мед-учреждение</h1>
+        </a>
+        <nav aria-label="navMenuU1">
+            <ul style="list-style: none; padding: 0; margin: 0; display: flex;">
+                <li style="margin-right: 20px;">
+                    <a href="Uch.html" style="text-decoration: none; font-size: 26px; color: #e2e2e2;">Узнать участок</a>
+                </li>
+                <li style="margin-right: 20px;">
+                    <a href="Book.html" style="text-decoration: none; font-size: 26px; color: #e2e2e2;">Запись к врачу</a>
+                </li>
+                <li>
+                    <a href="Call.html" style="text-decoration: none; font-size: 26px; color: #e2e2e2;">Вызов на дом</a>
+                </li>
+            </ul>
+        </nav>
+    </header>    
+    
+    <main>
+        <h1 id="U1Times" class="main-item-title">Участок 1</h1>
+        <div role="group" aria-label="U1Times" class="button-row">
+            <button aria-label="U1Times" class="small-button" onclick="showMsg('Запись на 8:00')">8:00</button>
+            <button aria-label="U1Times" class="small-button" onclick="showMsg('Запись на 9:00')">9:00</button>
+            <button aria-label="U1Times" class="small-button" onclick="showMsg('Запись на 10:00')">10:00</button>
+            <button aria-label="U1Times" class="small-button" onclick="showMsg('Запись на 11:00')">11:00</button>
+            <button aria-label="U1Times" class="small-button" onclick="showMsg('Запись на 12:00')">12:00</button>
+            <button aria-label="U1Times" class="small-button" onclick="showMsg('Запись на 13:00')">13:00</button>
+            <button aria-label="U1Times" class="small-button" onclick="showMsg('Запись на 15:00')">15:00</button>
+            <button aria-label="U1Times" class="small-button" onclick="showMsg('Запись на 16:00')">16:00</button>
+            <button aria-label="U1Times" class="small-button" onclick="showMsg('Запись на 17:00')">17:00</button>
+            <button aria-label="U1Times" class="small-button" onclick="showMsg('Запись на 18:00')">18:00</button>
+            <button aria-label="U1Times" class="small-button" onclick="showMsg('Запись на 19:00')">19:00</button>
+            <button aria-label="U1Times" class="small-button" onclick="showMsg('Запись на 20:00')">20:00</button>
+        </div>
+        <div aria-label="U1Times" id="msg"></div>
+    </main>
+    
+    <footer>
+        <p style="margin: 0;">&copy; 2023 Мед-учрежд.</p>
+    </footer>
+    
+</body>
+
+<script>
+    function showMsg(text) {
+    const msgDiv = document.getElementById("msg");
+    msgDiv.textContent = `Вы выбрали: ${text}`;
+}
+</script>
+
+</html>

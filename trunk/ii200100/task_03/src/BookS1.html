@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xml:lang="ru">
+<head>
+    <title>Специалист 1</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <header>
+        <a href="Home.html" style="text-decoration: none;">
+            <h1 id="navMenuS1" style="color: #ff4848; font-size: 44px; margin: 0;">Мед-учреждение</h1>
+        </a>
+        <nav aria-label="navMenuS1">
+            <ul style="list-style: none; padding: 0; margin: 0; display: flex;">
+                <li style="margin-right: 20px;">
+                    <a href="Uch.html" style="text-decoration: none; font-size: 26px; color: #e2e2e2;">Узнать участок</a>
+                </li>
+                <li style="margin-right: 20px;">
+                    <a href="Book.html" style="text-decoration: none; font-size: 26px; color: #e2e2e2;">Запись к врачу</a>
+                </li>
+                <li>
+                    <a href="Call.html" style="text-decoration: none; font-size: 26px; color: #e2e2e2;">Вызов на дом</a>
+                </li>
+            </ul>
+        </nav>
+    </header>    
+    
+    <main>
+        <h1 id="S1Times" class="main-item-title">Специалист 1</h1>
+        <div role="group" aria-label="S1Times" class="button-row">
+            <button aria-label="S1Times" class="small-button" onclick="showMessage('8:00')">8:00</button>
+            <button aria-label="S1Times" class="small-button" onclick="showMessage('9:00')">9:00</button>
+            <button aria-label="S1Times" class="small-button" onclick="showMessage('10:00')">10:00</button>
+            <button aria-label="S1Times" class="small-button" onclick="showMessage('11:00')">11:00</button>
+            <button aria-label="S1Times" class="small-button" onclick="showMessage('12:00')">12:00</button>
+            <button aria-label="S1Times" class="small-button" onclick="showMessage('13:00')">13:00</button>
+            <button aria-label="S1Times" class="small-button" onclick="showMessage('15:00')">15:00</button>
+            <button aria-label="S1Times" class="small-button" onclick="showMessage('16:00')">16:00</button>
+            <button aria-label="S1Times" class="small-button" onclick="showMessage('17:00')">17:00</button>
+            <button aria-label="S1Times" class="small-button" onclick="showMessage('18:00')">18:00</button>
+            <button aria-label="S1Times" class="small-button" onclick="showMessage('19:00')">19:00</button>
+            <button aria-label="S1Times" class="small-button" onclick="showMessage('20:00')">20:00</button>
+        </div>
+        <div id="message"></div>
+    </main>
+    
+    <footer>
+        <p style="margin: 0;">&copy; 2023 Мед-учрежд.</p>
+    </footer>
+    
+</body>
+
+<script>
+    function showMessage(text) {
+    const messageDiv = document.getElementById("message");
+    messageDiv.textContent = `Запись на: ${text}`;
+}
+</script>
+
+</html>
