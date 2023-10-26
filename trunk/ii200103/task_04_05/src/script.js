@@ -1,7 +1,7 @@
-const gridContainer = document.querySelector(".grid-container")
-const scoreElement = document.querySelector(".score")
+const gridContainer = document.querySelector(".grid-container");
+const scoreElement = document.querySelector(".score");
 
-const bonusMessageElement = document.querySelector(".bonus-message")
+const bonusMessageElement = document.querySelector(".bonus-message");
 const gridSize = 4;
 let grid = new Array(gridSize)
   .fill(null)
@@ -10,7 +10,9 @@ let score = 0;
 let bonusActive = false;
 let isGameOver = false;
 
-// Функция для инициализации игры
+/**
+ * Функция для инициализации игры.
+ */
 function initializeGame() {
   grid = new Array(gridSize).fill(null).map(() => new Array(gridSize).fill(0));
   score = 0;
@@ -21,40 +23,48 @@ function initializeGame() {
   addRandomTile();
 }
 
-// Функция для формирования таблицы
+/**
+ * Функция для формирования таблицы.
+ */
 function updateGridDisplay() {
-  gridContainer.innerHTML = ""
+  gridContainer.innerHTML = "";
   for (let i = 0; i < gridSize; i++) {
     for (let j = 0; j < gridSize; j++) {
-      const cellValue = checkCellValue(grid[i][j]);
-      const gridCell = document.createElement("div")
-      gridCell.classList.add("grid-cell")
-      gridCell.textContent = cellValue > 0 ? cellValue : ""
+      const cellValue = (grid[i][j]);
+      const gridCell = document.createElement("div");
+      gridCell.classList.add("grid-cell");
+      gridCell.textContent = cellValue > 0 ? cellValue : "";
       gridCell.style.background = getTileColor(cellValue);
       gridContainer.appendChild(gridCell);
     }
   }
 }
 
-// Функция для проверки содержимого грида
+/**
+ * Функция для проверки значения грида.
+ */
 function checkCellValue(value) {
-  if (typeof value !== 'number' || isNaN(value) || value < 0) {
+  if (typeof value !== "number" || isNaN(value) || value < 0) {
     return 0;
   }
   return value;
 }
 
-// Функция для обновления счёта
+/**
+ * Функция для обновления счёта.
+ */
 function updateScoreDisplay() {
   scoreElement.textContent = `Score: ${score}`;
 }
 
-// Фуекция для заполнения таблицы
+/**
+ * Функция для заполнения таблицы значением.
+ */
 function addRandomTile() {
   const availableCells = [];
   for (let i = 0; i < gridSize; i++) {
     for (let j = 0; j < gridSize; j++) {
-      if (checkCellValue(grid[i][j]) === 0) {
+      if ((grid[i][j]) === 0) {
         availableCells.push({ row: i, col: j });
       }
     }
@@ -72,7 +82,9 @@ function addRandomTile() {
   updateGridDisplay()
 }
 
-// Функция отображения цвета ячейки в зависимости от цифры в ней
+/**
+ * Функция для заполнения ячейки цветом.
+ */
 function getTileColor(value) {
   switch (value) {
     case 2:
@@ -102,49 +114,45 @@ function getTileColor(value) {
   }
 }
 
-// Функция активации бонуса
+/**
+ * Функция для активации бонуса.
+ */
 function activateBonusLeft() {
   if (!bonusActive) {
-    bonusActive = true
-    bonusTimerElement.style.color = 'green'
-    bonusMessageElement.style.display = 'block'
+    bonusActive = true;
+    bonusTimerElement.style.color = "green";
+    bonusMessageElement.style.display = "block";
   }
 }
 
-function deactivateBonusLeft() {
-  if (bonusActive) {
-    bonusActive = false
-    bonusTimerElement.style.color = 'black'
-    bonusMessageElement.style.display = 'none'
-  }
-}
-
-document.addEventListener('keydown', (event) => {
+document.addEventListener("keydown", (event) => {
   if (isGameOver) {
-    return
+    return;
   }
 
-  if (event.key === 'ArrowLeft') {
-    moveLeft()
-  } else if (event.key === 'ArrowRight') {
-    moveRight()
-  } else if (event.key === 'ArrowUp') {
-    moveUp()
-  } else if (event.key === 'ArrowDown') {
-    moveDown()
+  if (event.key === "ArrowLeft") {
+    moveLeft();
+  } else if (event.key === "ArrowRight") {
+    moveRight();
+  } else if (event.key === "ArrowUp") {
+    moveUp();
+  } else if (event.key === "ArrowDown") {
+    moveDown();
   } else {
-    return
+    return;
   }
-  addRandomTile()
-  updateGridDisplay()
-  updateScoreDisplay()
+  addRandomTile();
+  updateGridDisplay();
+  updateScoreDisplay();
 
   if (checkGameOver()) {
-    endGame()
+    endGame();
   }
 })
 
-// Логика движения влево
+/**
+ * Функция для движения влево.
+ */
 function moveLeft() {
   for (let i = 0; i < gridSize; i++) {
     for (let j = 1; j < gridSize; j++) {
@@ -155,6 +163,9 @@ function moveLeft() {
   }
 }
 
+/**
+ * Функция для перемещения влево необходимых блоков.
+ */
 function shiftLeft(row, col) {
   while (col > 0) {
     if (grid[row][col - 1] === 0) {
@@ -169,11 +180,17 @@ function shiftLeft(row, col) {
   }
 }
 
+/**
+ * Функция для перемещения влево.
+ */
 function moveBlockLeft(fromRow, fromCol, toRow, toCol) {
   grid[toRow][toCol] = grid[fromRow][fromCol];
   grid[fromRow][fromCol] = 0;
 }
 
+/**
+ * Функция для подсчёта счёта и обработки бонуса влево.
+ */
 function mergeBlocksLeft(row1, col1, row2, col2) {
   if (grid[row1][col1] === 16) {
     bonusActive = true;
@@ -187,7 +204,9 @@ function mergeBlocksLeft(row1, col1, row2, col2) {
   grid[row1][col1] = 0;
 }
 
-// Логика движения вправо
+/**
+ * Функция для перемещения вправо.
+ */
 function moveRight() {
   for (let i = 0; i < gridSize; i++) {
     for (let j = gridSize - 2; j >= 0; j--) {
@@ -198,6 +217,9 @@ function moveRight() {
   }
 }
 
+/**
+ * Функция для движения вправо.
+ */
 function shiftRight(row, col) {
   while (col < gridSize - 1) {
     if (grid[row][col + 1] === 0) {
@@ -212,12 +234,17 @@ function shiftRight(row, col) {
   }
 }
 
+/**
+ * Функция для движения блоков вправо.
+ */
 function moveBlockRight(fromRow, fromCol, toRow, toCol) {
   grid[toRow][toCol] = grid[fromRow][fromCol];
   grid[fromRow][fromCol] = 0;
 }
 
-// Логика движения вверх
+/**
+ * Функция для движения вверх.
+ */
 function moveUp() {
   for (let j = 0; j < gridSize; j++) {
     for (let i = 1; i < gridSize; i++) {
@@ -228,6 +255,9 @@ function moveUp() {
   }
 }
 
+/**
+ * Функция для управления вверх.
+ */
 function shiftUp(row, col) {
   while (row > 0) {
     if (grid[row - 1][col] === 0) {
@@ -242,18 +272,26 @@ function shiftUp(row, col) {
   }
 }
 
+/**
+ * Функция для перемещения вверх.
+ */
 function moveBlockUp(fromRow, fromCol, toRow, toCol) {
   grid[toRow][toCol] = grid[fromRow][fromCol];
   grid[fromRow][fromCol] = 0;
 }
 
+/**
+ * Функция для подсчёта счёта.
+ */
 function mergeBlocksUpDownRights(row1, col1, row2, col2) {
   grid[row2][col2] *= 2;
   score += grid[row2][col2];
   grid[row1][col1] = 0;
 }
 
-// Логика движения вниз
+/**
+ * Функция для перемещения вниз.
+ */
 function moveDown() {
   for (let j = 0; j < gridSize; j++) {
     for (let i = gridSize - 2; i >= 0; i--) {
@@ -264,6 +302,9 @@ function moveDown() {
   }
 }
 
+/**
+ * Функция для управления блоками вниз.
+ */
 function shiftDown(row, col) {
   while (row < gridSize - 1) {
     if (grid[row + 1][col] === 0) {
@@ -285,65 +326,79 @@ function shiftDown(row, col) {
   }
 }
 
+/**
+ * Функция для перемещения блока вправо.
+ */
 function moveBlockDown(fromRow, fromCol, toRow, toCol) {
   grid[toRow][toCol] = grid[fromRow][fromCol];
   grid[fromRow][fromCol] = 0;
 }
 
-// Дублирование всех карточек на игровом поле
+/**
+ * Функция для дублирования карточек на игровом поле.
+ */
 function duplicateTiles() {
   for (let i = 0; i < gridSize; i++) {
     for (let j = 0; j < gridSize; j++) {
       if (grid[i][j] > 0) {
-        grid[i][j] *= 2
+        grid[i][j] *= 2;
       }
     }
   }
-  updateGridDisplay()
+  updateGridDisplay();
 }
 
+/**
+ * Функция для проверки окончания игры.
+ */
 function checkGameOver() {
   // Логика проверки окончания игры
   for (let i = 0; i < gridSize; i++) {
     for (let j = 0; j < gridSize; j++) {
       if (grid[i][j] === 0) {
-        return false // Найдены пустые ячейки, игра не окончена
+        return false; // Найдены пустые ячейки, игра не окончена
       }
       if (j < gridSize - 1 && grid[i][j] === grid[i][j + 1]) {
-        return false // Можно объединить соседние блоки по горизонтали
+        return false; // Можно объединить соседние блоки по горизонтали
       }
       if (i < gridSize - 1 && grid[i][j] === grid[i + 1][j]) {
-        return false // Можно объединить соседние блоки по вертикали
+        return false; // Можно объединить соседние блоки по вертикали
       }
     }
   }
-  return true // Нельзя сделать дополнительных ходов, игра окончена
+  return true; // Нельзя сделать дополнительных ходов, игра окончена
 }
 
+/**
+ * Функция для окончания игры.
+ */
 function endGame() {
-  isGameOver = true
-  const gameOverText = document.getElementById('game-over-message')
-  gameOverText.style.display = 'block'
-  const resumeButton = document.getElementById('resume-button')
-  resumeButton.style.display = 'block'
+  isGameOver = true;
+  const gameOverText = document.getElementById("game-over-message");
+  gameOverText.style.display = "block";
+  const resumeButton = document.getElementById("resume-button");
+  resumeButton.style.display = "block";
 }
 
-document.getElementById('resume-button').addEventListener('click', () => {
+document.getElementById("resume-button").addEventListener("click", () => {
   if (isGameOver) {
-    isGameOver = false
-    const resumeButton = document.getElementById('resume-button')
-    resumeButton.style.display = 'none'
-    const gameOverText = document.getElementById('game-over-message')
-    gameOverText.style.display = 'none'
-    initializeGame()
+    isGameOver = false;
+    const resumeButton = document.getElementById("resume-button");
+    resumeButton.style.display = "none";
+    const gameOverText = document.getElementById("game-over-message");
+    gameOverText.style.display = "none";
+    initializeGame();
   }
 })
 
+/**
+ * Функция для показа бонуса.
+ */
 function showBonusMessage() {
-  bonusMessageElement.style.display = 'block'
+  bonusMessageElement.style.display = "block";
   setTimeout(() => {
-    bonusMessageElement.style.display = 'none'
+    bonusMessageElement.style.display = "none";
   }, 1000)
 }
 
-initializeGame()
+initializeGame();
