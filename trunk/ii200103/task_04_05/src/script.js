@@ -61,7 +61,9 @@ function addRandomTile() {
   }
 
   if (availableCells.length > 0) {
-    const randomValue = window.crypto.getRandomValues(new Uint32Array(1))[0] / 0xffffffff;
+    /* eslint-disable-next-line no-obj-calls */
+    const randomValue = 
+    window.crypto.getRandomValues(new Uint32Array(1))[0] / (0xffffffff + 1);
     const randomIndex = Math.floor(randomValue * availableCells.length);
 
     if (randomIndex >= 0 && randomIndex < availableCells.length) {
@@ -69,7 +71,7 @@ function addRandomTile() {
       grid[randomCell.row][randomCell.col] = randomValue < 0.9 ? 2 : 4;
     } 
   }
-  updateGridDisplay()
+  updateGridDisplay();
 }
 
 /**
@@ -378,7 +380,7 @@ document.getElementById("resume-button").addEventListener("click", () => {
     gameOverText.style.display = "none";
     initializeGame();
   }
-})
+});
 
 /**
  * Функция для показа бонуса.
