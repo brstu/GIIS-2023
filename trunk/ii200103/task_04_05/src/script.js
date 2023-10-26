@@ -190,7 +190,7 @@ function shiftRight(row, col) {
       moveBlockRight(row, col, row, col + 1);
       col++;
     } else if (grid[row][col + 1] === grid[row][col]) {
-      mergeBlocksRight(row, col, row, col + 1);
+      mergeBlocksUpDownRights(row, col, row, col + 1);
       col = gridSize - 1;
     } else {
       break;
@@ -201,12 +201,6 @@ function shiftRight(row, col) {
 function moveBlockRight(fromRow, fromCol, toRow, toCol) {
   grid[toRow][toCol] = grid[fromRow][fromCol];
   grid[fromRow][fromCol] = 0;
-}
-
-function mergeBlocksRight(row1, col1, row2, col2) {
-  grid[row2][col2] *= 2;
-  score += grid[row2][col2];
-  grid[row1][col1] = 0;
 }
 
 // Логика движения вверх
@@ -226,7 +220,7 @@ function shiftUp(row, col) {
       moveBlockUp(row, col, row - 1, col);
       row--;
     } else if (grid[row - 1][col] === grid[row][col]) {
-      mergeBlocksUpDown(row, col, row - 1, col);
+      mergeBlocksUpDownRights(row, col, row - 1, col);
       row = 0;
     } else {
       break;
@@ -239,7 +233,7 @@ function moveBlockUp(fromRow, fromCol, toRow, toCol) {
   grid[fromRow][fromCol] = 0;
 }
 
-function mergeBlocksUpDown(row1, col1, row2, col2) {
+function mergeBlocksUpDownRights(row1, col1, row2, col2) {
   grid[row2][col2] *= 2;
   score += grid[row2][col2];
   grid[row1][col1] = 0;
@@ -268,7 +262,7 @@ function shiftDown(row, col) {
         showBonusMessage();
         return;
       } else {
-        mergeBlocksUpDown(row, col, row + 1, col);
+        mergeBlocksUpDownRights(row, col, row + 1, col);
         return;
       }
     } else {
