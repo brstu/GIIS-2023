@@ -52,9 +52,10 @@ function addRandomTile() {
   }
 
   if (availableCells.length > 0) {
-    const randomCell =
-      availableCells[Math.floor(Math.random() * availableCells.length)]
-    grid[randomCell.row][randomCell.col] = Math.random() < 0.9 ? 2 : 4
+    const randomValue = window.crypto.getRandomValues(new Uint32Array(1))[0] / 0xFFFFFFFF;
+    const randomIndex = Math.floor(randomValue * availableCells.length);
+    const randomCell = availableCells[randomIndex];
+    grid[randomCell.row][randomCell.col] = randomValue < 0.9 ? 2 : 4;
   }
   updateGridDisplay()
 }
@@ -134,35 +135,42 @@ function moveLeft() {
   for (let i = 0; i < gridSize; i++) {
     for (let j = 1; j < gridSize; j++) {
       if (grid[i][j] > 0) {
-        let col = j
-        while (col > 0) {
-          if (grid[i][col - 1] === 0) {
-            grid[i][col - 1] = grid[i][col]
-            grid[i][col] = 0
-            col--
-          } else if (grid[i][col - 1] === grid[i][col]) {
-            if (grid[i][col] === 16) {
-              // Проверка на 16 и активность бонуса
-              bonusActive = true
-              score += 100 // Добавляем +100 к счету при соединении 16
-              grid[i][col - 1] *= 2
-              grid[i][col] = 0
-              showBonusMessage() // Показать оповещение о бонусе
-              activateBonusLeft()
-              return
-            } else {
-              grid[i][col - 1] *= 2
-              score += grid[i][col - 1] // Увеличение счета при объединении блоков
-              grid[i][col] = 0
-              col = 0 // Блоки объединены, двигаться дальше
-            }
-          } else {
-            break // Блоки разные, остановить движение
-          }
-        }
+        shiftLeft(i, j);
       }
     }
   }
+}
+
+function shiftLeft(row, col) {
+  while (col > 0) {
+    if (grid[row][col - 1] === 0) {
+      moveBlockLeft(row, col, row, col - 1);
+      col--;
+    } else if (grid[row][col - 1] === grid[row][col]) {
+      mergeBlocksLeft(row, col, row, col - 1);
+      col = 0;
+    } else {
+      break;
+    }
+  }
+}
+
+function moveBlockLeft(fromRow, fromCol, toRow, toCol) {
+  grid[toRow][toCol] = grid[fromRow][fromCol];
+  grid[fromRow][fromCol] = 0;
+}
+
+function mergeBlocksLeft(row1, col1, row2, col2) {
+  if (grid[row1][col1] === 16) {
+    bonusActive = true;
+    score += 100;
+    activateBonusLeft();
+    showBonusMessage();
+  }
+
+  grid[row2][col2] *= 2;
+  score += grid[row2][col2];
+  grid[row1][col1] = 0;
 }
 
 // Логика движения вправо
@@ -170,25 +178,35 @@ function moveRight() {
   for (let i = 0; i < gridSize; i++) {
     for (let j = gridSize - 2; j >= 0; j--) {
       if (grid[i][j] > 0) {
-        let col = j
-        while (col < gridSize - 1) {
-          if (grid[i][col + 1] === 0) {
-            grid[i][col + 1] = grid[i][col]
-            grid[i][col] = 0
-            col++
-          } else if (grid[i][col + 1] === grid[i][col]) {
-            grid[i][col + 1] *= 2
-            score += grid[i][col + 1] // Увеличение счета при объединении блоков
-            grid[i][col] = 0
-            // Здесь вы можете добавить логику для системы бонусов, если необходимо
-            col = gridSize - 1 // Блоки объединены, двигаться дальше
-          } else {
-            break // Блоки разные, остановить движение
-          }
-        }
+        shiftRight(i, j);
       }
     }
   }
+}
+
+function shiftRight(row, col) {
+  while (col < gridSize - 1) {
+    if (grid[row][col + 1] === 0) {
+      moveBlockRight(row, col, row, col + 1);
+      col++;
+    } else if (grid[row][col + 1] === grid[row][col]) {
+      mergeBlocksRight(row, col, row, col + 1);
+      col = gridSize - 1;
+    } else {
+      break;
+    }
+  }
+}
+
+function moveBlockRight(fromRow, fromCol, toRow, toCol) {
+  grid[toRow][toCol] = grid[fromRow][fromCol];
+  grid[fromRow][fromCol] = 0;
+}
+
+function mergeBlocksRight(row1, col1, row2, col2) {
+  grid[row2][col2] *= 2;
+  score += grid[row2][col2];
+  grid[row1][col1] = 0;
 }
 
 // Логика движения вверх
@@ -196,25 +214,35 @@ function moveUp() {
   for (let j = 0; j < gridSize; j++) {
     for (let i = 1; i < gridSize; i++) {
       if (grid[i][j] > 0) {
-        let row = i
-        while (row > 0) {
-          if (grid[row - 1][j] === 0) {
-            grid[row - 1][j] = grid[row][j]
-            grid[row][j] = 0
-            row--
-          } else if (grid[row - 1][j] === grid[row][j]) {
-            grid[row - 1][j] *= 2
-            score += grid[row - 1][j] // Увеличение счета при объединении блоков
-            grid[row][j] = 0
-            // Здесь вы можете добавить логику для системы бонусов, если необходимо
-            row = 0 // Блоки объединены, двигаться дальше
-          } else {
-            break // Блоки разные, остановить движение
-          }
-        }
+        shiftUp(i, j);
       }
     }
   }
+}
+
+function shiftUp(row, col) {
+  while (row > 0) {
+    if (grid[row - 1][col] === 0) {
+      moveBlockUp(row, col, row - 1, col);
+      row--;
+    } else if (grid[row - 1][col] === grid[row][col]) {
+      mergeBlocksUp(row, col, row - 1, col);
+      row = 0;
+    } else {
+      break;
+    }
+  }
+}
+
+function moveBlockUp(fromRow, fromCol, toRow, toCol) {
+  grid[toRow][toCol] = grid[fromRow][fromCol];
+  grid[fromRow][fromCol] = 0;
+}
+
+function mergeBlocksUp(row1, col1, row2, col2) {
+  grid[row2][col2] *= 2;
+  score += grid[row2][col2];
+  grid[row1][col1] = 0;
 }
 
 // Логика движения вниз
@@ -222,34 +250,42 @@ function moveDown() {
   for (let j = 0; j < gridSize; j++) {
     for (let i = gridSize - 2; i >= 0; i--) {
       if (grid[i][j] > 0) {
-        let row = i
-        while (row < gridSize - 1) {
-          if (grid[row + 1][j] === 0) {
-            grid[row + 1][j] = grid[row][j]
-            grid[row][j] = 0
-            row++
-          } else if (grid[row + 1][j] === grid[row][j]) {
-            if (grid[row][j] === 64) {
-              // Проверяем, что две карточки 64 объединяются в 128
-              bonusActive = true
-              // Дублируем все карточки на игровом поле
-              duplicateTiles()
-              // Показываем сообщение о бонусе
-              showBonusMessage()
-              return
-            } else {
-              grid[row + 1][j] *= 2
-              score += grid[row + 1][j]
-              grid[row][j] = 0
-              row = gridSize - 1
-            }
-          } else {
-            break
-          }
-        }
+        shiftDown(i, j);
       }
     }
   }
+}
+
+function shiftDown(row, col) {
+  while (row < gridSize - 1) {
+    if (grid[row + 1][col] === 0) {
+      moveBlockDown(row, col, row + 1, col);
+      row++;
+    } else if (grid[row + 1][col] === grid[row][col]) {
+      if (grid[row][col] === 64) {
+        bonusActive = true;
+        duplicateTiles();
+        showBonusMessage();
+        return;
+      } else {
+        mergeBlocksDown(row, col, row + 1, col);
+        return;
+      }
+    } else {
+      break;
+    }
+  }
+}
+
+function moveBlockDown(fromRow, fromCol, toRow, toCol) {
+  grid[toRow][toCol] = grid[fromRow][fromCol];
+  grid[fromRow][fromCol] = 0;
+}
+
+function mergeBlocksDown(row1, col1, row2, col2) {
+  grid[row2][col2] *= 2;
+  score += grid[row2][col2];
+  grid[row1][col1] = 0;
 }
 
 // Дублирование всех карточек на игровом поле
