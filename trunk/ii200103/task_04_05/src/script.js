@@ -30,7 +30,7 @@ function updateGridDisplay() {
   gridContainer.innerHTML = "";
   for (let i = 0; i < gridSize; i++) {
     for (let j = 0; j < gridSize; j++) {
-      const cellValue = (grid[i][j]);
+      const cellValue = grid[i][j];
       const gridCell = document.createElement("div");
       gridCell.classList.add("grid-cell");
       gridCell.textContent = cellValue > 0 ? cellValue : "";
@@ -38,16 +38,6 @@ function updateGridDisplay() {
       gridContainer.appendChild(gridCell);
     }
   }
-}
-
-/**
- * Функция для проверки значения грида.
- */
-function checkCellValue(value) {
-  if (typeof value !== "number" || isNaN(value) || value < 0) {
-    return 0;
-  }
-  return value;
 }
 
 /**
@@ -64,7 +54,7 @@ function addRandomTile() {
   const availableCells = [];
   for (let i = 0; i < gridSize; i++) {
     for (let j = 0; j < gridSize; j++) {
-      if ((grid[i][j]) === 0) {
+      if (grid[i][j] === 0) {
         availableCells.push({ row: i, col: j });
       }
     }
@@ -88,29 +78,29 @@ function addRandomTile() {
 function getTileColor(value) {
   switch (value) {
     case 2:
-      return "#eee4da"
+      return "#eee4da";
     case 4:
-      return "#ede0c8"
+      return "#ede0c8";
     case 8:
-      return "#f2b179"
+      return "#f2b179";
     case 16:
-      return "#f59563"
+      return "#f59563";
     case 32:
-      return "#f67c5f"
+      return "#f67c5f";
     case 64:
-      return "#f65e3b"
+      return "#f65e3b";
     case 128:
-      return "#edcf72"
+      return "#edcf72";
     case 256:
-      return "#edcc61"
+      return "#edcc61";
     case 512:
-      return "#edc850"
+      return "#edc850";
     case 1024:
-      return "#edc53f"
+      return "#edc53f";
     case 2048:
-      return "#edc22e"
+      return "#edc22e";
     default:
-      return "#3c3a32" // Цвет по умолчанию
+      return "#3c3a32"; // Цвет по умолчанию
   }
 }
 
@@ -120,7 +110,6 @@ function getTileColor(value) {
 function activateBonusLeft() {
   if (!bonusActive) {
     bonusActive = true;
-    bonusTimerElement.style.color = "green";
     bonusMessageElement.style.display = "block";
   }
 }
@@ -148,7 +137,7 @@ document.addEventListener("keydown", (event) => {
   if (checkGameOver()) {
     endGame();
   }
-})
+});
 
 /**
  * Функция для движения влево.
@@ -398,7 +387,7 @@ function showBonusMessage() {
   bonusMessageElement.style.display = "block";
   setTimeout(() => {
     bonusMessageElement.style.display = "none";
-  }, 1000)
+  }, 1000);
 }
 
 initializeGame();
