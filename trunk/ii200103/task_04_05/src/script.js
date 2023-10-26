@@ -1,94 +1,108 @@
-const gridContainer = document.querySelector('.grid-container')
-const scoreElement = document.querySelector('.score')
+const gridContainer = document.querySelector(".grid-container")
+const scoreElement = document.querySelector(".score")
 
-const bonusMessageElement = document.querySelector('.bonus-message')
-const gridSize = 4
-let grid = new Array(gridSize).fill(null).map(() => new Array(gridSize).fill(0))
-let score = 0
-let bonusActive = false
-let isGameOver = false
+const bonusMessageElement = document.querySelector(".bonus-message")
+const gridSize = 4;
+let grid = new Array(gridSize)
+  .fill(null)
+  .map(() => new Array(gridSize).fill(0));
+let score = 0;
+let bonusActive = false;
+let isGameOver = false;
 
-// Функция для обновления отображения времени бонуса
-function updateBonusTimerDisplay(seconds) {
-  bonusTimerElement.textContent = `Bonus Timer: ${seconds}s`
-}
-
+// Функция для инициализации игры
 function initializeGame() {
-  grid = new Array(gridSize).fill(null).map(() => new Array(gridSize).fill(0))
-  score = 0
-  bonusActive = false
-  updateGridDisplay()
-  updateScoreDisplay()
-  addRandomTile()
-  addRandomTile()
+  grid = new Array(gridSize).fill(null).map(() => new Array(gridSize).fill(0));
+  score = 0;
+  bonusActive = false;
+  updateGridDisplay();
+  updateScoreDisplay();
+  addRandomTile();
+  addRandomTile();
 }
 
+// Функция для формирования таблицы
 function updateGridDisplay() {
-  gridContainer.innerHTML = ''
+  gridContainer.innerHTML = ""
   for (let i = 0; i < gridSize; i++) {
     for (let j = 0; j < gridSize; j++) {
-      const cellValue = grid[i][j]
-      const gridCell = document.createElement('div')
-      gridCell.classList.add('grid-cell')
-      gridCell.textContent = cellValue > 0 ? cellValue : ''
-      gridCell.style.background = getTileColor(cellValue)
-      gridContainer.appendChild(gridCell)
+      const cellValue = checkCellValue(grid[i][j]);
+      const gridCell = document.createElement("div")
+      gridCell.classList.add("grid-cell")
+      gridCell.textContent = cellValue > 0 ? cellValue : ""
+      gridCell.style.background = getTileColor(cellValue);
+      gridContainer.appendChild(gridCell);
     }
   }
 }
 
-function updateScoreDisplay() {
-  scoreElement.textContent = `Score: ${score}`
+// Функция для проверки содержимого грида
+function checkCellValue(value) {
+  if (typeof value !== 'number' || isNaN(value) || value < 0) {
+    return 0;
+  }
+  return value;
 }
 
+// Функция для обновления счёта
+function updateScoreDisplay() {
+  scoreElement.textContent = `Score: ${score}`;
+}
+
+// Фуекция для заполнения таблицы
 function addRandomTile() {
-  const availableCells = []
+  const availableCells = [];
   for (let i = 0; i < gridSize; i++) {
     for (let j = 0; j < gridSize; j++) {
-      if (grid[i][j] === 0) {
-        availableCells.push({ row: i, col: j })
+      if (checkCellValue(grid[i][j]) === 0) {
+        availableCells.push({ row: i, col: j });
       }
     }
   }
 
   if (availableCells.length > 0) {
-    const randomValue = window.crypto.getRandomValues(new Uint32Array(1))[0] / 0xFFFFFFFF;
+    const randomValue = window.crypto.getRandomValues(new Uint32Array(1))[0] / 0xffffffff;
     const randomIndex = Math.floor(randomValue * availableCells.length);
-    const randomCell = availableCells[randomIndex];
-    grid[randomCell.row][randomCell.col] = randomValue < 0.9 ? 2 : 4;
+
+    if (randomIndex >= 0 && randomIndex < availableCells.length) {
+      const randomCell = availableCells[randomIndex];
+      grid[randomCell.row][randomCell.col] = randomValue < 0.9 ? 2 : 4;
+    } 
   }
   updateGridDisplay()
 }
 
+// Функция отображения цвета ячейки в зависимости от цифры в ней
 function getTileColor(value) {
   switch (value) {
     case 2:
-      return '#eee4da'
+      return "#eee4da"
     case 4:
-      return '#ede0c8'
+      return "#ede0c8"
     case 8:
-      return '#f2b179'
+      return "#f2b179"
     case 16:
-      return '#f59563'
+      return "#f59563"
     case 32:
-      return '#f67c5f'
+      return "#f67c5f"
     case 64:
-      return '#f65e3b'
+      return "#f65e3b"
     case 128:
-      return '#edcf72'
+      return "#edcf72"
     case 256:
-      return '#edcc61'
+      return "#edcc61"
     case 512:
-      return '#edc850'
+      return "#edc850"
     case 1024:
-      return '#edc53f'
+      return "#edc53f"
     case 2048:
-      return '#edc22e'
+      return "#edc22e"
     default:
-      return '#3c3a32' // Цвет по умолчанию
+      return "#3c3a32" // Цвет по умолчанию
   }
 }
 
+// Функция активации бонуса
 function activateBonusLeft() {
   if (!bonusActive) {
     bonusActive = true
