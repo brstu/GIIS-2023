@@ -61,7 +61,7 @@ function addRandomTile() {
   }
 
   if (availableCells.length > 0) {
-    const maxRandomValue = 4294967295;
+    const maxRandomValue = 4.294967295e9;
     const randomValue =
       window.crypto.getRandomValues(new Uint32Array(1))[0] / maxRandomValue;
     const randomIndex = Math.floor(randomValue * availableCells.length);
