@@ -226,7 +226,7 @@ function shiftUp(row, col) {
       moveBlockUp(row, col, row - 1, col);
       row--;
     } else if (grid[row - 1][col] === grid[row][col]) {
-      mergeBlocksUp(row, col, row - 1, col);
+      mergeBlocksUpDown(row, col, row - 1, col);
       row = 0;
     } else {
       break;
@@ -239,7 +239,7 @@ function moveBlockUp(fromRow, fromCol, toRow, toCol) {
   grid[fromRow][fromCol] = 0;
 }
 
-function mergeBlocksUp(row1, col1, row2, col2) {
+function mergeBlocksUpDown(row1, col1, row2, col2) {
   grid[row2][col2] *= 2;
   score += grid[row2][col2];
   grid[row1][col1] = 0;
@@ -268,7 +268,7 @@ function shiftDown(row, col) {
         showBonusMessage();
         return;
       } else {
-        mergeBlocksDown(row, col, row + 1, col);
+        mergeBlocksUpDown(row, col, row + 1, col);
         return;
       }
     } else {
@@ -280,12 +280,6 @@ function shiftDown(row, col) {
 function moveBlockDown(fromRow, fromCol, toRow, toCol) {
   grid[toRow][toCol] = grid[fromRow][fromCol];
   grid[fromRow][fromCol] = 0;
-}
-
-function mergeBlocksDown(row1, col1, row2, col2) {
-  grid[row2][col2] *= 2;
-  score += grid[row2][col2];
-  grid[row1][col1] = 0;
 }
 
 // Дублирование всех карточек на игровом поле
