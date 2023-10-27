@@ -7,14 +7,9 @@ import java.awt.event.ActionListener;
 import java.io.*;
 import java.util.HashMap;
 import javax.swing.filechooser.FileNameExtensionFilter;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.Serializable;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
-
 
 public class Main extends JFrame {
     private JTextField nameField;
@@ -37,13 +32,12 @@ public class Main extends JFrame {
         nameField = new JTextField(10);
         addressField = new JTextField(10);
         addressField.setPreferredSize(new Dimension(100, 100));
-        addressField.setHorizontalAlignment(JTextField.LEFT); // Изменено на LEFT
+        addressField.setHorizontalAlignment(JTextField.LEFT);
 
         topPanel.add(nameLabel);
         topPanel.add(nameField);
         topPanel.add(addressLabel);
         topPanel.add(addressField);
-
 
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.Y_AXIS));
@@ -54,24 +48,24 @@ public class Main extends JFrame {
         JButton findButton = new JButton("Find");
         JButton loadButton = new JButton("Load");
         JButton saveButton = new JButton("Save");
-        JButton cancelButton = new JButton("Cancel");
         JButton exportButton = new JButton("Export");
+        JButton listButton = new JButton("List");
 
         buttonPanel.add(addButton);
-        buttonPanel.add(Box.createRigidArea(new Dimension(0, 10))); // Вертикальный отступ
+        buttonPanel.add(Box.createRigidArea(new Dimension(0, 10)));
         buttonPanel.add(editButton);
-        buttonPanel.add(Box.createRigidArea(new Dimension(0, 10))); // Вертикальный отступ
+        buttonPanel.add(Box.createRigidArea(new Dimension(0, 10)));
         buttonPanel.add(removeButton);
-        buttonPanel.add(Box.createRigidArea(new Dimension(0, 10))); // Вертикальный отступ
+        buttonPanel.add(Box.createRigidArea(new Dimension(0, 10)));
         buttonPanel.add(findButton);
-        buttonPanel.add(Box.createRigidArea(new Dimension(0, 10))); // Вертикальный отступ
+        buttonPanel.add(Box.createRigidArea(new Dimension(0, 10)));
         buttonPanel.add(loadButton);
-        buttonPanel.add(Box.createRigidArea(new Dimension(0, 10))); // Вертикальный отступ
+        buttonPanel.add(Box.createRigidArea(new Dimension(0, 10)));
         buttonPanel.add(saveButton);
-        buttonPanel.add(Box.createRigidArea(new Dimension(0, 10))); // Вертикальный отступ
-        buttonPanel.add(cancelButton);
-        buttonPanel.add(Box.createRigidArea(new Dimension(0, 10))); // Вертикальный отступ
+        buttonPanel.add(Box.createRigidArea(new Dimension(0, 10)));
         buttonPanel.add(exportButton);
+        buttonPanel.add(listButton);
+        buttonPanel.add(Box.createRigidArea(new Dimension(0, 10)));
 
         JPanel bottomPanel = new JPanel();
         bottomPanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
@@ -91,130 +85,16 @@ public class Main extends JFrame {
         contacts = new HashMap<>();
         currentContact = null;
 
-        addButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                addContact();
-            }
-        });
-
-        editButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                editContact();
-            }
-        });
-
-        removeButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                removeContact();
-            }
-        });
-
-        prevButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                showPreviousContact();
-            }
-        });
-
-        nextButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                showNextContact();
-            }
-        });
-        findButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                String searchName = JOptionPane.showInputDialog(Main.this, "Enter the name to find:");
-
-                if (searchName != null && !searchName.isEmpty()) {
-                    Contact contact = contacts.get(searchName);
-                    if (contact != null) {
-                        nameField.setText(contact.getName());
-                        addressField.setText(contact.getAddress());
-                        currentContact = contact;
-                    } else {
-                        JOptionPane.showMessageDialog(Main.this, "Contact not found for the name: " + searchName);
-                    }
-                }
-            }
-        });
-
-        loadButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                JFileChooser fileChooser = new JFileChooser();
-                int choice = fileChooser.showOpenDialog(Main.this);
-                if (choice == JFileChooser.APPROVE_OPTION) {
-                    File selectedFile = fileChooser.getSelectedFile();
-                    selectedFilePath = selectedFile.getAbsolutePath(); // Сохраняем путь к файлу
-                    loadFromFile(selectedFilePath);
-                }
-            }
-        });
-
-        saveButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                if (selectedFilePath != null) {
-                    saveToFile(selectedFilePath);
-                } else {
-                    JFileChooser fileChooser = new JFileChooser();
-                    int choice = fileChooser.showSaveDialog(Main.this);
-                    if (choice == JFileChooser.APPROVE_OPTION) {
-                        File selectedFile = fileChooser.getSelectedFile();
-                        String filePath = selectedFile.getAbsolutePath();
-                        if (!filePath.endsWith(".json")) {
-                            filePath += ".json";
-                        }
-                        selectedFilePath = filePath;
-                        saveToFile(selectedFilePath);
-                    }
-                }
-            }
-        });
-
-        cancelButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                //cancel();
-            }
-        });
-
-        exportButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                if (currentContact != null) {
-                    JFileChooser fileChooser = new JFileChooser();
-                    FileNameExtensionFilter filter = new FileNameExtensionFilter("VCF Files", "vcf");
-                    fileChooser.setFileFilter(filter);
-
-                    int choice = fileChooser.showSaveDialog(Main.this);
-
-                    if (choice == JFileChooser.APPROVE_OPTION) {
-                        File selectedFile = fileChooser.getSelectedFile();
-                        String fileName = selectedFile.getAbsolutePath();
-
-                        if (!fileName.endsWith(".vcf")) {
-                            fileName += ".vcf";
-                        }
-
-                        try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
-                            writer.write("BEGIN:VCARD");
-                            writer.newLine();
-                            writer.write("VERSION:3.0");
-                            writer.newLine();
-                            writer.write("FN:" + currentContact.getName());
-                            writer.newLine();
-                            writer.write("ADR;TYPE=HOME:" + currentContact.getAddress());
-                            writer.newLine();
-                            writer.write("END:VCARD");
-                            writer.newLine();
-
-                            JOptionPane.showMessageDialog(Main.this, "Contact exported as VCF: " + fileName);
-                        } catch (IOException ex) {
-                            ex.printStackTrace();
-                            JOptionPane.showMessageDialog(Main.this, "Error exporting contact as VCF");
-                        }
-                    }
-                } else {
-                    JOptionPane.showMessageDialog(Main.this, "Please select a contact to export.");
-                }
-            }
-        });
+        addButton.addActionListener(e -> addContact());
+        editButton.addActionListener(e -> editContact());
+        removeButton.addActionListener(e -> removeContact());
+        findButton.addActionListener(e -> findContact());
+        loadButton.addActionListener(e -> loadContacts());
+        saveButton.addActionListener(e -> saveContacts());
+        exportButton.addActionListener(e -> exportContact());
+        listButton.addActionListener(e -> showContactList());
+        prevButton.addActionListener(e -> showPreviousContact());
+        nextButton.addActionListener(e -> showNextContact());
     }
 
     private void addContact() {
@@ -238,44 +118,6 @@ public class Main extends JFrame {
         clearFields();
     }
 
-    private void saveToFile(String fileName) {
-        try (FileWriter fileWriter = new FileWriter(fileName)) {
-            // Создаем экземпляр Gson
-            Gson gson = new GsonBuilder().setPrettyPrinting().create();
-
-            // Преобразуем объект contacts в JSON и сохраняем в файл
-            gson.toJson(contacts, fileWriter);
-
-            JOptionPane.showMessageDialog(this, "Address book saved to " + fileName);
-        } catch (IOException e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(this, "Error saving address book to " + fileName);
-        }
-    }
-
-    private void loadFromFile(String fileName) {
-        try (FileReader fileReader = new FileReader(fileName)) {
-            Gson gson = new Gson();
-            contacts = gson.fromJson(fileReader, new TypeToken<HashMap<String, Contact>>() {}.getType());
-
-            if (!contacts.isEmpty()) {
-                // Вывести первый контакт в поля nameField и addressField
-                Contact firstContact = contacts.values().iterator().next();
-                nameField.setText(firstContact.getName());
-                addressField.setText(firstContact.getAddress());
-                currentContact = firstContact;
-            } else {
-                // Очистить поля, так как нет загруженных контактов
-                clearFields();
-            }
-
-            JOptionPane.showMessageDialog(this, "Address book loaded from " + fileName);
-        } catch (IOException e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(this, "Error loading address book from " + fileName);
-        }
-    }
-
     private void editContact() {
         if (currentContact != null) {
             String name = nameField.getText();
@@ -286,10 +128,16 @@ public class Main extends JFrame {
                 return;
             }
 
-            Contact updatedContact = new Contact(name, address);
-            contacts.put(name, updatedContact);
-            currentContact = updatedContact;
+            if (!name.equals(currentContact.getName())) {
+                contacts.remove(currentContact.getName());
+            }
+
+            currentContact.setName(name);
+            currentContact.setAddress(address);
+            contacts.put(name, currentContact);
             JOptionPane.showMessageDialog(this, "\"" + name + "\" has been updated in your address book.");
+        } else {
+            JOptionPane.showMessageDialog(this, "No contact selected.");
         }
     }
 
@@ -300,12 +148,128 @@ public class Main extends JFrame {
             clearFields();
             JOptionPane.showMessageDialog(this, "\"" + name + "\" has been removed from your address book.");
             showNextContact();
+        } else {
+            JOptionPane.showMessageDialog(this, "No contact selected.");
         }
     }
 
-    private void clearFields() {
-        nameField.setText("");
-        addressField.setText("");
+    private void findContact() {
+        String searchName = JOptionPane.showInputDialog(this, "Enter the name to find:");
+        if (searchName != null && !searchName.isEmpty()) {
+            Contact contact = contacts.get(searchName);
+            if (contact != null) {
+                nameField.setText(contact.getName());
+                addressField.setText(contact.getAddress());
+                currentContact = contact;
+            } else {
+                JOptionPane.showMessageDialog(this, "Contact not found for the name: " + searchName);
+            }
+        }
+    }
+
+    private void loadContacts() {
+        JFileChooser fileChooser = new JFileChooser();
+        int choice = fileChooser.showOpenDialog(this);
+        if (choice == JFileChooser.APPROVE_OPTION) {
+            File selectedFile = fileChooser.getSelectedFile();
+            selectedFilePath = selectedFile.getAbsolutePath();
+            try (FileReader fileReader = new FileReader(selectedFilePath)) {
+                Gson gson = new Gson();
+                contacts = gson.fromJson(fileReader, new TypeToken<HashMap<String, Contact>>() {}.getType());
+                if (!contacts.isEmpty()) {
+                    currentContact = contacts.values().iterator().next();
+                    nameField.setText(currentContact.getName());
+                    addressField.setText(currentContact.getAddress());
+                } else {
+                    clearFields();
+                }
+                JOptionPane.showMessageDialog(this, "Address book loaded from " + selectedFilePath);
+            } catch (IOException e) {
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(this, "Error loading address book from " + selectedFilePath);
+            }
+        }
+    }
+
+    private void saveContacts() {
+        if (selectedFilePath != null) {
+            try (FileWriter fileWriter = new FileWriter(selectedFilePath)) {
+                Gson gson = new GsonBuilder().setPrettyPrinting().create();
+                gson.toJson(contacts, fileWriter);
+                JOptionPane.showMessageDialog(this, "Address book saved to " + selectedFilePath);
+            } catch (IOException e) {
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(this, "Error saving address book to " + selectedFilePath);
+            }
+        } else {
+            JFileChooser fileChooser = new JFileChooser();
+            int choice = fileChooser.showSaveDialog(this);
+            if (choice == JFileChooser.APPROVE_OPTION) {
+                File selectedFile = fileChooser.getSelectedFile();
+                String filePath = selectedFile.getAbsolutePath();
+                if (!filePath.endsWith(".json")) {
+                    filePath += ".json";
+                }
+                selectedFilePath = filePath;
+                saveContacts();
+            }
+        }
+    }
+
+    private void exportContact() {
+        if (currentContact != null) {
+            String vCardData = "BEGIN:VCARD\n" +
+                    "VERSION:3.0\n" +
+                    "FN:" + currentContact.getName() + "\n" +
+                    "ADR;TYPE=HOME:" + currentContact.getAddress() + "\n" +
+                    "END:VCARD";
+
+            JFileChooser fileChooser = new JFileChooser();
+            FileNameExtensionFilter filter = new FileNameExtensionFilter("VCF Files", "vcf");
+            fileChooser.setFileFilter(filter);
+
+            int choice = fileChooser.showSaveDialog(this);
+
+            if (choice == JFileChooser.APPROVE_OPTION) {
+                File selectedFile = fileChooser.getSelectedFile();
+                String fileName = selectedFile.getAbsolutePath();
+
+                if (!fileName.endsWith(".vcf")) {
+                    fileName += ".vcf";
+                }
+
+                try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
+                    writer.write(vCardData);
+                    JOptionPane.showMessageDialog(this, "Contact exported as VCF: " + fileName);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    JOptionPane.showMessageDialog(this, "Error exporting contact as VCF");
+                }
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Please select a contact to export.");
+        }
+    }
+
+    private void showContactList() {
+        if (contacts.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Address book is empty.");
+            return;
+        }
+
+        JFrame contactListFrame = new JFrame("Contact List");
+        contactListFrame.setSize(400, 400);
+
+        JTextArea contactListTextArea = new JTextArea();
+        contactListTextArea.setEditable(false);
+
+        for (Contact contact : contacts.values()) {
+            contactListTextArea.append("Name: " + contact.getName() + "\n");
+            contactListTextArea.append("Address: " + contact.getAddress() + "\n\n");
+        }
+
+        contactListFrame.add(new JScrollPane(contactListTextArea));
+        contactListFrame.setVisible(true);
     }
 
     private void showNextContact() {
@@ -349,7 +313,12 @@ public class Main extends JFrame {
         }
     }
 
-    class Contact implements Serializable {
+    private void clearFields() {
+        nameField.setText("");
+        addressField.setText("");
+    }
+
+    static class Contact {
         private String name;
         private String address;
 
@@ -362,23 +331,18 @@ public class Main extends JFrame {
             return name;
         }
 
+        public void setName(String name) {
+            this.name = name;
+        }
+
         public String getAddress() {
             return address;
         }
 
-        private void writeObject(ObjectOutputStream out) throws IOException {
-            out.defaultWriteObject();
-            out.writeObject(name);
-            out.writeObject(address);
-        }
-
-        private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
-            in.defaultReadObject();
-            name = (String) in.readObject();
-            address = (String) in.readObject();
+        public void setAddress(String address) {
+            this.address = address;
         }
     }
-
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
@@ -387,3 +351,4 @@ public class Main extends JFrame {
         });
     }
 }
+
