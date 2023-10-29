@@ -350,4 +350,4 @@ const scoreElement = document.querySelector('.score');
 const bonusMessageElement = document.querySelector('.bonus-message');
 const gridSize = 4;
 
-const game = new Game2048(gridSize, gridContainer, scoreElement, bonusMessageElement);
+new Game2048(gridSize, gridContainer, scoreElement, bonusMessageElement);
