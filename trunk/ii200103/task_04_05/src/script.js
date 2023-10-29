@@ -69,7 +69,7 @@ class Game2048 {
     this.gridContainer.textContent = '';
     for (let i = 0; i < this.#gridSize; i++) {
       for (let j = 0; j < this.#gridSize; j++) {
-        const cellValue = this.#grid[i][j];
+        const cellValue = this.#grid[parseInt(i)][parseInt(j)];
         const gridCell = document.createElement('div');
         gridCell.classList.add('grid-cell');
         gridCell.textContent = cellValue > 0 ? cellValue : '';
@@ -86,7 +86,7 @@ class Game2048 {
   moveLeft() {
     for (let i = 0; i < this.#gridSize; i++) {
       for (let j = 1; j < this.#gridSize; j++) {
-        if (this.#grid[i][j] > 0) {
+        if (this.#grid[parseInt(i)][parseInt(j)] > 0) {
           this.shiftLeft(i, j);
         }
       }
@@ -95,10 +95,10 @@ class Game2048 {
 
   shiftLeft(row, col) {
     while (col > 0) {
-      if (this.#grid[row][col - 1] === 0) {
+      if (this.#grid[parseInt(row)][parseInt(col - 1)] === 0) {
         this.moveBlockLeft(row, col, row, col - 1);
         col--;
-      } else if (this.#grid[row][col - 1] === this.#grid[row][col]) {
+      } else if (this.#grid[parseInt(row)][parseInt(col - 1)] === this.#grid[parseInt(row)][parseInt(col)]) {
         this.mergeBlocksLeft(row, col, row, col - 1);
         col = 0;
       } else {
@@ -146,7 +146,7 @@ class Game2048 {
   moveRight() {
     for (let i = 0; i < this.#gridSize; i++) {
       for (let j = this.#gridSize - 2; j >= 0; j--) {
-        if (this.#grid[i][j] > 0) {
+        if (this.#grid[parseInt(i)][parseInt(j)] > 0) {
           this.shiftRight(i, j);
         }
       }
@@ -155,10 +155,10 @@ class Game2048 {
 
   shiftRight(row, col) {
     while (col < this.#gridSize - 1) {
-      if (this.#grid[row][col + 1] === 0) {
+      if (this.#grid[parseInt(row)][parseInt(col + 1)] === 0) {
         this.moveBlockRight(row, col, row, col + 1);
         col++;
-      } else if (this.#grid[row][col + 1] === this.#grid[row][col]) {
+      } else if (this.#grid[parseInt(row)][parseInt(col + 1)] === this.#grid[parseInt(row)][parseInt(col)]) {
         this.mergeBlocksUpDownRight(row, col, row, col + 1);
         col = this.#gridSize - 1;
       } else {
@@ -168,14 +168,14 @@ class Game2048 {
   }
 
   moveBlockRight(fromRow, fromCol, toRow, toCol) {
-    this.#grid[toRow][toCol] = this.#grid[fromRow][fromCol];
-    this.#grid[fromRow][fromCol] = 0;
+    this.#grid[parseInt(toRow)][parseInt(toCol)] = this.#grid[parseInt(fromRow)][parseInt(fromCol)];
+    this.#grid[parseInt(fromRow)][parseInt(fromCol)] = 0;
   }
 
   moveUp() {
     for (let j = 0; j < this.#gridSize; j++) {
       for (let i = 1; i < this.#gridSize; i++) {
-        if (this.#grid[i][j] > 0) {
+        if (this.#grid[parseInt(i)][parseInt(j)] > 0) {
           this.shiftUp(i, j);
         }
       }
@@ -184,10 +184,10 @@ class Game2048 {
 
   shiftUp(row, col) {
     while (row > 0) {
-      if (this.#grid[row - 1][col] === 0) {
+      if (this.#grid[parseInt(row - 1)][parseInt(col)] === 0) {
         this.moveBlockUp(row, col, row - 1, col);
         row--;
-      } else if (this.#grid[row - 1][col] === this.#grid[row][col]) {
+      } else if (this.#grid[parseInt(row - 1)][parseInt(col)] === this.#grid[parseInt(row)][parseInt(col)]) {
         this.mergeBlocksUpDownRight(row, col, row - 1, col);
         row = 0;
       } else {
@@ -197,14 +197,14 @@ class Game2048 {
   }
 
   moveBlockUp(fromRow, fromCol, toRow, toCol) {
-    this.#grid[toRow][toCol] = this.#grid[fromRow][fromCol];
-    this.#grid[fromRow][fromCol] = 0;
+    this.#grid[parseInt(toRow)][parseInt(toCol)] = this.#grid[parseInt(fromRow)][parseInt(fromCol)];
+    this.#grid[parseInt(fromRow)][parseInt(fromCol)] = 0;
   }
 
   moveDown() {
     for (let j = 0; j < this.#gridSize; j++) {
       for (let i = this.#gridSize - 2; i >= 0; i--) {
-        if (this.#grid[i][j] > 0) {
+        if (this.#grid[parseInt(i)][parseInt(j)] > 0) {
           this.shiftDown(i, j);
         }
       }
@@ -213,11 +213,11 @@ class Game2048 {
 
   shiftDown(row, col) {
     while (row < this.#gridSize - 1) {
-      if (this.#grid[row + 1][col] === 0) {
+      if (this.#grid[parseInt(row + 1)][parseInt(col)] === 0) {
         this.moveBlockDown(row, col, row + 1, col);
         row++;
-      } else if (this.#grid[row + 1][col] === this.#grid[row][col]) {
-        if (this.#grid[row][col] === 64) {
+      } else if (this.#grid[parseInt(row + 1)][parseInt(col)] === this.#grid[parseInt(row)][parseInt(col)]) {
+        if (this.#grid[parseInt(row)][parseInt(col)] === 64) {
           this.#bonusActive = true;
           this.duplicateTiles();
           this.showBonusMessage();
@@ -233,26 +233,32 @@ class Game2048 {
   }
 
   moveBlockDown(fromRow, fromCol, toRow, toCol) {
-    this.#grid[toRow][toCol] = this.#grid[fromRow][fromCol];
-    this.#grid[fromRow][fromCol] = 0;
+    this.#grid[parseInt(toRow)][parseInt(toCol)] = this.#grid[parseInt(fromRow)][parseInt(fromCol)];
+    this.#grid[parseInt(fromRow)][parseInt(fromCol)] = 0;
   }
 
   mergeBlocksUpDownRight(row1, col1, row2, col2) {
-    this.#grid[row2][col2] *= 2;
-    this.#score += this.#grid[row2][col2];
-    this.#grid[row1][col1] = 0;
+    this.#grid[parseInt(row2)][parseInt(col2)] *= 2;
+    this.#score += this.#grid[parseInt(row2)][parseInt(col2)];
+    this.#grid[parseInt(row1)][parseInt(col1)] = 0;
   }
 
   checkGameOver() {
     for (let i = 0; i < this.#gridSize; i++) {
       for (let j = 0; j < this.#gridSize; j++) {
-        if (this.#grid[i][j] === 0) {
+        if (this.#grid[parseInt(i)][parseInt(j)] === 0) {
           return false; // Найдены пустые ячейки, игра не окончена
         }
-        if (j < this.#gridSize - 1 && this.#grid[i][j] === this.#grid[i][j + 1]) {
+        if (
+          j < this.#gridSize - 1 &&
+          this.#grid[parseInt(i)][parseInt(j)] === this.#grid[parseInt(i)][parseInt(j + 1)]
+        ) {
           return false; // Можно объединить соседние блоки по горизонтали
         }
-        if (i < this.#gridSize - 1 && this.#grid[i][j] === this.#grid[i + 1][j]) {
+        if (
+          i < this.#gridSize - 1 &&
+          this.#grid[parseInt(i)][parseInt(j)] === this.#grid[parseInt(i + 1)][parseInt(j)]
+        ) {
           return false; // Можно объединить соседние блоки по вертикали
         }
       }
@@ -289,8 +295,8 @@ class Game2048 {
   duplicateTiles() {
     for (let i = 0; i < this.#gridSize; i++) {
       for (let j = 0; j < this.#gridSize; j++) {
-        if (this.#grid[i][j] > 0) {
-          this.#grid[i][j] *= 2;
+        if (this.#grid[parseInt(i)][parseInt(j)] > 0) {
+          this.#grid[parseInt(i)][parseInt(j)] *= 2;
         }
       }
     }
@@ -301,7 +307,7 @@ class Game2048 {
     const availableCells = [];
     for (let i = 0; i < this.#gridSize; i++) {
       for (let j = 0; j < this.#gridSize; j++) {
-        if (this.#grid[i][j] === 0) {
+        if (this.#grid[parseInt(i)][parseInt(j)] === 0) {
           availableCells.push({ row: i, col: j });
         }
       }
@@ -313,29 +319,29 @@ class Game2048 {
       const randomIndex = Math.floor(randomValue * availableCells.length);
 
       if (randomIndex >= 0 && randomIndex < availableCells.length) {
-        const randomCell = availableCells[randomIndex];
-        this.#grid[randomCell.row][randomCell.col] = randomValue < 0.9 ? 2 : 4;
+        const randomCell = availableCells[parseInt(randomIndex)];
+        this.#grid[parseInt(randomCell.row)][parseInt(randomCell.col)] = randomValue < 0.9 ? 2 : 4;
       }
     }
     this.updateGridDisplay();
   }
 
   moveBlockLeft(fromRow, fromCol, toRow, toCol) {
-    this.#grid[toRow][toCol] = this.#grid[fromRow][fromCol];
-    this.#grid[fromRow][fromCol] = 0;
+    this.#grid[parseInt(toRow)][parseInt(toCol)] = this.#grid[parseInt(fromRow)][parseInt(fromCol)];
+    this.#grid[parseInt(fromRow)][parseInt(fromCol)] = 0;
   }
 
   mergeBlocksLeft(row1, col1, row2, col2) {
-    if (this.#grid[row2][col2] === 16) {
+    if (this.#grid[parseInt(row2)][parseInt(col2)] === 16) {
       this.#bonusActive = true;
       this.#score += 100;
       this.activateBonusLeft();
       this.showBonusMessage();
     }
 
-    this.#grid[row2][col2] *= 2;
-    this.#score += this.#grid[row2][col2];
-    this.#grid[row1][col1] = 0;
+    this.#grid[parseInt(row2)][parseInt(col2)] *= 2;
+    this.#score += this.#grid[parseInt(row2)][parseInt(col2)];
+    this.#grid[parseInt(row1)][parseInt(col1)] = 0;
   }
 }
 
