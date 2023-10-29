@@ -159,7 +159,7 @@ class Game2048 {
         this.moveBlockRight(row, col, row, col + 1);
         col++;
       } else if (this.#grid[row][col + 1] === this.#grid[row][col]) {
-        this.mergeBlocksRight(row, col, row, col + 1);
+        this.mergeBlocksUpDownRight(row, col, row, col + 1);
         col = this.#gridSize - 1;
       } else {
         break;
@@ -333,12 +333,6 @@ class Game2048 {
       this.showBonusMessage();
     }
 
-    this.#grid[row2][col2] *= 2;
-    this.#score += this.#grid[row2][col2];
-    this.#grid[row1][col1] = 0;
-  }
-
-  mergeBlocksRight(row1, col1, row2, col2) {
     this.#grid[row2][col2] *= 2;
     this.#score += this.#grid[row2][col2];
     this.#grid[row1][col1] = 0;
