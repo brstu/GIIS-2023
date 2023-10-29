@@ -1,395 +1,353 @@
-const gridContainer = document.querySelector(".grid-container");
-const scoreElement = document.querySelector(".score");
+class Game2048 {
+  #gridSize;
+  #grid;
+  #score;
+  #bonusActive;
+  #isGameOver;
 
-const bonusMessageElement = document.querySelector(".bonus-message");
-const gridSize = 4;
-let grid = new Array(gridSize)
-  .fill(null)
-  .map(() => new Array(gridSize).fill(0));
-let score = 0;
-let bonusActive = false;
-let isGameOver = false;
+  constructor(gridSize, gridContainer, scoreElement, bonusMessageElement) {
+    this.#gridSize = gridSize;
+    this.gridContainer = gridContainer;
+    this.scoreElement = scoreElement;
+    this.bonusMessageElement = bonusMessageElement;
+    this.initializeGame();
+    document.addEventListener('keydown', event => this.handleKeyPress(event));
+    document.getElementById('resume-button').addEventListener('click', () => this.resumeGame());
+  }
 
-/**
- * Функция для инициализации игры.
- */
-function initializeGame() {
-  grid = new Array(gridSize).fill(null).map(() => new Array(gridSize).fill(0));
-  score = 0;
-  bonusActive = false;
-  updateGridDisplay();
-  updateScoreDisplay();
-  addRandomTile();
-  addRandomTile();
-}
+  initializeGame() {
+    this.#grid = new Array(this.#gridSize).fill(null).map(() => new Array(this.#gridSize).fill(0));
+    this.#score = 0;
+    this.#bonusActive = false;
+    this.#isGameOver = false;
+    this.updateGridDisplay();
+    this.updateScoreDisplay();
+    this.addRandomTile();
+    this.addRandomTile();
+  }
 
-/**
- * Функция для формирования таблицы.
- */
-function updateGridDisplay() {
-  gridContainer.innerHTML = "";
-  for (let i = 0; i < gridSize; i++) {
-    for (let j = 0; j < gridSize; j++) {
-      const cellValue = grid[i][j];
-      const gridCell = document.createElement("div");
-      gridCell.classList.add("grid-cell");
-      gridCell.textContent = cellValue > 0 ? cellValue : "";
-      gridCell.style.background = getTileColor(cellValue);
-      gridContainer.appendChild(gridCell);
+  get gridSize() {
+    return this.#gridSize;
+  }
+
+  get isGameOver() {
+    return this.#isGameOver;
+  }
+
+  handleKeyPress(event) {
+    if (this.isGameOver) {
+      return;
     }
-  }
-}
 
-/**
- * Функция для обновления счёта.
- */
-function updateScoreDisplay() {
-  scoreElement.textContent = `Score: ${score}`;
-}
-
-/**
- * Функция для заполнения таблицы значением.
- */
-function addRandomTile() {
-  const availableCells = [];
-  for (let i = 0; i < gridSize; i++) {
-    for (let j = 0; j < gridSize; j++) {
-      if (grid[i][j] === 0) {
-        availableCells.push({ row: i, col: j });
-      }
-    }
-  }
-
-  if (availableCells.length > 0) {
-    const maxRandomValue = 4.294967295e9;
-    const randomValue =
-      window.crypto.getRandomValues(new Uint32Array(1))[0] / maxRandomValue;
-    const randomIndex = Math.floor(randomValue * availableCells.length);
-
-    if (randomIndex >= 0 && randomIndex < availableCells.length) {
-      const randomCell = availableCells[randomIndex];
-      grid[randomCell.row][randomCell.col] = randomValue < 0.9 ? 2 : 4;
-    }
-  }
-  updateGridDisplay();
-}
-
-/**
- * Функция для заполнения ячейки цветом.
- */
-function getTileColor(value) {
-  switch (value) {
-    case 2:
-      return "#eee4da";
-    case 4:
-      return "#ede0c8";
-    case 8:
-      return "#f2b179";
-    case 16:
-      return "#f59563";
-    case 32:
-      return "#f67c5f";
-    case 64:
-      return "#f65e3b";
-    case 128:
-      return "#edcf72";
-    case 256:
-      return "#edcc61";
-    case 512:
-      return "#edc850";
-    case 1024:
-      return "#edc53f";
-    case 2048:
-      return "#edc22e";
-    default:
-      return "#3c3a32"; // Цвет по умолчанию
-  }
-}
-
-/**
- * Функция для активации бонуса.
- */
-function activateBonusLeft() {
-  if (!bonusActive) {
-    bonusActive = true;
-    bonusMessageElement.style.display = "block";
-  }
-}
-
-document.addEventListener("keydown", (event) => {
-  if (isGameOver) {
-    return;
-  }
-
-  if (event.key === "ArrowLeft") {
-    moveLeft();
-  } else if (event.key === "ArrowRight") {
-    moveRight();
-  } else if (event.key === "ArrowUp") {
-    moveUp();
-  } else if (event.key === "ArrowDown") {
-    moveDown();
-  } else {
-    return;
-  }
-  addRandomTile();
-  updateGridDisplay();
-  updateScoreDisplay();
-
-  if (checkGameOver()) {
-    endGame();
-  }
-});
-
-/**
- * Функция для движения влево.
- */
-function moveLeft() {
-  for (let i = 0; i < gridSize; i++) {
-    for (let j = 1; j < gridSize; j++) {
-      if (grid[i][j] > 0) {
-        shiftLeft(i, j);
-      }
-    }
-  }
-}
-
-/**
- * Функция для перемещения влево необходимых блоков.
- */
-function shiftLeft(row, col) {
-  while (col > 0) {
-    if (grid[row][col - 1] === 0) {
-      moveBlockLeft(row, col, row, col - 1);
-      col--;
-    } else if (grid[row][col - 1] === grid[row][col]) {
-      mergeBlocksLeft(row, col, row, col - 1);
-      col = 0;
-    } else {
-      break;
-    }
-  }
-}
-
-/**
- * Функция для перемещения влево.
- */
-function moveBlockLeft(fromRow, fromCol, toRow, toCol) {
-  grid[toRow][toCol] = grid[fromRow][fromCol];
-  grid[fromRow][fromCol] = 0;
-}
-
-/**
- * Функция для подсчёта счёта и обработки бонуса влево.
- */
-function mergeBlocksLeft(row1, col1, row2, col2) {
-  if (grid[row1][col1] === 16) {
-    bonusActive = true;
-    score += 100;
-    activateBonusLeft();
-    showBonusMessage();
-  }
-
-  grid[row2][col2] *= 2;
-  score += grid[row2][col2];
-  grid[row1][col1] = 0;
-}
-
-/**
- * Функция для перемещения вправо.
- */
-function moveRight() {
-  for (let i = 0; i < gridSize; i++) {
-    for (let j = gridSize - 2; j >= 0; j--) {
-      if (grid[i][j] > 0) {
-        shiftRight(i, j);
-      }
-    }
-  }
-}
-
-/**
- * Функция для движения вправо.
- */
-function shiftRight(row, col) {
-  while (col < gridSize - 1) {
-    if (grid[row][col + 1] === 0) {
-      moveBlockRight(row, col, row, col + 1);
-      col++;
-    } else if (grid[row][col + 1] === grid[row][col]) {
-      mergeBlocksUpDownRights(row, col, row, col + 1);
-      col = gridSize - 1;
-    } else {
-      break;
-    }
-  }
-}
-
-/**
- * Функция для движения блоков вправо.
- */
-function moveBlockRight(fromRow, fromCol, toRow, toCol) {
-  grid[toRow][toCol] = grid[fromRow][fromCol];
-  grid[fromRow][fromCol] = 0;
-}
-
-/**
- * Функция для движения вверх.
- */
-function moveUp() {
-  for (let j = 0; j < gridSize; j++) {
-    for (let i = 1; i < gridSize; i++) {
-      if (grid[i][j] > 0) {
-        shiftUp(i, j);
-      }
-    }
-  }
-}
-
-/**
- * Функция для управления вверх.
- */
-function shiftUp(row, col) {
-  while (row > 0) {
-    if (grid[row - 1][col] === 0) {
-      moveBlockUp(row, col, row - 1, col);
-      row--;
-    } else if (grid[row - 1][col] === grid[row][col]) {
-      mergeBlocksUpDownRights(row, col, row - 1, col);
-      row = 0;
-    } else {
-      break;
-    }
-  }
-}
-
-/**
- * Функция для перемещения вверх.
- */
-function moveBlockUp(fromRow, fromCol, toRow, toCol) {
-  grid[toRow][toCol] = grid[fromRow][fromCol];
-  grid[fromRow][fromCol] = 0;
-}
-
-/**
- * Функция для подсчёта счёта.
- */
-function mergeBlocksUpDownRights(row1, col1, row2, col2) {
-  grid[row2][col2] *= 2;
-  score += grid[row2][col2];
-  grid[row1][col1] = 0;
-}
-
-/**
- * Функция для перемещения вниз.
- */
-function moveDown() {
-  for (let j = 0; j < gridSize; j++) {
-    for (let i = gridSize - 2; i >= 0; i--) {
-      if (grid[i][j] > 0) {
-        shiftDown(i, j);
-      }
-    }
-  }
-}
-
-/**
- * Функция для управления блоками вниз.
- */
-function shiftDown(row, col) {
-  while (row < gridSize - 1) {
-    if (grid[row + 1][col] === 0) {
-      moveBlockDown(row, col, row + 1, col);
-      row++;
-    } else if (grid[row + 1][col] === grid[row][col]) {
-      if (grid[row][col] === 64) {
-        bonusActive = true;
-        duplicateTiles();
-        showBonusMessage();
+    switch (event.key) {
+      case 'ArrowLeft':
+        this.moveLeft();
+        break;
+      case 'ArrowRight':
+        this.moveRight();
+        break;
+      case 'ArrowUp':
+        this.moveUp();
+        break;
+      case 'ArrowDown':
+        this.moveDown();
+        break;
+      default:
         return;
+    }
+
+    this.addRandomTile();
+    this.updateGridDisplay();
+    this.updateScoreDisplay();
+
+    if (this.checkGameOver()) {
+      this.endGame();
+    }
+  }
+
+  updateGridDisplay() {
+    this.gridContainer.textContent = '';
+    for (let i = 0; i < this.#gridSize; i++) {
+      for (let j = 0; j < this.#gridSize; j++) {
+        const cellValue = this.#grid[i][j];
+        const gridCell = document.createElement('div');
+        gridCell.classList.add('grid-cell');
+        gridCell.textContent = cellValue > 0 ? cellValue : '';
+        gridCell.style.background = this.getTileColor(cellValue);
+        this.gridContainer.appendChild(gridCell);
+      }
+    }
+  }
+
+  updateScoreDisplay() {
+    this.scoreElement.textContent = `Score: ${this.#score}`;
+  }
+
+  moveLeft() {
+    for (let i = 0; i < this.#gridSize; i++) {
+      for (let j = 1; j < this.#gridSize; j++) {
+        if (this.#grid[i][j] > 0) {
+          this.shiftLeft(i, j);
+        }
+      }
+    }
+  }
+
+  shiftLeft(row, col) {
+    while (col > 0) {
+      if (this.#grid[row][col - 1] === 0) {
+        this.moveBlockLeft(row, col, row, col - 1);
+        col--;
+      } else if (this.#grid[row][col - 1] === this.#grid[row][col]) {
+        this.mergeBlocksLeft(row, col, row, col - 1);
+        col = 0;
       } else {
-        mergeBlocksUpDownRights(row, col, row + 1, col);
-        return;
-      }
-    } else {
-      break;
-    }
-  }
-}
-
-/**
- * Функция для перемещения блока вправо.
- */
-function moveBlockDown(fromRow, fromCol, toRow, toCol) {
-  grid[toRow][toCol] = grid[fromRow][fromCol];
-  grid[fromRow][fromCol] = 0;
-}
-
-/**
- * Функция для дублирования карточек на игровом поле.
- */
-function duplicateTiles() {
-  for (let i = 0; i < gridSize; i++) {
-    for (let j = 0; j < gridSize; j++) {
-      if (grid[i][j] > 0) {
-        grid[i][j] *= 2;
+        break;
       }
     }
   }
-  updateGridDisplay();
-}
 
-/**
- * Функция для проверки окончания игры.
- */
-function checkGameOver() {
-  // Логика проверки окончания игры
-  for (let i = 0; i < gridSize; i++) {
-    for (let j = 0; j < gridSize; j++) {
-      if (grid[i][j] === 0) {
-        return false; // Найдены пустые ячейки, игра не окончена
-      }
-      if (j < gridSize - 1 && grid[i][j] === grid[i][j + 1]) {
-        return false; // Можно объединить соседние блоки по горизонтали
-      }
-      if (i < gridSize - 1 && grid[i][j] === grid[i + 1][j]) {
-        return false; // Можно объединить соседние блоки по вертикали
+  getTileColor(value) {
+    switch (value) {
+      case 2:
+        return '#eee4da';
+      case 4:
+        return '#ede0c8';
+      case 8:
+        return '#f2b179';
+      case 16:
+        return '#f59563';
+      case 32:
+        return '#f67c5f';
+      case 64:
+        return '#f65e3b';
+      case 128:
+        return '#edcf72';
+      case 256:
+        return '#edcc61';
+      case 512:
+        return '#edc850';
+      case 1024:
+        return '#edc53f';
+      case 2048:
+        return '#edc22e';
+      default:
+        return '#3c3a32'; // Цвет по умолчанию
+    }
+  }
+
+  activateBonusLeft() {
+    if (!this.#bonusActive) {
+      this.#bonusActive = true;
+      this.bonusMessageElement.style.display = 'block';
+    }
+  }
+
+  moveRight() {
+    for (let i = 0; i < this.#gridSize; i++) {
+      for (let j = this.#gridSize - 2; j >= 0; j--) {
+        if (this.#grid[i][j] > 0) {
+          this.shiftRight(i, j);
+        }
       }
     }
   }
-  return true; // Нельзя сделать дополнительных ходов, игра окончена
-}
 
-/**
- * Функция для окончания игры.
- */
-function endGame() {
-  isGameOver = true;
-  const gameOverText = document.getElementById("game-over-message");
-  gameOverText.style.display = "block";
-  const resumeButton = document.getElementById("resume-button");
-  resumeButton.style.display = "block";
-}
-
-document.getElementById("resume-button").addEventListener("click", () => {
-  if (isGameOver) {
-    isGameOver = false;
-    const resumeButton = document.getElementById("resume-button");
-    resumeButton.style.display = "none";
-    const gameOverText = document.getElementById("game-over-message");
-    gameOverText.style.display = "none";
-    initializeGame();
+  shiftRight(row, col) {
+    while (col < this.#gridSize - 1) {
+      if (this.#grid[row][col + 1] === 0) {
+        this.moveBlockRight(row, col, row, col + 1);
+        col++;
+      } else if (this.#grid[row][col + 1] === this.#grid[row][col]) {
+        this.mergeBlocksRight(row, col, row, col + 1);
+        col = this.#gridSize - 1;
+      } else {
+        break;
+      }
+    }
   }
-});
 
-/**
- * Функция для показа бонуса.
- */
-function showBonusMessage() {
-  bonusMessageElement.style.display = "block";
-  setTimeout(() => {
-    bonusMessageElement.style.display = "none";
-  }, 1000);
+  moveBlockRight(fromRow, fromCol, toRow, toCol) {
+    this.#grid[toRow][toCol] = this.#grid[fromRow][fromCol];
+    this.#grid[fromRow][fromCol] = 0;
+  }
+
+  moveUp() {
+    for (let j = 0; j < this.#gridSize; j++) {
+      for (let i = 1; i < this.#gridSize; i++) {
+        if (this.#grid[i][j] > 0) {
+          this.shiftUp(i, j);
+        }
+      }
+    }
+  }
+
+  shiftUp(row, col) {
+    while (row > 0) {
+      if (this.#grid[row - 1][col] === 0) {
+        this.moveBlockUp(row, col, row - 1, col);
+        row--;
+      } else if (this.#grid[row - 1][col] === this.#grid[row][col]) {
+        this.mergeBlocksUpDownRight(row, col, row - 1, col);
+        row = 0;
+      } else {
+        break;
+      }
+    }
+  }
+
+  moveBlockUp(fromRow, fromCol, toRow, toCol) {
+    this.#grid[toRow][toCol] = this.#grid[fromRow][fromCol];
+    this.#grid[fromRow][fromCol] = 0;
+  }
+
+  moveDown() {
+    for (let j = 0; j < this.#gridSize; j++) {
+      for (let i = this.#gridSize - 2; i >= 0; i--) {
+        if (this.#grid[i][j] > 0) {
+          this.shiftDown(i, j);
+        }
+      }
+    }
+  }
+
+  shiftDown(row, col) {
+    while (row < this.#gridSize - 1) {
+      if (this.#grid[row + 1][col] === 0) {
+        this.moveBlockDown(row, col, row + 1, col);
+        row++;
+      } else if (this.#grid[row + 1][col] === this.#grid[row][col]) {
+        if (this.#grid[row][col] === 64) {
+          this.#bonusActive = true;
+          this.duplicateTiles();
+          this.showBonusMessage();
+          return;
+        } else {
+          this.mergeBlocksUpDownRight(row, col, row + 1, col);
+          return;
+        }
+      } else {
+        break;
+      }
+    }
+  }
+
+  moveBlockDown(fromRow, fromCol, toRow, toCol) {
+    this.#grid[toRow][toCol] = this.#grid[fromRow][fromCol];
+    this.#grid[fromRow][fromCol] = 0;
+  }
+
+  mergeBlocksUpDownRight(row1, col1, row2, col2) {
+    this.#grid[row2][col2] *= 2;
+    this.#score += this.#grid[row2][col2];
+    this.#grid[row1][col1] = 0;
+  }
+
+  checkGameOver() {
+    for (let i = 0; i < this.#gridSize; i++) {
+      for (let j = 0; j < this.#gridSize; j++) {
+        if (this.#grid[i][j] === 0) {
+          return false; // Найдены пустые ячейки, игра не окончена
+        }
+        if (j < this.#gridSize - 1 && this.#grid[i][j] === this.#grid[i][j + 1]) {
+          return false; // Можно объединить соседние блоки по горизонтали
+        }
+        if (i < this.#gridSize - 1 && this.#grid[i][j] === this.#grid[i + 1][j]) {
+          return false; // Можно объединить соседние блоки по вертикали
+        }
+      }
+    }
+    return true; // Нельзя сделать дополнительных ходов, игра окончена
+  }
+
+  endGame() {
+    this.#isGameOver = true;
+    const gameOverText = document.getElementById('game-over-message');
+    gameOverText.style.display = 'block';
+    const resumeButton = document.getElementById('resume-button');
+    resumeButton.style.display = 'block';
+  }
+
+  resumeGame() {
+    if (this.#isGameOver) {
+      this.#isGameOver = false;
+      const resumeButton = document.getElementById('resume-button');
+      resumeButton.style.display = 'none';
+      const gameOverText = document.getElementById('game-over-message');
+      gameOverText.style.display = 'none';
+      this.initializeGame();
+    }
+  }
+
+  showBonusMessage() {
+    this.bonusMessageElement.style.display = 'block';
+    setTimeout(() => {
+      this.bonusMessageElement.style.display = 'none';
+    }, 1000);
+  }
+
+  duplicateTiles() {
+    for (let i = 0; i < this.#gridSize; i++) {
+      for (let j = 0; j < this.#gridSize; j++) {
+        if (this.#grid[i][j] > 0) {
+          this.#grid[i][j] *= 2;
+        }
+      }
+    }
+    this.updateGridDisplay();
+  }
+
+  addRandomTile() {
+    const availableCells = [];
+    for (let i = 0; i < this.#gridSize; i++) {
+      for (let j = 0; j < this.#gridSize; j++) {
+        if (this.#grid[i][j] === 0) {
+          availableCells.push({ row: i, col: j });
+        }
+      }
+    }
+
+    if (availableCells.length > 0) {
+      const maxRandomValue = 4.294967295e9;
+      const randomValue = window.crypto.getRandomValues(new Uint32Array(1))[0] / maxRandomValue;
+      const randomIndex = Math.floor(randomValue * availableCells.length);
+
+      if (randomIndex >= 0 && randomIndex < availableCells.length) {
+        const randomCell = availableCells[randomIndex];
+        this.#grid[randomCell.row][randomCell.col] = randomValue < 0.9 ? 2 : 4;
+      }
+    }
+    this.updateGridDisplay();
+  }
+
+  moveBlockLeft(fromRow, fromCol, toRow, toCol) {
+    this.#grid[toRow][toCol] = this.#grid[fromRow][fromCol];
+    this.#grid[fromRow][fromCol] = 0;
+  }
+
+  mergeBlocksLeft(row1, col1, row2, col2) {
+    if (this.#grid[row2][col2] === 16) {
+      this.#bonusActive = true;
+      this.#score += 100;
+      this.activateBonusLeft();
+      this.showBonusMessage();
+    }
+
+    this.#grid[row2][col2] *= 2;
+    this.#score += this.#grid[row2][col2];
+    this.#grid[row1][col1] = 0;
+  }
+
+  mergeBlocksRight(row1, col1, row2, col2) {
+    this.#grid[row2][col2] *= 2;
+    this.#score += this.#grid[row2][col2];
+    this.#grid[row1][col1] = 0;
+  }
 }
 
-initializeGame();
+const gridContainer = document.querySelector('.grid-container');
+const scoreElement = document.querySelector('.score');
+const bonusMessageElement = document.querySelector('.bonus-message');
+const gridSize = 4;
+
+const game = new Game2048(gridSize, gridContainer, scoreElement, bonusMessageElement);
