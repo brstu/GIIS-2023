@@ -1,0 +1,54 @@
+[gd_scene load_steps=7 format=3 uid="uid://c3ijph6q0wae8"]
+
+[ext_resource type="Texture2D" uid="uid://desr7ybuyt1dt" path="res://assets/Default size/towerDefense_tile180.png" id="1_3n8vd"]
+[ext_resource type="Script" path="res://Scripts/tower.gd" id="1_wi05u"]
+[ext_resource type="Texture2D" uid="uid://cwvdx16gw8q1o" path="res://assets/Default size/towerDefense_tile203.png" id="2_q822a"]
+[ext_resource type="Texture2D" uid="uid://biqo5qgnogwwc" path="res://assets/Circle.png" id="4_grgok"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j5nb3"]
+size = Vector2(64, 64)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_51kvs"]
+radius = 200.0
+
+[node name="Tower" type="Node2D"]
+script = ExtResource("1_wi05u")
+
+[node name="Bottom" type="Sprite2D" parent="."]
+texture = ExtResource("1_3n8vd")
+
+[node name="Top" type="Sprite2D" parent="."]
+texture = ExtResource("2_q822a")
+
+[node name="Barrell1" type="Node2D" parent="Top"]
+position = Vector2(-8, -24)
+
+[node name="Barrell2" type="Node2D" parent="Top"]
+position = Vector2(8, -24)
+
+[node name="Tower" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tower"]
+shape = SubResource("RectangleShape2D_j5nb3")
+
+[node name="Range" type="Area2D" parent="."]
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Range"]
+shape = SubResource("CircleShape2D_51kvs")
+
+[node name="Range" type="Sprite2D" parent="Range"]
+scale = Vector2(1.6, 1.6)
+texture = ExtResource("4_grgok")
+
+[node name="BottomRed" type="Sprite2D" parent="."]
+visible = false
+self_modulate = Color(0.8, 0, 0, 1)
+texture = ExtResource("1_3n8vd")
+
+[node name="Bullets" type="Node2D" parent="."]
+
+[connection signal="mouse_entered" from="Tower" to="." method="_on_tower_mouse_entered"]
+[connection signal="mouse_exited" from="Tower" to="." method="_on_tower_mouse_exited"]
+[connection signal="area_entered" from="Range" to="." method="_on_range_area_entered"]
+[connection signal="area_exited" from="Range" to="." method="_on_range_area_exited"]

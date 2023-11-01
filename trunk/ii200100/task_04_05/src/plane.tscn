@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3xo758xq1qoy"]
+
+[ext_resource type="Script" path="res://plane.gd" id="1_la2j2"]
+[ext_resource type="Texture2D" uid="uid://bc0ablsct7rxa" path="res://assets/Default size/towerDefense_tile294.png" id="1_w4cwy"]
+
+[node name="Plane" type="PathFollow2D"]
+loop = false
+script = ExtResource("1_la2j2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(5, 5)
+texture = ExtResource("1_w4cwy")
