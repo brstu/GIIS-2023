@@ -10,7 +10,7 @@
 
 - Скачать и запустить Godot
 
-https://godotengine.org/
+<https://godotengine.org/>
 
 - выбрать Import
 
@@ -20,11 +20,16 @@ https://godotengine.org/
 
 ![dot_godot](doc/dot_godot.png)
 
+- запустить проект и в правлм верхнем углу нажать на старт
+
+![_start](doc/_start.png)
+
 Запуск игры:
 
 ![start](doc/start.png)
 
 Реализация бонуса:
+
 - с 4% шанса выпадает с врага бонус
 
 ![bonus](doc/bonus.png)
