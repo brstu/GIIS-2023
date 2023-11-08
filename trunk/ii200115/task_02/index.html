@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Address Book">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16x16.png">
+
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/reset.css">
+
+    <title>Address Book</title>
+</head>
+<body>
+
+    <head>
+        <!-- СПИСОК ЗАПИСЕЙ -->
+        <div id="abWrap">
+            <div id="abHead">
+                <h2>ADDRESS BOOK</h2>
+                <div id="abAdd" class="material-icons" onclick="ab.toggle(true)">
+                    Add
+                </div>
+            </div>
+            <div id="abList"></div>
+        </div>
+        <script src="index.js"></script>
+    </head>
+    
+    <main>
+        <!-- ДОБАВИТЬ/РЕДАКТИРОВАТЬ ФОРМУ ЗАПИСИ -->
+        <div id="abForm">
+            <form onsubmit="return ab.save()">
+                <div id="abClose" class="material-icons" onclick="ab.toggle(false)">
+                    close
+                </div>
+                <input type="hidden" id="abID"/>
+                <label>Login <br>
+                    <input type="text" id="abLogin" required/>
+                </label>
+                <label>Name <br>
+                    <input type="text" id="abName"/>
+                </label>
+                <label>Phone <br>
+                    <input type="text" id="abTel"/>
+                </label>
+                <label>Email <br>
+                    <input type="email" id="abEmail"/>
+                </label>
+                <label>Address <br>
+                    <input type="text" id="abAddr"/>
+                </label>
+                <label>About <br>
+                    <input type="text" id="abAbout"/>
+                </label>
+                <input type="submit" value="Save" id="abGo"/>
+            </form>
+        </div>
+    </main>
+</body>
+</html>

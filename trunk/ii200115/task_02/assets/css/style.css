@@ -1,0 +1,225 @@
+/* вся страница */
+*
+{
+    font-family: arial, sans-serif;
+    box-sizing: border-box;
+}
+
+body
+{
+    padding: 0;
+    margin: 0;
+}
+/* ДОБАВИТЬ/РЕДАКТИРОВАТЬ ОБОЛОЧКУ ФОРМЫ */
+#abForm
+{
+    /* ПОЛНАЯ СТРАНИЦА */
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.7);
+
+    /* ЦЕНТРАЛЬНАЯ ФОРМА НА ЭКРАНЕ */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* СКРЫТО ПО УМОЛЧАНИЮ */
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+    
+#abForm.show
+{
+    visibility: visible;
+    opacity: 1;
+}
+
+/* ОБЩИЙ */
+#abAdd, #abClose
+{
+    color: #ffffff;
+    background: #046753;
+    
+    border-radius: 50px;
+    font-size: 20px;
+    padding: 5px 10px;
+    font-weight: 700;
+}
+    
+#abClose
+{
+    position: absolute;
+    top: 0; right: 0;
+}
+
+input[type=button], input[type=submit], #abAdd, #abClose
+{
+    cursor: pointer;
+}
+
+/* ДОБАВИТЬ/РЕДАКТИРОВАТЬ ФОРМУ */
+#abForm form
+{
+    position: relative;
+    border-radius: 10px;
+    padding: 20px;
+    width: 400px;
+    border: 1px solid #000;
+    background: #f5f5f5;
+}
+
+#abForm label, #abForm input
+{
+    display: block;
+    width: 100%;
+}
+
+#abForm label
+{
+    margin: 10px 0;
+}
+
+#abForm input
+{
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+#abForm input[type=submit]
+{
+    margin-top: 20px;
+    border: 0;
+    color: #fff;
+    background: #046753;
+}
+
+/* ОБОРОЧКА СПИСКА */
+#abWrap
+{
+    margin: 0 auto;
+    padding: 10px;
+    max-width: 1000px;
+}
+
+#abHead
+{
+    display: flex;
+    align-items: center;
+}
+
+#abHead h2
+{
+    flex-grow: 1;
+}
+
+/* СПИСОК ЗАПИСЕЙ */
+#abList .row
+{
+    margin: 10px 0;
+    background: #ffffff;
+}
+
+#abList .info
+{
+    display: flex;
+    justify-content: space-between;
+
+    padding: 10px;
+    flex-grow: 1;
+    line-height: 28px;
+
+    border-radius: 20px;
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+}
+
+i.tag
+{
+    color: #326abd;
+    font-size: 18px;
+    margin-right: 5px;
+}
+
+.row input[type=button]
+{
+    font-size: 30px;
+    padding: 0 10px;
+    border: 0;
+    background: 0;
+}
+
+.poz
+{
+    display: flex;
+    justify-content: end;
+}
+
+.login
+{
+    font: bold 30px/25px "Fira Sans", sans-serif;
+}
+
+.name
+{
+    font: 15px/25px "Fira Sans", sans-serif;
+    color: #A0A0A0;
+}
+
+.lbl_toggle 
+{
+    cursor: pointer;
+    transition: all 0.25s ease-out;
+}
+  
+.lbl_toggle:hover 
+{
+    color: #046753;
+}
+
+.collapsible_content
+{
+    padding: 10px;
+}
+
+.collapsible_content 
+{ 
+    max-height: 0px;
+    overflow: hidden;
+    transition: max-height .25s ease-in-out;
+}
+
+.content_inner
+{
+    display: flex;
+}
+
+.toggle:checked + .lbl_toggle + .collapsible_content 
+{ 
+    max-height: 200px;
+} 
+
+.box_one 
+{
+    width: 75%;
+}
+
+.box_two
+{
+    max-width: 25%;
+    margin-left: 20px;
+}
+
+.mini_box
+{
+    margin: 10px 0;
+}
+
+.hr_line {
+	border: none;
+	border-top: 1px solid #A9A9A9;
+    margin-bottom: 5px;
+}
