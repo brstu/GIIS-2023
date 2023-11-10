@@ -58,8 +58,6 @@ class AppWindow(QWidget):
         button.clicked.connect(signal)
         button.setStyleSheet('''height: 50px;background-color: black;outline: none;font-size: 24px;color: white;border-radius: 12px;''')
         return button
-    
-
     def _create_radio(self, text, axis, checked=False):
         radio = QRadioButton(text)
         radio.axis = axis

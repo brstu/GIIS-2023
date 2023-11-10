@@ -1,4 +1,3 @@
-import random
 from PIL import Image
 
 class ImageHelper:
@@ -14,7 +13,7 @@ class ImageHelper:
                 count += 1
             image_to_noise.save(path)
 
-    def median_filter(self, image, progress_handler, kernel_width=1, kernel_height=1):
+    def median_filter(self, image, progress_handler, kernel_height=1):
         image_to_unnoise = image.copy()
         image_width, image_height = image_to_unnoise.size
         image_pixels = image_to_unnoise.load()
@@ -36,5 +35,4 @@ class ImageHelper:
                 image_pixels[i, j] = (red_colors[len(red_colors) // 2],green_colors[len(green_colors) // 2],blue_colors[len(blue_colors) // 2])
             count += 1
             progress_handler(int(((count * 100 / (image_width * image_height * 3)) - 0.014) * 1000))
-        
         image_to_unnoise.save('images/unnoised_image.png')
