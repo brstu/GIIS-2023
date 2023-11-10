@@ -4,7 +4,7 @@ import random
 def pokaz_photo(kartinka, window_name): 
     cv2.imshow(window_name, kartinka)
 
-def shum(kartinka, level): # шум
+def shum(kartinka): 
     buffer = 0.1
     for x, stroka in enumerate(kartinka):
 
