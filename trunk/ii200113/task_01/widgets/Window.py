@@ -53,7 +53,7 @@ class AppWindow(QWidget):
         self.setLayout(self._main_layout)
 
 
-    def _create_button(self, text, signal):
+    def _create_button(text, signal):
         button = QPushButton(text)
         button.clicked.connect(signal)
         button.setStyleSheet('''height: 50px;background-color: black;outline: none;font-size: 24px;color: white;border-radius: 12px;''')
