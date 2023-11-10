@@ -166,12 +166,12 @@ class AddressBookApp(QtWidgets.QMainWindow):
             for index, contact in enumerate(self.contacts, start=1):
                 vcf_filename = f"{contact.name}.vcf"
                 with open(vcf_filename, "w", encoding="utf-8") as vcf_file:
-                    vcf_file.write(f"BEGIN:VCARD\n")
-                    vcf_file.write(f"VERSION:3.0\n")
+                    vcf_file.write("BEGIN:VCARD"+"\n")
+                    vcf_file.write("VERSION:3.0"+"\n")
                     vcf_file.write(f"N:{contact.name}\n")
                     vcf_file.write(f"FN:{contact.name}\n")
                     vcf_file.write(f"ADR:;;{contact.address};;;;\n")
-                    vcf_file.write(f"END:VCARD\n")
+                    vcf_file.write("END:VCARD"+"\n")
             self.show_message("Контакты успешно экспортированы в файлы .vcf.")
         except Exception as e:
             self.show_message(f"Произошла ошибка при экспорте контактов: {str(e)}")
