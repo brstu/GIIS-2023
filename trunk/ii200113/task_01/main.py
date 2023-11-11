@@ -45,7 +45,7 @@ class GlavnoeOkno(QDialog):
 
 
     def applyshum(self): 
-        self.image = functions.shum(self.image, self.slidershum.value())
+        self.image = functions.shum(self.image)
         self.showImage()
 
     def otfiltrovatKartinku(self):
