@@ -13,7 +13,8 @@ def shum(kartinka):
             print(str(int(pokazatel))+"%")
         buffer = pokazatel
         for y, _ in enumerate(stroka):
-            zarandomlennoe_v = random.randrange(1,5) 
+            zamanuha = range(1, 5)
+            zarandomlennoe_v = random.randint(zamanuha) 
             kartinka[x][y] = [zarandomlennoe_v*50,zarandomlennoe_v*50,zarandomlennoe_v*50]
     print('100%')
     return kartinka
