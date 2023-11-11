@@ -16,7 +16,6 @@ def shum(kartinka):
             
             zarandomlennoe_v = pokazatel*2
             kartinka[x][y] = [zarandomlennoe_v*50,zarandomlennoe_v*50,zarandomlennoe_v*50]
-    print('100%')
     return kartinka
 
 def deshum(kartinka, threshold, oknox, oknoy):
