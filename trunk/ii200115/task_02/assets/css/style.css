@@ -109,18 +109,22 @@ input[type=button], input[type=submit], #abAdd, #abClose
 #abHead
 {
     display: flex;
+    justify-content: space-between;
+
     align-items: center;
 }
 
 #abHead h2
 {
-    flex-grow: 1;
+    font: bold 30px/25px "Fira Sans", sans-serif;
 }
 
 /* СПИСОК ЗАПИСЕЙ */
 #abList .row
 {
-    margin: 10px 0;
+    
+    max-width: 65%;
+    margin: 0 auto;
     background: #ffffff;
 }
 
@@ -222,4 +226,57 @@ i.tag
 	border: none;
 	border-top: 1px solid #A9A9A9;
     margin-bottom: 5px;
+}
+
+.search
+{
+    box-sizing: border-box;
+}
+
+.search form
+{
+  width: auto;
+  float: right;
+  margin-right: 30px;
+}
+
+.search input
+{
+  width: 250px;
+  height: 42px;
+  padding-left: 15px;
+  border-radius: 42px;
+  border: 2px solid #324b4e;
+  background: #F9F0DA;
+  outline: none;
+  position: relative;
+  transition: .3s linear;
+}
+
+.search input:focus
+{
+  width: 300px;
+}
+
+.search button
+{
+  width: 42px;
+  height: 42px;
+  background: none;
+  border: none;
+  position: absolute;
+  top: -2px;
+  right: 0;
+}
+
+.search button:before
+{
+  content: "\f002";
+  font-family: FontAwesome;
+  color: #324b4e;
+}
+
+.abList div.hide
+{
+    display: none;
 }

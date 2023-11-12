@@ -4,11 +4,14 @@
 
 ## Реализация
 
-Общий вид:
-   ![nonlin](assets/img/AddressBook1.jpg)
+* Общий вид:
+   ![nonlin](assets/img/p1.jpg)
 
-Удаление:
-   ![nonlin](assets/img/AddressBook2.jpg)
+* Окно для добавления и редактирования:
+   ![nonlin](assets/img/p2.jpg)
 
-Окно для добавления и удаления:
-   ![nonlin](assets/img/AddressBook3.jpg)
+* Удаление:
+   ![nonlin](assets/img/p3.jpg)
+   
+* Строка поиска
+   ![nonlin](assets/img/p4.jpg)
