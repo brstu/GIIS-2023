@@ -184,13 +184,9 @@ i.tag
     color: #046753;
 }
 
-.collapsible_content
-{
-    padding: 10px;
-}
-
 .collapsible_content 
 { 
+    padding: 10px;
     max-height: 0px;
     overflow: hidden;
     transition: max-height .25s ease-in-out;
@@ -272,11 +268,5 @@ i.tag
 .search button:before
 {
   content: "\f002";
-  font-family: FontAwesome;
   color: #324b4e;
-}
-
-.abList div.hide
-{
-    display: none;
 }
