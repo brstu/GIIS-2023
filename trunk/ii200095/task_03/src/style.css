@@ -782,7 +782,7 @@ height: 52px;
 font-family: 'Montserrat',
     'Helvetica',
     'Arial',
-    'Verdana';
+    'Verdana', sans-serif;
 font-style: normal;
 font-weight: 500;
 font-size: 16px;
@@ -2120,7 +2120,7 @@ color: #FCFCFC;
         font-family: 'Montserrat',
             'Helvetica',
             'Arial',
-            'Verdana';
+            'Verdana', sans-serif;
 font-style: normal;
 font-weight: 700;
 font-size: 14px;

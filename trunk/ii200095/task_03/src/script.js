@@ -45,22 +45,7 @@ prevButton.addEventListener('click', goToPrevSlide);
 nextButton.addEventListener('click', goToNextSlide);
 
 // Обработка событий для мобильных устройств
-slider.addEventListener('touchstart', handleTouchStart);
-slider.addEventListener('touchmove', handleTouchMove);
 slider.addEventListener('touchend', handleTouchEnd);
-
-function handleTouchStart(event) {
-  if (isMobile) {
-    const touch = event.touches[0];
-    let touchStartX = touch.clientX;
-  }
-}
-
-function handleTouchMove(event) {
-  if (isMobile) {
-    const touch = event.touches[0];
-  }
-}
 
 function handleTouchEnd() {
   if (isMobile) {
