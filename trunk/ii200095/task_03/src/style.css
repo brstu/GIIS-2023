@@ -39,9 +39,6 @@
 }
 
 .header_container{
-    
-   
-    
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -53,20 +50,17 @@
     display: flex;
     justify-content: space-between;
 }
-/* .first_header_link{
-    width: 82.5px;
-height: 20px;
-} */
+
 
 
 
 .first_header_link, .second_header_link, .third_header_link, .fourth_header_link{
-    font-family: 'Montserrat';
-font-style: normal;
-font-weight: 700;
-font-size: 16px;
-color: #FCFCFC;
-text-decoration: none;
+    font-family: 'Montserrat', 'Helvetica', 'Arial', 'Verdana';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    color: #FCFCFC;
+    text-decoration: none;
 }
 
 .first_header_link:hover, .second_header_link:hover, .third_header_link:hover, .fourth_header_link:hover{
@@ -143,6 +137,7 @@ border-radius: 10px;
     flex-direction: column;
     align-items: center;
     padding-bottom: 111px;
+    padding-top: 47px;
 }
 
 
@@ -157,7 +152,7 @@ border-radius: 10px;
 height: 18px;
 
 
-font-family: 'Montserrat';
+font-family: 'Montserrat', 'Helvetica', 'Arial', 'Verdana';
 font-style: normal;
 font-weight: 600;
 font-size: 14px;
@@ -177,7 +172,7 @@ color: #131313;
     width: 404.05px;
 height: 144px;
 
-font-family:'Seymour One';
+font-family:'Seymour One', 'Helvetica', 'Arial', 'Verdana';
 font-style: normal;
 font-weight: 400;
 font-size: 38px;
@@ -199,7 +194,10 @@ color: #FCFCFC;
 }
 
 .quantity_of_cafes{
-    font-family: 'Montserrat';
+    font-family: 'Montserrat',
+        'Helvetica',
+        'Arial',
+        'Verdana';
 font-style: normal;
 font-weight: 900;
 font-size: 46px;
@@ -214,7 +212,10 @@ color: #131313;
 }
 
 .name_of_cafes{
-    font-family: 'Montserrat';
+    font-family: 'Montserrat',
+        'Helvetica',
+        'Arial',
+        'Verdana';
 font-style: normal;
 font-weight: 400;
 font-size: 14px;
@@ -234,15 +235,12 @@ color: #FCFCFC;
 
 .products_btn{
     margin-right: 17px;
-    
-    
+    width: 134px;
+    height: 42px;
 
-width: 134px;
-height: 42px;
-
-background: #84A278;
-border: 2px solid #F8D24E;
-border-radius: 10px;
+    background: #84A278;
+    border: 2px solid #F8D24E;
+    border-radius: 10px;
 }
 
 
@@ -250,17 +248,18 @@ border-radius: 10px;
 .products_btn_text{
     
 
-text-align: center;
-font-family: 'Montserrat';
-font-style: normal;
-font-weight: 600;
-font-size: 14px;
-line-height: 18px;
-/* identical to box height, or 129% */
+    text-align: center;
+    font-family: 'Montserrat',
+        'Helvetica',
+        'Arial',
+        'Verdana';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 18px;
+    /* identical to box height, or 129% */
 
-
-
-color: #131313;
+    color: #131313;
 
 }
 
@@ -275,7 +274,10 @@ width: 111px;
 height: 17px;
 
 
-font-family: 'Montserrat';
+font-family: 'Montserrat',
+    'Helvetica',
+    'Arial',
+    'Verdana';
 font-style: normal;
 font-weight: 600;
 font-size: 14px;
@@ -324,7 +326,10 @@ top: 429px;
 }
 
 .lorem_text{
-font-family: 'Montserrat';
+font-family: 'Montserrat',
+    'Helvetica',
+    'Arial',
+    'Verdana';
 font-style: normal;
 font-weight: 400;
 font-size: 14px;
@@ -342,14 +347,6 @@ color: #FCFCFC;
 
 .container_zagolovkov{
     padding-top: 60px;
-    
-    
-    
-    
-}
-
-.burger_menu_container{
-    
 }
 
 .containdlyakrestika{
@@ -370,24 +367,18 @@ color: #FCFCFC;
 .burgerkrestik{
     width: 20px;
     height: 20px;
-    background: #84A278;;
-    
+    background: #84A278;    
 }
 
 .burger_menu{
     display: none;
     height: 568px;
     width: 100vw;
-    background: #84A278;;
-
+    background: #84A278;
 }
 
 .g{
     font-size: 32px;
-}
-
-.dlya_dela{
-    padding-top: 47px;
 }
 
 .a100proc{
@@ -395,7 +386,10 @@ color: #FCFCFC;
     width: 284.73px;
 height: 37.04px;
 
-font-family: 'Montserrat';
+font-family: 'Montserrat',
+    'Helvetica',
+    'Arial',
+    'Verdana';
 font-style: normal;
 font-weight: 800;
 font-size: 30px;
@@ -412,7 +406,10 @@ color: #131313;
     width: 334.2px;
 height: 45.04px;
 
-font-family: 'Seymour One';
+font-family: 'Seymour One',
+    'Helvetica',
+    'Arial',
+    'Verdana';
 font-style: normal;
 font-weight: 400;
 font-size: 36px;
@@ -461,7 +458,10 @@ width: 169.09px;
 height: 37.04px;
 
 
-font-family: 'Montserrat';
+font-family: 'Montserrat',
+    'Helvetica',
+    'Arial',
+    'Verdana';
 font-style: normal;
 font-weight: 700;
 font-size: 30px;
@@ -514,7 +514,10 @@ border-radius: 24px;
     width: 315.87px;
 height: 37.04px;
 
-font-family: 'Montserrat';
+font-family: 'Montserrat',
+    'Helvetica',
+    'Arial',
+    'Verdana';
 font-style: normal;
 font-weight: 700;
 font-size: 30px;
@@ -533,7 +536,10 @@ color: #131313;
     width: 210.29px;
 height: 147.14px;
 
-font-family: 'Montserrat';
+font-family: 'Montserrat',
+    'Helvetica',
+    'Arial',
+    'Verdana';
 font-style: normal;
 font-weight: 400;
 font-size: 16px;
@@ -566,17 +572,16 @@ color: #131313;
     
 }
 
-.third_section_zagolovok_box{
-    
-}
-
 .third_zagolovok_1{
     padding-top: 114px;
     margin: auto;
     width: 324.61px;
 height: 74px;
 
-font-family: 'Montserrat';
+font-family: 'Montserrat',
+    'Helvetica',
+    'Arial',
+    'Verdana';
 font-style: normal;
 font-weight: 800;
 font-size: 30px;
@@ -598,7 +603,10 @@ top: 1790px;
     width: 415.26px;
 height: 90px;
 
-font-family: 'Seymour One';
+font-family: 'Seymour One',
+    'Helvetica',
+    'Arial',
+    'Verdana';
 font-style: normal;
 font-weight: 400;
 font-size: 36px;
@@ -616,15 +624,14 @@ color: #FCFCFC;
     align-items: center;
 }
 
-.content_box_korovi{
-
-}
-
 .description_korova1{
     width: 508.23px;
 height: 111px;
 
-font-family: 'Montserrat';
+font-family: 'Montserrat',
+    'Helvetica',
+    'Arial',
+    'Verdana';
 font-style: normal;
 font-weight: 400;
 font-size: 16px;
@@ -642,7 +649,10 @@ padding-bottom: 8px;
     height: 107px;
 
     
-    font-family: 'Montserrat';
+    font-family: 'Montserrat',
+        'Helvetica',
+        'Arial',
+        'Verdana';
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
@@ -660,7 +670,10 @@ padding-bottom: 8px;
     height: 23px;
 
     
-    font-family: 'Montserrat';
+    font-family: 'Montserrat',
+        'Helvetica',
+        'Arial',
+        'Verdana';
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
@@ -689,7 +702,10 @@ height: 42px;
 
 .knopka_korovi_btn_text{
     width: 68px;
-    font-family: 'Montserrat';
+    font-family: 'Montserrat',
+        'Helvetica',
+        'Arial',
+        'Verdana';
 font-style: normal;
 font-weight: 600;
 font-size: 14px;
@@ -754,7 +770,10 @@ margin: 0 auto;
 }
 
 .text_knopki{
-    font-family: 'Montserrat';
+    font-family: 'Montserrat',
+        'Helvetica',
+        'Arial',
+        'Verdana';
 font-style: normal;
 font-weight: 600;
 font-size: 14px;
@@ -795,10 +814,6 @@ color: #131313;
     padding-bottom: 51px;
 }
 
-.slider-container{
-    margin: 0 auto;
-}
-
 .otziv_container{
     margin: auto;
     display: flex;
@@ -815,7 +830,10 @@ color: #131313;
     width: 640px;
 height: 52px;
 
-font-family: 'Montserrat';
+font-family: 'Montserrat',
+    'Helvetica',
+    'Arial',
+    'Verdana';
 font-style: normal;
 font-weight: 500;
 font-size: 16px;
@@ -839,7 +857,10 @@ color: #FCFCFC;
 .name_and_loc_text{
    
 
-font-family: 'Montserrat';
+font-family: 'Montserrat',
+    'Helvetica',
+    'Arial',
+    'Verdana';
 font-style: normal;
 font-weight: 500;
 font-size: 16px;
@@ -861,7 +882,6 @@ color: #131313;
     margin: auto;
     display: flex;
     flex-direction: row;
-    
 }
 .container_food_descr{
 
@@ -931,7 +951,10 @@ border-radius: 24px;
 height: 27.09px;
 
 
-font-family: 'Montserrat';
+font-family: 'Montserrat',
+    'Helvetica',
+    'Arial',
+    'Verdana';
 font-style: normal;
 font-weight: 500;
 font-size: 16px;
@@ -955,7 +978,10 @@ height: 27.09px;
     width: 65.64px;
 height: 29.03px;
 
-font-family: 'Montserrat';
+font-family: 'Montserrat',
+    'Helvetica',
+    'Arial',
+    'Verdana';
 font-style: normal;
 font-weight: 500;
 font-size: 16px;
@@ -971,7 +997,10 @@ color: #131313;
     width: 248.75px;
 height: 48.38px;
 
-font-family: 'Montserrat';
+font-family: 'Montserrat',
+    'Helvetica',
+    'Arial',
+    'Verdana';
 font-style: normal;
 font-weight: 500;
 font-size: 16px;
@@ -988,7 +1017,10 @@ color: #D6936D;
 width: 191.37px;
 height: 29.03px;
 
-font-family: 'Montserrat';
+font-family: 'Montserrat',
+    'Helvetica',
+    'Arial',
+    'Verdana';
 font-style: normal;
 font-weight: 500;
 font-size: 16px;
@@ -1004,7 +1036,10 @@ color: #131313;
     width: 193.6px;
     height: 29.03px;
     
-    font-family: 'Montserrat';
+    font-family: 'Montserrat',
+        'Helvetica',
+        'Arial',
+        'Verdana';
     font-style: normal;
     font-weight: 500;
     font-size: 16px;
@@ -1020,7 +1055,10 @@ color: #131313;
     width: 237.36px;
 height: 48.38px;
 
-font-family: 'Montserrat';
+font-family: 'Montserrat',
+    'Helvetica',
+    'Arial',
+    'Verdana';
 font-style: normal;
 font-weight: 500;
 font-size: 16px;
@@ -1075,7 +1113,10 @@ border-radius: 10px;
 width: 93.84762573242188px;
 
 
-    font-family: 'Montserrat';
+    font-family: 'Montserrat',
+        'Helvetica',
+        'Arial',
+        'Verdana';
 font-style: normal;
 font-weight: 600;
 font-size: 14px;
@@ -1091,7 +1132,10 @@ color: #131313;
    padding-right: 29px;
 
 
-    font-family: 'Montserrat';
+    font-family: 'Montserrat',
+        'Helvetica',
+        'Arial',
+        'Verdana';
 font-style: normal;
 font-weight: 600;
 font-size: 14px;
@@ -1137,7 +1181,10 @@ width: 322px;
 height: 84px;
 
 
-font-family: 'Seymour One';
+font-family: 'Seymour One',
+    'Helvetica',
+    'Arial',
+    'Verdana';
 font-style: normal;
 font-weight: 400;
 font-size: 20px;
@@ -1212,7 +1259,10 @@ margin-bottom: 16px;
 width: 53px;
 height: 18px;
 
-font-family: 'Montserrat';
+font-family: 'Montserrat',
+    'Helvetica',
+    'Arial',
+    'Verdana';
 font-style: normal;
 font-weight: 600;
 font-size: 14px;
@@ -1223,16 +1273,6 @@ color: #131313;
 }
 
 
-
-
-
-
-
-
-
-.footer{
-
-}
 
 .footer_contentbox1{
     display: flex;
@@ -1245,7 +1285,10 @@ color: #131313;
 .footer_contentbox1_text{
     width: 544.35px;
 height: 35.8px;
-font-family: 'Montserrat';
+font-family: 'Montserrat',
+    'Helvetica',
+    'Arial',
+    'Verdana';
 font-style: normal;
 font-weight: 400;
 font-size: 30px;
@@ -1267,7 +1310,10 @@ color: #FCFCFC;
     width: 536.79px;
 height: 68.69px;
 
-font-family: 'Montserrat';
+font-family: 'Montserrat',
+    'Helvetica',
+    'Arial',
+    'Verdana';
 font-style: normal;
 font-weight: 700;
 font-size: 58px;
@@ -1283,7 +1329,10 @@ color: #FCFCFC;
     width: 353px;
 height: 60px;
 
-font-family: 'Montserrat';
+font-family: 'Montserrat',
+    'Helvetica',
+    'Arial',
+    'Verdana';
 font-style: normal;
 font-weight: 700;
 font-size: 16px;
@@ -1327,7 +1376,10 @@ body{
     background: #84A278;
 }
 .title_text{
-    font-family: 'Seymour One';
+    font-family: 'Seymour One',
+        'Helvetica',
+        'Arial',
+        'Verdana';
 font-style: normal;
 font-weight: 400;
 font-size: 20px;
@@ -1344,7 +1396,10 @@ height: 158.86px;
 border-radius: 15.7808px;
 }
 .choise_text{
-    font-family: 'Montserrat';
+    font-family: 'Montserrat',
+        'Helvetica',
+        'Arial',
+        'Verdana';
 font-style: normal;
 font-weight: 700;
 font-size: 16px;
@@ -1424,7 +1479,10 @@ margin-bottom: 6px;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: 'Montserrat';
+    font-family: 'Montserrat',
+        'Helvetica',
+        'Arial',
+        'Verdana';
 font-style: normal;
 font-weight: 600;
 font-size: 12px;
@@ -1446,7 +1504,10 @@ margin-top: 15px;
     width: 311px;
 height: 21.29px;
 
-font-family: 'Montserrat';
+font-family: 'Montserrat',
+    'Helvetica',
+    'Arial',
+    'Verdana';
 font-style: normal;
 font-weight: 700;
 font-size: 12px;
@@ -1461,14 +1522,7 @@ padding-bottom: 15px;
 
 
 @media (min-width: 1025px){
-    .wrapper{
-       
-    }
-    /* .tochki, .moroj, .tarelkaMoroj{
-        display: none;
-    } */
-    
-    
+
     .third_zagolovok_2{
         position: static;
     }
@@ -1555,11 +1609,9 @@ width: 705px;
             height: 528px;
             width: 224px;
             padding: 0;
-        }
-
-        .container_food_descr, .container_food_descr1, .container_food_descr2{
             margin-left: 0;
         }
+
         .container_food_descr, .container_food_descr1{
             margin-right: 20px;
             
@@ -1568,6 +1620,7 @@ width: 705px;
 
         .wrapper994{
             justify-content: center;
+            width: 768px;
         }
 
         .second_par{
@@ -1578,9 +1631,6 @@ width: 159px;
 
         .gorizont{
             width: 176px;
-        }
-        .wrapper994{
-            width: 768px;
         }
 
         .belaya_polosa{
@@ -1605,6 +1655,7 @@ width: 278px;
 
         .wrapper_knopok_posle_korovi{
             max-width: 679px;
+            padding-top: 37px;
         }
 
         .knopka_poske_korovi{
@@ -1641,15 +1692,47 @@ width: 334.6541442871094px;
         }
 
         .product_name{
+            margin: 0 auto;
+            padding-top: 107px;
+            font-family: 'Montserrat',
+                'Helvetica',
+                'Arial',
+                'Verdana';
+            font-style: normal;
+            font-weight: 700;
+            font-size: 22px;
+            line-height: 27px;
+        
+        
+            text-align: center;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        
+            color: #131313;
             height: 26.937063217163086px;
-width: 139px;
+            width: 139px;
 
         }
 
         .product_name1{
+            padding-top: 107px;
+            font-family: 'Montserrat',
+                'Helvetica',
+                'Arial',
+                'Verdana';
+            font-style: normal;
+            font-weight: 700;
+            font-size: 22px;
+            line-height: 27px;
+        
+        
+            text-align: center;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        
+            color: #131313; 
             height: 26.937063217163086px;
-width: 146px;
-
+            width: 146px;
         }
 
         .tochki{
@@ -1659,8 +1742,8 @@ width: 146px;
         .tarelkaMoroj{
             left: 32px;
             height: 152px;
-width: 152px;
-
+            top: 250px;     
+            width: 152px;
         }
         .container_for_lorem_and_btn{
             left: 217px;
@@ -1690,7 +1773,10 @@ width: 152px;
         .after_header_zagolovok{
             height: 74px;
 width: 181px;
-font-family: 'Seymour One';
+font-family: 'Seymour One',
+    'Helvetica',
+    'Arial',
+    'Verdana';
 font-style: normal;
 font-weight: 400;
 font-size: 18px;
@@ -1704,7 +1790,10 @@ color: #FCFCFC;
             padding-top: 0;
         }
         .quantity_of_cafes{
-            font-family: 'Montserrat';
+            font-family: 'Montserrat',
+                'Helvetica',
+                'Arial',
+                'Verdana';
 font-style: normal;
 font-weight: 900;
 font-size: 28px;
@@ -1717,7 +1806,10 @@ color: #131313;
         }
 
         .name_of_cafes{
-            font-family: 'Montserrat';
+            font-family: 'Montserrat',
+                'Helvetica',
+                'Arial',
+                'Verdana';
 font-style: normal;
 font-weight: 400;
 font-size: 8px;
@@ -1738,56 +1830,24 @@ color: #FCFCFC
             margin: 0 auto;
             width: 704px;
         }
-        .tarelkaMoroj{
-            top: 250px;
-        }
-        .product_description{
-         
-width: 172px;
-height: 143.93px;
+        .product_description{  
+            width: 172px;
+            height: 143.93px;
 
-font-family: 'Montserrat';
-font-style: normal;
-font-weight: 400;
-font-size: 14px;
-line-height: 176%;
-
-
-text-align: center;
-letter-spacing: 0.04em;
-
-color: #131313;
-        }
-        .product_name{
-            margin: 0 auto;
-            padding-top: 107px;
-            font-family: 'Montserrat';
-font-style: normal;
-font-weight: 700;
-font-size: 22px;
-line-height: 27px;
+            font-family: 'Montserrat',
+                'Helvetica',
+                'Arial',
+                'Verdana';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 176%;
 
 
-text-align: center;
-letter-spacing: 0.04em;
-text-transform: uppercase;
+            text-align: center;
+            letter-spacing: 0.04em;
 
-color: #131313;
-        }
-        .product_name1{
-            padding-top: 107px;
-            font-family: 'Montserrat';
-font-style: normal;
-font-weight: 700;
-font-size: 22px;
-line-height: 27px;
-
-
-text-align: center;
-letter-spacing: 0.04em;
-text-transform: uppercase;
-
-color: #131313
+            color: #131313;
         }
         .container_for_product{
             margin-bottom: 0;
@@ -1803,9 +1863,6 @@ color: #131313
         .knopka_korovi_btn_text{
             width: 80px;
             padding-right: 9px;
-        }
-        .wrapper_knopok_posle_korovi{
-            padding-top: 37px;
         }
         .first_img_row{
             position: relative;
@@ -1870,6 +1927,8 @@ color: #131313
         }
         .header_container{
             width: auto;
+            padding-top: 12px;
+            padding-left: 22px;
         }
 
         .container_for_productS{
@@ -1878,6 +1937,8 @@ color: #131313
 
         .third_zagolovok_2{
             width: 200px;
+            padding-bottom: 32px;
+            height: 118px;
         }
 
         .block_s_korovoi{
@@ -1910,9 +1971,6 @@ color: #131313
             width: 196px;
             height: 94px;
         }
-        .container_belaya_polosa{
-            
-        }
         .belaya_polosa{
             width: 320px;
         }
@@ -1923,7 +1981,10 @@ color: #131313
 
         .description_korova1, .description_korova2, .description_korova3{
             width: 220px;
-            font-family: 'Montserrat';
+            font-family: 'Montserrat',
+                'Helvetica',
+                'Arial',
+                'Verdana';
 font-style: normal;
 font-weight: 400;
 font-size: 12px;
@@ -1940,8 +2001,13 @@ color: #FCFCFC;
             height: 304px;
         }
         .third_zagolovok_1{
+            padding-top: 61px;
+            padding-bottom: 12px;
             width: 210px;
-            font-family: 'Montserrat';
+            font-family: 'Montserrat',
+                'Helvetica',
+                'Arial',
+                'Verdana';
 font-style: normal;
 font-weight: 700;
 font-size: 18px;
@@ -1954,7 +2020,10 @@ color: #FCFCFC;
 
         .products_text{
             width: 270px;
-            font-family: 'Seymour One';
+            font-family: 'Seymour One',
+                'Helvetica',
+                'Arial',
+                'Verdana';
 font-style: normal;
 font-weight: 400;
 font-size: 30px;
@@ -1969,8 +2038,11 @@ color: #131313;
         }
 
         .a100proc{
-            width: 150xpx;
-            font-family: 'Montserrat';
+            width: 150px;
+            font-family: 'Montserrat',
+                'Helvetica',
+                'Arial',
+                'Verdana';
 font-style: normal;
 font-weight: 800;
 font-size: 18px;
@@ -1995,7 +2067,10 @@ color: #131313;
             height: 24px;
         }
         .products_btn_text{
-            font-family: 'Montserrat';
+            font-family: 'Montserrat',
+                'Helvetica',
+                'Arial',
+                'Verdana';
 font-style: normal;
 font-weight: 600;
 font-size: 8px;
@@ -2008,7 +2083,10 @@ color: #131313;
         }
         .button_section_link{
             
-            font-family: 'Montserrat';
+            font-family: 'Montserrat',
+                'Helvetica',
+                'Arial',
+                'Verdana';
 font-style: normal;
 font-weight: 600;
 font-size: 8px;
@@ -2019,10 +2097,6 @@ text-align: center;
 text-decoration-line: underline;
 
 color: #F8D24E;
-        }
-        .header_container{
-            padding-top: 12px;
-            padding-left: 22px;
         }
         .header_btn{
             display: none;
@@ -2040,17 +2114,12 @@ color: #F8D24E;
         .tr{
             right: 48px;
         }
-        .third_zagolovok_1{
-            padding-top: 61px;
-            padding-bottom: 12px;
-        }
-        .third_zagolovok_2{
-            padding-bottom: 32px;
-            height: 118px;
-        }
         .description_korova1{
             height: 128px;
-            font-family: 'Montserrat';
+            font-family: 'Montserrat',
+                'Helvetica',
+                'Arial',
+                'Verdana';
 font-style: normal;
 font-weight: 400;
 font-size: 12px;
@@ -2064,7 +2133,10 @@ color: #FCFCFC;
         }
         .description_korova2{
             height: 135px;
-            font-family: 'Montserrat';
+            font-family: 'Montserrat',
+                'Helvetica',
+                'Arial',
+                'Verdana';
 font-style: normal;
 font-weight: 400;
 font-size: 12px;
@@ -2086,7 +2158,10 @@ margin-bottom: 40px;
         }
         .text_knopki{
             
-            font-family: 'Montserrat';
+            font-family: 'Montserrat',
+                'Helvetica',
+                'Arial',
+                'Verdana';
 font-style: normal;
 font-weight: 600;
 font-size: 8px;
@@ -2131,7 +2206,10 @@ color: #131313;
        }
 
        .otziv_text{
-        font-family: 'Montserrat';
+        font-family: 'Montserrat',
+            'Helvetica',
+            'Arial',
+            'Verdana';
 font-style: normal;
 font-weight: 400;
 font-size: 12px;
@@ -2147,7 +2225,10 @@ color: #FCFCFC;
         width: 190px;
        }
        .name_and_loc_text{
-        font-family: 'Montserrat';
+        font-family: 'Montserrat',
+            'Helvetica',
+            'Arial',
+            'Verdana';
 font-style: normal;
 font-weight: 500;
 font-size: 20px;
@@ -2164,7 +2245,10 @@ color: #131313
 
        .footer_contentbox1_text{
         width: 232px;
-        font-family: 'Montserrat';
+        font-family: 'Montserrat',
+            'Helvetica',
+            'Arial',
+            'Verdana';
 font-style: normal;
 font-weight: 700;
 font-size: 18px;
@@ -2176,7 +2260,10 @@ color: #FCFCFC;
 
        .footer_contentbox2_text{
         width: 200px;
-        font-family: 'Montserrat';
+        font-family: 'Montserrat',
+            'Helvetica',
+            'Arial',
+            'Verdana';
 font-style: normal;
 font-weight: 700;
 font-size: 34px;
@@ -2194,7 +2281,10 @@ color: #FCFCFC;
 
        .final_text{
         width: 280px;
-        font-family: 'Montserrat';
+        font-family: 'Montserrat',
+            'Helvetica',
+            'Arial',
+            'Verdana';
 font-style: normal;
 font-weight: 700;
 font-size: 14px;
@@ -2208,14 +2298,10 @@ padding-bottom: 24px;
        }
 
        .burger{
-        display: block;
+            display: block;
+            padding-right: 26px;
+            background: rgba(132, 161, 120, 1);
        }
-       .burger{
-        padding-right: 26px;
-       background: rgba(132, 161, 120, 1);
-        
-       }
-
 
        .buy{
         width: 280px;

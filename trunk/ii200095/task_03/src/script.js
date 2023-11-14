@@ -52,8 +52,8 @@ slider.addEventListener('touchend', handleTouchEnd);
 function handleTouchStart(event) {
   if (isMobile) {
     const touch = event.touches[0];
-    touchStartX = touch.clientX;
-    touchMoveX = touchStartX;
+    let touchStartX = touch.clientX;
+    let touchMoveX = touchStartX;
   }
 }
 
