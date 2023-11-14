@@ -53,14 +53,12 @@ function handleTouchStart(event) {
   if (isMobile) {
     const touch = event.touches[0];
     let touchStartX = touch.clientX;
-    let touchMoveX = touchStartX;
   }
 }
 
 function handleTouchMove(event) {
   if (isMobile) {
     const touch = event.touches[0];
-    touchMoveX = touch.clientX;
   }
 }
 
