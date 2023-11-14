@@ -8,7 +8,7 @@
 
 
 @font-face {
-    font-family: 'Seymour One', sans-serif;
+    font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
     src: local('Seymour One');
     src: url('./fonts/SeymourOne-Regular.ttf') format('truetype');
 }
@@ -55,7 +55,7 @@
 
 
 .first_header_link, .second_header_link, .third_header_link, .fourth_header_link{
-    font-family: 'Montserrat', 'Helvetica', 'Arial', 'Verdana';
+    font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 16px;
@@ -152,7 +152,7 @@ border-radius: 10px;
 height: 18px;
 
 
-font-family: 'Montserrat', 'Helvetica', 'Arial', 'Verdana';
+font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
 font-style: normal;
 font-weight: 600;
 font-size: 14px;
@@ -172,7 +172,7 @@ color: #131313;
     width: 404.05px;
 height: 144px;
 
-font-family:'Seymour One', 'Helvetica', 'Arial', 'Verdana';
+font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
 font-style: normal;
 font-weight: 400;
 font-size: 38px;
@@ -194,10 +194,7 @@ color: #FCFCFC;
 }
 
 .quantity_of_cafes{
-    font-family: 'Montserrat',
-        'Helvetica',
-        'Arial',
-        'Verdana';
+    font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
 font-style: normal;
 font-weight: 900;
 font-size: 46px;
@@ -212,10 +209,7 @@ color: #131313;
 }
 
 .name_of_cafes{
-    font-family: 'Montserrat',
-        'Helvetica',
-        'Arial',
-        'Verdana';
+    font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
 font-style: normal;
 font-weight: 400;
 font-size: 14px;
@@ -249,10 +243,7 @@ color: #FCFCFC;
     
 
     text-align: center;
-    font-family: 'Montserrat',
-        'Helvetica',
-        'Arial',
-        'Verdana';
+    font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
     font-style: normal;
     font-weight: 600;
     font-size: 14px;
@@ -274,10 +265,7 @@ width: 111px;
 height: 17px;
 
 
-font-family: 'Montserrat',
-    'Helvetica',
-    'Arial',
-    'Verdana';
+font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
 font-style: normal;
 font-weight: 600;
 font-size: 14px;
@@ -326,10 +314,7 @@ top: 429px;
 }
 
 .lorem_text{
-font-family: 'Montserrat',
-    'Helvetica',
-    'Arial',
-    'Verdana';
+font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
 font-style: normal;
 font-weight: 400;
 font-size: 14px;
@@ -386,10 +371,7 @@ color: #FCFCFC;
     width: 284.73px;
 height: 37.04px;
 
-font-family: 'Montserrat',
-    'Helvetica',
-    'Arial',
-    'Verdana';
+font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
 font-style: normal;
 font-weight: 800;
 font-size: 30px;
@@ -406,10 +388,7 @@ color: #131313;
     width: 334.2px;
 height: 45.04px;
 
-font-family: 'Seymour One',
-    'Helvetica',
-    'Arial',
-    'Verdana';
+font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
 font-style: normal;
 font-weight: 400;
 font-size: 36px;
@@ -458,10 +437,7 @@ width: 169.09px;
 height: 37.04px;
 
 
-font-family: 'Montserrat',
-    'Helvetica',
-    'Arial',
-    'Verdana';
+font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
 font-style: normal;
 font-weight: 700;
 font-size: 30px;
@@ -514,10 +490,7 @@ border-radius: 24px;
     width: 315.87px;
 height: 37.04px;
 
-font-family: 'Montserrat',
-    'Helvetica',
-    'Arial',
-    'Verdana';
+font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
 font-style: normal;
 font-weight: 700;
 font-size: 30px;
@@ -536,10 +509,7 @@ color: #131313;
     width: 210.29px;
 height: 147.14px;
 
-font-family: 'Montserrat',
-    'Helvetica',
-    'Arial',
-    'Verdana';
+font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
 font-style: normal;
 font-weight: 400;
 font-size: 16px;
@@ -578,10 +548,7 @@ color: #131313;
     width: 324.61px;
 height: 74px;
 
-font-family: 'Montserrat',
-    'Helvetica',
-    'Arial',
-    'Verdana';
+font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
 font-style: normal;
 font-weight: 800;
 font-size: 30px;
@@ -603,10 +570,7 @@ top: 1790px;
     width: 415.26px;
 height: 90px;
 
-font-family: 'Seymour One',
-    'Helvetica',
-    'Arial',
-    'Verdana';
+font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
 font-style: normal;
 font-weight: 400;
 font-size: 36px;
@@ -628,10 +592,7 @@ color: #FCFCFC;
     width: 508.23px;
 height: 111px;
 
-font-family: 'Montserrat',
-    'Helvetica',
-    'Arial',
-    'Verdana';
+font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
 font-style: normal;
 font-weight: 400;
 font-size: 16px;
@@ -649,10 +610,7 @@ padding-bottom: 8px;
     height: 107px;
 
     
-    font-family: 'Montserrat',
-        'Helvetica',
-        'Arial',
-        'Verdana';
+    font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
@@ -670,10 +628,7 @@ padding-bottom: 8px;
     height: 23px;
 
     
-    font-family: 'Montserrat',
-        'Helvetica',
-        'Arial',
-        'Verdana';
+font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
@@ -702,10 +657,7 @@ height: 42px;
 
 .knopka_korovi_btn_text{
     width: 68px;
-    font-family: 'Montserrat',
-        'Helvetica',
-        'Arial',
-        'Verdana';
+    font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
 font-style: normal;
 font-weight: 600;
 font-size: 14px;
@@ -770,10 +722,7 @@ margin: 0 auto;
 }
 
 .text_knopki{
-    font-family: 'Montserrat',
-        'Helvetica',
-        'Arial',
-        'Verdana';
+    font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
 font-style: normal;
 font-weight: 600;
 font-size: 14px;
@@ -855,12 +804,7 @@ color: #FCFCFC;
 }
 
 .name_and_loc_text{
-   
-
-font-family: 'Montserrat',
-    'Helvetica',
-    'Arial',
-    'Verdana';
+font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
 font-style: normal;
 font-weight: 500;
 font-size: 16px;
@@ -951,10 +895,7 @@ border-radius: 24px;
 height: 27.09px;
 
 
-font-family: 'Montserrat',
-    'Helvetica',
-    'Arial',
-    'Verdana';
+font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
 font-style: normal;
 font-weight: 500;
 font-size: 16px;
@@ -978,10 +919,7 @@ height: 27.09px;
     width: 65.64px;
 height: 29.03px;
 
-font-family: 'Montserrat',
-    'Helvetica',
-    'Arial',
-    'Verdana';
+font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
 font-style: normal;
 font-weight: 500;
 font-size: 16px;
@@ -997,10 +935,7 @@ color: #131313;
     width: 248.75px;
 height: 48.38px;
 
-font-family: 'Montserrat',
-    'Helvetica',
-    'Arial',
-    'Verdana';
+font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
 font-style: normal;
 font-weight: 500;
 font-size: 16px;
@@ -1017,10 +952,7 @@ color: #D6936D;
 width: 191.37px;
 height: 29.03px;
 
-font-family: 'Montserrat',
-    'Helvetica',
-    'Arial',
-    'Verdana';
+font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
 font-style: normal;
 font-weight: 500;
 font-size: 16px;
@@ -1036,10 +968,7 @@ color: #131313;
     width: 193.6px;
     height: 29.03px;
     
-    font-family: 'Montserrat',
-        'Helvetica',
-        'Arial',
-        'Verdana';
+    font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 16px;
@@ -1055,10 +984,7 @@ color: #131313;
     width: 237.36px;
 height: 48.38px;
 
-font-family: 'Montserrat',
-    'Helvetica',
-    'Arial',
-    'Verdana';
+font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
 font-style: normal;
 font-weight: 500;
 font-size: 16px;
@@ -1113,10 +1039,7 @@ border-radius: 10px;
 width: 93.84762573242188px;
 
 
-    font-family: 'Montserrat',
-        'Helvetica',
-        'Arial',
-        'Verdana';
+    font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
 font-style: normal;
 font-weight: 600;
 font-size: 14px;
@@ -1132,10 +1055,7 @@ color: #131313;
    padding-right: 29px;
 
 
-    font-family: 'Montserrat',
-        'Helvetica',
-        'Arial',
-        'Verdana';
+    font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
 font-style: normal;
 font-weight: 600;
 font-size: 14px;
@@ -1181,10 +1101,7 @@ width: 322px;
 height: 84px;
 
 
-font-family: 'Seymour One',
-    'Helvetica',
-    'Arial',
-    'Verdana';
+font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
 font-style: normal;
 font-weight: 400;
 font-size: 20px;
@@ -1259,10 +1176,7 @@ margin-bottom: 16px;
 width: 53px;
 height: 18px;
 
-font-family: 'Montserrat',
-    'Helvetica',
-    'Arial',
-    'Verdana';
+font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
 font-style: normal;
 font-weight: 600;
 font-size: 14px;
@@ -1285,10 +1199,7 @@ color: #131313;
 .footer_contentbox1_text{
     width: 544.35px;
 height: 35.8px;
-font-family: 'Montserrat',
-    'Helvetica',
-    'Arial',
-    'Verdana';
+font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
 font-style: normal;
 font-weight: 400;
 font-size: 30px;
@@ -1310,10 +1221,7 @@ color: #FCFCFC;
     width: 536.79px;
 height: 68.69px;
 
-font-family: 'Montserrat',
-    'Helvetica',
-    'Arial',
-    'Verdana';
+font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
 font-style: normal;
 font-weight: 700;
 font-size: 58px;
@@ -1329,10 +1237,7 @@ color: #FCFCFC;
     width: 353px;
 height: 60px;
 
-font-family: 'Montserrat',
-    'Helvetica',
-    'Arial',
-    'Verdana';
+font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
 font-style: normal;
 font-weight: 700;
 font-size: 16px;
@@ -1376,10 +1281,7 @@ body{
     background: #84A278;
 }
 .title_text{
-    font-family: 'Seymour One',
-        'Helvetica',
-        'Arial',
-        'Verdana';
+    font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
 font-style: normal;
 font-weight: 400;
 font-size: 20px;
@@ -1396,10 +1298,7 @@ height: 158.86px;
 border-radius: 15.7808px;
 }
 .choise_text{
-    font-family: 'Montserrat',
-        'Helvetica',
-        'Arial',
-        'Verdana';
+    font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
 font-style: normal;
 font-weight: 700;
 font-size: 16px;
@@ -1479,10 +1378,7 @@ margin-bottom: 6px;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: 'Montserrat',
-        'Helvetica',
-        'Arial',
-        'Verdana';
+    font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
 font-style: normal;
 font-weight: 600;
 font-size: 12px;
@@ -1504,10 +1400,7 @@ margin-top: 15px;
     width: 311px;
 height: 21.29px;
 
-font-family: 'Montserrat',
-    'Helvetica',
-    'Arial',
-    'Verdana';
+font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
 font-style: normal;
 font-weight: 700;
 font-size: 12px;
@@ -1694,10 +1587,7 @@ width: 334.6541442871094px;
         .product_name{
             margin: 0 auto;
             padding-top: 107px;
-            font-family: 'Montserrat',
-                'Helvetica',
-                'Arial',
-                'Verdana';
+            font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
             font-style: normal;
             font-weight: 700;
             font-size: 22px;
@@ -1716,10 +1606,7 @@ width: 334.6541442871094px;
 
         .product_name1{
             padding-top: 107px;
-            font-family: 'Montserrat',
-                'Helvetica',
-                'Arial',
-                'Verdana';
+            font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
             font-style: normal;
             font-weight: 700;
             font-size: 22px;
@@ -1773,10 +1660,7 @@ width: 334.6541442871094px;
         .after_header_zagolovok{
             height: 74px;
 width: 181px;
-font-family: 'Seymour One',
-    'Helvetica',
-    'Arial',
-    'Verdana';
+font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
 font-style: normal;
 font-weight: 400;
 font-size: 18px;
@@ -1790,10 +1674,7 @@ color: #FCFCFC;
             padding-top: 0;
         }
         .quantity_of_cafes{
-            font-family: 'Montserrat',
-                'Helvetica',
-                'Arial',
-                'Verdana';
+            font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
 font-style: normal;
 font-weight: 900;
 font-size: 28px;
@@ -1806,10 +1687,7 @@ color: #131313;
         }
 
         .name_of_cafes{
-            font-family: 'Montserrat',
-                'Helvetica',
-                'Arial',
-                'Verdana';
+            font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
 font-style: normal;
 font-weight: 400;
 font-size: 8px;
@@ -1834,10 +1712,7 @@ color: #FCFCFC
             width: 172px;
             height: 143.93px;
 
-            font-family: 'Montserrat',
-                'Helvetica',
-                'Arial',
-                'Verdana';
+            font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
             font-style: normal;
             font-weight: 400;
             font-size: 14px;
@@ -1981,10 +1856,7 @@ color: #FCFCFC
 
         .description_korova1, .description_korova2, .description_korova3{
             width: 220px;
-            font-family: 'Montserrat',
-                'Helvetica',
-                'Arial',
-                'Verdana';
+            font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
 font-style: normal;
 font-weight: 400;
 font-size: 12px;
@@ -2004,10 +1876,7 @@ color: #FCFCFC;
             padding-top: 61px;
             padding-bottom: 12px;
             width: 210px;
-            font-family: 'Montserrat',
-                'Helvetica',
-                'Arial',
-                'Verdana';
+            font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
 font-style: normal;
 font-weight: 700;
 font-size: 18px;
@@ -2020,10 +1889,7 @@ color: #FCFCFC;
 
         .products_text{
             width: 270px;
-            font-family: 'Seymour One',
-                'Helvetica',
-                'Arial',
-                'Verdana';
+            font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
 font-style: normal;
 font-weight: 400;
 font-size: 30px;
@@ -2039,10 +1905,7 @@ color: #131313;
 
         .a100proc{
             width: 150px;
-            font-family: 'Montserrat',
-                'Helvetica',
-                'Arial',
-                'Verdana';
+            font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
 font-style: normal;
 font-weight: 800;
 font-size: 18px;
@@ -2067,10 +1930,7 @@ color: #131313;
             height: 24px;
         }
         .products_btn_text{
-            font-family: 'Montserrat',
-                'Helvetica',
-                'Arial',
-                'Verdana';
+            font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
 font-style: normal;
 font-weight: 600;
 font-size: 8px;
@@ -2083,10 +1943,7 @@ color: #131313;
         }
         .button_section_link{
             
-            font-family: 'Montserrat',
-                'Helvetica',
-                'Arial',
-                'Verdana';
+            font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
 font-style: normal;
 font-weight: 600;
 font-size: 8px;
@@ -2116,10 +1973,7 @@ color: #F8D24E;
         }
         .description_korova1{
             height: 128px;
-            font-family: 'Montserrat',
-                'Helvetica',
-                'Arial',
-                'Verdana';
+            font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
 font-style: normal;
 font-weight: 400;
 font-size: 12px;
@@ -2133,10 +1987,7 @@ color: #FCFCFC;
         }
         .description_korova2{
             height: 135px;
-            font-family: 'Montserrat',
-                'Helvetica',
-                'Arial',
-                'Verdana';
+            font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
 font-style: normal;
 font-weight: 400;
 font-size: 12px;
@@ -2158,10 +2009,7 @@ margin-bottom: 40px;
         }
         .text_knopki{
             
-            font-family: 'Montserrat',
-                'Helvetica',
-                'Arial',
-                'Verdana';
+        font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
 font-style: normal;
 font-weight: 600;
 font-size: 8px;
@@ -2206,10 +2054,7 @@ color: #131313;
        }
 
        .otziv_text{
-        font-family: 'Montserrat',
-            'Helvetica',
-            'Arial',
-            'Verdana';
+        font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
 font-style: normal;
 font-weight: 400;
 font-size: 12px;
@@ -2225,10 +2070,7 @@ color: #FCFCFC;
         width: 190px;
        }
        .name_and_loc_text{
-        font-family: 'Montserrat',
-            'Helvetica',
-            'Arial',
-            'Verdana';
+        font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
 font-style: normal;
 font-weight: 500;
 font-size: 20px;
@@ -2245,10 +2087,7 @@ color: #131313
 
        .footer_contentbox1_text{
         width: 232px;
-        font-family: 'Montserrat',
-            'Helvetica',
-            'Arial',
-            'Verdana';
+        font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
 font-style: normal;
 font-weight: 700;
 font-size: 18px;
@@ -2260,10 +2099,7 @@ color: #FCFCFC;
 
        .footer_contentbox2_text{
         width: 200px;
-        font-family: 'Montserrat',
-            'Helvetica',
-            'Arial',
-            'Verdana';
+        font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
 font-style: normal;
 font-weight: 700;
 font-size: 34px;
