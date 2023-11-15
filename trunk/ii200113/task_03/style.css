@@ -55,8 +55,7 @@
     width: 242px;
     height: 64px;
     background: #333;
-    display: flex;
-    flex-direction: row;
+    
 }
 .text3{
     width: 116px;
@@ -273,8 +272,6 @@ text-transform: uppercase;
     width: 222px;
     height: 55px;
     background: #333;
-    display: flex;
-    flex-direction: row;
 }
 .frame4{
     margin-top: 61px;
@@ -601,8 +598,6 @@ flex-shrink: 0;
         width: 142px;
         height: 44px;
         background: #333;
-        display: flex;
-        flex-direction: row;
         border-radius: 30px;
     }
     .text3{
@@ -831,8 +826,6 @@ flex-shrink: 0;
         width: 160px;
         height: 50px;
         background: #333;
-        display: flex;
-        flex-direction: row;
     }
     .frame4{
         margin-left: 20;

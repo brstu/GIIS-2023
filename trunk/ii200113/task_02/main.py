@@ -24,76 +24,66 @@ Sortirovka_button = tk.Button(mainWindom, text="Sortirovka")
 
 
 def deletedata_function():
-    name = Entrylabel_forname.get()
-    conn = sqlite3.connect(db_connection_str)
-    cursor = conn.cursor()
-    cursor.execute("DELETE FROM mytable WHERE name=?", (name,))
-    conn.commit()
-    conn.close()
+    someName = Entrylabel_forname.get()
+    connection = sqlite3.connect(db_connection_str)
+    cursor = connection.cursor()
+    cursor.execute("DELETE FROM mytable WHERE name=?", (someName,))
+    connection.commit()
+    connection.close()
 
 
 def updatedata_function():
-    name = Entrylabel_forname.get()
-    new_age = Entry_fordate.get()
-
-    # Создаем подключение к базе данных
-    conn = sqlite3.connect(db_connection_str)
-    cursor = conn.cursor()
-
-    cursor.execute("UPDATE mytable SET date=? WHERE name=?", (new_age, name))
-    conn.commit()
-    conn.close()
+    someName = Entrylabel_forname.get()
+    novaya_data = Entry_fordate.get()
+    connection = sqlite3.connect(db_connection_str)
+    cursor = connection.cursor()
+    cursor.execute("UPDATE mytable SET date=? WHERE name=?", (novaya_data, someName))
+    connection.commit()
+    connection.close()
 
 
 def showdata_function():
     Listbox_fornames.delete(0, tk.END)
     Listbox_fordates.delete(0, tk.END)
-    conn = sqlite3.connect(db_connection_str)
-    cursor = conn.cursor()
-
-    # выполняем запрос и получаем результаты
+    connection = sqlite3.connect(db_connection_str)
+    cursor = connection.cursor()
     cursor.execute("SELECT * FROM mytable")
     result = cursor.fetchall()
-
     for name in result:
         Listbox_fornames.insert(tk.END, name[0])
         Listbox_fordates.insert(tk.END, name[1])
+    connection.close()
 
 
-def datasave_function(name, date):
-
-    # Запись данных в БД
-    conn = sqlite3.connect(db_connection_str)
-    cursor = conn.cursor()
-    cursor.execute("INSERT INTO mytable(name, date) VALUES (?, ?)", (name, date))
-    conn.commit()
-    conn.close()
+def datasave_function(somename, somedate):
+    connection = sqlite3.connect(db_connection_str)
+    cursor = connection.cursor()
+    cursor.execute("INSERT INTO mytable(name, date) VALUES (?, ?)", (somename, somedate))
+    connection.commit()
+    connection.close()
 
 
 def dvoinoe_najatie(event):
-    selected_item = Listbox_fornames.get(Listbox_fornames.curselection())
+    vibranniu_element = Listbox_fornames.get(Listbox_fornames.curselection())
     Entrylabel_forname.delete(0, tk.END)
-    Entrylabel_forname.insert(tk.END, selected_item)
+    Entrylabel_forname.insert(tk.END, vibranniu_element)
 
 
 def sortirovka():
-    conn = sqlite3.connect(db_connection_str)
-    cursor = conn.cursor()
-
-
+    connection = sqlite3.connect(db_connection_str)
+    cursor = connection.cursor()
     names = list(Listbox_fornames.get(0, tk.END))
-
     names.sort()
-
     Listbox_fornames.delete(0, tk.END)
     Listbox_fordates.delete(0, tk.END)
-    for name in names:
-        Listbox_fornames.insert(tk.END, name)
+    for imya in names:
+        Listbox_fornames.insert(tk.END, imya)
 
-    for name in names:
-        cursor.execute("SELECT date FROM mytable WHERE name=?", (name, ))
+    for imya in names:
+        cursor.execute("SELECT date FROM mytable WHERE name=?", (imya, ))
         result = cursor.fetchall()
         Listbox_fordates.insert(tk.END, result[0])
+    connection.close()
 
 
 Save_button.config(command=lambda: datasave_function(Entrylabel_forname.get(), Entry_fordate.get()), padx=10, pady=10)
