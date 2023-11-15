@@ -13,7 +13,11 @@ class GlavnoeOkno(QDialog):
         self.setWindowTitle("Пороговый филтр, лаба 1")
         self.show()
 
+<<<<<<< HEAD
         self.image = cv2.imread("image/kartinka.png")
+=======
+        self.image = cv2.imread("image/kartinka.jpg")
+>>>>>>> 324f7f90673bbd9be7a30b094ad258e8126aeb9f
         self.textshum = self.findChild(QLabel, "shum_text")
         self.textFilter = self.findChild(QLabel, "threshold_text")
         self.slidershum = self.findChild(QSlider, "shum_slider")
