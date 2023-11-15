@@ -24,20 +24,20 @@ Sortirovka_button = tk.Button(mainWindom, text="Sortirovka")
 
 
 def deletedata_function():
-    someName = Entrylabel_forname.get()
+    somename = Entrylabel_forname.get()
     connection = sqlite3.connect(db_connection_str)
     cursor = connection.cursor()
-    cursor.execute("DELETE FROM mytable WHERE name=?", (someName,))
+    cursor.execute("DELETE FROM mytable WHERE name=?", (somename,))
     connection.commit()
     connection.close()
 
 
 def updatedata_function():
-    someName = Entrylabel_forname.get()
+    somename = Entrylabel_forname.get()
     novaya_data = Entry_fordate.get()
     connection = sqlite3.connect(db_connection_str)
     cursor = connection.cursor()
-    cursor.execute("UPDATE mytable SET date=? WHERE name=?", (novaya_data, someName))
+    cursor.execute("UPDATE mytable SET date=? WHERE name=?", (novaya_data, somename))
     connection.commit()
     connection.close()
 
