@@ -14,9 +14,12 @@ $(document).ready(function(){
 	let speed = 2;
 
 	function changeColor(){
-		let r = Math.floor(Math.random()*255);
-		let g = Math.floor(Math.random()*255);
-		let b = Math.floor(Math.random()*255);
+		let array = new Uint8Array(3);
+		window.crypto.getRandomValues(array);
+
+		let r = array[0];
+		let g = array[1];
+		let b = array[2];
 
 		square.css({
 			background:"rgb(" + r + "," + g + ","+ b + ")"
