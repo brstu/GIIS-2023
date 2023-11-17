@@ -38,14 +38,14 @@
     background: #84A278;
 }
 
-.header_container{
+.header-container{
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
 }
 
-.header_links{
+.header-links{
     width: 512px;
     display: flex;
     justify-content: space-between;
@@ -54,7 +54,7 @@
 
 
 
-.first_header_link, .second_header_link, .third_header_link, .fourth_header_link{
+.first-header-link, .second-header-link, .third-header-link, .fourth-header-link{
     font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
     font-style: normal;
     font-weight: 700;
@@ -63,21 +63,20 @@
     text-decoration: none;
 }
 
-.first_header_link:hover, .second_header_link:hover, .third_header_link:hover, .fourth_header_link:hover{
+.first-header-link:hover, .second-header-link:hover, .third-header-link:hover, .fourth-header-link:hover{
     color: #F8D24E;
     transition: 0.5s;
 }
 
-.header_btn{
+.header-btn{
     width: 152px;
 height: 42px;
 border: 0;
-
 background: #F8D24E;
 border-radius: 10px;
 }
 
-.header_btnburg{
+.header-btnburg{
     width: 152px;
 height: 42px;
 border: 0;
@@ -106,7 +105,6 @@ border-radius: 10px;
   
   .slide {
     flex: 0 0 100%;
-    /* Дополнительные стили для слайдов */
   }
   
 .dasha, .dima, .diana, .andrey{
@@ -114,7 +112,7 @@ border-radius: 10px;
 }
 
 
-.slider_buttons{
+.slider-buttons{
     display: flex;
     justify-content: space-around;
 }
@@ -124,13 +122,13 @@ border-radius: 10px;
 }
 
 
-.header_btn_container{
+.header-btn-container{
     justify-content: center;
     display: flex;
     flex-direction: row;
 }
 
-.dlya_dela{
+.dlya-dela{
     height: 253px;
     display: flex;
     justify-content: space-between;
@@ -146,112 +144,91 @@ border-radius: 10px;
     justify-content: center;
 }
 
-.header_btn_text{
+.header-btn-text{
     padding-right: 11px;
     width: 64.77px;
-height: 18px;
-
-
-font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
-font-style: normal;
-font-weight: 600;
-font-size: 14px;
-line-height: 17px;
-
-color: #131313;
+    height: 18px;
+    font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 17px;
+    color: #131313;
 }
 
-.first_after_header_section{
+.first-after-header-section{
     margin-top: 41px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
 
-.after_header_zagolovok{
+.after-header-zagolovok{
     width: 404.05px;
-height: 144px;
-
-font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
-font-style: normal;
-font-weight: 400;
-font-size: 38px;
-line-height: 48px;
-letter-spacing: 0.04em;
-text-transform: uppercase;
-
-color: #FCFCFC;
-
+    height: 144px;
+    font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 38px;
+    line-height: 48px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #FCFCFC;
 }   
-.info_about_cafes_foodtrucks{
+.info-about-cafes-foodtrucks{
     padding-top: 61px;
 }
 
-.about_cafes, .about_foodtrucks{
+.about-cafes, .about-foodtrucks{
     display: flex;
     flex-direction: column;
-
 }
 
-.quantity_of_cafes{
+.quantity-of-cafes{
     font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
-font-style: normal;
-font-weight: 900;
-font-size: 46px;
-line-height: 56px;
-/* identical to box height */
-
-text-align: right;
-letter-spacing: 0.04em;
-text-transform: uppercase;
-
-color: #131313;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 46px;
+    line-height: 56px;
+    text-align: right;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #131313;
 }
 
-.name_of_cafes{
+.name-of-cafes{
     font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
-font-style: normal;
-font-weight: 400;
-font-size: 14px;
-line-height: 17px;
-/* identical to box height */
-
-text-align: right;
-
-color: #FCFCFC;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: right;
+    color: #FCFCFC;
 }
 
-.button_section{
+.button-section{
     display: flex;
     flex-direction: row;
     align-items: center;
 }
 
-.products_btn{
+.products-btn{
     margin-right: 17px;
     width: 134px;
     height: 42px;
-
     background: #84A278;
     border: 2px solid #F8D24E;
     border-radius: 10px;
 }
 
-
-
-.products_btn_text{
-    
-
+.products-btn-text{
     text-align: center;
     font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
     font-style: normal;
     font-weight: 600;
     font-size: 14px;
     line-height: 18px;
-    /* identical to box height, or 129% */
-
     color: #131313;
-
 }
 
 .containter{
@@ -260,27 +237,24 @@ color: #FCFCFC;
     flex-direction: row;
 }
 
-.button_section_link{
-width: 111px;
-height: 17px;
-
-
-font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
-font-style: normal;
-font-weight: 600;
-font-size: 14px;
-line-height: 17px;
-text-decoration-line: underline;
-
-color: #F8D24E;
+.button-section-link{
+    width: 111px;
+    height: 17px;
+    font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 17px;
+    text-decoration-line: underline;
+    color: #F8D24E;
 }
 
 .moroj{
     position: absolute;
-width: 580px;
-height: 708px;
-left: calc((100vw - 1024px) / 2 + 430px);
-top: 55px;
+    width: 580px;
+    height: 708px;
+    left: calc((100vw - 1024px) / 2 + 430px);
+    top: 55px;
 }
 
 :root{
@@ -289,48 +263,43 @@ top: 55px;
 
 .tochki{
     position: absolute;
-width: 856.12px;
-height: 426.09px;
-left: calc((100vw - 1024px) / 2 + 51px);
- top: 273px;
+    width: 856.12px;
+    height: 426.09px;
+    left: calc((100vw - 1024px) / 2 + 51px);
+    top: 273px;
 }
 
 .tarelkaMoroj{
     position: absolute;
-width: 215.75px;
-height: 225px;
-left: calc((100vw - 1024px) / 2);
-top: 368px;
+    width: 215.75px;
+    height: 225px;
+    left: calc((100vw - 1024px) / 2);
+    top: 368px;
 }
 
-.container_for_lorem_and_btn{
+.container-for-lorem-and-btn{
     position: absolute;
-width: 167.23px;
-height: 100px;
-left: calc((100vw - 1024px) / 2 + 233.41px);
-top: 429px;
-
-
+    width: 167.23px;
+    height: 100px;
+    left: calc((100vw - 1024px) / 2 + 233.41px);
+    top: 429px;
 }
 
-.lorem_text{
-font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
-font-style: normal;
-font-weight: 400;
-font-size: 14px;
-line-height: 140%;
-/* or 20px */
-
-
-color: #FCFCFC;
+.lorem-text{
+    font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 140%;
+    color: #FCFCFC;
 }
 
-.second_section{
+.second-section{
     background: url('./png/2sectionBg.png');
     background-color: white;
 }
 
-.container_zagolovkov{
+.container-zagolovkov{
     padding-top: 60px;
 }
 
@@ -343,8 +312,7 @@ color: #FCFCFC;
     align-items: center;
 }
 
-.burger_krestik_btn{
-   
+.burger-krestik-btn{ 
     width: 20px;
     height: 20px;
 }
@@ -355,7 +323,7 @@ color: #FCFCFC;
     background: #84A278;    
 }
 
-.burger_menu{
+.burger-menu{
     display: none;
     height: 568px;
     width: 100vw;
@@ -369,185 +337,155 @@ color: #FCFCFC;
 .a100proc{
     margin: auto;
     width: 284.73px;
-height: 37.04px;
-
-font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
-font-style: normal;
-font-weight: 800;
-font-size: 30px;
-line-height: 37px;
-
-letter-spacing: 0.04em;
-text-transform: uppercase;
-
-color: #131313;
+    height: 37.04px;
+    font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 30px;
+    line-height: 37px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #131313;
 }
 
-.products_text{
+.products-text{
     margin: auto;
     width: 334.2px;
-height: 45.04px;
-
-font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
-font-style: normal;
-font-weight: 400;
-font-size: 36px;
-line-height: 45px;
-/* identical to box height */
-
-
-letter-spacing: 0.06em;
-text-transform: uppercase;
-
-color: #131313;
+    height: 45.04px;
+    font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 45px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #131313;
 } 
 
-.container_for_productS{
-    
+.container-for-productS{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
 }
 
-.container_for_product{
+.container-for-product{
     margin-top: 271px;
     position: relative;
     width: 315.87px;
     margin-bottom: -50px;  
     display: flex;
     justify-content: center;
-    
 }
 
 
 
 
-.photo_cont{
+.photo-cont{
     margin: auto;
     position: absolute;
     top: -150px;
     z-index: 1;
 }
 
-.product_name1{
+.product-name1{
     margin: auto;
     padding-bottom: 65px;
     padding-top: 197px;
-width: 169.09px;
-height: 37.04px;
-
-
-font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
-font-style: normal;
-font-weight: 700;
-font-size: 30px;
-line-height: 37px;
-text-align: center;
-letter-spacing: 0.04em;
-text-transform: uppercase;
-
-color: #131313;
+    width: 169.09px;
+    height: 37.04px;
+    font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 37px;
+    text-align: center;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #131313;
 }
 
-.content_fon1{
+.content-fon1{
     z-index: 0;
     position: relative;
     width: 315.87px;
     height: 535.51px;
-
     background: #EFD478;
-box-shadow: 0px 8px 30px rgba(212, 20, 67, 0.1);
-border-radius: 24px;
+    box-shadow: 0px 8px 30px rgba(212, 20, 67, 0.1);
+    border-radius: 24px;
 }
 
-.content_fon2{
+.content-fon2{
     z-index: 0;
     position: relative;
     width: 315.87px;
     height: 535.51px;
-
     background: #D6936D;
-box-shadow: 0px 8px 30px rgba(212, 20, 67, 0.1);
-border-radius: 24px;
+    box-shadow: 0px 8px 30px rgba(212, 20, 67, 0.1);
+    border-radius: 24px;
 }
 
-.content_fon{
-    
+.content-fon{
     z-index: 0;
     position: relative;
     width: 315.87px;
     height: 535.51px;
-
-background: #AEC6A5;
-box-shadow: 0px 8px 30px rgba(212, 20, 67, 0.1);
-border-radius: 24px;
+    background: #AEC6A5;
+    box-shadow: 0px 8px 30px rgba(212, 20, 67, 0.1);
+    border-radius: 24px;
 }
 
-.product_name{
-    
+.product-name{
     padding-bottom: 65px;
     padding-top: 197px;
     width: 315.87px;
-height: 37.04px;
-
-font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
-font-style: normal;
-font-weight: 700;
-font-size: 30px;
-line-height: 37px;
-text-align: center;
-letter-spacing: 0.04em;
-text-transform: uppercase;
-
-color: #131313;
+    height: 37.04px;
+    font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 37px;
+    text-align: center;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #131313;
 }
 
 
 
-.product_description{
+.product-description{
     margin: auto;
     width: 210.29px;
-height: 147.14px;
-
-font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
-font-style: normal;
-font-weight: 400;
-font-size: 16px;
-line-height: 176%;
-/* or 28px */
-
-text-align: center;
-letter-spacing: 0.04em;
-
-color: #131313;
+    height: 147.14px;
+    font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 176%;
+    text-align: center;
+    letter-spacing: 0.04em;
+    color: #131313;
 }
 
-.black_arr, .black_arr1,.black_arr2{
-    
+.black-arr, .black-arr1,.black-arr2{
     display: flex;
-    justify-content: center;
-    
-    
+    justify-content: center; 
 }
 
-.black_arr_svg{
+.black-arr-svg{
     padding-top: 20px;
     width: 50px;
     height: 40px;
 }
 
-.third_section{
-    height: 1228px;
-    
-    
+.third-section{
+    height: 1228px; 
 }
 
-.third_zagolovok_1{
+.third-zagolovok-1{
     padding-top: 114px;
     margin: auto;
     width: 324.61px;
 height: 74px;
-
 font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
 font-style: normal;
 font-weight: 800;
@@ -556,20 +494,18 @@ line-height: 37px;
 text-align: center;
 letter-spacing: 0.04em;
 text-transform: uppercase;
-
 color: #FCFCFC;
 padding-bottom: 22px;
 
 }
 
-.third_zagolovok_2{
+.third-zagolovok-2{
     position: absolute;
     left: 289.42px;
 top: 1790px;
     margin: auto;
     width: 415.26px;
 height: 90px;
-
 font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
 font-style: normal;
 font-weight: 400;
@@ -578,70 +514,55 @@ line-height: 45px;
 text-align: center;
 letter-spacing: 0.06em;
 text-transform: uppercase;
-
 color: #FCFCFC;
 }   
 
-.block_s_korovoi{
+.block-s-korovoi{
     display: flex;
     flex-direction: row;
     align-items: center;
 }
 
-.description_korova1{
+.description-korova1{
     width: 508.23px;
 height: 111px;
-
 font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
 font-style: normal;
 font-weight: 400;
 font-size: 16px;
 line-height: 176%;
-/* or 28px */
-
 letter-spacing: 0.04em;
-
 color: #FCFCFC;
 padding-bottom: 8px;
 }
 
-.description_korova2{
+.description-korova2{
     width: 508.23px;
     height: 107px;
-
-    
     font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
     line-height: 194%;
-    /* or 27px */
-    
-    letter-spacing: 0.04em;
-    
+    letter-spacing: 0.04em; 
     color: #FCFCFC;
     padding-bottom: 8px;
 }
 
-.description_korova3{
+.description-korova3{
     width: 501.65px;
-    height: 23px;
-
-    
+    height: 23px;  
 font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
     line-height: 194%;
-    /* or 27px */
-    
     letter-spacing: 0.04em;
-    
     color: #FCFCFC;
     padding-bottom: 36px;
 }
 
-.knopka_korovi{
+.knopka-korovi{
     background: #F8D24E;
 border-radius: 10px;
 border: 0;
@@ -649,36 +570,32 @@ width: 142px;
 height: 42px;
 }
 
-.knopka_korovi_container{
+.knopka-korovi-container{
     display: flex;
     flex-direction: row;
     justify-content: center;
 }
 
-.knopka_korovi_btn_text{
+.knopka-korovi-btn-text{
     width: 68px;
     font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
 font-style: normal;
 font-weight: 600;
 font-size: 14px;
 line-height: 18px;
-/* or 129% */
-
 display: flex;
 align-items: center;
 text-align: center;
-
 color: #131313;
 }
 
-.video_wrapper{
+.video-wrapper{
     display: flex;
     justify-content: center;
     align-items: center;
     width: 513px;
 height: 283px;
 margin: 0 auto;
-
 background: #FCFCFC;
 border: 2px solid #F8D24E;
 border-radius: 10px;
@@ -688,23 +605,19 @@ border-radius: 10px;
     height: 27.453937530517578px;
 width: 31.851652145385742px;
 margin: 0 auto;
-
-
 }
 
-.dlya_video{
-
+.dlya-video{
     border-radius: 10px;
     width: 504px;
     height: 275px;
-    
     background-color: black;
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-.wrapper_knopok_posle_korovi{
+.wrapper-knopok-posle-korovi{
     padding-top: 90px;
     display: flex;
     flex-direction: row;
@@ -713,7 +626,7 @@ margin: 0 auto;
     margin: 0 auto;
 }
 
-.knopka_poske_korovi{
+.knopka-poske-korovi{
     background: #F8D24E;
     border-radius: 10px;
     width: 210px;
@@ -721,31 +634,26 @@ margin: 0 auto;
     border: 0;
 }
 
-.text_knopki{
+.text-knopki{
     font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
 font-style: normal;
 font-weight: 600;
 font-size: 14px;
 line-height: 18px;
-/* identical to box height, or 129% */
-
-
-
 color: #131313;
-
 }
 
-.fourth_section{
+.fourth-section{
     background: url('./png/2sectionBg.png');
     background-color: white;
 }
 
-.photo_wrapper{
+.photo-wrapper{
     max-width: 902px;
     margin: auto;
 }
 
-.first_img_row, .second_img_row{
+.first-img-row, .second-img-row{
     display: flex;
     justify-content: space-between;
     padding-top: 30px;
@@ -755,7 +663,7 @@ color: #131313;
     border-radius: 50%;
 }
 
-.dasha_img_container{
+.dasha-img-container{
 
     display: flex;
     justify-content: center;
@@ -763,22 +671,20 @@ color: #131313;
     padding-bottom: 51px;
 }
 
-.otziv_container{
+.otziv-container{
     margin: auto;
     display: flex;
     justify-content: center;
     align-items: center;
     width: 800px;
     height: 138px;
-
     background: #84A178;
     border-radius: 24px;
 }
 
-.otziv_text{
+.otziv-text{
     width: 640px;
 height: 52px;
-
 font-family: 'Montserrat',
     'Helvetica',
     'Arial',
@@ -787,15 +693,12 @@ font-style: normal;
 font-weight: 500;
 font-size: 16px;
 line-height: 186%;
-/* or 30px */
-
 text-align: center;
 letter-spacing: 0.04em;
-
 color: #FCFCFC;
 }
 
-.name_and_loc_container{
+.name-and-loc-container{
     padding-top: 24px;
     padding-bottom: 256px;
     width: 90px;
@@ -803,22 +706,18 @@ color: #FCFCFC;
     margin: auto;
 }
 
-.name_and_loc_text{
+.name-and-loc-text{
 font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
 font-style: normal;
 font-weight: 500;
 font-size: 16px;
 line-height: 186%;
-/* or 30px */
-
 text-align: center;
-
 color: #131313;
 }
 
-.fifth_section{
+.fifth-section{
     background: #84A178;
-    
 }
 
 .wrapper994{
@@ -827,7 +726,7 @@ color: #131313;
     display: flex;
     flex-direction: row;
 }
-.container_food_descr{
+.container-food-descr{
 
     padding-left: 38px;
     padding-bottom: 38px;
@@ -836,19 +735,15 @@ color: #131313;
     flex-direction: column;
     align-items: flex-start;
     justify-content: space-between;
-
-    
     margin-top: -93px;
     width: 349.39px;
 height: 520.52px;
-
-
 background: #FFFFFF;
 box-shadow: 0px 8px 30px rgba(212, 20, 67, 0.1);
 border-radius: 24px;
 }
 
-.container_food_descr1{
+.container-food-descr1{
     padding-left: 38px;
     padding-bottom: 38px;
     padding-top: 38px;
@@ -856,20 +751,16 @@ border-radius: 24px;
     flex-direction: column;
     align-items: flex-start;
     justify-content: space-between;
-
-    
     margin-top: -93px;
     width: 349.39px;
 height: 520.52px;
-
-
 background: #FFFFFF;
 box-shadow: 0px 8px 30px rgba(212, 20, 67, 0.1);
 border-radius: 24px;
 margin-left: -20px;
 }
 
-.container_food_descr2{
+.container-food-descr2{
     margin-left: -20px;
     padding-left: 38px;
     padding-bottom: 38px;
@@ -878,36 +769,26 @@ margin-left: -20px;
     flex-direction: column;
     align-items: flex-start;
     justify-content: space-between;
-
-    
     margin-top: -93px;
     width: 349.39px;
 height: 520.52px;
-
-
 background: #FFFFFF;
 box-shadow: 0px 8px 30px rgba(212, 20, 67, 0.1);
 border-radius: 24px;
 }
 
-.zagolovok_food_descr{
+.zagolovok-food-descr{
     width: 71.31px;
 height: 27.09px;
-
-
 font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
 font-style: normal;
 font-weight: 500;
 font-size: 16px;
 line-height: 186%;
-/* or 30px */
-
 text-align: center;
 letter-spacing: 0.04em;
 background: #F8D24E;
 border-radius: 6px;
-
-
 }
 
 .izm1{
@@ -915,87 +796,65 @@ border-radius: 6px;
 height: 27.09px;
 }
 
-.first_par{
+.first-par{
     width: 65.64px;
 height: 29.03px;
-
 font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
 font-style: normal;
 font-weight: 500;
 font-size: 16px;
 line-height: 186%;
-/* identical to box height, or 30px */
-
 letter-spacing: 0.04em;
-
 color: #131313;
 }
 
-.second_par{
+.second-par{
     width: 248.75px;
 height: 48.38px;
-
 font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
 font-style: normal;
 font-weight: 500;
 font-size: 16px;
 line-height: 183%;
-/* or 29px */
-
 letter-spacing: 0.04em;
-
 color: #D6936D;
 }
 
-.days{
-    
+.days{  
 width: 191.37px;
 height: 29.03px;
-
 font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
 font-style: normal;
 font-weight: 500;
 font-size: 16px;
 line-height: 186%;
-/* identical to box height, or 30px */
-
 letter-spacing: 0.04em;
-
 color: #131313;
 }
 
 .time{
     width: 193.6px;
     height: 29.03px;
-    
     font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 16px;
     line-height: 186%;
-
-    
-    
     color: #ABABAB;
-    
 }
 
 .number, .email{
     width: 237.36px;
 height: 48.38px;
-
 font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
 font-style: normal;
 font-weight: 500;
 font-size: 16px;
 line-height: 183%;
-/* or 29px */
-
-
 color: #131313;
 }
 
-.switch_btn_container{
+.switch-btn-container{
     justify-content: center;
     padding-top: 18px;
     display: flex;
@@ -1003,12 +862,10 @@ color: #131313;
     margin-bottom: 31px;
 }
 
-.our_locations{
+.our-locations{
     margin-left: -16px;
     height: 40.63553237915039px;
 width: 167.25332641601562px;
-
-
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -1022,8 +879,6 @@ border: 2px solid #F8D24E;
 .franchise{
     height: 40.63553237915039px;
 width: 167.25332641601562px;
-
-
 border: 2px solid #F8D24E;
     display: flex;
     flex-direction: row;
@@ -1034,51 +889,33 @@ border-radius: 10px;
 
 }
 
-.our_locations_btn_text{
+.our-locations-btn-text{
     height: 36px;
 width: 93.84762573242188px;
-
-
     font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
 font-style: normal;
 font-weight: 600;
 font-size: 14px;
 line-height: 18px;
-
-
-
 color: #131313;
 
 }
 
-.our_locations_btn_text1{
+.our-locations-btn-text1{
    padding-right: 29px;
-
-
     font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
 font-style: normal;
 font-weight: 600;
 font-size: 14px;
 line-height: 18px;
-
-
-
 color: #131313;
-
 }
 
 
-
-
-
-.feedback_conitainer{
+.feedback-conitainer{
     box-sizing: border-box;
     margin: 0 auto;
-
 width: 568px;
-
-
-
 background: #FCFCFC;
 border: 2px solid #F8D24E;
 border-radius: 10px;
@@ -1087,36 +924,26 @@ border-radius: 10px;
 .krestik{
     height: 11.140908241271973px;
 width: 11.11111068725586px;
-
-
 }
 
-.feedback_text{
-
+.feedback-text{
 display: flex;
 justify-content: center;
 align-items: center;
-
 width: 322px;
 height: 84px;
-
-
 font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
 font-style: normal;
 font-weight: 400;
 font-size: 20px;
 line-height: 28px;
-/* or 140% */
-
 margin: 0 auto;
-
 color: #131313;
 }
 
 .box{
     margin: 0 auto;
     margin-bottom: 16px;
-    
 }
 
 .inputik{
@@ -1124,8 +951,6 @@ color: #131313;
     box-sizing: border-box;
 width: 368px;
 height: 42px;
-
-
 background: rgba(248, 210, 78, 0.1);
 border: 1px solid #84A178;
 border-radius: 10px;
@@ -1135,12 +960,8 @@ border-radius: 10px;
     font-size: 18px;
     padding: 16px 16px 16px 16px;
     box-sizing: border-box;
-
-
 width: 368px;
 height: 84px;
-
-
 background: rgba(248, 210, 78, 0.1);
 border: 1px solid #84A178;
 border-radius: 10px;
@@ -1151,18 +972,17 @@ border-radius: 10px;
     flex-direction: column; 
 }
 
-.dlya_krestika{
+.dlya-krestika{
     display: flex;
     justify-content: flex-end;
     padding-right: 25px;
     padding-top: 25px;
 }
 
-.submit_btn{
+.submit-btn{
 margin: 0 auto;
 width: 121px;
 height: 42px;
-
 background: #F8D24E;
 border-radius: 10px;
 display: flex;
@@ -1171,24 +991,20 @@ align-items: center;
 margin-bottom: 16px;
 }
 
-.submit_btn_text{
-
+.submit-btn-text{
 width: 53px;
 height: 18px;
-
 font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
 font-style: normal;
 font-weight: 600;
 font-size: 14px;
 line-height: 17px;
-
-
 color: #131313;
 }
 
 
 
-.footer_contentbox1{
+.footer-contentbox1{
     display: flex;
     justify-content: space-between;
     padding-left: 10px;
@@ -1196,7 +1012,7 @@ color: #131313;
     padding-top: 40px;
 }
 
-.footer_contentbox1_text{
+.footer-contentbox1-text{
     width: 544.35px;
 height: 35.8px;
 font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
@@ -1206,21 +1022,19 @@ font-size: 30px;
 line-height: 37px;
 letter-spacing: 0.04em;
 text-transform: uppercase;
-
 color: #FCFCFC;
 }
 
-.footer_contentbox2{
+.footer-contentbox2{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
 
-.footer_contentbox2_text{
+.footer-contentbox2-text{
     padding-top: 14px;
     width: 536.79px;
 height: 68.69px;
-
 font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
 font-style: normal;
 font-weight: 700;
@@ -1228,35 +1042,30 @@ font-size: 58px;
 line-height: 71px;
 letter-spacing: 0.06em;
 text-transform: uppercase;
-
 color: #FCFCFC;
 }
 
-.footer_contentbox2_text2{
+.footer-contentbox2-text2{
     padding-top: 35px;
     width: 353px;
 height: 60px;
-
 font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
 font-style: normal;
 font-weight: 700;
 font-size: 16px;
 line-height: 186%;
-/* or 30px */
-
 letter-spacing: 0.02em;
-
 color: white;
 }
 
-.container_belaya_polosa{
+.container-belaya-polosa{
     display: flex;
     justify-content: center;
     padding-top: 35px;
     padding-bottom: 12px;
 }
 
-.final_contentbox{
+.final-contentbox{
     display: flex;
     justify-content: center;
 }
@@ -1277,10 +1086,9 @@ color: white;
     height: 786px;
 }
 body{
-    
     background: #84A278;
 }
-.title_text{
+.title-text{
     font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
 font-style: normal;
 font-weight: 400;
@@ -1297,7 +1105,7 @@ margin-bottom: 100px;
 height: 158.86px;
 border-radius: 15.7808px;
 }
-.choise_text{
+.choise-text{
     font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
 font-style: normal;
 font-weight: 700;
@@ -1317,19 +1125,18 @@ position: relative;
 top: -50px;
 border-radius: 50%;
 }
-.choise_img{
+.choise-img{
     width: 147px;
     height: 155px;
     position: relative;
     top: -210px;
 }
-.choise_block{
+.choise-block{
     display: flex;
     justify-content: space-around;
 }
 .choise1{
     background: #96AF8C;
-
     border: 2px solid #96AF8C;
 filter: drop-shadow(0px 5.26027px 19.726px rgba(212, 20, 67, 0.1));
 }
@@ -1361,7 +1168,7 @@ box-shadow: 0px 5.26027px 19.726px rgba(0, 0, 0, 0.25);
     margin-top: 50px;
 
 }
-.buy_input{
+.buy-input{
     margin-left: auto;
     margin-right: auto;
     width: 368.12px;
@@ -1371,10 +1178,10 @@ border: 1px solid #84A178;
 border-radius: 10px;
 margin-bottom: 6px;
 }
-.buy_input_comment{
+.buy-input-comment{
     height: 76.19px;
 }
-.buy_btn{
+.buy-btn{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1389,38 +1196,32 @@ border-radius: 10px;
 width: 158px;
 height: 41px;
 margin-top: 15px;
-
 }
-.btn_buy_block{
+.btn-buy-block{
     display: flex;
     justify-content: center;
 }
 
-.final_text{
+.final-text{
     width: 311px;
 height: 21.29px;
-
 font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
 font-style: normal;
 font-weight: 700;
 font-size: 12px;
 line-height: 186%;
-/* or 22px */
-
 letter-spacing: 0.02em;
-
 color: #7A7A7A;
 padding-bottom: 15px;
 }
 
-
 @media (min-width: 1025px){
 
-    .third_zagolovok_2{
+    .third-zagolovok-2{
         position: static;
     }
 
-    .third_section{
+    .third-section{
         height: 1350px;
     }
     .per{
@@ -1448,23 +1249,19 @@ padding-bottom: 15px;
 
 
     @media screen and (max-width:768px) {
-        
-
         .moroj{
             height: 423px;
             width: 336px;
             left: 368px;
             top: 48px;
         }
-        .content_fon, .content_fon1, .content_fon2{
+        .content-fon, .content-fon1, .content-fon2{
             height: 428px;
 width: 224px;
-
 border-radius: 15.780821800231934px;
-
         }
         
-        .photo_content{
+        .photo-content{
             width: 230px;
             height: 230px;
         }
@@ -1482,7 +1279,7 @@ border-radius: 15.780821800231934px;
             top: -100px;
         }
 
-        .first_img_row, .second_img_row{
+        .first-img-row, .second-img-row{
             justify-content: space-around;
         }
         .secondimg{
@@ -1492,22 +1289,20 @@ border-radius: 15.780821800231934px;
             display: none;
         }
 
-        .otziv_container{
+        .otziv-container{
             height: 138px;
 width: 705px;
-
         }
 
-        .container_food_descr, .container_food_descr1, .container_food_descr2{
+        .container-food-descr, .container-food-descr1, .container-food-descr2{
             height: 528px;
             width: 224px;
             padding: 0;
             margin-left: 0;
         }
 
-        .container_food_descr, .container_food_descr1{
+        .container-food-descr, .container-food-descr1{
             margin-right: 20px;
-            
         }
         
 
@@ -1516,75 +1311,67 @@ width: 705px;
             width: 768px;
         }
 
-        .second_par{
+        .second-par{
             height: 65px;
 width: 159px;
-
         }
 
         .gorizont{
             width: 176px;
         }
 
-        .belaya_polosa{
+        .belaya-polosa{
             width: 730px;
         }
-        .footer_contentbox1_text{
+        .footer-contentbox1-text{
             height: 52.32421875px;
 width: 352px;
 
         }
-        .footer_contentbox2_text{
+        .footer-contentbox2-text{
             height: 108.3203125px;
 width: 340px;
-
         }
 
-        .footer_contentbox2_text2{
+        .footer-contentbox2-text2{
             height: 71.6015625px;
-width: 278px;
-            
+width: 278px;   
         }
 
-        .wrapper_knopok_posle_korovi{
+        .wrapper-knopok-posle-korovi{
             max-width: 679px;
             padding-top: 37px;
         }
 
-        .knopka_poske_korovi{
+        .knopka-poske-korovi{
             height: 43.89677429199219px;
-width: 172.60891723632812px;
-            
+width: 172.60891723632812px;          
         }
 
-        .third_zagolovok_2{
+        .third-zagolovok-2{
             position: static;
         }
 
-        .description_korova1, .description_korova2, .description_korova3{
+        .description-korova1, .description-korova2, .description-korova3{
             width: 334px;
             font-size: 12px;
 line-height: 176%;
-
-
 letter-spacing: 0.04em;
         }
-        .description_korova2{
+        .description-korova2{
             height: 103px;
         }
 
-        .description_korova3{
+        .description-korova3{
             height: 51px;
         }
 
-        .korova_img{
+        .korova-img{
             height: 330px;
 width: 334.6541442871094px;
-
-
         }
 
-        .product_name{
+        .product-name{
             margin: 0 auto;
             padding-top: 107px;
             font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
@@ -1592,31 +1379,25 @@ width: 334.6541442871094px;
             font-weight: 700;
             font-size: 22px;
             line-height: 27px;
-        
-        
             text-align: center;
             letter-spacing: 0.04em;
-            text-transform: uppercase;
-        
+            text-transform: uppercase;     
             color: #131313;
             height: 26.937063217163086px;
             width: 139px;
 
         }
 
-        .product_name1{
+        .product-name1{
             padding-top: 107px;
             font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
             font-style: normal;
             font-weight: 700;
             font-size: 22px;
             line-height: 27px;
-        
-        
             text-align: center;
             letter-spacing: 0.04em;
             text-transform: uppercase;
-        
             color: #131313; 
             height: 26.937063217163086px;
             width: 146px;
@@ -1632,7 +1413,7 @@ width: 334.6541442871094px;
             top: 250px;     
             width: 152px;
         }
-        .container_for_lorem_and_btn{
+        .container-for-lorem-and-btn{
             left: 217px;
             top: 278px;
         }
@@ -1642,22 +1423,22 @@ width: 334.6541442871094px;
             min-height: 0;
         }
 
-        .header_logo{
+        .header-logo{
             width: 48px;
             height: 44px;
         }
 
-        .header_container{
+        .header-container{
             padding-top: 24px;
             width: 701px;
             margin: 0 auto;
         }
 
-        .header_links{
+        .header-links{
             width: 420px;
         }
 
-        .after_header_zagolovok{
+        .after-header-zagolovok{
             height: 74px;
 width: 181px;
 font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
@@ -1666,14 +1447,13 @@ font-weight: 400;
 font-size: 18px;
 line-height: 23px;
 text-transform: uppercase;
-
 color: #FCFCFC;
 
         }
-        .info_about_cafes_foodtrucks{
+        .info-about-cafes-foodtrucks{
             padding-top: 0;
         }
-        .quantity_of_cafes{
+        .quantity-of-cafes{
             font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
 font-style: normal;
 font-weight: 900;
@@ -1682,33 +1462,29 @@ line-height: 34px;
 text-align: right;
 letter-spacing: 0.04em;
 text-transform: uppercase;
-
 color: #131313;
         }
 
-        .name_of_cafes{
+        .name-of-cafes{
             font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
 font-style: normal;
 font-weight: 400;
 font-size: 8px;
 line-height: 10px;
-
-
 text-align: right;
-
 color: #FCFCFC
         }
 
-        .first_after_header_section{
+        .first-after-header-section{
             margin: 0 auto;
             width: 704px;
             padding-top: 37px;
         }
-        .button_section{
+        .button-section{
             margin: 0 auto;
             width: 704px;
         }
-        .product_description{  
+        .product-description{  
             width: 172px;
             height: 143.93px;
 
@@ -1717,52 +1493,48 @@ color: #FCFCFC
             font-weight: 400;
             font-size: 14px;
             line-height: 176%;
-
-
             text-align: center;
             letter-spacing: 0.04em;
-
             color: #131313;
         }
-        .container_for_product{
+        .container-for-product{
             margin-bottom: 0;
-            
             margin-top: 100px;
             padding-bottom: 82px;
         }
-        .knopka_korovi{
+        .knopka-korovi{
             width: 142px;
             height: 36px;
             margin-bottom: 33px;
         }
-        .knopka_korovi_btn_text{
+        .knopka-korovi-btn-text{
             width: 80px;
             padding-right: 9px;
         }
-        .first_img_row{
+        .first-img-row{
             position: relative;
             padding-top: 0;
             top: -150px;
         }
-        .second_img_row{
+        .second-img-row{
             position: relative;
             top: -150px;
         }
-        .dasha_img_container{
+        .dasha-img-container{
             margin-top: -75px;
         }
 
-        .slider_buttons{
+        .slider-buttons{
             margin-bottom: 150px;
         }
 
-        .fifth_section{
+        .fifth-section{
             margin-top: -150px;
         }
-        .footer_contentbox2{
+        .footer-contentbox2{
             padding-left: 10px;
         }
-        .svg_container{
+        .svg-container{
             width: 183px;
             display: flex;
             flex-direction: row;
@@ -1772,10 +1544,10 @@ color: #FCFCFC
             width: 34px;
             height: 34px;
         }
-        .zagolovok_food_descr{
+        .zagolovok-food-descr{
             margin-top: 40px;
         }
-        .zagolovok_food_descr, .first_par, .second_par, .gorizont, .days, .time, .number, .email{
+        .zagolovok-food-descr, .first-par, .second-par, .gorizont, .days, .time, .number, .email{
             margin-left: 24px;
         }
         .email, .number{
@@ -1787,7 +1559,7 @@ color: #FCFCFC
 
     @media screen and (max-width:320px) {
         
-        .lorem_text, .quantity_of_cafes, .name_of_cafes, .tarelkaMoroj, .thirdimg, .fourthimg, .siximg, .header_links, .container_for_lorem_and_btn{
+        .lorem-text, .quantity-of-cafes, .name-of-cafes, .tarelkaMoroj, .thirdimg, .fourthimg, .siximg, .header-links, .container-for-lorem-and-btn{
             display: none;
         }
 
@@ -1796,44 +1568,44 @@ color: #FCFCFC
         }
         .moroj{
             width: 204px;
-            height: 262px   ;
+            height: 262px;
             top: 274px;
             left: 82px;
         }
-        .header_container{
+        .header-container{
             width: auto;
             padding-top: 12px;
             padding-left: 22px;
         }
 
-        .container_for_productS{
+        .container-for-productS{
             flex-direction: column;
         }
 
-        .third_zagolovok_2{
+        .third-zagolovok-2{
             width: 200px;
             padding-bottom: 32px;
             height: 118px;
         }
 
-        .block_s_korovoi{
+        .block-s-korovoi{
             flex-direction: column;
         }
 
-        .video_wrapper, .dlya_video{
+        .video-wrapper, .dlya-video{
             width: 274px;
             height: 170px;
         }
         
 
-        .otziv_container{
+        .otziv-container{
             width: 280px;
             height: 260px;
         }
-        .wrapper994, .switch_btn_container, .footer_contentbox1, .footer_contentbox2{
+        .wrapper994, .switch-btn-container, .footer-contentbox1, .footer-contentbox2{
             flex-direction: column;
         }
-        .feedback_conitainer{
+        .feedback-conitainer{
             width: 280px;
             height: 460px;
         }
@@ -1846,33 +1618,30 @@ color: #FCFCFC
             width: 196px;
             height: 94px;
         }
-        .belaya_polosa{
+        .belaya-polosa{
             width: 320px;
         }
 
-        .footer_contentbox2_text, .footer_contentbox1_text, .wrapper994, .otziv_text, .button_section, .first_after_header_section, .knopka_poske_korovi, .feedback_text{
+        .footer-contentbox2-text, .footer-contentbox1-text, .wrapper994, .otziv-text, .button-section, .first-after-header-section, .knopka-poske-korovi, .feedback-text{
             width: auto;
         }
 
-        .description_korova1, .description_korova2, .description_korova3{
+        .description-korova1, .description-korova2, .description-korova3{
             width: 220px;
             font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
 font-style: normal;
 font-weight: 400;
 font-size: 12px;
 line-height: 176%;
-/* or 21px */
-
 text-align: center;
 letter-spacing: 0.04em;
-
 color: #FCFCFC;
         }
-        .korova_img{
+        .korova-img{
             width: 280px;
             height: 304px;
         }
-        .third_zagolovok_1{
+        .third-zagolovok-1{
             padding-top: 61px;
             padding-bottom: 12px;
             width: 210px;
@@ -1883,23 +1652,19 @@ font-size: 18px;
 line-height: 22px;
 text-align: center;
 text-transform: uppercase;
-
 color: #FCFCFC;
         }
 
-        .products_text{
+        .products-text{
             width: 270px;
             font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
 font-style: normal;
 font-weight: 400;
 font-size: 30px;
 line-height: 38px;
-/* identical to box height */
-
 text-align: center;
 letter-spacing: 0.04em;
 text-transform: uppercase;
-
 color: #131313;
         }
 
@@ -1910,14 +1675,11 @@ font-style: normal;
 font-weight: 800;
 font-size: 18px;
 line-height: 22px;
-/* identical to box height */
-
 text-align: center;
 text-transform: uppercase;
-
 color: #131313;
         }
-        .after_header_zagolovok{
+        .after-header-zagolovok{
             padding-bottom: 32px;
             padding-top: 60px;
             padding-left: 20px;
@@ -1925,11 +1687,11 @@ color: #131313;
             font-size: 26px;
         }
 
-        .products_btn{
+        .products-btn{
             width: 62px;
             height: 24px;
         }
-        .products_btn_text{
+        .products-btn-text{
             font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
 font-style: normal;
 font-weight: 600;
@@ -1938,10 +1700,9 @@ line-height: 10px;
 display: flex;
 align-items: center;
 text-align: center;
-
 color: #131313;
         }
-        .button_section_link{
+        .button-section-link{
             
             font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
 font-style: normal;
@@ -1952,13 +1713,12 @@ display: flex;
 align-items: center;
 text-align: center;
 text-decoration-line: underline;
-
 color: #F8D24E;
         }
-        .header_btn{
+        .header-btn{
             display: none;
         }
-        .button_section{
+        .button-section{
             padding-left: 20px;
         }
 
@@ -1971,80 +1731,66 @@ color: #F8D24E;
         .tr{
             right: 48px;
         }
-        .description_korova1{
+        .description-korova1{
             height: 128px;
             font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
 font-style: normal;
 font-weight: 400;
 font-size: 12px;
 line-height: 176%;
-/* or 21px */
-
 text-align: center;
 letter-spacing: 0.04em;
-
 color: #FCFCFC;
         }
-        .description_korova2{
+        .description-korova2{
             height: 135px;
             font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
 font-style: normal;
 font-weight: 400;
 font-size: 12px;
 line-height: 176%;
-/* or 21px */
-
 text-align: center;
 letter-spacing: 0.04em;
-
 color: #FCFCFC;
 margin-bottom: 40px;
         }
-        .description_korova3{
+        .description-korova3{
             display: none;
         }
-        .knopka_poske_korovi{
+        .knopka-poske-korovi{
             width: 93px;
             height: 23px;
         }
-        .text_knopki{
-            
+        .text-knopki{       
         font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
 font-style: normal;
 font-weight: 600;
 font-size: 8px;
 line-height: 18px;
-/* identical to box height, or 225% */
-
-
-
 color: #131313;
         }
 
-        .first_img_row{
+        .first-img-row{
             position: static;
             padding-top: 50px;
         }
         
-
         .wrapper994{
-            width: 280px;
-            
+            width: 280px;   
         }
 
-        .container_food_descr, .container_food_descr1, .container_food_descr2{
+        .container-food-descr, .container-food-descr1, .container-food-descr2{
             width: 280px;
             margin-bottom: 120px;
         }
 
-        .container_food_descr2{
+        .container-food-descr2{
             margin-bottom: 32px;
         }
-        .switch_btn_container{
+        .switch-btn-container{
             align-items: center;
         }
-        .our_locations{
-            
+        .our-locations{
             width: 196px;
             margin-left: 0;
             margin-bottom: 16px;
@@ -2053,39 +1799,32 @@ color: #131313;
         width: 196px;
        }
 
-       .otziv_text{
+       .otziv-text{
         font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
 font-style: normal;
 font-weight: 400;
 font-size: 12px;
 line-height: 255%;
-/* or 31px */
-
 text-align: center;
-
 color: #FCFCFC;
        }
-
-       .name_and_loc_container{
+       .name-and-loc-container{
         width: 190px;
        }
-       .name_and_loc_text{
+       .name-and-loc-text{
         font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
 font-style: normal;
 font-weight: 500;
 font-size: 20px;
 line-height: 186%;
-/* identical to box height, or 37px */
-
 text-align: center;
-
 color: #131313
        }
-       .knopka_korovi{
+       .knopka-korovi{
         margin-left: 39px;
        }
 
-       .footer_contentbox1_text{
+       .footer-contentbox1-text{
         width: 232px;
         font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
 font-style: normal;
@@ -2093,11 +1832,10 @@ font-weight: 700;
 font-size: 18px;
 line-height: 22px;
 text-transform: uppercase;
-
 color: #FCFCFC;
        }
 
-       .footer_contentbox2_text{
+       .footer-contentbox2-text{
         width: 200px;
         font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
 font-style: normal;
@@ -2106,16 +1844,15 @@ font-size: 34px;
 line-height: 41px;
 letter-spacing: 0.04em;
 text-transform: uppercase;
-
 color: #FCFCFC;
        }
-       .footer_contentbox2_text2{
+       .footer-contentbox2-text2{
         padding-top: 20px;
         width: 271px;
         margin-bottom: 40px;
        }
 
-       .final_text{
+       .final-text{
         width: 280px;
         font-family: 'Montserrat',
             'Helvetica',
@@ -2125,10 +1862,7 @@ font-style: normal;
 font-weight: 700;
 font-size: 14px;
 line-height: 152%;
-/* or 21px */
-
 text-align: center;
-
 color: #7A7A7A;
 padding-bottom: 24px;
        }
@@ -2144,28 +1878,26 @@ padding-bottom: 24px;
         height: 1050px;
        }
 
-       .choise_block{
+       .choise-block{
         flex-direction: column;
-        
        }
 
        .choise{
         margin: 0 auto;
         width: 132px;
         height: 136px;
-        
        }
 
-       .buy_input{
+       .buy-input{
         width: 224px;
         height: 26px;
        }
 
-       .buy_input_comment{
+       .buy-input-comment{
         height: 64px;
        }
 
-       .choise_img{
+       .choise-img{
         top: -190px;
         width: 131px;
         height: 131px;
@@ -2176,7 +1908,7 @@ padding-bottom: 24px;
         height: 131px;
        }
 
-       .title_text{
+       .title-text{
         margin-bottom: 85px;
        }
 
@@ -2184,7 +1916,7 @@ padding-bottom: 24px;
         margin-top: 76px;
        }
 
-       .buy_btn{
+       .buy-btn{
         width: 169px;
         height: 30px;
 
@@ -2194,11 +1926,11 @@ padding-bottom: 24px;
         margin-top: 24px;
        }
 
-       .fourth_section{
+       .fourth-section{
         height: 1050px;
        }
 
-       .slider_buttons{
+       .slider-buttons{
         display: none;
        }
 
