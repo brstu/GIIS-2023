@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://ytbpptfenlws"]
+
+[ext_resource type="Texture2D" uid="uid://bulw8igjsnvrm" path="res://assets/Default size/towerDefense_tile252.png" id="1_ioa0w"]
+[ext_resource type="Script" path="res://rocket_bonus.gd" id="1_vfadk"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wh2qt"]
+radius = 8.0
+height = 40.0
+
+[node name="Rocket_Bonus" type="CharacterBody2D"]
+collision_layer = 2
+script = ExtResource("1_vfadk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.5708
+texture = ExtResource("1_ioa0w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_wh2qt")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(9.53674e-07, 0)
+scale = Vector2(2, 0.8)
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
