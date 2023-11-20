@@ -13,7 +13,8 @@ let BJgame = {
   cardsmap: {},
     initializeCards: function() {
     const suits = ["C", "D", "H", "S"];
-    const cardValues = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "K", "Q", "J", "A"];
+    const cardValues =
+        ["2", "3", "4", "5", "6", "7", "8", "9", "10", "K", "Q", "J", "A"];
     for (const suit of suits) {
       for (const value of cardValues) {
         const card = value + suit;
@@ -50,20 +51,17 @@ function isBlackJack() {
 
 function drawCard(activeplayer) {
   let randomNumber;
-      if (window.crypto ?.getRandomValues) {
-        const array = new Uint32Array(1);
-        window.crypto.getRandomValues(array);
-        randomNumber = array[0] % BJgame["cards"].length;
+    if (window.crypto ?.getRandomValues) {
+      const array = new Uint32Array(1);
+      window.crypto.getRandomValues(array);
+      randomNumber = array[0] % BJgame["cards"].length;
   } else {
     const crypto = require("crypto");
     const buf = crypto.randomBytes(1);
-    randomNumber = buf.readUInt8() %
-      BJgame["cards"].length;
+    randomNumber = buf.readUInt8() % BJgame["cards"].length;
   }
-  const currentCard = BJgame["cards"].splice(
-    randomNumber, 1);
-  let card = document.createElement(
-    "img");
+  const currentCard = BJgame["cards"].splice(randomNumber, 1);
+  let card = document.createElement("img");
   card.src =`./static/${currentCard}.png`;
   document.querySelector(activeplayer["div"]).appendChild(card);
   updateScore(currentCard, activeplayer);
@@ -79,21 +77,15 @@ function updateScore(currentcard, activeplayer) {
     }
   } else { // For Other Cases
     activeplayer["score"] += BJgame["cardsmap"][currentcard];
-  }
+    }
 }
 
 function showScore(activeplayer) {
   if (activeplayer["score"] > 21) {
-    document.querySelector(activeplayer[
-        "scoreSpan"]).textContent =
-      "Перебор!";
-    document.querySelector(activeplayer[
-        "scoreSpan"]).style.color =
-      "yellow";
+    document.querySelector(activeplayer["scoreSpan"]).textContent = "Перебор!";
+    document.querySelector(activeplayer["scoreSpan"]).style.color = "yellow";
   } else {
-    document.querySelector(activeplayer[
-        "scoreSpan"]).textContent =
-      activeplayer["score"];
+    document.querySelector(activeplayer["scoreSpan"]).textContent = activeplayer["score"];
   }
 }
 
@@ -111,13 +103,11 @@ function findwinner() {
       BJgame["tokens"] -= 3;
       winner = Dealer;
     }
-  } else if (You["score"] > 21 &&
-    Dealer["score"] <= 21) {
+  } else if (You["score"] > 21 && Dealer["score"] <= 21) {
     BJgame["losses"]++;
     BJgame["tokens"] -= 3;
     winner = Dealer;
-  } else if (You["score"] > 21 &&
-    Dealer["score"] > 21) {
+  } else if (You["score"] > 21 && Dealer["score"] > 21) {
     BJgame["draws"]++;
   }
   return winner;
@@ -185,8 +175,7 @@ function BJdeal() {
     document.querySelector("#command").style.color = "black";
   }
 }
-document.querySelector("#stand").addEventListener(
-  "click", BJstand);
+document.querySelector("#stand").addEventListener("click", BJstand);
 
 function BJstand() {
   if (You["score"] === 0) {
