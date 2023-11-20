@@ -79,7 +79,19 @@ function isBlackJack() {
 }
 
 function drawCard(activeplayer) {
-    const randomNumber = Math.floor(Math.random() * (BJgame['cards'].length));
+
+    let randomNumber;
+
+    // Check if crypto.getRandomValues is available
+    if (window.crypto && window.crypto.getRandomValues) {
+        const array = new Uint32Array(1);
+        window.crypto.getRandomValues(array);
+        randomNumber = array[0] % BJgame['cards'].length;
+    } else {
+        // Fallback to Math.random() if crypto.getRandomValues is not available
+        randomNumber = Math.floor(Math.random() * BJgame['cards'].length);
+    }
+
     const currentCard = BJgame['cards'].splice(randomNumber, 1);
 
     let card = document.createElement('img');
@@ -194,11 +206,12 @@ function BJdeal() {
         let dealerimg =
             document.querySelector('#dealer-box').querySelectorAll('img');
 
-        for (let i = 0; i < yourimg.length; i++) {
-            yourimg[i].remove();
+        for (const img of yourimg) {
+            img.remove();
         }
-        for (let i = 0; i < dealerimg.length; i++) {
-            dealerimg[i].remove();
+
+        for (const img of dealerimg) {
+            img.remove();
         }
 
         BJgame['cards'] = ['2C', '3C', '4C', '5C', '6C', '7C', '8C', '9C', '10C', 'KC', 'QC', 'JC', 'AC', '2D', '3D',

@@ -62,7 +62,7 @@ html {
 }
 
 .row1 h2 {
-    font-family: 'Broadway', italic;
+    font-family: 'Ebrima', cursive;
     font-size: 4rem;
 }
 
@@ -93,7 +93,7 @@ html {
 .buttons button {
     font-size: 2.2rem;
     font-weight: 700;
-    font-family: 'Malgun Gothic', bold;
+    font-family: 'Malgun Gothic', bold, serif;
     padding-left: 2rem;
     padding-right: 2rem;
     padding-top: .2rem;
