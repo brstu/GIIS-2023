@@ -1,21 +1,26 @@
 let BJgame = {
   'you': {
-    "scoreSpan": "#yourscore",
-    "div": "#your-box",
-    "score": 0
+    scoreSpan: "#yourscore",
+    div: "#your-box",
+    score: 0
   },
   'dealer': {
-    "scoreSpan": "#dealerscore",
-    "div": "#dealer-box",
-    "score": 0
+    scoreSpan: "#dealerscore",
+    div: "#dealer-box",
+    score: 0
   },
-  'cards': [],
-  'cardsmap': {},
-  'initializeCards': function() {
-    const suits = ["C", "D", "H",
+cards: [],
+cardsmap: {},
+  initializeCards: function() {
+    const suits = [
+      "C",
+      "D",
+      "H",
       "S"
     ];
-    const cardValues = ["2", "3",
+    const cardValues =
+      [
+      "2", "3",
       "4", "5", "6", "7", "8",
       "9", "10", "K", "Q", "J",
       "A"
@@ -40,10 +45,10 @@ let BJgame = {
       }
     }
   },
-  "wins": 0,
-  "losses": 0,
-  "draws": 0,
-  "tokens": 20
+  wins: 0,
+  losses: 0,
+  draws: 0,
+  tokens: 20
 };
 BJgame.initializeCards();
 const You = BJgame["you"];
@@ -211,7 +216,7 @@ function BJdeal() {
     for (const img of dealerimg) {
       img.remove();
     }
-    BJgame['cards'] = ['2C', '3C', '4C',
+    BJgame["cards"] = ['2C', '3C', '4C',
       '5C', '6C', '7C', '8C', '9C',
       '10C', 'KC', 'QC', 'JC', 'AC',
       '2D', '3D',
@@ -225,7 +230,7 @@ function BJdeal() {
       '10S', 'KS',
       'QS', 'JS', 'AS'
     ];
-    You['score'] = 0;
+    You["score"] = 0;
     document.querySelector(You[
       "scoreSpan"]).textContent = You[
       "score"];
@@ -235,24 +240,24 @@ function BJdeal() {
     Dealer["score"] = 0;
     document.querySelector(Dealer[
         "scoreSpan"]).textContent =
-      Dealer['score'];
+      Dealer["score"];
     document.querySelector(Dealer[
         "scoreSpan"]).style.color =
-      'whitesmoke';
-    document.querySelector('#command').textContent =
+      "whitesmoke";
+    document.querySelector("#command").textContent =
       "🤑🤑🤑🤑🤑🤑";
-    document.querySelector('#command').style
-      .color = 'black';
+    document.querySelector("#command").style
+      .color = "black";
   }
 }
-document.querySelector('#stand').addEventListener(
-  'click', BJstand);
+document.querySelector("#stand").addEventListener(
+  "click", BJstand);
 
 function BJstand() {
   if (You["score"] === 0) {
-    alert('Сначала возьмите карту!');
+    alert("Сначала возьмите карту!");
   } else {
-    while (Dealer['score'] < 16) {
+    while (Dealer["score"] < 16) {
       drawCard(Dealer);
     }
     setTimeout(function() {
