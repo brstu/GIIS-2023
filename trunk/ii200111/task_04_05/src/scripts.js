@@ -1,6 +1,6 @@
 let BJgame = {
-'you': { 'scoreSpan': '#yourscore', 'div': '#your-box', 'score': 0 },
-'dealer': { 'scoreSpan': '#dealerscore', 'div': '#dealer-box', 'score': 0 },
+  'you': { 'scoreSpan': '#yourscore', 'div': '#your-box', 'score': 0 },
+  'dealer': { 'scoreSpan': '#dealerscore', 'div': '#dealer-box', 'score': 0 },
 'cards': [],
 'cardsmap': {},
 'initializeCards': function () {
