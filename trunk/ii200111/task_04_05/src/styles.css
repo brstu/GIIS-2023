@@ -9,7 +9,7 @@ html {
 
 .title {
     text-align: center;
-    background: linear-gradient(0deg, rgba(37, 32, 69, 100%) 0%, rgba(35, 35, 35, 1) 15%);
+    background: linear-gradient(0deg, rgb(37, 32, 69) 0%, rgba(35, 35, 35) 15%);
     color: #335981;
     font-family: 'Arial Black', cursive;
     padding: 0.5rem;
@@ -47,7 +47,6 @@ html {
 .row1 {
     display: flex;
     flex-wrap: wrap;
-    flex-flow: row wrap;
     justify-content: space-around;
     padding: 1rem;
     border-bottom: solid black 0.1rem;
@@ -84,8 +83,6 @@ html {
 
 .buttons {
     display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
     justify-content: space-around;
     width: 55%;
 }
@@ -117,23 +114,11 @@ th,
 td {
     border: solid 2px #3f4da8;
     font-size: 3rem;
-    font-family: Teko, sans-serif;
+    font-family: 'Times', bold;
     font-weight: 400;
     padding: 0.5rem 3rem;
 }
 
 table {
     margin: auto auto 5rem;
-}
-
-@media screen and (max-width: 740px) {
-    html {
-        font-size: 40%;
-    }
-}
-
-@media screen and (max-width: 420px) {
-    html {
-        font-size: 30%;
-    }
 }
