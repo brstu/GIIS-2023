@@ -1,30 +1,20 @@
 let BJgame = {
-  'you': {
+  you: {
     scoreSpan: "#yourscore",
     div: "#your-box",
     score: 0
   },
-  'dealer': {
+  dealer: {
     scoreSpan: "#dealerscore",
     div: "#dealer-box",
-    score: 0
+    score: 0,
   },
-cards: [],
-cardsmap: {},
-  initializeCards: function() {
-    const suits = [
-      "C",
-      "D",
-      "H",
-      "S"
-    ];
+  cards: [],
+  cardsmap: {},
+   initializeCards: function() {
+    const suits = ["C", "D", "H", "S"];
     const cardValues =
-      [
-      "2", "3",
-      "4", "5", "6", "7", "8",
-      "9", "10", "K", "Q", "J",
-      "A"
-    ];
+      ["2", "3", "4", "5", "6", "7", "8", "9", "10", "K", "Q", "J", "A"];
     for (const suit of suits) {
       for (const value of cardValues) {
         const card = value + suit;
@@ -111,10 +101,10 @@ function showScore(activeplayer) {
   if (activeplayer["score"] > 21) {
     document.querySelector(activeplayer[
         "scoreSpan"]).textContent =
-      'Перебор!';
+      "Перебор!";
     document.querySelector(activeplayer[
         "scoreSpan"]).style.color =
-      'yellow';
+      "yellow";
   } else {
     document.querySelector(activeplayer[
         "scoreSpan"]).textContent =
@@ -153,19 +143,19 @@ function findwinner() {
 function showresults(winner) {
   if (winner == You) {
     document.querySelector('#command').textContent =
-      'Вы выиграли!';
+      "Вы выиграли!";
     document.querySelector('#command').style
-      .color = 'green';
+      .color = "green";
   } else if (winner == Dealer) {
     document.querySelector('#command').textContent =
       "Вы проиграли!";
     document.querySelector('#command').style
-      .color = 'red';
+      .color = "red";
   } else {
     document.querySelector('#command').textContent =
-      'Ничья!';
+      "Ничья!";
     document.querySelector('#command').style
-      .color = 'orange';
+      .color = "orange";
   }
 }
 
@@ -193,20 +183,18 @@ function BJhit() {
     drawCard(You);
   }
 }
-document.querySelector('#deal').addEventListener(
-  'click', BJdeal);
+document.querySelector("#deal").addEventListener(
+  "click", BJdeal);
 
 function BJdeal() {
   if (You["score"] === 0) {
-    alert('Сначала возьмите карту!');
+    alert("Сначала возьмите карту!");
   } else if (Dealer["score"] === 0) {
-    alert(
-      'Нажмите Стоп, чтобы закончить набор...'
-    );
+    alert("Нажмите Стоп, чтобы закончить набор...");
   } else {
     let yourimg = document.querySelector(
-      '#your-box').querySelectorAll(
-      'img');
+      "#your-box").querySelectorAll(
+      "img");
     let dealerimg = document.querySelector(
       '#dealer-box').querySelectorAll(
       'img');
@@ -236,7 +224,7 @@ function BJdeal() {
       "score"];
     document.querySelector(You[
         "scoreSpan"]).style.color =
-      'whitesmoke';
+      "whitesmoke";
     Dealer["score"] = 0;
     document.querySelector(Dealer[
         "scoreSpan"]).textContent =
