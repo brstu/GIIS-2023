@@ -1,20 +1,23 @@
-let BJgame = {
-
-'you': {'scoreSpan': '#yourscore', 'div': '#your-box', 'score': 0},
-'dealer': {'scoreSpan': '#dealerscore', 'div': '#dealer-box', 'score': 0},
-
-'cards': [],
-'cardsmap': {},
-
+let BJgame={
+'you': {'scoreSpan':'#yourscore', 'div': '#your-box', 'score': 0},
+'dealer':{'scoreSpan': '#dealerscore', 'div': '#dealer-box', 'score': 0},
+'cards':[],
+'cardsmap':{},
 'initializeCards': function () {
 const suits = ['C', 'D', 'H', 'S'];
 const cardValues = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'K', 'Q', 'J', 'A'];
-
 for (const suit of suits) {
 for (const value of cardValues) {
 const card = value + suit;
-const cardValue = (value === 'A') ? [1, 11] : (value === 'K' || value === 'Q' || value === 'J') ? 10 : parseInt(value);
+    let cardValue;
 
+    if (value === 'A') {
+        cardValue = [1, 11];
+    } else if (value === 'K' || value === 'Q' || value === 'J') {
+        cardValue = 10;
+    } else {
+        cardValue = parseInt(value);
+    }
 this.cards.push(card);
 this.cardsmap[card] = cardValue;
 }
@@ -34,7 +37,6 @@ const You = BJgame['you'];
 const Dealer = BJgame['dealer'];
 
 function isBlackJack() {
-
 if (You['score'] === 21) {
 BJgame['tokens'] += 100;
 alert('BLACK-JACK');
@@ -43,10 +45,7 @@ findwinner();
 }
 
 function drawCard(activeplayer) {
-
 let randomNumber;
-
-    // Check if crypto.getRandomValues is available
 if (window.crypto?.getRandomValues) {
 const array = new Uint32Array(1);
 window.crypto.getRandomValues(array);
@@ -56,22 +55,17 @@ const crypto = require('crypto');
 const buf = crypto.randomBytes(1);
 randomNumber = buf.readUInt8() % BJgame['cards'].length;
 }
-
 const currentCard = BJgame['cards'].splice(randomNumber, 1);
-
 let card = document.createElement('img');
 card.src = `./static/${currentCard}.png`;
 document.querySelector(activeplayer['div']).appendChild(card);
-
 updateScore(currentCard, activeplayer);
-
 showScore(activeplayer);
 }
 
 function updateScore(currentcard, activeplayer) {
 if (currentcard == 'AC' || currentcard == 'AD' || currentcard == 'AH' || currentcard == 'AS') {
 if ((activeplayer['score'] + BJgame['cardsmap'][currentcard][1]) <= 21) {
-
 activeplayer['score'] += BJgame['cardsmap'][currentcard][1];
 } else {
 activeplayer['score'] += BJgame['cardsmap'][currentcard][0];
@@ -91,7 +85,6 @@ document.querySelector(activeplayer['scoreSpan']).textContent = activeplayer['sc
 }
 }
 
-// Compute Winner Function
 function findwinner() {
 let winner;
 
@@ -130,7 +123,6 @@ document.querySelector('#command').style.color = 'orange';
 }
 }
 
-// Scoreboard
 function scoreboard() {
 document.querySelector('#wins').textContent = BJgame['wins'];
 document.querySelector('#losses').textContent = BJgame['losses'];
@@ -138,7 +130,6 @@ document.querySelector('#draws').textContent = BJgame['draws'];
 document.querySelector('#tokens').textContent = BJgame['tokens'];
 }
 
-// Hit Button (starting)
 document.querySelector('#hit').addEventListener('click', BJhit);
 
 function BJhit() {
@@ -152,7 +143,6 @@ drawCard(You);
 }
 }
 
-// Deal Button
 document.querySelector('#deal').addEventListener('click', BJdeal);
 
 function BJdeal() {
@@ -187,15 +177,11 @@ document.querySelector(You['scoreSpan']).style.color = 'whitesmoke';
 Dealer['score'] = 0;
 document.querySelector(Dealer['scoreSpan']).textContent = Dealer['score'];
 document.querySelector(Dealer['scoreSpan']).style.color = 'whitesmoke';
-
 document.querySelector('#command').textContent = "🤑🤑🤑🤑🤑🤑";
 document.querySelector('#command').style.color = 'black';
     }
 }
-
-// Dealer's Logic (2nd player) OR Stand button
 document.querySelector('#stand').addEventListener('click', BJstand)
-
 function BJstand() {
 if (You['score'] === 0) {
         alert('Сначала возьмите карту!');
@@ -209,4 +195,3 @@ scoreboard();
 }, 800);
 }
 }
-
