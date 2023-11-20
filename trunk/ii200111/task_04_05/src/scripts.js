@@ -11,10 +11,9 @@ let BJgame = {
   },
   cards: [],
   cardsmap: {},
-    initializeCards: function() {
+      initializeCards: function() {
     const suits = ["C", "D", "H", "S"];
-    const cardValues =
-        ["2", "3", "4", "5", "6", "7", "8", "9", "10", "K", "Q", "J", "A"];
+    const cardValues = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "K", "Q", "J", "A"];
     for (const suit of suits) {
       for (const value of cardValues) {
         const card = value + suit;
@@ -24,8 +23,7 @@ let BJgame = {
         } else if (value === "K" || value === "Q" || value === "J") {
           cardValue = 10;
         } else {
-          cardValue = parseInt(
-            value, 10); // Provide the base (10) for decimal numbers
+          cardValue = parseInt(value, 10);
         }
         this.cards.push(card);
         this.cardsmap[card] = cardValue;
@@ -48,21 +46,20 @@ function isBlackJack() {
     findwinner();
   }
 }
-
 function drawCard(activeplayer) {
   let randomNumber;
-    if (window.crypto ?.getRandomValues) {
-      const array = new Uint32Array(1);
-      window.crypto.getRandomValues(array);
-      randomNumber = array[0] % BJgame["cards"].length;
-  } else {
+  if (window.crypto ?.getRandomValues) {
+    const array = new Uint32Array(1);
+    window.crypto.getRandomValues(array);
+    randomNumber = array[0] % BJgame["cards"].length;
+} else {
     const crypto = require("crypto");
     const buf = crypto.randomBytes(1);
     randomNumber = buf.readUInt8() % BJgame["cards"].length;
   }
   const currentCard = BJgame["cards"].splice(randomNumber, 1);
   let card = document.createElement("img");
-  card.src =`./static/${currentCard}.png`;
+card.src =`./static/${currentCard}.png`;
   document.querySelector(activeplayer["div"]).appendChild(card);
   updateScore(currentCard, activeplayer);
   showScore(activeplayer);
@@ -70,16 +67,15 @@ function drawCard(activeplayer) {
 
 function updateScore(currentcard, activeplayer) {
   if (currentcard == "AC" || currentcard == "AD" || currentcard == "AH" || currentcard == "AS") {
-    if ((activeplayer["score"] + BJgame["cardsmap"][currentcard][1]) <= 21) {
-      activeplayer["score"] += BJgame["cardsmap"][currentcard][1];
-    } else {
+  if ((activeplayer["score"] + BJgame["cardsmap"][currentcard][1]) <= 21) {
+    activeplayer["score"] += BJgame["cardsmap"][currentcard][1];
+  } else {
       activeplayer["score"] += BJgame["cardsmap"][currentcard][0];
     }
-  } else { // For Other Cases
-    activeplayer["score"] += BJgame["cardsmap"][currentcard];
+} else { // For Other Cases
+   activeplayer["score"] += BJgame["cardsmap"][currentcard];
     }
 }
-
 function showScore(activeplayer) {
   if (activeplayer["score"] > 21) {
     document.querySelector(activeplayer["scoreSpan"]).textContent = "Перебор!";
@@ -152,8 +148,10 @@ function BJdeal() {
   } else if (Dealer["score"] === 0) {
     alert("Нажмите Стоп, чтобы закончить набор...");
   } else {
-    let yourimg = document.querySelector("#your-box").querySelectorAll("img");
-    let dealerimg = document.querySelector("#dealer-box").querySelectorAll("img");
+    let yourimg =
+        document.querySelector("#your-box").querySelectorAll("img");
+    let dealerimg =
+        document.querySelector("#dealer-box").querySelectorAll("img");
     for (const img of yourimg) {
       img.remove();
     }
