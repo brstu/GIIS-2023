@@ -1,14 +1,14 @@
-let BJgame = {
-  'you': { 'scoreSpan': '#yourscore', 'div': '#your-box', 'score': 0 },
-  'dealer': { 'scoreSpan': '#dealerscore', 'div': '#dealer-box', 'score': 0 },
-'cards': [],
-'cardsmap': {},
-'initializeCards': function () {
-  const suits = ['C', 'D', 'H', 'S'];
-  const cardValues = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'K', 'Q', 'J', 'A'];
-  for (const suit of suits) {
+  let BJgame = {
+    'you': { 'scoreSpan': '#yourscore', 'div': '#your-box', 'score': 0 },
+    'dealer': { 'scoreSpan': '#dealerscore', 'div': '#dealer-box', 'score': 0 },
+    'cards': [],
+    'cardsmap': {},
+    'initializeCards': function () {
+    const suits = ['C', 'D', 'H', 'S'];
+    const cardValues = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'K', 'Q', 'J', 'A'];
+    for (const suit of suits) {
       for (const value of cardValues) {
-          const card = value + suit;
+        const card = value + suit;
           let cardValue;
 
           if (value === 'A') {
