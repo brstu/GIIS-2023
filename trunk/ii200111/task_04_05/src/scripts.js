@@ -1,33 +1,33 @@
 let BJgame = {
-    'you': { 'scoreSpan': '#yourscore', 'div': '#your-box', 'score': 0 },
-    'dealer': { 'scoreSpan': '#dealerscore', 'div': '#dealer-box', 'score': 0 },
-    'cards': [],
-    'cardsmap': {},
-    'initializeCards': function () {
-        const suits = ['C', 'D', 'H', 'S'];
-        const cardValues = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'K', 'Q', 'J', 'A'];
-        for (const suit of suits) {
-            for (const value of cardValues) {
-                const card = value + suit;
-                let cardValue;
+  'you': { 'scoreSpan': '#yourscore', 'div': '#your-box', 'score': 0 },
+  'dealer': { 'scoreSpan': '#dealerscore', 'div': '#dealer-box', 'score': 0 },
+  'cards': [],
+  'cardsmap': {},
+  'initializeCards': function () {
+    const suits = ['C', 'D', 'H', 'S'];
+    const cardValues = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'K', 'Q', 'J', 'A'];
+    for (const suit of suits) {
+        for (const value of cardValues) {
+            const card = value + suit;
+            let cardValue;
 
-                if (value === 'A') {
-                    cardValue = [1, 11];
-                } else if (value === 'K' || value === 'Q' || value === 'J') {
-                    cardValue = 10;
-                } else {
-                    cardValue = parseInt(value, 10); // Provide the base (10) for decimal numbers
-                }
+            if (value === 'A') {
+                cardValue = [1, 11];
+            } else if (value === 'K' || value === 'Q' || value === 'J') {
+                cardValue = 10;
+            } else {
+                cardValue = parseInt(value, 10); // Provide the base (10) for decimal numbers
+            }
 
-                this.cards.push(card);
-                this.cardsmap[card] = cardValue;
+            this.cards.push(card);
+            this.cardsmap[card] = cardValue;
             }
         }
-    },
-    'wins': 0,
-    'losses': 0,
-    'draws': 0,
-    'tokens': 20
+  },
+  'wins': 0,
+  'losses': 0,
+  'draws': 0,
+  'tokens': 20
 };
 
 // Initialize cards and cardsmap
@@ -37,38 +37,38 @@ const You = BJgame['you'];
 const Dealer = BJgame['dealer'];
 
 function isBlackJack() {
-    if (You['score'] === 21) {
-        BJgame['tokens'] += 100;
-        alert('BLACK-JACK');
-        findwinner();
+  if (You['score'] === 21) {
+    BJgame['tokens'] += 100;
+    alert('BLACK-JACK');
+    findwinner();
     }
 }
 
 function drawCard(activeplayer) {
-    let randomNumber;
-    if (window.crypto?.getRandomValues) {
-        const array = new Uint32Array(1);
-        window.crypto.getRandomValues(array);
-        randomNumber = array[0] % BJgame['cards'].length;
-    } else {
-        const crypto = require('crypto');
-        const buf = crypto.randomBytes(1);
-        randomNumber = buf.readUInt8() % BJgame['cards'].length;
+  let randomNumber;
+  if (window.crypto?.getRandomValues) {
+     const array = new Uint32Array(1);
+     window.crypto.getRandomValues(array);
+     randomNumber = array[0] % BJgame['cards'].length;
+  } else {
+      const crypto = require('crypto');
+      const buf = crypto.randomBytes(1);
+      randomNumber = buf.readUInt8() % BJgame['cards'].length;
     }
-    const currentCard = BJgame['cards'].splice(randomNumber, 1);
-    let card = document.createElement('img');
-    card.src = `./static/${currentCard}.png`;
-    document.querySelector(activeplayer['div']).appendChild(card);
-    updateScore(currentCard, activeplayer);
-    showScore(activeplayer);
+  const currentCard = BJgame['cards'].splice(randomNumber, 1);
+  let card = document.createElement('img');
+  card.src = `./static/${currentCard}.png`;
+  document.querySelector(activeplayer['div']).appendChild(card);
+  updateScore(currentCard, activeplayer);
+  showScore(activeplayer);
 }
 
 function updateScore(currentcard, activeplayer) {
-    if (currentcard == 'AC' || currentcard == 'AD' || currentcard == 'AH' || currentcard == 'AS') {
-        if ((activeplayer['score'] + BJgame['cardsmap'][currentcard][1]) <= 21) {
-            activeplayer['score'] += BJgame['cardsmap'][currentcard][1];
-        } else {
-            activeplayer['score'] += BJgame['cardsmap'][currentcard][0];
+  if (currentcard == 'AC' || currentcard == 'AD' || currentcard == 'AH' || currentcard == 'AS') {
+      if ((activeplayer['score'] + BJgame['cardsmap'][currentcard][1]) <= 21) {
+          activeplayer['score'] += BJgame['cardsmap'][currentcard][1];
+      } else {
+          activeplayer['score'] += BJgame['cardsmap'][currentcard][0];
         }
     } else {  // For Other Cases
         activeplayer['score'] += BJgame['cardsmap'][currentcard];
@@ -76,27 +76,27 @@ function updateScore(currentcard, activeplayer) {
 }
 
 function showScore(activeplayer) {
-    if (activeplayer['score'] > 21) {
-        document.querySelector(activeplayer['scoreSpan']).textContent = 'Перебор!';
-        document.querySelector(activeplayer['scoreSpan']).style.color = 'yellow';
-    } else {
-        document.querySelector(activeplayer['scoreSpan']).textContent = activeplayer['score'];
+  if (activeplayer['score'] > 21) {
+      document.querySelector(activeplayer['scoreSpan']).textContent = 'Перебор!';
+      document.querySelector(activeplayer['scoreSpan']).style.color = 'yellow';
+  } else {
+      document.querySelector(activeplayer['scoreSpan']).textContent = activeplayer['score'];
     }
 }
 
 function findwinner() {
-    let winner;
+  let winner;
 
-    if (You['score'] <= 21) {
-        if (Dealer['score'] < You['score'] || Dealer['score'] > 21) {
-            BJgame['wins']++;
-            BJgame['tokens'] += 5;
-            winner = You;
-        } else if (Dealer['score'] == You['score']) {
-            BJgame['draws']++;
-        } else {
-            BJgame['losses']++;
-            BJgame['tokens'] -= 3;
+  if (You['score'] <= 21) {
+    if (Dealer['score'] < You['score'] || Dealer['score'] > 21) {
+        BJgame['wins']++;
+        BJgame['tokens'] += 5;
+        winner = You;
+      } else if (Dealer['score'] == You['score']) {
+          BJgame['draws']++;
+      } else {
+          BJgame['losses']++;
+          BJgame['tokens'] -= 3;
             winner = Dealer;
         }
     } else if (You['score'] > 21 && Dealer['score'] <= 21) {
@@ -110,23 +110,23 @@ function findwinner() {
 }
 
 function showresults(winner) {
-    if (winner == You) {
-        document.querySelector('#command').textContent = 'Вы выиграли!';
-        document.querySelector('#command').style.color = 'green';
-    } else if (winner == Dealer) {
-        document.querySelector('#command').textContent = "Вы проиграли!";
-        document.querySelector('#command').style.color = 'red';
-    } else {
-        document.querySelector('#command').textContent = 'Ничья!';
-        document.querySelector('#command').style.color = 'orange';
-    }
+  if (winner == You) {
+      document.querySelector('#command').textContent = 'Вы выиграли!';
+      document.querySelector('#command').style.color = 'green';
+  } else if (winner == Dealer) {
+      document.querySelector('#command').textContent = "Вы проиграли!";
+      document.querySelector('#command').style.color = 'red';
+  } else {
+      document.querySelector('#command').textContent = 'Ничья!';
+      document.querySelector('#command').style.color = 'orange';
+  }
 }
 
 function scoreboard() {
-    document.querySelector('#wins').textContent = BJgame['wins'];
-    document.querySelector('#losses').textContent = BJgame['losses'];
-    document.querySelector('#draws').textContent = BJgame['draws'];
-    document.querySelector('#tokens').textContent = BJgame['tokens'];
+  document.querySelector('#wins').textContent = BJgame['wins'];
+  document.querySelector('#losses').textContent = BJgame['losses'];
+  document.querySelector('#draws').textContent = BJgame['draws'];
+  document.querySelector('#tokens').textContent = BJgame['tokens'];
 }
 
 document.querySelector('#hit').addEventListener('click', BJhit);
@@ -180,12 +180,12 @@ function BJdeal() {
 document.querySelector('#stand').addEventListener('click', BJstand);
 
 function BJstand() {
-    if (You['score'] === 0) {
-        alert('Сначала возьмите карту!');
-    } else {
-        while (Dealer['score'] < 16) {
-            drawCard(Dealer);
-        }
+  if (You['score'] === 0) {
+      alert('Сначала возьмите карту!');
+  } else {
+      while (Dealer['score'] < 16) {
+          drawCard(Dealer);
+      }
         setTimeout(function () {
             showresults(findwinner());
             scoreboard();
