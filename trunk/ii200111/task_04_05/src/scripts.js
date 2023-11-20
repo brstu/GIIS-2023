@@ -72,18 +72,13 @@ function drawCard(activeplayer) {
 
 function updateScore(currentcard, activeplayer) {
   if (currentcard == "AC" || currentcard == "AD" || currentcard == "AH" || currentcard == "AS") {
-    if ((activeplayer["score"] + BJgame[
-        "cardsmap"][currentcard][1]) <=
-      21) {
-      activeplayer["score"] += BJgame[
-        "cardsmap"][currentcard][1];
+    if ((activeplayer["score"] + BJgame["cardsmap"][currentcard][1]) <= 21) {
+      activeplayer["score"] += BJgame["cardsmap"][currentcard][1];
     } else {
-      activeplayer["score"] += BJgame[
-        "cardsmap"][currentcard][0];
+      activeplayer["score"] += BJgame["cardsmap"][currentcard][0];
     }
   } else { // For Other Cases
-    activeplayer["score"] += BJgame[
-      "cardsmap"][currentcard];
+    activeplayer["score"] += BJgame["cardsmap"][currentcard];
   }
 }
 
@@ -130,35 +125,24 @@ function findwinner() {
 
 function showresults(winner) {
   if (winner == You) {
-    document.querySelector("#command").textContent =
-      "Вы выиграли!";
-    document.querySelector("#command").style
-      .color = "green";
+    document.querySelector("#command").textContent = "Вы выиграли!";
+    document.querySelector("#command").style.color = "green";
   } else if (winner == Dealer) {
-    document.querySelector("#command").textContent =
-      "Вы проиграли!";
-    document.querySelector("#command").style
-      .color = "red";
+    document.querySelector("#command").textContent = "Вы проиграли!";
+    document.querySelector("#command").style.color = "red";
   } else {
-    document.querySelector("#command").textContent =
-      "Ничья!";
-    document.querySelector("#command").style
-      .color = "orange";
+    document.querySelector("#command").textContent = "Ничья!";
+    document.querySelector("#command").style.color = "orange";
   }
 }
 
 function scoreboard() {
-  document.querySelector("#wins").textContent =
-    BJgame["wins"];
-  document.querySelector("#losses").textContent =
-    BJgame["losses"];
-  document.querySelector("#draws").textContent =
-    BJgame["draws"];
-  document.querySelector("#tokens").textContent =
-    BJgame["tokens"];
+  document.querySelector("#wins").textContent = BJgame["wins"];
+  document.querySelector("#losses").textContent = BJgame["losses"];
+  document.querySelector("#draws").textContent = BJgame["draws"];
+  document.querySelector("#tokens").textContent = BJgame["tokens"];
 }
-document.querySelector("#hit").addEventListener(
-  "click", BJhit);
+document.querySelector("#hit").addEventListener("click", BJhit);
 
 function BJhit() {
   if (Dealer["score"] === 0 && You["score"] === 0) {
@@ -170,8 +154,7 @@ function BJhit() {
     drawCard(You);
   }
 }
-document.querySelector("#deal").addEventListener(
-  "click", BJdeal);
+document.querySelector("#deal").addEventListener("click", BJdeal);
 
 function BJdeal() {
   if (You["score"] === 0) {
@@ -179,12 +162,8 @@ function BJdeal() {
   } else if (Dealer["score"] === 0) {
     alert("Нажмите Стоп, чтобы закончить набор...");
   } else {
-    let yourimg = document.querySelector(
-      "#your-box").querySelectorAll(
-      "img");
-    let dealerimg = document.querySelector(
-      "#dealer-box").querySelectorAll(
-      "img");
+    let yourimg = document.querySelector("#your-box").querySelectorAll("img");
+    let dealerimg = document.querySelector("#dealer-box").querySelectorAll("img");
     for (const img of yourimg) {
       img.remove();
     }
@@ -197,23 +176,13 @@ function BJdeal() {
       "6H", "7H","8H", "9H", "10H", "KH", "QH", "JH", "AH", "2S", "3S", "4S",
       "5S", "6S", "7S", "8S", "9S", "10S", "KS","QS", "JS", "AS"];
     You["score"] = 0;
-    document.querySelector(You[
-      "scoreSpan"]).textContent = You[
-      "score"];
-    document.querySelector(You[
-        "scoreSpan"]).style.color =
-      "whitesmoke";
+    document.querySelector(You["scoreSpan"]).textContent = You["score"];
+    document.querySelector(You["scoreSpan"]).style.color = "whitesmoke";
     Dealer["score"] = 0;
-    document.querySelector(Dealer[
-        "scoreSpan"]).textContent =
-      Dealer["score"];
-    document.querySelector(Dealer[
-        "scoreSpan"]).style.color =
-      "whitesmoke";
-    document.querySelector("#command").textContent =
-      "🤑🤑🤑🤑🤑🤑";
-    document.querySelector("#command").style
-      .color = "black";
+    document.querySelector(Dealer["scoreSpan"]).textContent = Dealer["score"];
+    document.querySelector(Dealer["scoreSpan"]).style.color = "whitesmoke";
+    document.querySelector("#command").textContent = "🤑🤑🤑🤑🤑🤑";
+    document.querySelector("#command").style.color = "black";
   }
 }
 document.querySelector("#stand").addEventListener(
@@ -226,7 +195,7 @@ function BJstand() {
     while (Dealer["score"] < 16) {
       drawCard(Dealer);
     }
-    setTimeout(function() {
+      setTimeout(function() {
       showresults(findwinner());
       scoreboard();
     }, 800);
