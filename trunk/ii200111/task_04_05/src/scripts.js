@@ -1,31 +1,31 @@
-  let BJgame = {
-  'you': { 'scoreSpan': '#yourscore', 'div': '#your-box', 'score': 0 },
-  'dealer': { 'scoreSpan': '#dealerscore', 'div': '#dealer-box', 'score': 0 },
+let BJgame={
+  'you': { "scoreSpan": "#yourscore", "div": "#your-box", "score": 0 },
+  'dealer': { "scoreSpan": "#dealerscore", "div": "#dealer-box", "score": 0 },
   'cards': [],
   'cardsmap': {},
   'initializeCards': function () {
-    const suits = ['C', 'D', 'H', 'S'];
-  const cardValues = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'K', 'Q', 'J', 'A'];
+    const suits = ["C", "D", "H", "S"];
+  const cardValues = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "K", "Q", "J", "A"];
     for (const suit of suits) {
       for (const value of cardValues) {
         const card = value + suit;
         let cardValue;
-        if (value === 'A') {
-            cardValue = [1, 11];
-        }else if (value === 'K' || value === 'Q' || value === 'J') {
-            cardValue = 10;
+        if (value === "A") {
+          cardValue = [1, 11];
+        }else if (value === "K" || value === "Q" || value === "J") {
+          cardValue = 10;
         }else {
-            cardValue = parseInt(value, 10); // Provide the base (10) for decimal numbers
+          cardValue = parseInt(value, 10); // Provide the base (10) for decimal numbers
         }
 
         this.cards.push(card);
         this.cardsmap[card] = cardValue;}
     }
   },
-  'wins': 0,
-  'losses': 0,
-  'draws': 0,
-  'tokens': 20
+  "wins": 0,
+  "losses": 0,
+  "draws": 0,
+  "tokens": 20
   };
 
   BJgame.initializeCards();
@@ -35,7 +35,7 @@
   function isBlackJack() {
     if (You["score"] === 21) {
       BJgame["tokens"] += 100;
-      alert('BLACK-JACK');
+      alert("BLACK-JACK");
       findwinner();}
   }
 
@@ -58,7 +58,7 @@
     showScore(activeplayer);}
 
   function updateScore(currentcard, activeplayer) {
-    if (currentcard == 'AC' || currentcard == 'AD' || currentcard == 'AH' || currentcard == 'AS') {
+    if (currentcard == "AC" || currentcard == "AD" || currentcard == "AH" || currentcard == "AS") {
       if ((activeplayer["score"] + BJgame["cardsmap"][currentcard][1]) <= 21) {
         activeplayer["score"] += BJgame["cardsmap"][currentcard][1];
       }else {
