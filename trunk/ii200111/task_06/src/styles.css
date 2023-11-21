@@ -20,25 +20,24 @@ body {
 
 .flowers {
     position: absolute;
-    width:5px;
+    width: 5px;
     height: 10px;
     background-color: #fff;
-    border-radius:10px;
+    border-radius: 10px;
     left: 230px;
     top: 210px;
-    filter: drop-shadow(50px -20px #ffd23f) drop-shadow(270px 0 #90e0ef) drop-shadow(40px 20px #ffb3c1)
-    drop-shadow(280px 50px #ffd23f) drop-shadow(-50px 55px #ffb3c1) drop-shadow(-150px 40px #90e0ef) ;
+    filter: drop-shadow(50px -20px #ffd23f) drop-shadow(270px 0 #90e0ef) drop-shadow(40px 20px #ffb3c1) drop-shadow(280px 50px #ffd23f) drop-shadow(-50px 55px #ffb3c1) drop-shadow(-150px 40px #90e0ef);
 }
 
-.flowers:before {
-    content:"";
+.flowers::before {
+    content: "";
     position: absolute;
     background-color: #fff;
-    width:10px;
+    width: 10px;
     height: 5px;
     border-radius: 10px;
-    top:2.5px;
-    left:-2.5px;
+    top: 2.5px;
+    left: -2.5px;
 }
 
 .r-button1, .r-button2, .r-button3, .r-button4 {
@@ -57,7 +56,7 @@ body {
     z-index: 10;
 }
 
-.r-button1:before, .r-button2:before, .r-button3:before, .r-button4:before {
+.r-button1::before, .r-button2::before, .r-button3::before, .r-button4::before {
     content: "";
     position: absolute;
     height: 7px;
@@ -115,51 +114,51 @@ input {
     z-index: 10;
 }
 
-input[type=radio]:checked + label .r-button1:before {
+input[type="radio"]:checked + label .r-button1::before {
     background-color: #dad7cd;
 }
 
-input[type=radio]:checked:hover + label .r-button1:before {
+input[type="radio"]:checked:hover + label .r-button1::before {
     background-color: #a3b18a;
 }
 
-input[type=radio]:hover + label .r-button1 {
+input[type="radio"]:hover + label .r-button1 {
     border-color: #a3b18a;
 }
 
-input[type=radio]:checked + label .r-button2:before {
+input[type="radio"]:checked + label .r-button2::before {
     background-color: #dad7cd;
 }
 
-input[type=radio]:checked:hover + label .r-button2:before {
+input[type="radio"]:checked:hover + label .r-button2::before {
     background-color: #a3b18a;
 }
 
-input[type=radio]:hover + label .r-button2 {
+input[type="radio"]:hover + label .r-button2 {
     border-color: #a3b18a;
 }
 
-input[type=radio]:checked + label .r-button3:before {
+input[type="radio"]:checked + label .r-button3::before {
     background-color: #dad7cd;
 }
 
-input[type=radio]:checked:hover + label .r-button3:before {
+input[type="radio"]:checked:hover + label .r-button3::before {
     background-color: #a3b18a;
 }
 
-input[type=radio]:hover + label .r-button3 {
+input[type="radio"]:hover + label .r-button3 {
     border-color: #a3b18a;
 }
 
-input[type=radio]:checked + label .r-button4:before {
+input[type="radio"]:checked + label .r-button4::before {
     background-color: #dad7cd;
 }
 
-input[type=radio]:checked:hover + label .r-button4:before {
+input[type="radio"]:checked:hover + label .r-button4::before {
     background-color: #c9ccc2;
 }
 
-input[type=radio]:hover + label .r-button4 {
+input[type="radio"]:hover + label .r-button4 {
     border-color: #a3b18a;
 }
 
@@ -187,17 +186,17 @@ input[type=radio]:hover + label .r-button4 {
 }
 
 .spring:before, .summer:before, .autumn:before, .winter:before {
-    content:"";
+    content: "";
     position: absolute;
     width: 950px;
     height: 800px;
     border-radius: 30%;
-    left:-170px;
-    top:160px;
+    left: -170px;
+    top: 160px;
 }
 
 .spring:after, .summer:after, .autumn:after, .winter:after {
-    content:"";
+    content: "";
     position: absolute;
     border-style: solid;
     border-width: 0 20px 60px 20px;
@@ -226,7 +225,7 @@ input[type=radio]:hover + label .r-button4 {
 }
 
 .window:before {
-    content:"";
+    content: "";
     position: absolute;
     background-color: #774936;
     width: 7px;
@@ -238,9 +237,9 @@ input[type=radio]:hover + label .r-button4 {
 }
 
 .window:after {
-    content:"";
+    content: "";
     position: absolute;
-    z-index:10;
+    z-index: 10;
     border-style: solid;
     border-width: 0 20px 60px 20px;
     border-color: transparent transparent #007f5f transparent;
@@ -251,7 +250,7 @@ input[type=radio]:hover + label .r-button4 {
 
 .sun {
     position: absolute;
-    border-radius:50%;
+    border-radius: 50%;
     width: 60px;
     height: 60px;
     background-color: #ffc300;
@@ -261,12 +260,12 @@ input[type=radio]:hover + label .r-button4 {
 }
 
 .sun:before {
-    content:"";
+    content: "";
     position: absolute;
     border-radius: 50%;
     width: 45px;
     height: 45px;
-    left:7.5px;
+    left: 7.5px;
     top: 7.5px;
     background-color: #f1dca7;
 }
@@ -282,8 +281,8 @@ input[type=radio]:hover + label .r-button4 {
 
 .snow, .snow:before {
     position: absolute;
-    border-radius:50%;
-    width:5px;
+    border-radius: 50%;
+    width: 5px;
     height: 5px;
     background-color: #f8f9fa;
     box-shadow: 10px -20px #f8f9fa, 20px -30px #f8f9fa, 30px 30px #f8f9fa, -30px -30px #f8f9fa, 40px -20px #f8f9fa, 50px 20px #f8f9fa, 0 -30px #f8f9fa, 15px -60px #f8f9fa;
@@ -292,13 +291,17 @@ input[type=radio]:hover + label .r-button4 {
 }
 
 .snow:before {
-    content:"";
+    content: "";
     animation-delay: 5s;
 }
 
 @keyframes snow {
-    0% {transform: translateY(-50px);}
-    100% {transform: translateY(320px);}
+    0% {
+        transform: translateY(-50px);
+    }
+    100% {
+        transform: translateY(320px);
+    }
 }
 
 .spring:after {
@@ -326,7 +329,7 @@ input[type=radio]:hover + label .r-button4 {
     background-color: #78290f;
     width: 15px;
     height: 15px;
-    border-radius: 0 50% 0 50%;
+    border-radius: 0 50%;
     left: 150px;
     animation: fall 3s linear infinite;
     box-shadow: 100px -50px #9e2a2b, 120px -70px #78290f, 120px -70px #a0931b;
@@ -335,7 +338,7 @@ input[type=radio]:hover + label .r-button4 {
 .leaf:before {
     content: "";
     position: absolute;
-    border-radius: 50% 0 50% 0;
+    border-radius: 50% 0;
     width: 13px;
     height: 13px;
     background-color: #e09f3e;
