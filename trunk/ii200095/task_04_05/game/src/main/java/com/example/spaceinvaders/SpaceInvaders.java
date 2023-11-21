@@ -46,7 +46,8 @@ public class SpaceInvaders extends Application {
             new Image("D:\\Java\\SpaceInvaders\\src\\main\\resources\\images\\enemy3.png")
     };
 
-    final int MAX_BOMBS = 10, MAX_SHOT = MAX_BOMBS * 2;
+    final int MAX_BOMBS = 10;
+    final int  MAX_SHOT = MAX_BOMBS * 2;
     boolean gameOver = false;
     private GraphicsContext gc;
 
@@ -106,10 +107,26 @@ public class SpaceInvaders extends Application {
             gc.fillText("Game Over \n Your Score is: "+score+"\n Click to play again", WIDTH / 2, HEIGHT / 2.5);
         }
         univ.forEach(Universe::draw);
-        System.out.println("Player position: (" + player.posX + ", " + player.posY + ")");
         player.posX = (int) mouseX;
         player.update();
         player.draw();
+        shotsAndEnemies()
+
+        gameOver = player.destroyed;
+        monitorUniv();
+    }
+
+    public void monitorUniv(){
+         if(RAND.nextInt(10) > 2){
+            univ.add(new Universe());
+        }
+        for(int i = 0; i < univ.size(); i++){
+            if(univ.get(i).posY > HEIGHT)
+                univ.remove(i);
+        }
+    }
+
+    public void shotsAndEnemies(){
         enemies.stream().peek(Rocket::update).peek(Rocket::draw).forEach(e -> {
             if (player.colide(e) && !player.exploding) {
                 player.explode();
@@ -138,21 +155,15 @@ public class SpaceInvaders extends Application {
                 enemies.set(i, newEnemy());
             }
         }
-
-        gameOver = player.destroyed;
-        if(RAND.nextInt(10) > 2){
-            univ.add(new Universe());
-        }
-        for(int i = 0; i < univ.size(); i++){
-            if(univ.get(i).posY > HEIGHT)
-                univ.remove(i);
-        }
     }
 
     public class Rocket{
 
-        int posX, posY, size;
-        boolean exploding, destroyed;
+        int posX;
+        int posY;
+        int size;
+        boolean exploding;
+        boolean destroyed;
         Image img;
         int explosiveStep = 0;
 
@@ -214,7 +225,9 @@ public class SpaceInvaders extends Application {
 
     public class Shot{
         public boolean toRemove;
-        int posX, posY, speed = 10;
+        int posX;
+        int posY;
+        int speed = 10;
         static final int size = 6;
 
         public Shot(int posX, int posY){
@@ -246,8 +259,13 @@ public class SpaceInvaders extends Application {
     }
 
     public class Universe{
-        int posX, posY;
-        private  int h, w, r, g, b;
+        int posX;
+        int posY;
+        private  int h;
+        private  int w;
+        private  int r;
+        private  int g;
+        private  int b;
         private double opacity;
 
 
