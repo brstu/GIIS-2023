@@ -20,6 +20,7 @@ def apply_filter(image, threshold):
 
 
 def update_threshold(value):
+    global threshold
     threshold = value
 
 
