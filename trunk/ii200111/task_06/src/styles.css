@@ -185,7 +185,7 @@ input[type="radio"]:hover + label .r-button4 {
     background-color: #caf0f8;
 }
 
-.spring:before, .summer:before, .autumn:before, .winter:before {
+.spring::before, .summer::before, .autumn::before, .winter::before {
     content: "";
     position: absolute;
     width: 950px;
@@ -195,36 +195,36 @@ input[type="radio"]:hover + label .r-button4 {
     top: 160px;
 }
 
-.spring:after, .summer:after, .autumn:after, .winter:after {
+.spring::after, .summer::after, .autumn::after, .winter::after {
     content: "";
     position: absolute;
     border-style: solid;
-    border-width: 0 20px 60px 20px;
+    border-width: 0 20px 60px;
     top: 65px;
     left: -2px;
 }
 
-.spring:before {
+.spring::before {
     background-color: #70e000;
     box-shadow: -150px -25px #38b000, 100px -30px #008000;
 }
 
-.summer:before {
+.summer::before {
     background-color: #38b000;
     box-shadow: -150px -25px #008000, 100px -30px #007200;
 }
 
-.autumn:before {
+.autumn::before {
     background-color: #ca5310;
     box-shadow: -150px -25px #bb4d00, 100px -30px #8f250c;
 }
 
-.winter:before {
+.winter::before {
     background-color: #f8f9fa;
     box-shadow: -200px -25px #e9ecef, 100px -30px #dee2e6;
 }
 
-.window:before {
+.window::before {
     content: "";
     position: absolute;
     background-color: #774936;
@@ -236,7 +236,7 @@ input[type="radio"]:hover + label .r-button4 {
     box-shadow: 130px 3px #774936, 270px 0 #774936, 370px 48px #774936;
 }
 
-.window:after {
+.window::after {
     content: "";
     position: absolute;
     z-index: 10;
@@ -259,7 +259,7 @@ input[type="radio"]:hover + label .r-button4 {
     animation: sun 5s linear infinite;
 }
 
-.sun:before {
+.sun::before {
     content: "";
     position: absolute;
     border-radius: 50%;
@@ -274,12 +274,13 @@ input[type="radio"]:hover + label .r-button4 {
     0% {
         box-shadow: 0 0 100px #ffd60a;
     }
+
     50% {
         box-shadow: 0 0 0 #ffd60a;
     }
 }
 
-.snow, .snow:before {
+.snow, .snow::before {
     position: absolute;
     border-radius: 50%;
     width: 5px;
@@ -290,7 +291,7 @@ input[type="radio"]:hover + label .r-button4 {
     animation: snow 15s linear infinite;
 }
 
-.snow:before {
+.snow::before {
     content: "";
     animation-delay: 5s;
 }
@@ -299,28 +300,29 @@ input[type="radio"]:hover + label .r-button4 {
     0% {
         transform: translateY(-50px);
     }
+
     100% {
         transform: translateY(320px);
     }
 }
 
-.spring:after {
+.spring::after {
     border-color: transparent transparent #38b000 transparent;
     filter: drop-shadow(270px 0 #38b000);
 }
 
-.summer:after {
+.summer::after {
     border-color: transparent transparent #008000 transparent;
     filter: drop-shadow(270px 0 #008000);
 }
 
-.autumn:after {
+.autumn::after {
     border-color: transparent transparent #8d0801 transparent;
     filter: drop-shadow(270px 1px #8d0801);
 }
 
-.winter:after {
-    border-color: transparent transparent #f8f9fa transparent;
+.winter::after {
+    border-color: transparent transparent #f8f9fa;
     filter: drop-shadow(270px 0 #f8f9fa);
 }
 
@@ -335,7 +337,7 @@ input[type="radio"]:hover + label .r-button4 {
     box-shadow: 100px -50px #9e2a2b, 120px -70px #78290f, 120px -70px #a0931b;
 }
 
-.leaf:before {
+.leaf::before {
     content: "";
     position: absolute;
     border-radius: 50% 0;
@@ -364,5 +366,5 @@ input[type="radio"]:hover + label .r-button4 {
     border-radius: 20px;
     background-color: #dda15e;
     left: -26px;
-    box-shadow: inset 2px 2px 10px rgba(0, 0, 0, .2), 2px 20px rgba(0, 0, 0, .2);
+    box-shadow: inset 2px 2px 10px rgb(0, 0, 0, .2), 2px 20px rgb(0, 0, 0, .2);
 }
