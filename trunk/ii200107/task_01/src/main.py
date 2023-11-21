@@ -20,12 +20,10 @@ def apply_filter(image, threshold):
 
 
 def update_threshold(value):
-    global threshold
     threshold = value
 
 
 def apply_and_show():
-    global threshold
     filtered_image = apply_filter(original_image, threshold)
     cv2.imshow('orig image', original_image)
     cv2.imshow('Filtered Image', filtered_image)
