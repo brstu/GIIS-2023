@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loading Animation</title>
+  <style>
+    canvas {
+      border: 1px solid #000;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="myCanvas"></canvas>
+
+  <script>
+    const size = 600;
+    const pixels = 60;
+    const center = pixels / 2;
+    const pixelSize = size / pixels;
+    let time = 0;
+    let faz = -(Math.PI - 1) / 6;
+
+    const canvas = document.getElementById('myCanvas');
+    const context = canvas.getContext('2d');
+
+    canvas.setAttribute("width", size);
+    canvas.setAttribute("height", size);
+
+    const r = Math.floor(pixels / 7);
+    const R = Math.floor(pixels / 2.5 - r);
+
+    function drawPixel(x, y, color) {
+      context.fillStyle = color;
+      context.fillRect(x * pixelSize, y * pixelSize, pixelSize, pixelSize);
+    }
+
+    // Your animation/painting logic goes here
+
+    function drawPixelArtAnimation() {
+      time += (3 / pixels); // Speed
+      time %= (2 * Math.PI);
+
+      context.clearRect(0, 0, size, size); // Clear the canvas
+
+      // Draw the spinning circles
+      const circleX = Math.floor(center + R * Math.cos(time));
+      const circleY = Math.floor(center + R * Math.sin(time));
+
+      const circleX1 = Math.floor(center + R * Math.cos(time + faz));
+      const circleY1 = Math.floor(center + R * Math.sin(time + faz));
+
+      const circleX2 = Math.floor(center + R * Math.cos(time + faz * 2));
+      const circleY2 = Math.floor(center + R * Math.sin(time + faz * 2));
+
+      // Draw pixels for each circle
+      for (let i = 0; i < pixels; i++) {
+        for (let j = 0; j < pixels; j++) {
+          if ((i - circleX2) ** 2 + (j - circleY2) ** 2 < (r + 1) ** 2 && Math.random() < 0.2) {
+            drawPixel(i, j, 'black');
+          }
+          if ((i - circleX1) ** 2 + (j - circleY1) ** 2 < r ** 2 + 1 && Math.random() < 0.8) {
+            drawPixel(i, j, '#222');
+          }
+          if ((i - circleX) ** 2 + (j - circleY) ** 2 < r ** 2) {
+            drawPixel(i, j, 'black');
+          }
+        }
+      }
+
+      setTimeout(() => {
+        requestAnimationFrame(drawPixelArtAnimation); // Loop the animation
+      }, 1);
+    }
+
+    // Start the pixel art animation
+    drawPixelArtAnimation();
+
+  </script>
+</body>
+</html>
