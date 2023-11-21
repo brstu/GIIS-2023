@@ -1,5 +1,4 @@
 package com.example.spaceinvaders;
-
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Application;
