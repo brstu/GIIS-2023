@@ -56,10 +56,10 @@
       // Draw pixels for each circle
       for (let i = 0; i < pixels; i++) {
         for (let j = 0; j < pixels; j++) {
-          if ((i - circleX2) ** 2 + (j - circleY2) ** 2 < (r + 1) ** 2 && Math.random() < 0.2) {
+          if ((i - circleX2) ** 2 + (j - circleY2) ** 2 < (r + 1) ** 2 && crypto.getRandomValues(new Uint32Array(1))[0] / (2**32 - 1) < 0.2) {
             drawPixel(i, j, 'black');
           }
-          if ((i - circleX1) ** 2 + (j - circleY1) ** 2 < r ** 2 + 1 && Math.random() < 0.8) {
+          if ((i - circleX1) ** 2 + (j - circleY1) ** 2 < r ** 2 + 1 && crypto.getRandomValues(new Uint32Array(1))[0] / (2**32 - 1) < 0.8) {
             drawPixel(i, j, '#222');
           }
           if ((i - circleX) ** 2 + (j - circleY) ** 2 < r ** 2) {
