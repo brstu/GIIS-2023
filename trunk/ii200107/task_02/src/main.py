@@ -86,7 +86,7 @@ class AddressBookApp(QtWidgets.QMainWindow):
         super().__init__()
         self.initUI()
         self.contacts = []
-        self.current_contact_id = 0
+        self.current_contact_ind = 0
 
     def initUI(self):
         self.setWindowTitle("Адресная книга")
@@ -199,19 +199,19 @@ class AddressBookApp(QtWidgets.QMainWindow):
             self.show_mssg("Заполните все поля перед добавлением контакта.")
 
     def previous(self):
-        if self.current_contact_id > 0:
-            self.current_contact_id -= 1
+        if self.current_contact_ind > 0:
+            self.current_contact_ind -= 1
             self.cont()
 
     def next(self):
-        if self.current_contact_id < len(self.contacts) - 1:
-            self.current_contact_id += 1
+        if self.current_contact_ind < len(self.contacts) - 1:
+            self.current_contact_ind += 1
             self.cont()
 
     def cont(self):
-        if 0 <= self.current_contact_id < len(self.contacts):
-            # Отобразить контакт с индексом self.current_contact_id
-            contact = self.contacts[self.current_contact_id]
+        if 0 <= self.current_contact_ind < len(self.contacts):
+            # Отобразить контакт с индексом self.current_contact_ind
+            contact = self.contacts[self.current_contact_ind]
             self.NAME.setText(contact.name)
             self.ADDRESS.setPlainText(contact.address)
         else:
@@ -221,17 +221,17 @@ class AddressBookApp(QtWidgets.QMainWindow):
 
     def ed_cont(self):
         # Получаем текущий индекс контакта
-        id = self.current_contact_id
+        ind = self.current_contact_ind
 
         # Проверяем, что индекс допустим и контакт существует
-        if 0 <= id < len(self.contacts):
+        if 0 <= ind < len(self.contacts):
             # Получаем новое имя и адрес
             name = self.NAME.text()
             address = self.ADDRESS.toPlainText()
 
             # Обновляем информацию о контакте
-            self.contacts[id].name = name
-            self.contacts[id].address = address
+            self.contacts[ind].name = name
+            self.contacts[ind].address = address
 
             # Очищаем поля и выводим сообщение
             self.clear()
@@ -241,10 +241,10 @@ class AddressBookApp(QtWidgets.QMainWindow):
 
     def remove_contact(self):
         # Получаем текущий индекс контакта
-        id = self.current_contact_id
+        ind = self.current_contact_ind
 
         # Проверяем, что индекс допустим и контакт существует
-        if 0 <= id < len(self.contacts):
+        if 0 <= ind < len(self.contacts):
             # Создаем диалоговое окно для подтверждения
             confirmation = QMessageBox()
             confirmation.setIcon(QMessageBox.Question)
@@ -257,7 +257,7 @@ class AddressBookApp(QtWidgets.QMainWindow):
             result = confirmation.exec_()
             if result == QMessageBox.Yes:
                 # Если пользователь подтвердил удаление, удаляем контакт
-                del self.contacts[id]
+                del self.contacts[ind]
 
                 # Очищаем поля и выводим сообщение
                 self.clear()
@@ -319,7 +319,7 @@ class AddressBookApp(QtWidgets.QMainWindow):
 
     def export_contacts(self):
         try:
-            for id, contact in enumerate(self.contacts, start=1):
+            for ind, contact in enumerate(self.contacts, start=1):
                 vcf_filename = f"{contact.name}.vcf"
 
                 with open(vcf_filename, "w", encoding="utf-8") as vcf_file:
