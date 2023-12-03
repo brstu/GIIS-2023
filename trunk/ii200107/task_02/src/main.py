@@ -59,22 +59,22 @@ class SearchResultsDialog(QDialog):
 class AddressBookApp(QtWidgets.QMainWindow):
 
     qpushbttn = "QPushButton {\n"
-                               "    background-color: #EFF2F1; /* Задайте цвет фона кнопки */\n"
-                               "    color: white; /* Задайте цвет текста кнопки */\n"
-                               "    border: 2px solid #97D8C4; /* Задайте стиль границы кнопки */\n"
-                               "    border-radius: 11px; /* Задайте скругление углов кнопки */\n"
-                               "    font-family: MS Serif;\n"
-                               "    font-size: 25px;\n"
-                               "}\n"
-                               "QPushButton:hover {\n"
-                               "    background-color: #6B9AC4; /* Задайте цвет фона при наведении курсора */\n"
-                               "    color: black;\n"
-                               "}\n"
-                               "QPushButton:pressed {\n"
-                               "    background-color: #EFF2F1    ; /* Задайте цвет фона при нажатии на кнопку */\n"
-                               "    border: 2px solid black; /* Задайте стиль границы при нажатии */\n"
-                               "    color: white;\n"
-                               "}"
+    "    background-color: #EFF2F1; /* Задайте цвет фона кнопки */\n"
+    "    color: white; /* Задайте цвет текста кнопки */\n"
+    "    border: 2px solid #97D8C4; /* Задайте стиль границы кнопки */\n"
+    "    border-radius: 11px; /* Задайте скругление углов кнопки */\n"
+    "    font-family: MS Serif;\n"
+    "    font-size: 25px;\n"
+    "}\n"
+    "QPushButton:hover {\n"
+    "    background-color: #6B9AC4; /* Задайте цвет фона при наведении курсора */\n"
+    "    color: black;\n"
+    "}\n"
+    "QPushButton:pressed {\n"
+    "    background-color: #EFF2F1    ; /* Задайте цвет фона при нажатии на кнопку */\n"
+    "    border: 2px solid black; /* Задайте стиль границы при нажатии */\n"
+    "    color: white;\n"
+    "}"
 
     def __init__(self):
         super().__init__()
@@ -187,10 +187,10 @@ class AddressBookApp(QtWidgets.QMainWindow):
         if name and address:
             contact = Contact(name, address)
             self.contacts.append(contact)
-            self.clear_fields()
-            self.show_message("Контакт добавлен успешно.")
+            self.clear()
+            self.show_mssg("Контакт добавлен успешно.")
         else:
-            self.show_message("Заполните все поля перед добавлением контакта.")
+            self.show_mssg("Заполните все поля перед добавлением контакта.")
 
     def show_previous(self):
         if self.current_contact_index > 0:
@@ -228,10 +228,10 @@ class AddressBookApp(QtWidgets.QMainWindow):
             self.contacts[index].address = address
 
             # Очищаем поля и выводим сообщение
-            self.clear_fields()
-            self.show_message("Контакт успешно отредактирован.")
+            self.clear()
+            self.show_mssg("Контакт успешно отредактирован.")
         else:
-            self.show_message("Выберите контакт для редактирования.")
+            self.show_mssg("Выберите контакт для редактирования.")
 
     def remove_contact(self):
         # Получаем текущий индекс контакта
@@ -254,10 +254,10 @@ class AddressBookApp(QtWidgets.QMainWindow):
                 del self.contacts[index]
 
                 # Очищаем поля и выводим сообщение
-                self.clear_fields()
-                self.show_message("Контакт успешно удален.")
+                self.clear()
+                self.show_mssg("Контакт успешно удален.")
         else:
-            self.show_message("Выберите контакт для удаления.")
+            self.show_mssg("Выберите контакт для удаления.")
 
     def find_contact(self):
         # Отображаем кастомное диалоговое окно для ввода текста поиска
@@ -277,9 +277,9 @@ class AddressBookApp(QtWidgets.QMainWindow):
                     # Отображаем результаты поиска в отдельном окне
                     self.show_search_results(matching_contacts)
                 else:
-                    self.show_message(f"Контакты с именем '{search_text}' не найдены.")
+                    self.show_mssg(f"Контакты с именем '{search_text}' не найдены.")
         else:
-            self.show_message("Поиск отменен.")
+            self.show_mssg("Поиск отменен.")
     def show_search_results(self, contacts):
         # Создаем и отображаем диалоговое окно с результатами поиска
         dialog = SearchResultsDialog(contacts)
@@ -296,18 +296,18 @@ class AddressBookApp(QtWidgets.QMainWindow):
                         name, address = parts
                         contact = Contact(name, address)
                         self.contacts.append(contact)
-            self.show_message("Контакты успешно загружены из файла.")
+            self.show_mssg("Контакты успешно загружены из файла.")
         except FileNotFoundError:
-            self.show_message("Файл с контактами не найден.")
+            self.show_mssg("Файл с контактами не найден.")
 
     def save_contacts(self):
         try:
             with open("contacts.txt", "w", encoding="utf-8") as file:
                 for contact in self.contacts:
                     file.write(f"{contact.name};{contact.address}\n")
-            self.show_message("Контакты успешно сохранены в файл.")
+            self.show_mssg("Контакты успешно сохранены в файл.")
         except Exception as e:
-            self.show_message(f"Произошла ошибка при сохранении контактов: {str(e)}")
+            self.show_mssg(f"Ошибка при сохранении: {str(e)}")
 
     def export_contacts(self):
         try:
@@ -322,16 +322,17 @@ class AddressBookApp(QtWidgets.QMainWindow):
                     vcf_file.write(f"ADR:;;{contact.address};;;;\n")
                     vcf_file.write("END:IDCARD\n")
 
-            self.show_message("Контакты успешно экспортированы в файлы .vcf.")
+            self.show_mssg("Контакты экспортированы в файлы .vcf.")
         except Exception as e:
-            self.show_message(f"Произошла ошибка при экспорте контактов: {str(e)}")
+            self.show_mssg(f"Ошибка при экспорте: {str(e)}")
 
-    def clear_fields(self):
+    def clear(self):
         self.NAME.clear()
         self.ADDRESS.clear()
 
-    def show_message(self, message):
+    def show_mssg(self, message):
         QtWidgets.QMessageBox.information(self, "Сообщение", message)
+
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
