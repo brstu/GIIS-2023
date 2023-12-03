@@ -81,7 +81,6 @@ class SearchResultsDialog(QDialog):
 
 class AddressBookApp(QtWidgets.QMainWindow):
 
-
     def __init__(self):
         super().__init__()
         self.initUI()
@@ -288,6 +287,7 @@ class AddressBookApp(QtWidgets.QMainWindow):
         else:
             self.show_mssg("Поиск отменен.")
 
+    @classmethod
     def show_search_results(self, contacts):
         # Создаем и отображаем диалоговое окно с результатами поиска
         dialog = SearchResultsDialog(contacts)
@@ -344,6 +344,6 @@ class AddressBookApp(QtWidgets.QMainWindow):
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
-    mainWindow = AddressBookApp()
-    mainWindow.show()
+    main_window = AddressBookApp()
+    main_window.show()
     sys.exit(app.exec_())
