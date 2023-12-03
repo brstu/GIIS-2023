@@ -59,7 +59,7 @@ class SearchResultsDialog(QDialog):
 class AddressBookApp(QtWidgets.QMainWindow):
 
     qpushbttn = "QPushButton {"
-                               "background-color: #EFF2F1; /* Задайте цвет фона кнопки */\n"
+                "background-color: #EFF2F1; /* Задайте цвет фона кнопки */\n"
                                "color: white; /* Задайте цвет текста кнопки */\n"
                                "border: 2px solid #97D8C4; /* Задайте стиль границы кнопки */\n"
                                "border-radius: 11px; /* Задайте скругление углов кнопки */\n"
