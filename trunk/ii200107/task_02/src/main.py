@@ -1,5 +1,5 @@
 import sys
-from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5 import QtCore, QtWidgets
 from PyQt5.QtWidgets import QInputDialog, QDialog, QVBoxLayout, QLabel, QListWidget, QMessageBox, QLineEdit
 
 qpushbttn = ("QPushButton {"
@@ -288,7 +288,7 @@ class AddressBookApp(QtWidgets.QMainWindow):
         else:
             self.show_mssg("Поиск отменен.")
 
-    def show_search_results(self, contacts):
+    def show_search_results(contacts):
         # Создаем и отображаем диалоговое окно с результатами поиска
         dialog = SearchResultsDialog(contacts)
         dialog.exec_()
@@ -319,7 +319,7 @@ class AddressBookApp(QtWidgets.QMainWindow):
 
     def export_contacts(self):
         try:
-            for ind, contact in enumerate(self.contacts, start=1):
+            for contact in enumerate(self.contacts, start=1):
                 vcf_filename = f"{contact.name}.vcf"
 
                 with open(vcf_filename, "w", encoding="utf-8") as vcf_file:
