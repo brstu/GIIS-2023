@@ -1,5 +1,5 @@
 import sys
-from PyQt5 import QtCore, QtGui, QtWidgets
+import PyQt5 
 from PyQt5.QtWidgets import QInputDialog, QDialog, QVBoxLayout, QLabel, QListWidget, QMessageBox, QLineEdit
 
 qpushbttn = ("QPushButton {"
@@ -170,12 +170,12 @@ class AddressBookApp(QtWidgets.QMainWindow):
         self.PREVIOUS = QtWidgets.QPushButton(self.centralwidget)
         self.PREVIOUS.setGeometry(QtCore.QRect(160, 330, 181, 41))
         self.PREVIOUS.setText("PREVIOUS")
-        self.PREVIOUS.clicked.connect(self.previous)
+        self.PREVIOUS.clicked.connect(self.prev)
         self.PREVIOUS.setStyleSheet(qpushbttn)
         self.NEXT = QtWidgets.QPushButton(self.centralwidget)
         self.NEXT.setGeometry(QtCore.QRect(350, 330, 181, 41))
         self.NEXT.setText("NEXT")
-        self.NEXT.clicked.connect(self.next)
+        self.NEXT.clicked.connect(self.nxt)
         self.NEXT.setStyleSheet(qpushbttn)
         self.label = QtWidgets.QLabel(self.centralwidget)
         self.label.setGeometry(QtCore.QRect(50, 20, 111, 51))
@@ -198,12 +198,12 @@ class AddressBookApp(QtWidgets.QMainWindow):
         else:
             self.show_mssg("Заполните все поля перед добавлением контакта.")
 
-    def previous(self):
+    def prev(self):
         if self.current_contact_ind > 0:
             self.current_contact_ind -= 1
             self.cont()
 
-    def next(self):
+    def nxt(self):
         if self.current_contact_ind < len(self.contacts) - 1:
             self.current_contact_ind += 1
             self.cont()
