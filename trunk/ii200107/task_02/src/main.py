@@ -288,7 +288,7 @@ class AddressBookApp(QtWidgets.QMainWindow):
         else:
             self.show_mssg("Поиск отменен.")
 
-    def show_search_results(contacts):
+    def show_search_results(self, contacts):
         # Создаем и отображаем диалоговое окно с результатами поиска
         dialog = SearchResultsDialog(contacts)
         dialog.exec_()
