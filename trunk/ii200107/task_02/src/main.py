@@ -2,19 +2,41 @@ import sys
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QInputDialog, QDialog, QVBoxLayout, QLabel, QListWidget, QMessageBox, QLineEdit
 
+qpushbttn = ("QPushButton {"
+                 "background-color: #EFF2F1; /* Задайте цвет фона кнопки */\n"
+                 "color: white; /* Задайте цвет текста кнопки */\n"
+                 "border: 2px solid #97D8C4; /* Задайте стиль границы кнопки */\n"
+                 "border-radius: 11px; /* Задайте скругление углов кнопки */\n"
+                 "font-family: MS Serif;\n"
+                 "font-size: 25px;\n"
+                 "}\n"
+                 "QPushButton:hover {\n"
+                 "background-color: #6B9AC4; /* Задайте цвет фона при наведении курсора */\n"
+                 "color: black;\n"
+                 "}\n"
+                 "QPushButton:pressed {\n"
+                 "background-color: #EFF2F1    ; /* Задайте цвет фона при нажатии на кнопку */\n"
+                 "border: 2px solid black; /* Задайте стиль границы при нажатии */\n"
+                 "color: white;\n"
+                 "}")
+
 class Contact:
     def __init__(self, name, address):
         self.name = name
         self.address = address
+
 
 class StyledInputDialog(QInputDialog):
     def __init__(self, parent=None):
         super().__init__(parent)
         self.setInputMode(QInputDialog.TextInput)
         self.setTextEchoMode(QLineEdit.Normal)
-        self.setStyleSheet("QLineEdit { background-color: #97D8C4; border: 1px solid #97D8C4; border-radius: 8px; padding: 5px; }"
-                           "QLineEdit:hover { border-color: `#EFF2F1`; }"
-                           "QLineEdit:focus { border-color: #EFF2F1; }")
+        self.setStyleSheet(
+            "QLineEdit { background-color: #97D8C4; border: 1px solid #97D8C4; border-radius: 8px; padding: 5px; }"
+            "QLineEdit:hover { border-color: `#EFF2F1`; }"
+            "QLineEdit:focus { border-color: #EFF2F1; }")
+
+
 class SearchResultsDialog(QDialog):
     def __init__(self, contacts):
         super().__init__()
@@ -54,27 +76,11 @@ class SearchResultsDialog(QDialog):
             label = QLabel("Контакты с указанным именем не найдены.")
             layout.addWidget(label)
 
-
         self.setLayout(layout)
+
+
 class AddressBookApp(QtWidgets.QMainWindow):
 
-    qpushbttn = "QPushButton {"
-                "background-color: #EFF2F1; /* Задайте цвет фона кнопки */\n"
-                "color: white; /* Задайте цвет текста кнопки */\n"
-                "border: 2px solid #97D8C4; /* Задайте стиль границы кнопки */\n"
-                "border-radius: 11px; /* Задайте скругление углов кнопки */\n"
-                "font-family: MS Serif;\n"
-                "font-size: 25px;\n"
-                "}\n"
-                "QPushButton:hover {\n"
-                "background-color: #6B9AC4; /* Задайте цвет фона при наведении курсора */\n"
-                "color: black;\n"
-                "}\n"
-                "QPushButton:pressed {\n"
-                "background-color: #EFF2F1    ; /* Задайте цвет фона при нажатии на кнопку */\n"
-                "border: 2px solid black; /* Задайте стиль границы при нажатии */\n"
-                "color: white;\n"
-                "}"
 
     def __init__(self):
         super().__init__()
@@ -271,7 +277,8 @@ class AddressBookApp(QtWidgets.QMainWindow):
             search_text = dialog.textValue()
             if search_text:
                 # Ищем контакты, содержащие заданный текст в имени
-                matching_contacts = [contact for contact in self.contacts if search_text.lower() in contact.name.lower()]
+                matching_contacts = [contact for contact in self.contacts if
+                                     search_text.lower() in contact.name.lower()]
 
                 if matching_contacts:
                     # Отображаем результаты поиска в отдельном окне
@@ -280,6 +287,7 @@ class AddressBookApp(QtWidgets.QMainWindow):
                     self.show_mssg(f"Контакты с именем '{search_text}' не найдены.")
         else:
             self.show_mssg("Поиск отменен.")
+
     def show_search_results(self, contacts):
         # Создаем и отображаем диалоговое окно с результатами поиска
         dialog = SearchResultsDialog(contacts)
