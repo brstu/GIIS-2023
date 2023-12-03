@@ -57,6 +57,25 @@ class SearchResultsDialog(QDialog):
 
         self.setLayout(layout)
 class AddressBookApp(QtWidgets.QMainWindow):
+
+    qpushbttn = "QPushButton {\n"
+                               "    background-color: #EFF2F1; /* Задайте цвет фона кнопки */\n"
+                               "    color: white; /* Задайте цвет текста кнопки */\n"
+                               "    border: 2px solid #97D8C4; /* Задайте стиль границы кнопки */\n"
+                               "    border-radius: 11px; /* Задайте скругление углов кнопки */\n"
+                               "    font-family: MS Serif;\n"
+                               "    font-size: 25px;\n"
+                               "}\n"
+                               "QPushButton:hover {\n"
+                               "    background-color: #6B9AC4; /* Задайте цвет фона при наведении курсора */\n"
+                               "    color: black;\n"
+                               "}\n"
+                               "QPushButton:pressed {\n"
+                               "    background-color: #EFF2F1    ; /* Задайте цвет фона при нажатии на кнопку */\n"
+                               "    border: 2px solid black; /* Задайте стиль границы при нажатии */\n"
+                               "    color: white;\n"
+                               "}"
+
     def __init__(self):
         super().__init__()
         self.initUI()
@@ -111,191 +130,47 @@ class AddressBookApp(QtWidgets.QMainWindow):
         self.ADD.setGeometry(QtCore.QRect(560, 20, 171, 41))
         self.ADD.setText("ADD")
         self.ADD.clicked.connect(self.add_contact)
-        self.ADD.setStyleSheet("QPushButton {\n"
-                               "    background-color: #EFF2F1; /* Задайте цвет фона кнопки */\n"
-                               "    color: white; /* Задайте цвет текста кнопки */\n"
-                               "    border: 2px solid #97D8C4; /* Задайте стиль границы кнопки */\n"
-                               "    border-radius: 11px; /* Задайте скругление углов кнопки */\n"
-                               "    font-family: MS Serif;\n"
-                               "    font-size: 25px;\n"
-                               "}\n"
-                               "QPushButton:hover {\n"
-                               "    background-color: #6B9AC4; /* Задайте цвет фона при наведении курсора */\n"
-                               "    color: black;\n"
-                               "}\n"
-                               "QPushButton:pressed {\n"
-                               "    background-color: #EFF2F1    ; /* Задайте цвет фона при нажатии на кнопку */\n"
-                               "    border: 2px solid black; /* Задайте стиль границы при нажатии */\n"
-                               "    color: white;\n"
-                               "}")
+        self.ADD.setStyleSheet(qpushbttn)
         self.EDIT = QtWidgets.QPushButton(self.centralwidget)
         self.EDIT.setGeometry(QtCore.QRect(560, 70, 171, 41))
         self.EDIT.setText("EDIT")
-        self.EDIT.setStyleSheet("QPushButton {\n"
-                               "    background-color: #6B9AC4; /* Задайте цвет фона кнопки */\n"
-                               "    color: white; /* Задайте цвет текста кнопки */\n"
-                               "    border: 2px solid #EE82EE; /* Задайте стиль границы кнопки */\n"
-                               "    border-radius: 10px; /* Задайте скругление углов кнопки */\n"
-                               "    font-family: MS Serif;\n"
-                               "    font-size: 25px;\n"
-                               "}\n"
-                               "QPushButton:hover {\n"
-                               "    background-color: #E0FFFF; /* Задайте цвет фона при наведении курсора */\n"
-                               "    color: black;\n"
-                               "}\n"
-                               "QPushButton:pressed {\n"
-                               "    background-color: #EE82EE    ; /* Задайте цвет фона при нажатии на кнопку */\n"
-                               "    border: 2px solid black; /* Задайте стиль границы при нажатии */\n"
-                               "    color: white;\n"
-                               "}")
+        self.EDIT.setStyleSheet(qpushbttn)
         self.EDIT.clicked.connect(self.edit_contact)
         self.REMOVE = QtWidgets.QPushButton(self.centralwidget)
         self.REMOVE.setGeometry(QtCore.QRect(560, 120, 171, 41))
         self.REMOVE.setText("REMOVE")
-        self.REMOVE.setStyleSheet("QPushButton {\n"
-                                "    background-color: #6B9AC4; /* Задайте цвет фона кнопки */\n"
-                                "    color: white; /* Задайте цвет текста кнопки */\n"
-                                "    border: 2px solid #EE82EE; /* Задайте стиль границы кнопки */\n"
-                                "    border-radius: 10px; /* Задайте скругление углов кнопки */\n"
-                                "    font-family: MS Serif;\n"
-                                "    font-size: 25px;\n"
-                                "}\n"
-                                "QPushButton:hover {\n"
-                                "    background-color: #E0FFFF; /* Задайте цвет фона при наведении курсора */\n"
-                                "    color: black;\n"
-                                "}\n"
-                                "QPushButton:pressed {\n"
-                                "    background-color: #EE82EE    ; /* Задайте цвет фона при нажатии на кнопку */\n"
-                                "    border: 2px solid black; /* Задайте стиль границы при нажатии */\n"
-                                "    color: white;\n"
-                                "}")
+        self.REMOVE.setStyleSheet(qpushbttn)
         self.REMOVE.clicked.connect(self.remove_contact)
         self.FIND = QtWidgets.QPushButton(self.centralwidget)
         self.FIND.setGeometry(QtCore.QRect(560, 170, 171, 41))
         self.FIND.setText("FIND")
-        self.FIND.setStyleSheet("QPushButton {\n"
-                                  "    background-color: #6B9AC4; /* Задайте цвет фона кнопки */\n"
-                                  "    color: white; /* Задайте цвет текста кнопки */\n"
-                                  "    border: 2px solid #EE82EE; /* Задайте стиль границы кнопки */\n"
-                                  "    border-radius: 10px; /* Задайте скругление углов кнопки */\n"
-                                  "    font-family: MS Serif;\n"
-                                  "    font-size: 25px;\n"
-                                  "}\n"
-                                  "QPushButton:hover {\n"
-                                  "    background-color: #E0FFFF; /* Задайте цвет фона при наведении курсора */\n"
-                                  "    color: black;\n"
-                                  "}\n"
-                                  "QPushButton:pressed {\n"
-                                  "    background-color: #EE82EE    ; /* Задайте цвет фона при нажатии на кнопку */\n"
-                                  "    border: 2px solid black; /* Задайте стиль границы при нажатии */\n"
-                                  "    color: white;\n"
-                                  "}")
+        self.FIND.setStyleSheet(qpushbttn)
         self.FIND.clicked.connect(self.find_contact)
         self.LOAD = QtWidgets.QPushButton(self.centralwidget)
         self.LOAD.setGeometry(QtCore.QRect(560, 220, 171, 41))
         self.LOAD.setText("LOAD")
-        self.LOAD.setStyleSheet("QPushButton {\n"
-                                  "    background-color: #6B9AC4; /* Задайте цвет фона кнопки */\n"
-                                  "    color: white; /* Задайте цвет текста кнопки */\n"
-                                  "    border: 2px solid #EE82EE; /* Задайте стиль границы кнопки */\n"
-                                  "    border-radius: 10px; /* Задайте скругление углов кнопки */\n"
-                                  "    font-family: MS Serif;\n"
-                                  "    font-size: 25px;\n"
-                                  "}\n"
-                                  "QPushButton:hover {\n"
-                                  "    background-color: #E0FFFF; /* Задайте цвет фона при наведении курсора */\n"
-                                  "    color: black;\n"
-                                  "}\n"
-                                  "QPushButton:pressed {\n"
-                                  "    background-color: #EE82EE    ; /* Задайте цвет фона при нажатии на кнопку */\n"
-                                  "    border: 2px solid black; /* Задайте стиль границы при нажатии */\n"
-                                  "    color: white;\n"
-                                  "}")
+        self.LOAD.setStyleSheet(qpushbttn)
         self.LOAD.clicked.connect(self.load_contacts)
         self.SAVE = QtWidgets.QPushButton(self.centralwidget)
         self.SAVE.setGeometry(QtCore.QRect(560, 270, 171, 41))
         self.SAVE.setText("SAVE")
-        self.SAVE.setStyleSheet("QPushButton {\n"
-                                  "    background-color: #6B9AC4; /* Задайте цвет фона кнопки */\n"
-                                  "    color: white; /* Задайте цвет текста кнопки */\n"
-                                  "    border: 2px solid #EE82EE; /* Задайте стиль границы кнопки */\n"
-                                  "    border-radius: 10px; /* Задайте скругление углов кнопки */\n"
-                                  "    font-family: MS Serif;\n"
-                                  "    font-size: 25px;\n"
-                                  "}\n"
-                                  "QPushButton:hover {\n"
-                                  "    background-color: #E0FFFF; /* Задайте цвет фона при наведении курсора */\n"
-                                  "    color: black;\n"
-                                  "}\n"
-                                  "QPushButton:pressed {\n"
-                                  "    background-color: #EE82EE    ; /* Задайте цвет фона при нажатии на кнопку */\n"
-                                  "    border: 2px solid black; /* Задайте стиль границы при нажатии */\n"
-                                  "    color: white;\n"
-                                  "}")
+        self.SAVE.setStyleSheet(qpushbttn)
         self.SAVE.clicked.connect(self.save_contacts)
         self.EXPORT = QtWidgets.QPushButton(self.centralwidget)
         self.EXPORT.setGeometry(QtCore.QRect(560, 320, 171, 41))
         self.EXPORT.setText("EXPORT")
-        self.EXPORT.setStyleSheet("QPushButton {\n"
-                                  "    background-color: #6B9AC4; /* Задайте цвет фона кнопки */\n"
-                                  "    color: white; /* Задайте цвет текста кнопки */\n"
-                                  "    border: 2px solid #EE82EE; /* Задайте стиль границы кнопки */\n"
-                                  "    border-radius: 10px; /* Задайте скругление углов кнопки */\n"
-                                  "    font-family: MS Serif;\n"
-                                  "    font-size: 25px;\n"
-                                  "}\n"
-                                  "QPushButton:hover {\n"
-                                  "    background-color: #E0FFFF; /* Задайте цвет фона при наведении курсора */\n"
-                                  "    color: black;\n"
-                                  "}\n"
-                                  "QPushButton:pressed {\n"
-                                  "    background-color: #EE82EE    ; /* Задайте цвет фона при нажатии на кнопку */\n"
-                                  "    border: 2px solid black; /* Задайте стиль границы при нажатии */\n"
-                                  "    color: white;\n"
-                                  "}")
+        self.EXPORT.setStyleSheet(qpushbttn)
         self.EXPORT.clicked.connect(self.export_contacts)
         self.PREVIOUS = QtWidgets.QPushButton(self.centralwidget)
         self.PREVIOUS.setGeometry(QtCore.QRect(160, 330, 181, 41))
         self.PREVIOUS.setText("PREVIOUS")
         self.PREVIOUS.clicked.connect(self.show_previous)
-        self.PREVIOUS.setStyleSheet("QPushButton {\n"
-                                    "    background-color: #6B9AC4; /* Задайте цвет фона кнопки */\n"
-                                    "    color: white; /* Задайте цвет текста кнопки */\n"
-                                    "    border: 2px solid #EE82EE; /* Задайте стиль границы кнопки */\n"
-                                    "    border-radius: 10px; /* Задайте скругление углов кнопки */\n"
-                                    "    font-family: MS Serif;\n"
-                                    "    font-size: 25px;\n"
-                                    "}\n"
-                                    "QPushButton:hover {\n"
-                                    "    background-color: #E0FFFF; /* Задайте цвет фона при наведении курсора */\n"
-                                    "    color: black;\n"
-                                    "}\n"
-                                    "QPushButton:pressed {\n"
-                                    "    background-color: #EE82EE    ; /* Задайте цвет фона при нажатии на кнопку */\n"
-                                    "    border: 2px solid black; /* Задайте стиль границы при нажатии */\n"
-                                    "    color: white;\n"
-                                    "}")
+        self.PREVIOUS.setStyleSheet(qpushbttn)
         self.NEXT = QtWidgets.QPushButton(self.centralwidget)
         self.NEXT.setGeometry(QtCore.QRect(350, 330, 181, 41))
         self.NEXT.setText("NEXT")
         self.NEXT.clicked.connect(self.show_next)
-        self.NEXT.setStyleSheet("QPushButton {\n"
-                                "    background-color: #6B9AC4; /* Задайте цвет фона кнопки */\n"
-                                "    color: white; /* Задайте цвет текста кнопки */\n"
-                                "    border: 2px solid #EE82EE; /* Задайте стиль границы кнопки */\n"
-                                "    border-radius: 10px; /* Задайте скругление углов кнопки */\n"
-                                "    font-family: MS Serif;\n"
-                                "    font-size: 25px;\n"
-                                "}\n"
-                                "QPushButton:hover {\n"
-                                "    background-color: #E0FFFF; /* Задайте цвет фона при наведении курсора */\n"
-                                "    color: black;\n"
-                                "}\n"
-                                "QPushButton:pressed {\n"
-                                "    background-color: #EE82EE    ; /* Задайте цвет фона при нажатии на кнопку */\n"
-                                "    border: 2px solid black; /* Задайте стиль границы при нажатии */\n"
-                                "    color: white;\n"
-                                "}")
+        self.NEXT.setStyleSheet(qpushbttn)
         self.label = QtWidgets.QLabel(self.centralwidget)
         self.label.setGeometry(QtCore.QRect(50, 20, 111, 51))
         self.label.setText("NAME")
@@ -440,12 +315,12 @@ class AddressBookApp(QtWidgets.QMainWindow):
                 vcf_filename = f"{contact.name}.vcf"
 
                 with open(vcf_filename, "w", encoding="utf-8") as vcf_file:
-                    vcf_file.write(f"BEGIN:IDCARD\n")
-                    vcf_file.write(f"VERS:1.0\n")
+                    vcf_file.write("BEGIN:IDCARD\n")
+                    vcf_file.write("VERS:1.0\n")
                     vcf_file.write(f"N:{contact.name}\n")
                     vcf_file.write(f"FN:{contact.name}\n")
                     vcf_file.write(f"ADR:;;{contact.address};;;;\n")
-                    vcf_file.write(f"END:IDCARD\n")
+                    vcf_file.write("END:IDCARD\n")
 
             self.show_message("Контакты успешно экспортированы в файлы .vcf.")
         except Exception as e:
