@@ -112,19 +112,19 @@ class AddressBookApp(QtWidgets.QMainWindow):
         self.ADD.setText("ADD")
         self.ADD.clicked.connect(self.add_contact)
         self.ADD.setStyleSheet("QPushButton {\n"
-                               "    background-color: #6B9AC4; /* Задайте цвет фона кнопки */\n"
+                               "    background-color: #EFF2F1; /* Задайте цвет фона кнопки */\n"
                                "    color: white; /* Задайте цвет текста кнопки */\n"
-                               "    border: 2px solid #EE82EE; /* Задайте стиль границы кнопки */\n"
-                               "    border-radius: 10px; /* Задайте скругление углов кнопки */\n"
+                               "    border: 2px solid #97D8C4; /* Задайте стиль границы кнопки */\n"
+                               "    border-radius: 11px; /* Задайте скругление углов кнопки */\n"
                                "    font-family: MS Serif;\n"
                                "    font-size: 25px;\n"
                                "}\n"
                                "QPushButton:hover {\n"
-                               "    background-color: #E0FFFF; /* Задайте цвет фона при наведении курсора */\n"
+                               "    background-color: #6B9AC4; /* Задайте цвет фона при наведении курсора */\n"
                                "    color: black;\n"
                                "}\n"
                                "QPushButton:pressed {\n"
-                               "    background-color: #EE82EE    ; /* Задайте цвет фона при нажатии на кнопку */\n"
+                               "    background-color: #EFF2F1    ; /* Задайте цвет фона при нажатии на кнопку */\n"
                                "    border: 2px solid black; /* Задайте стиль границы при нажатии */\n"
                                "    color: white;\n"
                                "}")
@@ -440,12 +440,12 @@ class AddressBookApp(QtWidgets.QMainWindow):
                 vcf_filename = f"{contact.name}.vcf"
 
                 with open(vcf_filename, "w", encoding="utf-8") as vcf_file:
-                    vcf_file.write(f"BEGIN:VCARD\n")
-                    vcf_file.write(f"VERSION:3.0\n")
+                    vcf_file.write(f"BEGIN:IDCARD\n")
+                    vcf_file.write(f"VERS:1.0\n")
                     vcf_file.write(f"N:{contact.name}\n")
                     vcf_file.write(f"FN:{contact.name}\n")
                     vcf_file.write(f"ADR:;;{contact.address};;;;\n")
-                    vcf_file.write(f"END:VCARD\n")
+                    vcf_file.write(f"END:IDCARD\n")
 
             self.show_message("Контакты успешно экспортированы в файлы .vcf.")
         except Exception as e:
