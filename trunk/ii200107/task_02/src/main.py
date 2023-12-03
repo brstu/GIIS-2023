@@ -1,5 +1,5 @@
 import sys
-import PyQt5 
+from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QInputDialog, QDialog, QVBoxLayout, QLabel, QListWidget, QMessageBox, QLineEdit
 
 qpushbttn = ("QPushButton {"
