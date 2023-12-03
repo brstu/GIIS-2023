@@ -79,6 +79,11 @@ class SearchResultsDialog(QDialog):
         self.setLayout(layout)
 
 
+def show_search_results(contacts):
+    # Создаем и отображаем диалоговое окно с результатами поиска
+    dialog = SearchResultsDialog(contacts)
+    dialog.exec_()
+
 class AddressBookApp(QtWidgets.QMainWindow):
 
     def __init__(self):
@@ -287,11 +292,7 @@ class AddressBookApp(QtWidgets.QMainWindow):
         else:
             self.show_mssg("Поиск отменен.")
 
-    @classmethod
-    def show_search_results(self, contacts):
-        # Создаем и отображаем диалоговое окно с результатами поиска
-        dialog = SearchResultsDialog(contacts)
-        dialog.exec_()
+
 
     def load_contacts(self):
         self.contacts.clear()
