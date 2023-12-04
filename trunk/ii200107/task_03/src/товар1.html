@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Товар 1 - Inted</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+
+        .product-card {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            margin: 10px;
+            padding: 20px;
+            text-align: center;
+            background-color: #fff;
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: scale(1.05);
+        }
+
+        .product-image {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        .buy-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .buy-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Inted</h1>
+    </header>
+
+    <nav>
+        <a href="home_page.html">Главная</a>
+        <a href="about.html">О нас</a>
+        <a href="contacts.html">Контакты</a>
+    </nav>
+
+    <section>
+        <div class="product-details">
+            <h2>Тапок</h2>
+            <img class="product-image" src="Без названия.jpg" alt="Товар 1">
+            <p>тапок.</p>
+            <p>Цена: $19.99</p>
+
+            <!-- Отзывы -->
+            <div class="reviews">
+                <h3>Отзывы:</h3>
+                <p>Отзыв 1: Очень хороший товар!</p>
+                <p>Отзыв 2: Прекрасное качество!</p>
+                <!-- Добавьте другие отзывы по аналогии -->
+            </div>
+
+            <!-- Кнопка "Купить" -->
+            <button class="buy-button">Купить</button>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2023 Inted</p>
+    </footer>
+
+</body>
+</html>
