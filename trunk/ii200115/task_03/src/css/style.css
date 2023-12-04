@@ -171,15 +171,15 @@
 
 .none
 {
-    opacity: 30%;
+    opacity: 0.3;
 }
 
 .none_popy
 {
-    opacity: 0%;
+    opacity: 0;
 }
 
 .none:hover
 {
-    opacity: 100%;
+    opacity: 1;
 }
