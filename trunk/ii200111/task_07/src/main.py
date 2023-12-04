@@ -1,0 +1,201 @@
+from flask import Flask, render_template, request, redirect, url_for
+from flask_sqlalchemy import SQLAlchemy
+import base64
+
+
+app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///store.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['SECRET_KEY'] = '13fe1d2d2f3c56a7d89b0e45c678ab901cd234ef567890ab'
+db = SQLAlchemy(app)
+app.app_context().push()
+
+
+# Модель продавцов
+class Seller(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    first_name = db.Column(db.String(50), nullable=False)
+    last_name = db.Column(db.String(50), nullable=False)
+
+
+# Модель товаров
+class Product(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100), nullable=False)
+    quantity = db.Column(db.Integer, nullable=False)
+    price = db.Column(db.Float, nullable=False)
+    image = db.Column(db.LargeBinary, nullable=True)
+
+
+# Модель сделок
+class Transaction(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    seller_id = db.Column(db.Integer, db.ForeignKey('seller.id'), nullable=False)
+    product_id = db.Column(db.Integer, db.ForeignKey('product.id'), nullable=False)
+    quantity = db.Column(db.Integer, nullable=False)
+    transaction_type = db.Column(db.String(10), nullable=False)  # 'purchase' or 'sale'
+
+
+# Создаем таблицы
+db.create_all()
+seller = db.relationship('Seller', backref=db.backref('transactions', lazy=True))
+product = db.relationship('Product', backref=db.backref('transactions', lazy=True))
+
+
+# Роуты для отображения данных и взаимодействия с приложением
+@app.route('/')
+def index():
+    total_sellers = Seller.query.count()
+    total_transactions = Transaction.query.count()
+    total_products = Product.query.count()
+    total_units = db.session.query(db.func.sum(Product.quantity)).scalar()
+    return render_template('index.html', total_sellers=total_sellers,
+                           total_transactions=total_transactions,
+                           total_products=total_products, total_units=total_units)
+
+
+# Добавление продавца
+# Роут для управления продавцами
+@app.route('/manage_sellers', methods=['GET'])
+def manage_sellers():
+    sellers = Seller.query.all()
+    return render_template('manage_sellers.html', sellers=sellers)
+
+
+# Роут для добавления нового продавца
+@app.route('/manage_sellers/add', methods=['POST'])
+def manage_sellers_add():
+    if request.method == 'POST':
+        first_name = request.form['first_name']
+        last_name = request.form['last_name']
+        new_seller = Seller(first_name=first_name, last_name=last_name)
+        db.session.add(new_seller)
+        db.session.commit()
+    return redirect(url_for('manage_sellers'))
+
+
+# Роут для редактирования продавца
+@app.route('/manage_sellers/edit/<int:seller_id>', methods=['GET', 'POST'])
+def manage_sellers_edit(seller_id):
+    seller = Seller.query.get(seller_id)
+
+    if request.method == 'POST':
+        seller.first_name = request.form['first_name']
+        seller.last_name = request.form['last_name']
+        db.session.commit()
+        return redirect(url_for('manage_sellers'))
+
+    sellers = Seller.query.all()
+    return render_template('manage_sellers.html', sellers=sellers, editing_seller=seller)
+
+
+# Роут для удаления продавца
+@app.route('/manage_sellers/delete/<int:seller_id>')
+def manage_sellers_delete(seller_id):
+    seller = Seller.query.get(seller_id)
+    db.session.delete(seller)
+    db.session.commit()
+    return redirect(url_for('manage_sellers'))
+
+
+# Добавление товара
+@app.route('/warehouse', methods=['GET'])
+def warehouse():
+    products = Product.query.all()
+    for product in products:
+        if product.image:
+            product.image_base64 = base64.b64encode(product.image).decode('utf-8')
+    return render_template('warehouse.html', products=products)
+
+
+# Роут для добавления нового товара на странице "Склад"
+@app.route('/warehouse/add', methods=['POST'])
+def warehouse_add():
+    if request.method == 'POST':
+        name = request.form['name']
+        quantity = int(request.form['quantity'])
+        price = float(request.form['price'])
+        image = request.files['image'].read() if 'image' in request.files else None
+        new_product = Product(name=name, quantity=quantity, price=price, image=image)
+        db.session.add(new_product)
+        db.session.commit()
+    return redirect(url_for('warehouse'))
+
+
+# Роут для отображения страницы редактирования товара
+@app.route('/warehouse/edit/<int:product_id>')
+def edit_product(product_id):
+    product = Product.query.get(product_id)
+    if product:
+        product.image_base64 = base64.b64encode(product.image).decode('utf-8') if product.image else None
+        return render_template('edit_product.html', editing_product=product)
+    else:
+        return "Product not found", 404
+
+
+# Роут для обновления товара
+@app.route('/update_product', methods=['POST'])
+def update_product():
+    product_id = request.form.get('productId')
+    name = request.form.get('name')
+    new_image = request.files.get('newImage')
+
+    product = Product.query.get(product_id)
+
+    if product:
+        product.name = name
+
+        if new_image:
+            product.image = new_image.read()
+
+        db.session.commit()
+        return "Product updated successfully", 200
+    else:
+        return "Product not found", 404
+
+
+# Роут для удаления товара на странице "Склад"
+@app.route('/warehouse/delete/<int:product_id>')
+def warehouse_delete(product_id):
+    product = Product.query.get(product_id)
+    db.session.delete(product)
+    db.session.commit()
+    return redirect(url_for('warehouse'))
+
+
+# Покупка или продажа товара
+@app.route('/transaction', methods=['GET', 'POST'])
+def transaction():
+    if request.method == 'POST':
+        seller_id = int(request.form['seller_id'])
+        product_id = int(request.form['product_id'])
+        quantity = int(request.form['quantity'])
+        transaction_type = request.form['transaction_type']
+
+        # Уменьшаем количество товара при продаже
+        if transaction_type == 'sale':
+            product = Product.query.get(product_id)
+            if product.quantity < quantity:
+                return "Недостаточно товара на складе"
+            product.quantity -= quantity
+
+        # Добавляем запись о сделке
+        new_transaction = Transaction(seller_id=seller_id, product_id=product_id, quantity=quantity,
+                                      transaction_type=transaction_type)
+        db.session.add(new_transaction)
+        db.session.commit()
+        return redirect(url_for('index'))
+
+    transactions = Transaction.query.all()
+    products_info = {product.id: product.name for product in Product.query.all()}
+
+    # Дополнительный запрос для получения имени продавца
+    sellers_info = {seller.id: f"{seller.first_name} {seller.last_name}" for seller in Seller.query.all()}
+
+    sellers = Seller.query.all()
+    products = Product.query.all()
+
+    return render_template('transaction.html', sellers=sellers, products=products, transactions=transactions, sellers_info=sellers_info, products_info=products_info)
+
+if __name__ == '__main__':
+    app.run(debug=True)

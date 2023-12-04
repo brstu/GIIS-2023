@@ -1,0 +1,244 @@
+/* styles.css */
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+a {
+    text-decoration: none;
+    color: #007BFF;
+}
+
+li span {
+    font-weight: bold;
+}
+
+.icon {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 24px;
+    color: #007BFF;
+}
+
+a:hover {
+    color: #0056b3;
+}
+
+button {
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Add more styles as needed */
+/* Добавляем стили для таблицы склада */
+.inventory-table img {
+    width: 150px; /* Устанавливаем фиксированную ширину */
+    height: 150px; /* Устанавливаем фиксированную высоту */
+    object-fit: cover; /* Заполняем пространство изображения, сохраняя соотношение сторон */
+    border-radius: 8px; /* Добавляем скругление углов */
+}
+
+.inventory-table th, .inventory-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.inventory-table th {
+    background-color: #007BFF;
+    color: #fff;
+}
+
+.inventory-table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.inventory-table tbody tr:hover {
+    background-color: #ddd;
+}
+
+form {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"], input[type="number"], input[type="file"], select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.inventory-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.inventory-table th, .inventory-table td {
+    border: 1px solid #ddd;
+    padding: 12px; /* Увеличиваем внутренний отступ */
+    text-align: left;
+}
+
+.inventory-table th {
+    background-color: #007BFF;
+    color: #fff;
+}
+
+.inventory-table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.inventory-table tbody tr:hover {
+    background-color: #ddd;
+}
+
+/* Добавляем стили для изображений в таблице */
+.inventory-table img {
+    max-width: 100px; /* Устанавливаем максимальную ширину изображения */
+    max-height: 100px; /* Устанавливаем максимальную высоту изображения */
+    border-radius: 8px; /* Добавляем скругление углов */
+}
+
+.edit-btn, .delete-btn {
+    background-color: #28a745; /* Зеленый цвет для кнопки Edit */
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    margin-right: 8px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.delete-btn {
+    background-color: #dc3545; /* Красный цвет для кнопки Delete */
+}
+
+.container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+h1 {
+    color: #007BFF;
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.button {
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    padding: 15px 20px;
+    margin-right: 10px;
+    cursor: pointer;
+    border-radius: 8px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    width: 150px; /* Задайте фиксированную ширину кнопок */
+    height: 150px; /* Задайте фиксированную высоту кнопок */
+}
+
+.button:hover {
+    background-color: #0056b3;
+}
+
+main {
+    flex: 1; /* Растягиваем основной контент на всю высоту доступного пространства */
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    border-radius: 10px; /* Закругленные углы */
+    width: 100%;
+}
+.info-container {
+    margin-top: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd; /* Рамка вокруг контейнера */
+    border-radius: 8px; /* Закругленные углы */
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Тень для контейнера */
+}
+
+.info-container p {
+    margin: 0 0 10px; /* Немного отступ снизу для абзацев */
+    font-size: 16px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Стили для содержимого списка */
+li p {
+    margin: 0;
+    font-size: 16px;
+}
+
+li span {
+    font-weight: bold;
+}

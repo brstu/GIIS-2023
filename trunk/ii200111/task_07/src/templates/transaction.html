@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transaction</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/fontawesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/solid.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
+</head>
+<body>
+<a href="{{ url_for('index') }}">На главную страницу</a>
+<h1>Сделка (покупка/продажа)</h1>
+
+<form method="POST" action="/transaction">
+    <label for="seller_id">Продавец:</label>
+    <select name="seller_id" required>
+        {% for seller in sellers %}
+        <option value="{{ seller.id }}">{{ seller.first_name }} {{ seller.last_name }}</option>
+        {% endfor %}
+    </select>
+    <br>
+
+    <label for="product_id">Товар:</label>
+    <select name="product_id" required>
+        {% for product in products %}
+        <option value="{{ product.id }}">{{ product.name }} ({{ product.quantity }} на складе)</option>
+        {% endfor %}
+    </select>
+    <br>
+
+    <label for="quantity">Количество:</label>
+    <input type="number" name="quantity" required>
+    <br>
+
+    <label for="transaction_type">Тип сделки:</label>
+    <select name="transaction_type" required>
+        <option value="purchase">Покупка</option>
+        <option value="sale">Продажа</option>
+    </select>
+    <br>
+
+    <input type="submit" value="Завершить сделку">
+</form>
+<!-- transaction.html -->
+<h1>Сделка</h1>
+<div class="container">
+    <ul class="transaction-list">
+        {% for transaction in transactions %}
+        <li>
+            <i class="fas fa-handshake icon"></i>
+            Сделка ID: {{ transaction.id }}<br>
+            Продавец: {{ sellers_info.get(transaction.seller_id, 'Unknown Seller') }}<br>
+            Продукт: {{ products_info[transaction.product_id] if products_info[transaction.product_id] else 'Unknown
+            Product' }}<br>
+            Кол-во: {{ transaction.quantity }}<br>
+            Тип: {{ transaction.transaction_type }}<br>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+
+</body>
+</html>
