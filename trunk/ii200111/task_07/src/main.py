@@ -1,12 +1,14 @@
+import os
+
 from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 import base64
-
+from dotenv import load_dotenv
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///store.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SECRET_KEY'] = '13fe1d2d2f3c56a7d89b0e45c678ab901cd234ef567890ab'
+app.config['SECRET_KEY'] = os.getenv('SCECRET_KEY')
 db = SQLAlchemy(app)
 app.app_context().push()
 
