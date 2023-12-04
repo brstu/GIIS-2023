@@ -118,7 +118,7 @@
 #main .music_box .box .music h3
 {
    margin: 0 20px;
-   font: 700 20px/22px 'Courier New';
+   font: 700 20px/22px 'Courier New', Courier, monospace;
 }
 
 .footer
