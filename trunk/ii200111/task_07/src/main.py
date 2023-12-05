@@ -11,7 +11,8 @@ load_dotenv()
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///store.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', 'fallback_secret_key')
+key = os.getenv('key')
+app.config['SECRET_KEY'] = key
 db = SQLAlchemy(app)
 app.app_context().push()
 csrf = CSRFProtect(app)
@@ -59,11 +60,13 @@ def index():
                            total_transactions=total_transactions,
                            total_products=total_products, total_units=total_units)
 
+
 # Роут для управления продавцами
 @app.route('/manage_sellers', methods=['GET'])
 def manage_sellers():
     sellers = Seller.query.all()
     return render_template('manage_sellers.html', sellers=sellers)
+
 
 # Роут для добавления нового продавца
 @app.route('/manage_sellers/add', methods=['POST'])
@@ -75,6 +78,7 @@ def manage_sellers_add():
         db.session.add(new_seller)
         db.session.commit()
     return redirect(url_for('manage_sellers'))
+
 
 # Роут для обновления продавца
 @app.route('/manage_sellers/edit/<int:seller_id>', methods=['POST'])
@@ -101,6 +105,7 @@ def manage_sellers_edit(seller_id):
 
     return render_template('edit_seller.html', editing_seller=seller)
 
+
 # ...
 
 # Роут для удаления продавца
@@ -110,6 +115,7 @@ def manage_sellers_delete(seller_id):
     db.session.delete(seller)
     db.session.commit()
     return redirect(url_for('manage_sellers'))
+
 
 # Добавление товара
 @app.route('/warehouse', methods=['GET'])
@@ -199,6 +205,7 @@ def show_transactions():
         transactions=transactions, sellers_info=sellers_info, products_info=products_info
     )
 
+
 # Роут для обработки POST-запроса (транзакции)
 @app.route('/transaction', methods=['POST'])
 def handle_transaction():
@@ -231,7 +238,6 @@ def handle_transaction():
 
     except NoResultFound:
         return "Продавец или продукт не найден"
-
 
 
 if __name__ == '__main__':
