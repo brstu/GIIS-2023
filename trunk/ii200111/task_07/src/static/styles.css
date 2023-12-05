@@ -72,16 +72,6 @@ button:hover {
     background-color: #0056b3;
 }
 
-.inventory-table th, .inventory-table td {
-    border: 1px solid #ddd;
-    padding: 12px;
-    text-align: left;
-}
-
-.inventory-table th {
-    background-color: #007BFF;
-    color: #fff;
-}
 
 .inventory-table tbody tr:nth-child(even) {
     background-color: #f2f2f2;
@@ -169,7 +159,7 @@ footer {
     border: 1px solid #ddd;
     border-radius: 8px;
     padding: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 10%);
+    box-shadow: 0 2px 4px hsla(0, 0%, 0%, 10%);
 }
 
 .info-container p {
@@ -194,8 +184,4 @@ li {
 li p {
     margin: 0;
     font-size: 16px;
-}
-
-li span {
-    font-weight: bold;
 }

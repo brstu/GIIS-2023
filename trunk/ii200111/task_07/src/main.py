@@ -83,7 +83,7 @@ def manage_sellers_edit(seller_id):
     seller = Seller.query.get(seller_id)
 
     if not seller:
-        abort(404)  # Вернуть 404, если продавец не найден
+        print(404)  # Вернуть 404, если продавец не найден
 
     if request.method == 'POST':
         # Получение данных из формы
