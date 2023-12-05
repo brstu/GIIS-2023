@@ -620,6 +620,11 @@ h5.widget-title {
 .nav-tabs .nav-link {
   color: var(--black-color);
 }
+
+.nav-tabs .nav-link.active,
+.nav-tabs .nav-link:hover {
+  color: var(--primary-color);
+}
 .nav-tabs .nav-link:focus{
   box-shadow: none;
 }
