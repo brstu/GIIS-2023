@@ -11,11 +11,14 @@ load_dotenv()
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///store.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-key = os.getenv('key')
-app.config['SECRET_KEY'] = key
+
 db = SQLAlchemy(app)
 app.app_context().push()
 csrf = CSRFProtect(app)
+
+app.config.from_mapping({
+    'SECRET_KEY': os.getenv('SECRET_KEY', os.urandom(24)),
+})
 
 
 # Модель продавцов
