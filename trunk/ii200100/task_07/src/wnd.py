@@ -97,7 +97,6 @@ class ImageDialog(QDialog):
             image_label = QLabel(self)
             image_label.setPixmap(pixmap)
             image_label.setAlignment(Qt.AlignCenter)
-            
             layout = self.layout()
             layout.addWidget(image_label)
 
@@ -352,7 +351,7 @@ class MainWnd(QMainWindow):
         self.make_table()
 
         cursor = self.db_connection.cursor()
-        cursor.execute('SELECT * FROM Materials WHERE stored_at = ?', (self.store_house, ))
+        cursor.execute('SELECT * FROM Materials WHERE stored_at = {}', (self.store_house, ))
         data = cursor.fetchall()
 
         self.table_widget.setRowCount(len(data))
@@ -389,29 +388,17 @@ class MainWnd(QMainWindow):
 
             if self.state == 'SH':
                 if existing_record:
-                    cursor.execute(f'''
-                        UPDATE ?
-                        SET name = ?, location = ?, space = ?
-                        WHERE id = ?
-                    ''',
+                    cursor.execute('UPDATE {} SET name = {}, location = {}, space = {} WHERE id = {}',
                     (self.states[self.state], name_item.text(), item_1.text(), int(item_2.text()), int(id_item.text())))
                 else:
-                    cursor.execute(f'''
-                        INSERT INTO {self.states[self.state]} (id, name, location, space) VALUES (?, ?, ?, ?)
-                    ''',
-                    (int(id_item.text()), name_item.text(), item_1.text(), int(item_2.text())))
+                    cursor.execute('INSERT INTO {} (id, name, location, space) VALUES ({}, {}, {}, {})',
+                    (self.states[self.state], int(id_item.text()), name_item.text(), item_1.text(), int(item_2.text())))
             elif self.state == 'M':
                 if existing_record:
-                    cursor.execute(f'''
-                        UPDATE ?
-                        SET name = ?, stored_at = ?, mass = ?
-                        WHERE id = ?
-                    ''',
+                    cursor.execute('UPDATE {} SET name = {}, stored_at = {}, mass = {} WHERE id = {}',
                     (self.states[self.state], name_item.text(), item_1.text(), int(item_2.text()), int(id_item.text())))
                 else:
-                    cursor.execute(f'''
-                        INSERT INTO ? (id, name, stored_at, mass) VALUES (?, ?, ?, ?)
-                    ''',
+                    cursor.execute('INSERT INTO {} (id, name, stored_at, mass) VALUES ({}, {}, {}, {})',
                     (self.states[self.state], int(id_item.text()), name_item.text(), item_1.text(), int(item_2.text())))
 
         self.db_connection.commit()
