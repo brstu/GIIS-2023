@@ -4,11 +4,11 @@
 
 ## Реализация
 
-*  Общая страница:
+1.  Общая страница:
    ![nonlin](src/img/readmeImage/lab3image1.jpg)
 
-*  Любимые треки:
+2.  Любимые треки:
    ![nonlin](src/img/readmeImage/lab3image2.jpg)
 
-*  Популярное:
+3.  Популярное:
    ![nonlin](src/img/readmeImage/lab3image3.jpg)
