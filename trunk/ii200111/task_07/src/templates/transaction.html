@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Transaction</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/fontawesome.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/solid.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/solid.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 
 </head>
@@ -14,6 +14,8 @@
 <h1>Сделка (покупка/продажа)</h1>
 
 <form method="POST" action="/transaction">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
     <label for="seller_id">Продавец:</label>
     <select name="seller_id" required>
         {% for seller in sellers %}

@@ -1,22 +1,11 @@
-/* styles.css */
-
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-}
-
-ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-li {
-    margin-bottom: 10px;
 }
 
 a {
@@ -40,25 +29,8 @@ a:hover {
     color: #0056b3;
 }
 
-button {
-    background-color: #007BFF;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-}
-
 button:hover {
     background-color: #0056b3;
-}
-
-/* Add more styles as needed */
-/* Добавляем стили для таблицы склада */
-.inventory-table img {
-    width: 150px; /* Устанавливаем фиксированную ширину */
-    height: 150px; /* Устанавливаем фиксированную высоту */
-    object-fit: cover; /* Заполняем пространство изображения, сохраняя соотношение сторон */
-    border-radius: 8px; /* Добавляем скругление углов */
 }
 
 .inventory-table th, .inventory-table td {
@@ -70,14 +42,6 @@ button:hover {
 .inventory-table th {
     background-color: #007BFF;
     color: #fff;
-}
-
-.inventory-table tbody tr:nth-child(even) {
-    background-color: #f2f2f2;
-}
-
-.inventory-table tbody tr:hover {
-    background-color: #ddd;
 }
 
 form {
@@ -108,15 +72,9 @@ button:hover {
     background-color: #0056b3;
 }
 
-.inventory-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-}
-
 .inventory-table th, .inventory-table td {
     border: 1px solid #ddd;
-    padding: 12px; /* Увеличиваем внутренний отступ */
+    padding: 12px;
     text-align: left;
 }
 
@@ -133,15 +91,14 @@ button:hover {
     background-color: #ddd;
 }
 
-/* Добавляем стили для изображений в таблице */
 .inventory-table img {
-    max-width: 100px; /* Устанавливаем максимальную ширину изображения */
-    max-height: 100px; /* Устанавливаем максимальную высоту изображения */
-    border-radius: 8px; /* Добавляем скругление углов */
+    max-width: 100px;
+    max-height: 100px;
+    border-radius: 8px;
 }
 
 .edit-btn, .delete-btn {
-    background-color: #28a745; /* Зеленый цвет для кнопки Edit */
+    background-color: #28a745;
     color: #fff;
     border: none;
     padding: 8px 16px;
@@ -151,7 +108,7 @@ button:hover {
 }
 
 .delete-btn {
-    background-color: #dc3545; /* Красный цвет для кнопки Delete */
+    background-color: #dc3545;
 }
 
 .container {
@@ -185,8 +142,8 @@ h1 {
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    width: 150px; /* Задайте фиксированную ширину кнопок */
-    height: 150px; /* Задайте фиксированную высоту кнопок */
+    width: 150px;
+    height: 150px;
 }
 
 .button:hover {
@@ -194,7 +151,7 @@ h1 {
 }
 
 main {
-    flex: 1; /* Растягиваем основной контент на всю высоту доступного пространства */
+    flex: 1;
 }
 
 footer {
@@ -202,20 +159,21 @@ footer {
     color: #fff;
     text-align: center;
     padding: 10px;
-    border-radius: 10px; /* Закругленные углы */
+    border-radius: 10px;
     width: 100%;
 }
+
 .info-container {
     margin-top: 20px;
     background-color: #fff;
-    border: 1px solid #ddd; /* Рамка вокруг контейнера */
-    border-radius: 8px; /* Закругленные углы */
+    border: 1px solid #ddd;
+    border-radius: 8px;
     padding: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Тень для контейнера */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 10%);
 }
 
 .info-container p {
-    margin: 0 0 10px; /* Немного отступ снизу для абзацев */
+    margin: 0 0 10px;
     font-size: 16px;
 }
 
@@ -230,10 +188,9 @@ li {
     border-radius: 8px;
     padding: 20px;
     margin-bottom: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 10%);
 }
 
-/* Стили для содержимого списка */
 li p {
     margin: 0;
     font-size: 16px;

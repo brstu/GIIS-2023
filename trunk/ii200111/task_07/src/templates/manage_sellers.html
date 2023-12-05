@@ -4,48 +4,52 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manage Sellers</title>
-        <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 
 </head>
 <body>
 <a href="{{ url_for('index') }}">На главную страницу</a>
 
-    <h1>Управление продавцами</h1>
+<h1>Управление продавцами</h1>
 
-    <h2>Добавить нового продавца</h2>
-    <form method="POST" action="/manage_sellers/add">
-        <label for="first_name">Имя:</label>
-        <input type="text" name="first_name" required>
-        <br>
-        <label for="last_name">Фамилия:</label>
-        <input type="text" name="last_name" required>
-        <br>
-        <input type="submit" value="Add Seller">
-    </form>
+<h2>Добавить нового продавца</h2>
+<form method="POST" action="/manage_sellers/add">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
 
-    <h2>Список продавцов</h2>
+    <label for="first_name">Имя:</label>
+    <input type="text" name="first_name" required>
+    <br>
+    <label for="last_name">Фамилия:</label>
+    <input type="text" name="last_name" required>
+    <br>
+    <input type="submit" value="Add Seller">
+</form>
+
+<h2>Список продавцов</h2>
 <ul>
     {% for seller in sellers %}
-        <li>
-            {{ seller.id }} - {{ seller.first_name }} {{ seller.last_name }}
-            <a href="{{ url_for('manage_sellers_edit', seller_id=seller.id) }}">Редактировать</a>
-            <a href="{{ url_for('manage_sellers_delete', seller_id=seller.id) }}" onclick="return confirm('Вы уверены?')">Удалить</a>
-        </li>
+    <li>
+        {{ seller.id }} - {{ seller.first_name }} {{ seller.last_name }}
+        <a href="{{ url_for('manage_sellers_edit', seller_id=seller.id) }}">Редактировать</a>
+        <a href="{{ url_for('manage_sellers_delete', seller_id=seller.id) }}"
+           onclick="return confirm('Вы уверены?')">Удалить</a>
+    </li>
     {% endfor %}
 </ul>
 
 <!-- Форма для редактирования продавца -->
 {% if editing_seller %}
-    <h2>Редактировать продавца</h2>
-    <form method="POST" action="{{ url_for('manage_sellers_edit', seller_id=editing_seller.id) }}">
-        <label for="first_name">Имя:</label>
-        <input type="text" name="first_name" value="{{ editing_seller.first_name }}" required>
-        <br>
-        <label for="last_name">Фамилия:</label>
-        <input type="text" name="last_name" value="{{ editing_seller.last_name }}" required>
-        <br>
-        <input type="submit" value="Сохранить изменения">
-    </form>
+<h2>Редактировать продавца</h2>
+<form method="POST" action="{{ url_for('manage_sellers_edit', seller_id=editing_seller.id) }}">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+    <label for="first_name">Имя:</label>
+    <input type="text" name="first_name" value="{{ editing_seller.first_name }}" required>
+    <br>
+    <label for="last_name">Фамилия:</label>
+    <input type="text" name="last_name" value="{{ editing_seller.last_name }}" required>
+    <br>
+    <input type="submit" value="Сохранить изменения">
+</form>
 {% endif %}
 
 </body>

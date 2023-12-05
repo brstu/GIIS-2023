@@ -1,16 +1,17 @@
 import os
-
 from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 import base64
-from dotenv import load_dotenv
+from flask_wtf.csrf import CSRFProtect
+from sqlalchemy.orm.exc import NoResultFound
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///store.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SECRET_KEY'] = os.getenv('SCECRET_KEY')
+app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
 db = SQLAlchemy(app)
 app.app_context().push()
+csrf = CSRFProtect(app)
 
 
 # Модель продавцов
@@ -81,12 +82,25 @@ def manage_sellers_add():
 def manage_sellers_edit(seller_id):
     seller = Seller.query.get(seller_id)
 
-    if request.method == 'POST':
-        seller.first_name = request.form['first_name']
-        seller.last_name = request.form['last_name']
-        db.session.commit()
-        return redirect(url_for('manage_sellers'))
+    if not seller:
+        abort(404)  # Вернуть 404, если продавец не найден
 
+    if request.method == 'POST':
+        # Получение данных из формы
+        first_name = request.form.get('first_name')
+        last_name = request.form.get('last_name')
+
+        # Проверка данных перед обновлением
+        if first_name and last_name:
+            # Обновление данных и сохранение в базе данных
+            seller.first_name = first_name
+            seller.last_name = last_name
+            db.session.commit()
+
+            # Перенаправление на страницу управления продавцами
+            return redirect(url_for('manage_sellers'))
+
+    # Если запрос не POST, отобразить страницу редактирования существующего продавца
     sellers = Seller.query.all()
     return render_template('manage_sellers.html', sellers=sellers, editing_seller=seller)
 
@@ -141,11 +155,16 @@ def update_product():
     product_id = request.form.get('productId')
     name = request.form.get('name')
     new_image = request.files.get('newImage')
-
+    quantity = int(request.form.get('quantity', 0))  # Преобразование в целое число, по умолчанию 0
+    price = float(request.form.get('price', 0.0))  # Преобразование в число с плавающей точкой, по умолчанию 0.0
     product = Product.query.get(product_id)
-
+    print(price)
+    print()
+    print(quantity)
     if product:
         product.name = name
+        product.quantity = quantity
+        product.price = price
 
         if new_image:
             product.image = new_image.read()
@@ -169,24 +188,34 @@ def warehouse_delete(product_id):
 @app.route('/transaction', methods=['GET', 'POST'])
 def transaction():
     if request.method == 'POST':
-        seller_id = int(request.form['seller_id'])
-        product_id = int(request.form['product_id'])
-        quantity = int(request.form['quantity'])
-        transaction_type = request.form['transaction_type']
+        try:
+            seller_id = int(request.form['seller_id'])
+            product_id = int(request.form['product_id'])
+            quantity = int(request.form['quantity'])
+            transaction_type = request.form['transaction_type']
 
-        # Уменьшаем количество товара при продаже
-        if transaction_type == 'sale':
-            product = Product.query.get(product_id)
-            if product.quantity < quantity:
-                return "Недостаточно товара на складе"
-            product.quantity -= quantity
+            # Уменьшаем количество товара при продаже
+            if transaction_type == 'sale':
+                product = Product.query.get(product_id)
+                if product.quantity < quantity:
+                    return "Недостаточно товара на складе"
 
-        # Добавляем запись о сделке
-        new_transaction = Transaction(seller_id=seller_id, product_id=product_id, quantity=quantity,
-                                      transaction_type=transaction_type)
-        db.session.add(new_transaction)
-        db.session.commit()
-        return redirect(url_for('index'))
+                product.quantity -= quantity
+
+            # Добавляем запись о сделке
+            new_transaction = Transaction(
+                seller_id=seller_id, product_id=product_id, quantity=quantity,
+                transaction_type=transaction_type
+            )
+            db.session.add(new_transaction)
+            db.session.commit()
+            return redirect(url_for('index'))
+
+        except ValueError:
+            return "Некорректные данные в форме"
+
+        except NoResultFound:
+            return "Продавец или продукт не найден"
 
     transactions = Transaction.query.all()
     products_info = {product.id: product.name for product in Product.query.all()}
@@ -197,7 +226,11 @@ def transaction():
     sellers = Seller.query.all()
     products = Product.query.all()
 
-    return render_template('transaction.html', sellers=sellers, products=products, transactions=transactions, sellers_info=sellers_info, products_info=products_info)
+    return render_template(
+        'transaction.html', sellers=sellers, products=products,
+        transactions=transactions, sellers_info=sellers_info, products_info=products_info
+    )
+
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=False)
