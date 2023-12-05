@@ -59,14 +59,11 @@ def index():
                            total_transactions=total_transactions,
                            total_products=total_products, total_units=total_units)
 
-
-# Добавление продавца
 # Роут для управления продавцами
 @app.route('/manage_sellers', methods=['GET'])
 def manage_sellers():
     sellers = Seller.query.all()
     return render_template('manage_sellers.html', sellers=sellers)
-
 
 # Роут для добавления нового продавца
 @app.route('/manage_sellers/add', methods=['POST'])
@@ -79,39 +76,32 @@ def manage_sellers_add():
         db.session.commit()
     return redirect(url_for('manage_sellers'))
 
+# Роут для обновления продавца
+@app.route('/manage_sellers/edit/<int:seller_id>', methods=['POST'])
+def manage_sellers_update(seller_id):
+    seller = Seller.query.get(seller_id)
+
+    if not seller:
+        abort(404)  # Вернуть 404, если продавец не найден
+
+    seller.first_name = request.form.get('first_name')
+    seller.last_name = request.form.get('last_name')
+    db.session.commit()
+
+    return "Changes saved successfully", 200
+
 
 # Роут для редактирования продавца
-@app.route('/manage_sellers/edit/<int:seller_id>', methods=['GET', 'POST'])
+@app.route('/manage_sellers/edit/<int:seller_id>', methods=['GET'])
 def manage_sellers_edit(seller_id):
     seller = Seller.query.get(seller_id)
 
     if not seller:
         abort(404)  # Вернуть 404, если продавец не найден
 
-    if request.method == 'POST':
-        return handle_seller_edit_post(seller)
+    return render_template('edit_seller.html', editing_seller=seller)
 
-    # Если запрос GET, отобразить страницу редактирования существующего продавца
-    sellers = Seller.query.all()
-    return render_template('manage_sellers.html', sellers=sellers, editing_seller=seller)
-
-def handle_seller_edit_post(seller):
-    # Обработка POST-запроса для редактирования продавца
-    first_name = request.form.get('first_name')
-    last_name = request.form.get('last_name')
-
-    # Проверка данных перед обновлением
-    if first_name and last_name:
-        # Обновление данных и сохранение в базе данных
-        seller.first_name = first_name
-        seller.last_name = last_name
-        db.session.commit()
-
-        # Перенаправление на страницу управления продавцами
-        return redirect(url_for('manage_sellers'))
-    else:
-        # Возможно, нужно обработать ситуацию с некорректными данными
-        return render_template('error.html', message='Invalid data for seller edit')
+# ...
 
 # Роут для удаления продавца
 @app.route('/manage_sellers/delete/<int:seller_id>')
@@ -120,7 +110,6 @@ def manage_sellers_delete(seller_id):
     db.session.delete(seller)
     db.session.commit()
     return redirect(url_for('manage_sellers'))
-
 
 # Добавление товара
 @app.route('/warehouse', methods=['GET'])

@@ -1,3 +1,5 @@
+<!-- manage_sellers.html -->
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -5,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manage Sellers</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 <body>
 <a href="{{ url_for('index') }}">На главную страницу</a>
@@ -22,7 +24,7 @@
     <label for="last_name">Фамилия:</label>
     <input type="text" name="last_name" required>
     <br>
-    <input type="submit" value="Add Seller">
+    <input type="submit" value="Добавить продавца">
 </form>
 
 <h2>Список продавцов</h2>
@@ -36,21 +38,6 @@
     </li>
     {% endfor %}
 </ul>
-
-<!-- Форма для редактирования продавца -->
-{% if editing_seller %}
-<h2>Редактировать продавца</h2>
-<form method="POST" action="{{ url_for('manage_sellers_edit', seller_id=editing_seller.id) }}">
-    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
-    <label for="first_name">Имя:</label>
-    <input type="text" name="first_name" value="{{ editing_seller.first_name }}" required>
-    <br>
-    <label for="last_name">Фамилия:</label>
-    <input type="text" name="last_name" value="{{ editing_seller.last_name }}" required>
-    <br>
-    <input type="submit" value="Сохранить изменения">
-</form>
-{% endif %}
 
 </body>
 </html>
