@@ -317,7 +317,6 @@ class MainWnd(QMainWindow):
 
     def delete_storehouses(self):
         selected_rows = self.table_widget.selectionModel().selectedRows()
-
         if selected_rows:
             reply = QMessageBox.question(
                 self,
@@ -325,37 +324,27 @@ class MainWnd(QMainWindow):
                 'Are you sure you want to delete selected storehouses?',
                 QMessageBox.Yes | QMessageBox.No
                 )
-
             if reply == QMessageBox.Yes:
                 ids_to_delete = [self.table_widget.item(row.row(), 0).text() for row in selected_rows]
                 cursor = self.db_connection.cursor()
-                
                 # Use parameterized query to prevent SQL injection
                 query = 'DELETE FROM {} WHERE id IN ({})'
                 cursor.execute(query, (self.states[self.state], ','.join(['%s']*len(ids_to_delete)),))
-                
                 self.db_connection.commit()
 
     def open_materials_table(self):
-
         if self.state == 'SH':
             self.save_table()
             self.state = 'M'
         else:
             return
-
         row = self.table_widget.selectionModel().currentIndex().row()
-
         self.store_house = self.table_widget.item(row, 1).text()
-        
         self.make_table()
-
         cursor = self.db_connection.cursor()
         cursor.execute('SELECT * FROM Materials WHERE stored_at = {}', (self.store_house, ))
         data = cursor.fetchall()
-
         self.table_widget.setRowCount(len(data))
-
         for row_num, row_data in enumerate(data):
             for col_num, col_data in enumerate(row_data):
                 item = QTableWidgetItem(str(col_data))
@@ -369,23 +358,19 @@ class MainWnd(QMainWindow):
             self.state = 'SH'
         else:
             return
-        
         self.make_table()
         self.load_data()
 
     def save_table(self):
         cursor = self.db_connection.cursor()
-
         for row in range(self.table_widget.rowCount()):
             id_item = self.table_widget.item(row, 0)
             name_item = self.table_widget.item(row, 1)
             item_1 = self.table_widget.item(row, 2)
             item_2 = self.table_widget.item(row, 3)
-
             query = 'SELECT * FROM {} WHERE id = {}'
             cursor.execute(query, (self.states[self.state], int(id_item.text()),))
             existing_record = cursor.fetchone()
-
             if self.state == 'SH':
                 if existing_record:
                     cursor.execute('UPDATE {} SET name = {}, location = {}, space = {} WHERE id = {}',
@@ -400,7 +385,6 @@ class MainWnd(QMainWindow):
                 else:
                     cursor.execute('INSERT INTO {} (id, name, stored_at, mass) VALUES ({}, {}, {}, {})',
                     (self.states[self.state], int(id_item.text()), name_item.text(), item_1.text(), int(item_2.text())))
-
         self.db_connection.commit()
 
 
