@@ -3,22 +3,22 @@
     "use strict";
 
     // product quantity
-    var initProductQty = function(){
+    let initProductQty = function(){
 
       $('.product-qty').each(function(){
 
-        var $el_product = $(this);
-        var quantity = 0;
+        let $el_product = $(this);
+        let quantity = 0;
 
         $el_product.find('.quantity-right-plus').click(function(e){
             e.preventDefault();
-            var quantity = parseInt($el_product.find('#quantity').val());
+            let quantity = parseInt($el_product.find('#quantity').val());
             $el_product.find('#quantity').val(quantity + 1);
         });
 
         $el_product.find('.quantity-left-minus').click(function(e){
             e.preventDefault();
-            var quantity = parseInt($el_product.find('#quantity').val());
+            let quantity = parseInt($el_product.find('#quantity').val());
             if(quantity>0){
               $el_product.find('#quantity').val(quantity - 1);
             }
@@ -31,7 +31,7 @@
     $(document).ready(function() {
       
       /* Video */
-      var $videoSrc;  
+      let $videoSrc;  
         $('.play-btn').click(function() {
           $videoSrc = $(this).data( "src" );
         });
@@ -45,7 +45,7 @@
         $("#video").attr('src',$videoSrc); 
       })
 
-      var swiper = new Swiper(".main-swiper", {
+      let swiper = new Swiper(".main-swiper", {
         speed: 800,
         loop: true,
         pagination: {
@@ -54,7 +54,7 @@
         },
       });
       
-      var swiper = new Swiper(".product-swiper", {
+      let swiper = new Swiper(".product-swiper", {
         speed: 800,
         spaceBetween: 20,
         navigation: {
@@ -79,7 +79,7 @@
         },
       });
 
-      var swiper = new Swiper(".testimonial-swiper", {
+      let swiper = new Swiper(".testimonial-swiper", {
         speed: 800,
         navigation: {
           nextEl: ".testimonial-arrow-next",
@@ -87,7 +87,7 @@
         },
       });
 
-      var swiper = new Swiper(".product-swiper2", {
+      let swiper = new Swiper(".product-swiper2", {
         speed: 800,
         spaceBetween: 20,
         navigation: {
@@ -112,10 +112,10 @@
         },
       });
 
-      var thumb_slider = new Swiper(".thumb-swiper", {
+      let thumb_slider = new Swiper(".thumb-swiper", {
         slidesPerView: 1,
       });
-      var large_slider = new Swiper(".large-swiper", {
+      let large_slider = new Swiper(".large-swiper", {
         spaceBetween: 10,
         effect: 'fade',
         thumbs: {
