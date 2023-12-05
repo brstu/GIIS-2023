@@ -182,38 +182,9 @@ def warehouse_delete(product_id):
 
 
 # Покупка или продажа товара
-@app.route('/transaction', methods=['GET', 'POST'])
-def transaction():
-    if request.method == 'POST':
-        try:
-            seller_id = int(request.form['seller_id'])
-            product_id = int(request.form['product_id'])
-            quantity = int(request.form['quantity'])
-            transaction_type = request.form['transaction_type']
-
-            # Уменьшаем количество товара при продаже
-            if transaction_type == 'sale':
-                product = Product.query.get(product_id)
-                if product.quantity < quantity:
-                    return "Недостаточно товара на складе"
-
-                product.quantity -= quantity
-
-            # Добавляем запись о сделке
-            new_transaction = Transaction(
-                seller_id=seller_id, product_id=product_id, quantity=quantity,
-                transaction_type=transaction_type
-            )
-            db.session.add(new_transaction)
-            db.session.commit()
-            return redirect(url_for('index'))
-
-        except ValueError:
-            return "Некорректные данные в форме"
-
-        except NoResultFound:
-            return "Продавец или продукт не найден"
-
+# Роут для отображения страницы с транзакциями
+@app.route('/transaction', methods=['GET'])
+def show_transactions():
     transactions = Transaction.query.all()
     products_info = {product.id: product.name for product in Product.query.all()}
 
@@ -227,6 +198,40 @@ def transaction():
         'transaction.html', sellers=sellers, products=products,
         transactions=transactions, sellers_info=sellers_info, products_info=products_info
     )
+
+# Роут для обработки POST-запроса (транзакции)
+@app.route('/transaction', methods=['POST'])
+def handle_transaction():
+    try:
+        seller_id = int(request.form['seller_id'])
+        product_id = int(request.form['product_id'])
+        quantity = int(request.form['quantity'])
+        transaction_type = request.form['transaction_type']
+
+        # Уменьшаем количество товара при продаже
+        if transaction_type == 'sale':
+            product = Product.query.get(product_id)
+            if product.quantity < quantity:
+                return "Недостаточно товара на складе"
+
+            product.quantity -= quantity
+
+        # Добавляем запись о сделке
+        new_transaction = Transaction(
+            seller_id=seller_id, product_id=product_id, quantity=quantity,
+            transaction_type=transaction_type
+        )
+        db.session.add(new_transaction)
+        db.session.commit()
+
+        return redirect(url_for('index'))
+
+    except ValueError:
+        return "Некорректные данные в форме"
+
+    except NoResultFound:
+        return "Продавец или продукт не найден"
+
 
 
 if __name__ == '__main__':
