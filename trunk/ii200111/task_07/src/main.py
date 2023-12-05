@@ -4,11 +4,14 @@ from flask_sqlalchemy import SQLAlchemy
 import base64
 from flask_wtf.csrf import CSRFProtect
 from sqlalchemy.orm.exc import NoResultFound
+from dotenv import load_dotenv
+from flask import abort
 
+load_dotenv()
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///store.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SECRET_KEY'] = os.urandom(24)
+app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', 'fallback_secret_key')
 db = SQLAlchemy(app)
 app.app_context().push()
 csrf = CSRFProtect(app)
@@ -83,27 +86,32 @@ def manage_sellers_edit(seller_id):
     seller = Seller.query.get(seller_id)
 
     if not seller:
-        print(404)  # Вернуть 404, если продавец не найден
+        abort(404)  # Вернуть 404, если продавец не найден
 
     if request.method == 'POST':
-        # Получение данных из формы
-        first_name = request.form.get('first_name')
-        last_name = request.form.get('last_name')
+        return handle_seller_edit_post(seller)
 
-        # Проверка данных перед обновлением
-        if first_name and last_name:
-            # Обновление данных и сохранение в базе данных
-            seller.first_name = first_name
-            seller.last_name = last_name
-            db.session.commit()
-
-            # Перенаправление на страницу управления продавцами
-            return redirect(url_for('manage_sellers'))
-
-    # Если запрос не POST, отобразить страницу редактирования существующего продавца
+    # Если запрос GET, отобразить страницу редактирования существующего продавца
     sellers = Seller.query.all()
     return render_template('manage_sellers.html', sellers=sellers, editing_seller=seller)
 
+def handle_seller_edit_post(seller):
+    # Обработка POST-запроса для редактирования продавца
+    first_name = request.form.get('first_name')
+    last_name = request.form.get('last_name')
+
+    # Проверка данных перед обновлением
+    if first_name and last_name:
+        # Обновление данных и сохранение в базе данных
+        seller.first_name = first_name
+        seller.last_name = last_name
+        db.session.commit()
+
+        # Перенаправление на страницу управления продавцами
+        return redirect(url_for('manage_sellers'))
+    else:
+        # Возможно, нужно обработать ситуацию с некорректными данными
+        return render_template('error.html', message='Invalid data for seller edit')
 
 # Роут для удаления продавца
 @app.route('/manage_sellers/delete/<int:seller_id>')
