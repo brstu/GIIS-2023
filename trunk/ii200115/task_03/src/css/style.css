@@ -2,10 +2,8 @@
 {
     max-width: 1440px;
     min-height: 100%;
-
     padding: 0 120px;
     margin: 0 auto;
-
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -37,7 +35,7 @@
     padding: 2px;
     display: flex;
     border-radius: 25px;
-    border: 2px solid #FFFFFF;
+    border: 2px solid #FFF;
     text-align: center;
     margin-left: 10px;
     cursor: pointer;
@@ -46,7 +44,7 @@
 .item a
 {
     margin: 0 4px;
-    color: #FFFFFF;
+    color: #FFF;
 }
 
 .item a:hover
@@ -71,16 +69,12 @@
 {
     height: 8rem;
     width: 80%;
-
     margin: 2rem;
-
     display: flex;
     align-items: center;
     background: #F9F9F9;
-
-    box-shadow: 0 0.5rem 1rem #000000;
+    box-shadow: 0 0.5rem 1rem #000;
     border-radius: 1rem;
-
     overflow: hidden;
 }
 
@@ -140,11 +134,9 @@
     width: 960px;
     margin-left: 30px;
     padding: 10px;
-
     background-color: #FA8128;
-    color: #FFFFFF;
-
-    box-shadow: 0 0.5rem 1rem #000000;
+    color: #FFF;
+    box-shadow: 0 0.5rem 1rem #000;
     border-radius: 1rem;
 }
 
