@@ -73,7 +73,7 @@ class ImageDialog(QDialog):
             image_label = QLabel(self)
             image_label.setText("No image found in the database.")
             layout.addWidget(image_label)
-    
+
     def addImage(self):
         try:
             image_path, _ = QFileDialog.getOpenFileName(self, "Select Image", "", "Images (*.png *.jpg *.jpeg *.bmp *.gif)")
@@ -239,7 +239,6 @@ class MainWnd(QMainWindow):
         data = cursor.fetchall()
 
         self.table_widget.setRowCount(0)
-
         for row_num, row_data in enumerate(data):
             self.table_widget.insertRow(row_num)
             for col_num, col_data in enumerate(row_data):
@@ -333,8 +332,8 @@ class MainWnd(QMainWindow):
                 cursor = self.db_connection.cursor()
                 
                 # Use parameterized query to prevent SQL injection
-                query = 'DELETE FROM {} WHERE id IN ({})'.format(self.states[self.state], ','.join(['%s']*len(ids_to_delete)))
-                cursor.execute(query, tuple(ids_to_delete))
+                query = 'DELETE FROM {} WHERE id IN ({})'
+                cursor.execute(query, (self.states[self.state], ','.join(['%s']*len(ids_to_delete)),))
                 
                 self.db_connection.commit()
 
@@ -364,7 +363,7 @@ class MainWnd(QMainWindow):
                 if col_num == 0:
                     item.setFlags(item.flags() ^ Qt.ItemIsEditable)
                 self.table_widget.setItem(row_num, col_num, item)
-    
+
     def return_table(self):
         if self.state == 'M':
             self.save_table()
@@ -384,17 +383,18 @@ class MainWnd(QMainWindow):
             item_1 = self.table_widget.item(row, 2)
             item_2 = self.table_widget.item(row, 3)
 
-            cursor.execute(f'SELECT * FROM {self.states[self.state]} WHERE id = ?', (int(id_item.text()),))
+            query = 'SELECT * FROM {} WHERE id = {}'
+            cursor.execute(query, (self.states[self.state], int(id_item.text()),))
             existing_record = cursor.fetchone()
 
             if self.state == 'SH':
                 if existing_record:
                     cursor.execute(f'''
-                        UPDATE {self.states[self.state]}
+                        UPDATE ?
                         SET name = ?, location = ?, space = ?
                         WHERE id = ?
                     ''',
-                    (name_item.text(), item_1.text(), int(item_2.text()), int(id_item.text())))
+                    (self.states[self.state], name_item.text(), item_1.text(), int(item_2.text()), int(id_item.text())))
                 else:
                     cursor.execute(f'''
                         INSERT INTO {self.states[self.state]} (id, name, location, space) VALUES (?, ?, ?, ?)
@@ -403,17 +403,16 @@ class MainWnd(QMainWindow):
             elif self.state == 'M':
                 if existing_record:
                     cursor.execute(f'''
-                        UPDATE {self.states[self.state]}
+                        UPDATE ?
                         SET name = ?, stored_at = ?, mass = ?
                         WHERE id = ?
                     ''',
-                    (name_item.text(), item_1.text(), int(item_2.text()), int(id_item.text())))
+                    (self.states[self.state], name_item.text(), item_1.text(), int(item_2.text()), int(id_item.text())))
                 else:
                     cursor.execute(f'''
-                        INSERT INTO {self.states[self.state]} (id, name, stored_at, mass) VALUES (?, ?, ?, ?)
+                        INSERT INTO ? (id, name, stored_at, mass) VALUES (?, ?, ?, ?)
                     ''',
-                    (int(id_item.text()), name_item.text(), item_1.text(), int(item_2.text())))
-
+                    (self.states[self.state], int(id_item.text()), name_item.text(), item_1.text(), int(item_2.text())))
 
         self.db_connection.commit()
 
