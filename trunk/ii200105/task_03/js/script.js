@@ -3,17 +3,13 @@
   "use strict";
 
   let initProductQty = function(){
-
     $('.product-qty').each(function(){
-
       let $el_product = $(this);
-
       $el_product.find('.quantity-right-plus').click(function(e){
         e.preventDefault();
         let quantity = parseInt($el_product.find('#quantity').val());
         $el_product.find('#quantity').val(quantity + 1);
       });
-
       $el_product.find('.quantity-left-minus').click(function(e){
         e.preventDefault();
         let quantity = parseInt($el_product.find('#quantity').val());
@@ -21,9 +17,7 @@
           $el_product.find('#quantity').val(quantity - 1);
         }
       });
-
     });
-
   }
 
   $(document).ready(function() {
@@ -31,13 +25,12 @@
     $('.play-btn').click(function() {
       $videoSrc = $(this).data( "src" );
     });
-
     $('#myModal').on('shown.bs.modal', function (e) {
       $("#video").attr('src', $videoSrc + "?autoplay=1&amp;modestbranding=1&amp;showinfo=0" ); 
     })
-
     $('#myModal').on('hide.bs.modal', function (e) {
       $("#video").attr('src', $videoSrc); 
+
     })
 
     new Swiper(".main-swiper", {
@@ -74,6 +67,7 @@
       },
     });
 
+    // Один раз создайте Swiper для ".testimonial-swiper"
     new Swiper(".testimonial-swiper", {
       speed: 800,
       navigation: {
@@ -114,4 +108,5 @@
     initProductQty();
 
   });
+
 })(jQuery);
