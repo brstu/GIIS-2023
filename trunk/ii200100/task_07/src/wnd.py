@@ -1,5 +1,5 @@
 import sys
-from PyQt5.QtWidgets import(
+from PyQt5.QtWidgets import (
     QApplication, QMainWindow, QVBoxLayout, QWidget,
     QTableWidget, QTableWidgetItem, QMenu, QAction,
     QDialog, QLabel, QLineEdit, QPushButton,
@@ -54,7 +54,7 @@ class ImageDialog(QDialog):
         layout = self.layout()
 
         if results:
-            if not (type(results[0]) == list or type(results[0]) == tuple):
+            if not (isinstance(results[0], list) or isinstance(results[0], tuple)):
                 results = [results]
             for result in results:
                 image_data = result[2]
@@ -66,7 +66,6 @@ class ImageDialog(QDialog):
                 image_label.setAlignment(Qt.AlignCenter)
 
                 self.image_labels.append(image_label)
-            
             for image_label in self.image_labels:
                 layout.addWidget(image_label)
         else:
@@ -144,7 +143,7 @@ class AddDialog(QDialog):
         space_text = self.item_1_edit.text()
 
         if not space_text.isdigit():
-            QMessageBox.warning(self, 'Invalid Input', f'Second line must be a valid integer.')
+            QMessageBox.warning(self, 'Invalid Input', 'Second line must be a valid integer.')
         else:
             self.accept()
 
@@ -235,7 +234,8 @@ class MainWnd(QMainWindow):
 
     def load_data(self):
         cursor = self.db_connection.cursor()
-        cursor.execute(f'SELECT * FROM {self.states[self.state]}')
+        query = 'SELECT * FROM %s'
+        cursor.execute(query, (self.states[self.state],))
         data = cursor.fetchall()
 
         self.table_widget.setRowCount(0)
@@ -321,15 +321,22 @@ class MainWnd(QMainWindow):
         selected_rows = self.table_widget.selectionModel().selectedRows()
 
         if selected_rows:
-            reply = QMessageBox.question(self, 'Delete Confirmation', 'Are you sure you want to delete selected storehouses?', QMessageBox.Yes | QMessageBox.No)
+            reply = QMessageBox.question(
+                self,
+                'Delete Confirmation',
+                'Are you sure you want to delete selected storehouses?',
+                QMessageBox.Yes | QMessageBox.No
+                )
 
             if reply == QMessageBox.Yes:
                 ids_to_delete = [self.table_widget.item(row.row(), 0).text() for row in selected_rows]
                 cursor = self.db_connection.cursor()
-                cursor.execute('DELETE FROM {} WHERE id IN ({})'.format(self.states[self.state], ','.join(ids_to_delete)))
+                
+                # Use parameterized query to prevent SQL injection
+                query = 'DELETE FROM {} WHERE id IN ({})'.format(self.states[self.state], ','.join(['%s']*len(ids_to_delete)))
+                cursor.execute(query, tuple(ids_to_delete))
+                
                 self.db_connection.commit()
-
-                self.load_data()
 
     def open_materials_table(self):
 
