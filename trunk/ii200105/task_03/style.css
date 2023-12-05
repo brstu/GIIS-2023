@@ -230,9 +230,6 @@ h5.cart-title {
   background-color: var(--black-color);
   border: 0;
 }
-
-/** 2.6 Forms
---------------------------------------------------------------*/
 label{
   font-size: 14px;
   font-weight: 600;
@@ -619,18 +616,17 @@ h5.widget-title {
 }
 .nav-tabs .nav-link {
   color: var(--black-color);
+  background: none;
+  border: none;
 }
 
 .nav-tabs .nav-link.active,
 .nav-tabs .nav-link:hover {
   color: var(--primary-color);
 }
-.nav-tabs .nav-link:focus{
+
+.nav-tabs .nav-link:focus {
   box-shadow: none;
-}
-.nav-tabs .nav-link {
-  background: none;
-  border: none;
 }
 .nav-tabs button.nav-link.active {
   color: var(--primary-color);
