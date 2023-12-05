@@ -7,7 +7,6 @@
     $('.product-qty').each(function(){
 
       let $el_product = $(this);
-      let quantity = 0;
 
       $el_product.find('.quantity-right-plus').click(function(e){
         e.preventDefault();
@@ -28,8 +27,6 @@
   }
 
   $(document).ready(function() {
-
-    /* Video */
     let $videoSrc;  
     $('.play-btn').click(function() {
       $videoSrc = $(this).data( "src" );
@@ -43,7 +40,7 @@
       $("#video").attr('src', $videoSrc); 
     })
 
-    let mainSwiper = new Swiper(".main-swiper", {
+    new Swiper(".main-swiper", {
       speed: 800,
       loop: true,
       pagination: {
@@ -52,7 +49,7 @@
       },
     });
 
-    let productSwiper = new Swiper(".product-swiper", {
+    new Swiper(".product-swiper", {
       speed: 800,
       spaceBetween: 20,
       navigation: {
@@ -77,7 +74,7 @@
       },
     });
 
-    let testimonialSwiper = new Swiper(".testimonial-swiper", {
+    new Swiper(".testimonial-swiper", {
       speed: 800,
       navigation: {
         nextEl: ".testimonial-arrow-next",
@@ -85,7 +82,7 @@
       },
     });
 
-    let productSwiper2 = new Swiper(".product-swiper2", {
+    new Swiper(".product-swiper2", {
       speed: 800,
       spaceBetween: 20,
       navigation: {
@@ -110,22 +107,11 @@
       },
     });
 
-    let thumbSlider = new Swiper(".thumb-swiper", {
+    new Swiper(".thumb-swiper", {
       slidesPerView: 1,
-    });
-
-    new Swiper(".large-swiper", {
-      spaceBetween: 10,
-      effect: 'fade',
-      thumbs: {
-        swiper: new Swiper(".thumb-swiper", {
-          slidesPerView: 1,
-        }),
-      },
     });
 
     initProductQty();
 
-  }); 
-
+  });
 })(jQuery);
