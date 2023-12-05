@@ -29,10 +29,6 @@ a:hover {
     color: #0056b3;
 }
 
-button:hover {
-    background-color: #0056b3;
-}
-
 .inventory-table th, .inventory-table td {
     border: 1px solid #ddd;
     padding: 8px;
@@ -71,7 +67,6 @@ button {
 button:hover {
     background-color: #0056b3;
 }
-
 
 .inventory-table tbody tr:nth-child(even) {
     background-color: #f2f2f2;
@@ -159,7 +154,7 @@ footer {
     border: 1px solid #ddd;
     border-radius: 8px;
     padding: 20px;
-    box-shadow: 0 2px 4px hsla(0, 0%, 0%, 10%);
+    box-shadow: 0 2px 4px;
 }
 
 .info-container p {
@@ -178,7 +173,7 @@ li {
     border-radius: 8px;
     padding: 20px;
     margin-bottom: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 10%);
+    box-shadow: 0 2px 4px;
 }
 
 li p {

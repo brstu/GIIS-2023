@@ -8,7 +8,7 @@ from sqlalchemy.orm.exc import NoResultFound
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///store.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
+app.config['SECRET_KEY'] = os.urandom(24)
 db = SQLAlchemy(app)
 app.app_context().push()
 csrf = CSRFProtect(app)
