@@ -330,9 +330,13 @@ class MainWnd(QMainWindow):
                 ids_to_delete = [self.table_widget.item(row.row(), 0).text() for row in selected_rows]
                 cursor = self.db_connection.cursor()
                 # Use parameterized query to prevent SQL injection
-                query = 'DELETE FROM {} WHERE id IN ({})'
-                cursor.execute(query, (self.states[self.state], ','.join(['%s']*len(ids_to_delete)),))
+                if self.state == 'M':
+                    query = 'DELETE FROM Materials WHERE id IN (?)'
+                else:
+                    query = 'DELETE FROM Storehouses WHERE id IN (?)'
+                cursor.execute(query, (','.join(ids_to_delete),))
                 self.db_connection.commit()
+            self.load_data()
 
     def open_materials_table(self):
         if self.state == 'SH':
@@ -344,7 +348,7 @@ class MainWnd(QMainWindow):
         self.store_house = self.table_widget.item(row, 1).text()
         self.make_table()
         cursor = self.db_connection.cursor()
-        cursor.execute('SELECT * FROM Materials WHERE stored_at = {}', (self.store_house, ))
+        cursor.execute('SELECT * FROM Materials WHERE stored_at = ?', (self.store_house, ))
         data = cursor.fetchall()
         self.table_widget.setRowCount(len(data))
         for row_num, row_data in enumerate(data):
@@ -370,23 +374,26 @@ class MainWnd(QMainWindow):
             name_item = self.table_widget.item(row, 1)
             item_1 = self.table_widget.item(row, 2)
             item_2 = self.table_widget.item(row, 3)
-            query = 'SELECT * FROM {} WHERE id = {}'
-            cursor.execute(query, (self.states[self.state], int(id_item.text()),))
+            if self.state == 'M':
+                query = 'SELECT * FROM Materials WHERE id = ?'
+            else:
+                query = 'SELECT * FROM Storehouses WHERE id = ?'
+            cursor.execute(query, (int(id_item.text()),))
             existing_record = cursor.fetchone()
             if self.state == 'SH':
                 if existing_record:
-                    cursor.execute('UPDATE {} SET name = {}, location = {}, space = {} WHERE id = {}',
-                    (self.states[self.state], name_item.text(), item_1.text(), int(item_2.text()), int(id_item.text())))
+                    cursor.execute('UPDATE Storehouses SET name = ?, location = ?, space = ? WHERE id = ?',
+                    (name_item.text(), item_1.text(), int(item_2.text()), int(id_item.text())))
                 else:
-                    cursor.execute('INSERT INTO {} (id, name, location, space) VALUES ({}, {}, {}, {})',
-                    (self.states[self.state], int(id_item.text()), name_item.text(), item_1.text(), int(item_2.text())))
+                    cursor.execute('INSERT INTO Storehouses (id, name, location, space) VALUES (?, ?, ?, ?)',
+                    (int(id_item.text()), name_item.text(), item_1.text(), int(item_2.text())))
             elif self.state == 'M':
                 if existing_record:
-                    cursor.execute('UPDATE {} SET name = {}, stored_at = {}, mass = {} WHERE id = {}',
-                    (self.states[self.state], name_item.text(), item_1.text(), int(item_2.text()), int(id_item.text())))
+                    cursor.execute('UPDATE Materials SET name = ?, stored_at = ?, mass = ? WHERE id = ?',
+                    (name_item.text(), item_1.text(), int(item_2.text()), int(id_item.text())))
                 else:
-                    cursor.execute('INSERT INTO {} (id, name, stored_at, mass) VALUES ({}, {}, {}, {})',
-                    (self.states[self.state], int(id_item.text()), name_item.text(), item_1.text(), int(item_2.text())))
+                    cursor.execute('INSERT INTO Materials (id, name, stored_at, mass) VALUES (?, ?, ?, ?)',
+                    (int(id_item.text()), name_item.text(), item_1.text(), int(item_2.text())))
         self.db_connection.commit()
 
 
