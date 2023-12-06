@@ -22,7 +22,7 @@ justify-content: center;
 }
 .txtf1{
     color: #FFF;
-font-family: Arial;
+
 font-size: 22px;
 font-style: normal;
 font-weight: 400;
@@ -31,7 +31,7 @@ line-height: 28px;
 .txtf2{
     color: #FFF;
     text-align: center;
-    font-family: Arial;
+    
     font-size: 20px;
     font-style: normal;
     font-weight: 400;
@@ -113,7 +113,7 @@ line-height: 28px;
 }
 .txtf3{
     color: #FFF;
-font-family: Arial;
+
 font-size: 16px;
 font-style: normal;
 font-weight: 400;
@@ -160,7 +160,7 @@ flex-direction: row;
 }
 .txtf4{
     color: #FFF;
-font-family: Arial;
+
 font-size: 13px;
 font-style: normal;
 font-weight: 400;
@@ -170,7 +170,7 @@ text-transform: uppercase;
 }
 .txtf5{
     color: #FFF;
-    font-family: Arial;
+    
     font-size: 50px;
     font-style: normal;
     font-weight: 400;
@@ -192,7 +192,7 @@ text-transform: uppercase;
 }
 .txtf6{
     color: #FFF;
-    font-family: Arial;
+    
     font-size: 20px;
     font-style: normal;
     font-weight: 400;
@@ -202,7 +202,7 @@ text-transform: uppercase;
 .txtf7{
     color: #000;
 text-align: center;
-font-family: Arial;
+
 font-size: 20px;
 font-style: normal;
 font-weight: 400;
@@ -274,7 +274,7 @@ flex-shrink: 0;
 }
 .txtf8{
     color: #6F6F6F;
-    font-family: Arial;
+    
     font-size: 18px;
     font-style: normal;
     font-weight: 400;
@@ -282,7 +282,7 @@ flex-shrink: 0;
 }
 .txtf9{
     color: #000;
-font-family: Arial;
+
 font-size: 50px;
 font-style: normal;
 font-weight: 400;
@@ -291,7 +291,7 @@ letter-spacing: 0.12px;
 }
 .txtf10{
     color: #000;
-font-family: Arial;
+
 font-size: 20px;
 font-style: normal;
 font-weight: 400;
@@ -300,7 +300,7 @@ letter-spacing: 0.12px;
 }
 .txtf11{
     color: #000;
-font-family: Arial;
+
 font-size: 47px;
 font-style: normal;
 font-weight: 400;
@@ -417,7 +417,7 @@ letter-spacing: 0.12px;
 }
 .txtf12{
     color: #000;
-font-family: Arial;
+
 font-size: 17px;
 font-style: normal;
 font-weight: 400;
@@ -449,7 +449,7 @@ line-height: 23px;
 .txtf13{
     color: #000;
 text-align: center;
-font-family: Arial;
+
 font-size: 23px;
 font-style: normal;
 font-weight: 400;
@@ -460,7 +460,7 @@ text-transform: uppercase;
 .txtf14{
     color: #000;
 text-align: center;
-font-family: Arial;
+
 font-size: 50px;
 font-style: normal;
 font-weight: 400;
@@ -470,7 +470,7 @@ letter-spacing: 0.12px;
 .txtf15{
     color: #000;
 text-align: center;
-font-family: Arial;
+
 font-size: 20px;
 font-style: normal;
 font-weight: 400;
@@ -552,7 +552,7 @@ letter-spacing: 0.12px;
 }
 .txtf16{
     color: #000;
-font-family: Arial;
+
 font-size: 20px;
 font-style: normal;
 font-weight: 400;
@@ -560,7 +560,7 @@ line-height: 30px; /* 150% */
 }
 .txtf17{
     color: #000;
-font-family: Arial;
+
 font-size: 18px;
 font-style: normal;
 font-weight: 400;
@@ -618,7 +618,7 @@ line-height: 24px; /* 133.333% */
 }
 .txtf18{
     color: #000;
-font-family: Arial;
+
 font-size: 49px;
 font-style: normal;
 font-weight: 400;
@@ -657,7 +657,7 @@ letter-spacing: 0.12px;
 .txtf19{
     color: #000;
 text-align: center;
-font-family: Arial;
+
 font-size: 24px;
 font-style: normal;
 font-weight: 400;
@@ -668,7 +668,7 @@ text-transform: uppercase;
 .txtf20{
     color: #000;
 text-align: center;
-font-family: Arial;
+
 font-size: 48px;
 font-style: normal;
 font-weight: 400;
@@ -678,7 +678,7 @@ letter-spacing: 0.12px;
 .txtf21{
     color: #000;
 text-align: center;
-font-family: Arial;
+
 font-size: 20px;
 font-style: normal;
 font-weight: 400;
@@ -713,7 +713,7 @@ letter-spacing: 0.12px;
         }
         .txtf1{
             color: #FFF;
-        font-family: Arial;
+        
         font-size: 12px;
         font-style: normal;
         font-weight: 400;
@@ -722,7 +722,7 @@ letter-spacing: 0.12px;
         .txtf2{
             color: #FFF;
             text-align: center;
-            font-family: Arial;
+            
             font-size: 10px;
             font-style: normal;
             font-weight: 400;
@@ -800,7 +800,7 @@ letter-spacing: 0.12px;
         }
         .txtf3{
             color: #FFF;
-        font-family: Arial;
+        
         font-size: 11px;
         font-style: normal;
         font-weight: 400;
@@ -849,7 +849,7 @@ letter-spacing: 0.12px;
         }
         .txtf4{
             color: #FFF;
-        font-family: Arial;
+        
         font-size: 12px;
         font-style: normal;
         font-weight: 400;
@@ -859,7 +859,7 @@ letter-spacing: 0.12px;
         }
         .txtf5{
             color: #FFF;
-            font-family: Arial;
+            
             font-size: 20px;
             font-style: normal;
             font-weight: 400;
@@ -880,7 +880,7 @@ letter-spacing: 0.12px;
         }
         .txtf6{
             color: #FFF;
-            font-family: Arial;
+            
             font-size: 14px;
             font-style: normal;
             font-weight: 400;
@@ -890,7 +890,7 @@ letter-spacing: 0.12px;
         .txtf7{
             color: #000;
         text-align: center;
-        font-family: Arial;
+        
         font-size: 20px;
         font-style: normal;
         font-weight: 400;
@@ -964,7 +964,7 @@ letter-spacing: 0.12px;
         }
         .txtf8{
             color: #6F6F6F;
-            font-family: Arial;
+            
             font-size: 8px;
             font-style: normal;
             font-weight: 400;
@@ -972,7 +972,7 @@ letter-spacing: 0.12px;
         }
         .txtf9{
             color: #000;
-        font-family: Arial;
+        
         font-size: 30px;
         font-style: normal;
         font-weight: 400;
@@ -981,7 +981,7 @@ letter-spacing: 0.12px;
         }
         .txtf10{
             color: #000;
-        font-family: Arial;
+        
         font-size: 15px;
         font-style: normal;
         font-weight: 400;
@@ -991,7 +991,7 @@ letter-spacing: 0.12px;
         
         .txtf11{
             color: #000;
-        font-family: Arial;
+        
         font-size: 22px;
         font-style: normal;
         font-weight: 400;
@@ -1117,7 +1117,7 @@ letter-spacing: 0.12px;
         }
         .txtf12{
             color: #000;
-        font-family: Arial;
+        
         font-size: 14px;
         font-style: normal;
         font-weight: 400;
@@ -1149,7 +1149,7 @@ letter-spacing: 0.12px;
         .txtf13{
             color: #000;
         text-align: center;
-        font-family: Arial;
+        
         font-size: 23px;
         font-style: normal;
         font-weight: 400;
@@ -1160,7 +1160,7 @@ letter-spacing: 0.12px;
         .txtf14{
             color: #000;
         text-align: center;
-        font-family: Arial;
+        
         font-size: 50px;
         font-style: normal;
         font-weight: 400;
@@ -1170,7 +1170,7 @@ letter-spacing: 0.12px;
         .txtf15{
             color: #000;
         text-align: center;
-        font-family: Arial;
+        
         font-size: 20px;
         font-style: normal;
         font-weight: 400;
@@ -1256,7 +1256,7 @@ letter-spacing: 0.12px;
         }
         .txtf16{
             color: #000;
-        font-family: Arial;
+        
         font-size: 14px;
         font-style: normal;
         font-weight: 400;
@@ -1264,7 +1264,7 @@ letter-spacing: 0.12px;
         }
         .txtf17{
             color: #000;
-        font-family: Arial;
+        
         font-size: 13px;
         font-style: normal;
         font-weight: 400;
@@ -1322,7 +1322,7 @@ letter-spacing: 0.12px;
         }
         .txtf18{
             color: #000;
-        font-family: Arial;
+        
         font-size: 49px;
         font-style: normal;
         font-weight: 400;
@@ -1361,7 +1361,7 @@ letter-spacing: 0.12px;
         .txtf19{
             color: #000;
         text-align: center;
-        font-family: Arial;
+        
         font-size: 17px;
         font-style: normal;
         font-weight: 400;
@@ -1372,7 +1372,7 @@ letter-spacing: 0.12px;
         .txtf20{
             color: #000;
         text-align: center;
-        font-family: Arial;
+        
         font-size: 34px;
         font-style: normal;
         font-weight: 400;
@@ -1382,7 +1382,7 @@ letter-spacing: 0.12px;
         .txtf21{
             color: #000;
         text-align: center;
-        font-family: Arial;
+        
         font-size: 16px;
         font-style: normal;
         font-weight: 400;
