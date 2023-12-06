@@ -233,8 +233,7 @@ class MainWnd(QMainWindow):
 
     def load_data(self):
         cursor = self.db_connection.cursor()
-        query = 'SELECT * FROM %s'
-        cursor.execute(query, (self.states[self.state],))
+        cursor.execute('SELECT * FROM {}'.format(self.states[self.state],))
         data = cursor.fetchall()
 
         self.table_widget.setRowCount(0)
