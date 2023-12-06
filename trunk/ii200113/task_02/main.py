@@ -42,14 +42,6 @@ class AddressBookApp:
         self.tree.bind('<ButtonRelease-1>', self.select_address)
         self.load_addresses()
 
-    def load_addresses(self):
-        for row in self.tree.get_children():
-            self.tree.delete(row)
-        self.c.execute("SELECT * FROM addresses")
-        data = self.c.fetchall()
-        for row in data:
-            self.tree.insert('', 'end', values=row)
-
     def add_address(self):
         name = self.name_var.get()
         address = self.address_var.get()
@@ -83,6 +75,7 @@ class AddressBookApp:
                 self.clear_entries()
 
     def delete_address(self):
+        print('Udalenie poshlo')
         selected_item = self.tree.selection()
         if selected_item:
             selected_id = self.tree.item(selected_item, 'values')[0]
@@ -92,6 +85,7 @@ class AddressBookApp:
             self.clear_entries()
 
     def search_addresses(self):
+        print('Poisk')
         search_term = self.name_var.get()
         if search_term:
             for row in self.tree.get_children():
@@ -110,12 +104,14 @@ class AddressBookApp:
             self.phone_var.set(values[3])
 
     def clear_entries(self):
+        print('Ochistka entry')
         self.name_var.set('')
         self.address_var.set('')
         self.phone_var.set('')
 
 
 if __name__ == "__main__":
+    print('Poshel process')
     root = tk.Tk()
     app = AddressBookApp(root)
     root.mainloop()
