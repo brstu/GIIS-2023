@@ -16,4 +16,4 @@
 
 . Обработанное фото:
    <br><br><br>
-   ![nonlin](doc/filtered%20img.png)
+   ![nonlin](doc/filtered%20img.png) 
