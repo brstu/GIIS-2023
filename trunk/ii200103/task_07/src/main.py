@@ -1,7 +1,5 @@
-from scipy.spatial import Delaunay
 import json
 import matplotlib.pyplot as plt
-from mpl_toolkits.mplot3d import Axes3D
 
 # Функция для построения триангуляции Делоне по заданным точкам
 def delaunay_triangulation(points):
@@ -46,6 +44,7 @@ def divide_5(points):
 # Функция для объединения двух списков треугольников
 def merge_triangles(left_triangles, right_triangles):
     return left_triangles + right_triangles
+
 
 with open('new_points.json', 'r') as file:
     vertices = json.load(file)
