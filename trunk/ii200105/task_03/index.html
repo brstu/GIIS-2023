@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang=ru>
   <head>
     <title>Micas Bookstore Template</title>
     <meta charset="utf-8">
@@ -78,13 +78,13 @@
       <nav id="header-nav" class="navbar navbar-expand-lg px-3">
         <div class="container">
           <a class="navbar-brand d-lg-none" href="index.html">
-            <img src="images/main-logo.png" class="logo">
+            <img src="images/main-logo.png" class="logo" alt="Main Logo">
           </a>
           <button class="navbar-toggler d-flex d-lg-none order-3 p-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#bdNavbar" aria-controls="bdNavbar" aria-expanded="false" aria-label="Toggle navigation">Меню</button>
           <div class="offcanvas offcanvas-end" tabindex="-1" id="bdNavbar" aria-labelledby="bdNavbarOffcanvasLabel">
             <div class="offcanvas-header px-4 pb-0">
               <a class="navbar-brand" href="index.html">
-                <img src="images/main-logo.png" class="logo">
+                <img src="images/main-logo.png" class="logo" alt="Main Logo">
               </a>
               <button type="button" class="btn-close btn-close-black" data-bs-dismiss="offcanvas" aria-label="Close" data-bs-target="#bdNavbar"></button>
             </div>
@@ -109,10 +109,7 @@
                       </li>
                       <li>
                         <a  ="shop.html" class="dropdown-item fs-5 fw-medium">Магазин <span class="text-primary"></span></a>
-                      </li>
-                      <!-- <li>
-                        <a  ="single-product.html" class="dropdown-item fs-5 fw-medium">Single Product <span class="text-primary">(PRO)</span></a>
-                      </li> -->
+                      </li>              
                       <li>
                         <a  ="author.html" class="dropdown-item fs-5 fw-medium">Автор <span class="text-primary"></span></a>
                       </li>
@@ -122,15 +119,9 @@
                       <li>
                         <a  ="cart.html" class="dropdown-item fs-5 fw-medium">Корзина <span class="text-primary"></span></a>
                       </li>
-                      <!-- li>
-                        <a  ="checkout.html" class="dropdown-item fs-5 fw-medium">Checkout <span class="text-primary"></span></a>
-                      </li> -->
                       <li>
                         <a  ="blog.html" class="dropdown-item fs-5 fw-medium">Блог <span class="text-primary"></span></a>
                       </li>
-                      <!-- <li>
-                        <a  ="single-post.html" class="dropdown-item fs-5 fw-medium">Single Post <span class="text-primary"></span></a>
-                      </li> -->
                       <li>
                         <a  ="contact.html" class="dropdown-item fs-5 fw-medium">Контакты <span class="text-primary"></span></a>
                       </li>
@@ -139,14 +130,12 @@
                 </ul>
                 
                 <a class="navbar-brand d-none d-lg-block me-0"  href="index.html">
-                  <img src="images/main-logo.png" class="logo">
+                  <img src="images/main-logo.png" class="logo" alt="Main Logo">
                 </a>
 
                 <ul class="list-unstyled d-lg-flex justify-content-between align-items-center">
                   <li class="nav-item search-item">
                     <div id="search-bar" class="border-right d-none d-lg-block">
-                      <!-- <form action="" autocomplete="on">
-                        <input id="search" class="text-dark" name="search" type="text" placeholder="Search Here..."> -->
                         <a type="submit" class="nav-link text-uppercase me-0" href="#">Поиск</a>
                       </form>
                     </div>
@@ -1091,8 +1080,7 @@
         </div>
       </div>
     </div>
-    
-    <!-- Video Popup -->
+  
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
 
@@ -1101,7 +1089,7 @@
               <div class="modal-body">
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><svg class="bi" width="40" height="40"><use xlink:href="#close-sharp"></use></svg></button>
                   <div class="ratio ratio-16x9">
-                    <iframe class="embed-responsive-item" src="" id="video"  allowscriptaccess="always" allow="autoplay"></iframe>
+                    <iframe class="embed-responsive-item" src="" id="video" allowscriptaccess="always" allow="autoplay" title="Embedded Video"></iframe>
                   </div>
               </div>
 
