@@ -1,51 +1,39 @@
 (function($) {
 
     "use strict";
-
-    // product quantity
-    var initProductQty = function(){
-
+  
+    let initProductQty = function(){
       $('.product-qty').each(function(){
-
-        var $el_product = $(this);
-        var quantity = 0;
-
+        let $el_product = $(this);
         $el_product.find('.quantity-right-plus').click(function(e){
-            e.preventDefault();
-            var quantity = parseInt($el_product.find('#quantity').val());
-            $el_product.find('#quantity').val(quantity + 1);
+          e.preventDefault();
+          let quantity = parseInt($el_product.find('#quantity').val());
+          $el_product.find('#quantity').val(quantity + 1);
         });
-
         $el_product.find('.quantity-left-minus').click(function(e){
-            e.preventDefault();
-            var quantity = parseInt($el_product.find('#quantity').val());
-            if(quantity>0){
-              $el_product.find('#quantity').val(quantity - 1);
-            }
+          e.preventDefault();
+          let quantity = parseInt($el_product.find('#quantity').val());
+          if(quantity > 0){
+            $el_product.find('#quantity').val(quantity - 1);
+          }
         });
-
       });
-
     }
-
+  
     $(document).ready(function() {
-      
-      /* Video */
-      var $videoSrc;  
-        $('.play-btn').click(function() {
-          $videoSrc = $(this).data( "src" );
-        });
-
-        $('#myModal').on('shown.bs.modal', function (e) {
-
-        $("#video").attr('src',$videoSrc + "?autoplay=1&amp;modestbranding=1&amp;showinfo=0" ); 
+      let $videoSrc;  
+      $('.play-btn').click(function() {
+        $videoSrc = $(this).data( "src" );
+      });
+      $('#myModal').on('shown.bs.modal', function (e) {
+        $("#video").attr('src', $videoSrc + "?autoplay=1&amp;modestbranding=1&amp;showinfo=0" ); 
       })
-
       $('#myModal').on('hide.bs.modal', function (e) {
-        $("#video").attr('src',$videoSrc); 
+        $("#video").attr('src', $videoSrc); 
+  
       })
-
-      var swiper = new Swiper(".main-swiper", {
+  
+      new Swiper(".main-swiper", {
         speed: 800,
         loop: true,
         pagination: {
@@ -53,8 +41,8 @@
           clickable: true,
         },
       });
-      
-      var swiper = new Swiper(".product-swiper", {
+  
+      new Swiper(".product-swiper", {
         speed: 800,
         spaceBetween: 20,
         navigation: {
@@ -78,16 +66,17 @@
           }
         },
       });
+  
 
-      var swiper = new Swiper(".testimonial-swiper", {
+      new Swiper(".testimonial-swiper", {
         speed: 800,
         navigation: {
           nextEl: ".testimonial-arrow-next",
           prevEl: ".testimonial-arrow-prev",
         },
       });
-
-      var swiper = new Swiper(".product-swiper2", {
+  
+      new Swiper(".product-swiper2", {
         speed: 800,
         spaceBetween: 20,
         navigation: {
@@ -111,20 +100,13 @@
           }
         },
       });
-
-      var thumb_slider = new Swiper(".thumb-swiper", {
+  
+      new Swiper(".thumb-swiper", {
         slidesPerView: 1,
       });
-      var large_slider = new Swiper(".large-swiper", {
-        spaceBetween: 10,
-        effect: 'fade',
-        thumbs: {
-          swiper: thumb_slider,
-        },
-      });
-
+  
       initProductQty();
-      
-    }); // End of a document ready
-
-})(jQuery);
+  
+    });
+  
+  })(jQuery);
