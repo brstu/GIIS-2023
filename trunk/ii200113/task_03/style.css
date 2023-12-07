@@ -6,7 +6,7 @@
 }
 
 
-.center{
+.unique_center{
 display: flex;
 justify-content: center;
 }
@@ -29,7 +29,6 @@ justify-content: center;
 
 .txtf1{
     color: #FFF;
-
 font-size: 22px;
 font-style: normal;
 font-weight: 400;
@@ -40,7 +39,6 @@ line-height: 28px;
 .txtf2{
     color: #FFF;
     text-align: center;
-    
     font-size: 20px;
     font-style: normal;
     font-weight: 400;
@@ -69,7 +67,7 @@ line-height: 28px;
 }
 
 
-.text1{
+.text_unique1{
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -84,7 +82,7 @@ line-height: 28px;
 }
 
 
-.text2{
+.text_unique2{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -99,7 +97,7 @@ line-height: 28px;
 }
 
 
-.text3{
+.text_unique3{
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -114,7 +112,7 @@ line-height: 28px;
 }
 
 
-.text4{
+.text_unique4{
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -150,7 +148,6 @@ line-height: 28px;
 
 .txtf3{
     color: #FFF;
-
 font-size: 16px;
 font-style: normal;
 font-weight: 400;
@@ -164,7 +161,7 @@ flex-direction: row;
 }
 
 
-.text5{
+.text_unique5{
     display: flex;
     justify-content: end;
     align-items: end;
@@ -177,7 +174,7 @@ flex-direction: row;
     height: 18px;
 }
 
-.text6{
+.text_unique6{
     justify-content: start;
     align-items: end;
     display: flex;
@@ -190,7 +187,7 @@ flex-direction: row;
     height: 18px;
 }
 
-.box{
+.box_unique{
     display: flex;
     justify-content: space-between;
     margin-top: 20px;
@@ -200,14 +197,13 @@ flex-direction: row;
     height: 407;
 }
 
-.box1{
+.box_unique1{
     display: flex;
     flex-direction: column;
 }
 
 .txtf4{
     color: #FFF;
-
 font-size: 13px;
 font-style: normal;
 font-weight: 400;
@@ -218,7 +214,6 @@ text-transform: uppercase;
 
 .txtf5{
     color: #FFF;
-    
     font-size: 50px;
     font-style: normal;
     font-weight: 400;
@@ -226,14 +221,14 @@ text-transform: uppercase;
     letter-spacing: 0.12px;
 }
 
-.text7{
+.text_unique7{
     display: flex;
     align-items: self-start;
     width: 191px;
     height: 27px;
 }
 
-.text8{
+.text_unique8{
     margin-top: 18px;
     display: flex;
     align-items: self-start;
@@ -243,7 +238,6 @@ text-transform: uppercase;
 
 .txtf6{
     color: #FFF;
-    
     font-size: 20px;
     font-style: normal;
     font-weight: 400;
@@ -254,7 +248,6 @@ text-transform: uppercase;
 .txtf7{
     color: #000;
 text-align: center;
-
 font-size: 20px;
 font-style: normal;
 font-weight: 400;
@@ -262,7 +255,7 @@ line-height: 28px;
 letter-spacing: 0.12px;
 }
 
-.text9{
+.text_unique9{
     margin-top: 30px;
     height: 78px;
     width: 464px;
@@ -278,19 +271,19 @@ letter-spacing: 0.12px;
     height: 44px;
 }
 
-.text10{
+.text_unique10{
     align-self: center;
     width: 124px;
     height: 28px;
 }
 
-.box2{
+.box_unique2{
     display: flex;
     align-items: center;
     justify-content: flex-end;
 }
 
-.boxx{
+.box_uniquex{
     flex-direction: column;
     margin-left: 71px;
     margin-right: 71px;
@@ -299,19 +292,19 @@ letter-spacing: 0.12px;
     height: 305px;
 }
 
-.boxx1{
+.box_uniquex1{
     width: 1138px;
     display: flex;
     justify-content: space-between;
 }
 
-.boxx2{
+.box_uniquex2{
     width: 1138px;
     display: flex;
     justify-content: space-between;
 }
 
-.boxx3{
+.box_uniquex3{
     width: 1138px;
     display: flex;
     justify-content: space-between;
@@ -324,21 +317,20 @@ height: 48px;
 flex-shrink: 0;
 }
 
-.text12{
+.text_unique12{
     display: flex;
     justify-content: center;
     width: 1280px;
     height: 30px;
 }
 
-.text13{
+.text_unique13{
     width: 375px;
     height: 18px;
 }
 
 .txtf8{
     color: #6F6F6F;
-    
     font-size: 18px;
     font-style: normal;
     font-weight: 400;
@@ -347,7 +339,6 @@ flex-shrink: 0;
 
 .txtf9{
     color: #000;
-
 font-size: 50px;
 font-style: normal;
 font-weight: 400;
@@ -357,7 +348,6 @@ letter-spacing: 0.12px;
 
 .txtf10{
     color: #000;
-
 font-size: 20px;
 font-style: normal;
 font-weight: 400;
@@ -367,7 +357,6 @@ letter-spacing: 0.12px;
 
 .txtf11{
     color: #000;
-
 font-size: 47px;
 font-style: normal;
 font-weight: 400;
@@ -383,7 +372,7 @@ letter-spacing: 0.12px;
     height: 974px;
 }
 
-.box11{
+.box_unique11{
     display: flex;
     flex-direction: column;
     align-self: self-start;
@@ -391,25 +380,25 @@ letter-spacing: 0.12px;
     width: 655px;
 }
 
-.text14{
+.text_unique14{
     margin-top: 114px;
     width: 458px;
     height: 156px;
 }
 
-.text15{
+.text_unique15{
     margin-top: 42px;
     width: 437px;
     height: 52px;
 }
 
-.text16{
+.text_unique16{
     margin-top: 26px;
     width: 437px;
     height: 78px;
 }
 
-.box22{
+.box_unique22{
     display: flex;
     width: 581px;
 }
@@ -436,22 +425,22 @@ letter-spacing: 0.12px;
     height: 446px;
 }
 
-.box44{
+.box_unique44{
     width: 655px;
 }
 
-.text17{
+.text_unique17{
     margin-top: 54px;
     width: 366px;
     height: 104px;
 }
 
-.text18{
+.text_unique18{
     width: 474px;
     height: 78px;
 }
 
-.box33{
+.box_unique33{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -499,14 +488,13 @@ letter-spacing: 0.12px;
     width: 1180px;
 }
 
-.box5{
+.box_unique5{
     width: 245px;
     height: 69px;
 }
 
 .txtf12{
     color: #000;
-
 font-size: 17px;
 font-style: normal;
 font-weight: 400;
@@ -543,7 +531,6 @@ line-height: 23px;
 .txtf13{
     color: #000;
 text-align: center;
-
 font-size: 23px;
 font-style: normal;
 font-weight: 400;
@@ -555,7 +542,6 @@ text-transform: uppercase;
 .txtf14{
     color: #000;
 text-align: center;
-
 font-size: 50px;
 font-style: normal;
 font-weight: 400;
@@ -566,7 +552,6 @@ letter-spacing: 0.12px;
 .txtf15{
     color: #000;
 text-align: center;
-
 font-size: 20px;
 font-style: normal;
 font-weight: 400;
@@ -574,32 +559,32 @@ line-height: 26px;
 letter-spacing: 0.12px;
 }
 
-.text21{
+.text_unique21{
     align-self: center;
     width: 322px;
     height: 26px;
 }
 
-.text22{
+.text_unique22{
     align-self: center;
     width: 479px;
     height: 104px;
 }
 
-.text23{
+.text_unique23{
     align-self: center;
     width: 616px;
     height: 52px;
 }
 
-.text24{
+.text_unique24{
     margin-top: 140px;
     margin-left: 108px;
     height: 316px;
     width: 618px;
 }
 
-.text25{
+.text_unique25{
     margin-top: 140px;
     margin-right: 108px;
     height: 316px;
@@ -615,13 +600,13 @@ letter-spacing: 0.12px;
     display: flex;
 }
 
-.text26{
+.text_unique26{
     display: flex;
     height: 74px;
     width: 1280px;
 }
 
-.text27{
+.text_unique27{
     display: flex;
     width: 1280px;
     height: 93px;
@@ -632,27 +617,27 @@ letter-spacing: 0.12px;
     flex-direction: column;
 }
 
-.text28{
+.text_unique28{
     margin-top: 44px;
     margin-left: 108px;
     width: 191px;
     height: 30px;
 }
 
-.text29{
+.text_unique29{
     margin-top: 21px;
     width: 165px;
     height: 30px;
 }
 
-.text30{
+.text_unique30{
     margin-top: 44px;
     margin-left: 108px;
     width: 436px;
     height: 72px;
 }
 
-.text31{
+.text_unique31{
     margin-top: 21px;
     width: 427px;
     height: 72px; 
@@ -664,7 +649,6 @@ letter-spacing: 0.12px;
 
 .txtf16{
     color: #000;
-
 font-size: 20px;
 font-style: normal;
 font-weight: 400;
@@ -673,7 +657,6 @@ line-height: 30px; /* 150% */
 
 .txtf17{
     color: #000;
-
 font-size: 18px;
 font-style: normal;
 font-weight: 400;
@@ -699,7 +682,7 @@ line-height: 24px; /* 133.333% */
     flex-direction: column;
 }
 
-.text32{
+.text_unique32{
     height: 100px;
     width: 494px;
 }
@@ -722,7 +705,7 @@ line-height: 24px; /* 133.333% */
     justify-content: center;
 }
 
-.text33{
+.text_unique33{
     align-self: center;
     width: 300px;
     height: 30px;
@@ -733,7 +716,7 @@ line-height: 24px; /* 133.333% */
     width: 40px;
 }
 
-.text34{
+.text_unique34{
     margin-top: 17px;
     margin-bottom: 29px;
     width: 384px;
@@ -742,7 +725,6 @@ line-height: 24px; /* 133.333% */
 
 .txtf18{
     color: #000;
-
 font-size: 49px;
 font-style: normal;
 font-weight: 400;
@@ -766,19 +748,19 @@ letter-spacing: 0.12px;
     width: 1280px;
 }
 
-.text35{
+.text_unique35{
     align-self: center;
     width: 129px;
     height: 26px;
 }
 
-.text36{
+.text_unique36{
     align-self: center;
     width: 456px;
     height: 52px;
 }
 
-.text37{
+.text_unique37{
     align-self: center;
     width: 614px;
     height: 52px;
@@ -787,7 +769,6 @@ letter-spacing: 0.12px;
 .txtf19{
     color: #000;
 text-align: center;
-
 font-size: 24px;
 font-style: normal;
 font-weight: 400;
@@ -799,7 +780,6 @@ text-transform: uppercase;
 .txtf20{
     color: #000;
 text-align: center;
-
 font-size: 48px;
 font-style: normal;
 font-weight: 400;
@@ -810,7 +790,6 @@ letter-spacing: 0.12px;
 .txtf21{
     color: #000;
 text-align: center;
-
 font-size: 20px;
 font-style: normal;
 font-weight: 400;
@@ -867,7 +846,7 @@ letter-spacing: 0.12px;
         letter-spacing: 0.12px;
     }
 
-    .text1{
+    .text_unique1{
         display: flex;
         align-items: center;
         justify-content: flex-end;
@@ -883,7 +862,7 @@ letter-spacing: 0.12px;
         height: 28px;
     }
 
-    .text2{
+    .text_unique2{
         display: flex;
         align-items: center;
         justify-content: center;
@@ -899,7 +878,7 @@ letter-spacing: 0.12px;
         height: 28px;
     }
 
-    .text3{
+    .text_unique3{
         display: flex;
         align-items: center;
         justify-content: flex-start;
@@ -915,7 +894,7 @@ letter-spacing: 0.12px;
         height: 28px;
     }
 
-    .text4{
+    .text_unique4{
         display: flex;
         align-items: center;
         justify-content: flex-start;
@@ -959,7 +938,7 @@ letter-spacing: 0.12px;
     flex-direction: row;
     }
 
-    .text5{
+    .text_unique5{
         margin-left: 25px;
         display: flex;
         justify-content: center;
@@ -973,7 +952,7 @@ letter-spacing: 0.12px;
         height: 18px;
     }
 
-    .text6{
+    .text_unique6{
         justify-content: start;
         align-items: end;
         display: none;
@@ -986,7 +965,7 @@ letter-spacing: 0.12px;
         height: 18px;
     }
 
-    .box{
+    .box_unique{
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -996,7 +975,7 @@ letter-spacing: 0.12px;
         height: 257px;
     }
 
-    .box1{
+    .box_unique1{
         display: flex;
         flex-direction: column;
     }
@@ -1020,13 +999,13 @@ letter-spacing: 0.12px;
         letter-spacing: 0.12px;
     }
 
-    .text7{
+    .text_unique7{
         display: flex;
         width: 191px;   
         height: 27px;
     }
 
-    .text8{
+    .text_unique8{
         margin-top: 18px;
         display: flex;
         align-items: self-start;
@@ -1053,7 +1032,7 @@ letter-spacing: 0.12px;
     letter-spacing: 0.12px;
     }
 
-    .text9{
+    .text_unique9{
         margin-top: 13px;
         height: 78px;
         width: 464px;
@@ -1070,18 +1049,18 @@ letter-spacing: 0.12px;
         height: 44px;
     }
 
-    .text10{
+    .text_unique10{
         align-self: center;
         width: 124px;
         height: 28px;
     }
 
-    .text11{
+    .text_unique11{
         width: 460px;
         height: 300px;
     }
 
-    .box2{
+    .box_unique2{
         display: flex;
         justify-content: start;
     }
@@ -1091,7 +1070,7 @@ letter-spacing: 0.12px;
         height: 300px;
     }
 
-    .boxx{
+    .box_uniquex{
         flex-direction: column;
         margin-left: 20px;
         display: none;
@@ -1099,19 +1078,19 @@ letter-spacing: 0.12px;
         height: 305px;
     }
 
-    .boxx1{
+    .box_uniquex1{
         width: 460px;
         display: flex;
         justify-content: space-between;
     }
 
-    .boxx2{
+    .box_uniquex2{
         width: 460px;
         display: flex;
         justify-content: space-between;
     }
 
-    .boxx3{
+    .box_uniquex3{
         width: 460px;
         display: flex;
         justify-content: space-between;
@@ -1119,14 +1098,13 @@ letter-spacing: 0.12px;
 
     .img{
         margin-bottom: 46px;
-
     }
 
-    .text12{
+    .text_unique12{
         display: none;
     }
 
-    .text13{
+    .text_unique13{
         width: 375px;
         height: 18px;
     }
@@ -1184,7 +1162,7 @@ letter-spacing: 0.12px;
         height: 300px;
     }
 
-    .box11{
+    .box_unique11{
         display: flex;
         flex-direction: column;
         align-self: self-start;
@@ -1192,25 +1170,25 @@ letter-spacing: 0.12px;
         width: 655px;
     }
 
-    .text14{
+    .text_unique14{
         margin-top: 114px;
         width: 258px;
         height: 156px;
     }
 
-    .text15{
+    .text_unique15{
         margin-top: 42px;
         width: 237px;
         height: 52px;
     }
 
-    .text16{
+    .text_unique16{
         margin-top: 26px;
         width: 237px;
         height: 78px;
     }
 
-    .box22{
+    .box_unique22{
         display: flex;
         width: 581px;
     }
@@ -1237,25 +1215,25 @@ letter-spacing: 0.12px;
         height: 300px;
     }
 
-    .box44{
+    .box_unique44{
         display: flex;
         justify-content: start;
         width: 255px;
         height: 300px;
     }
 
-    .text17{
+    .text_unique17{
         margin-top: 54px;
         width: 206px;
         height: 54px;
     }
 
-    .text18{
+    .text_unique18{
         width: 204px;
         height: 78px;
     }
 
-    .box33{
+    .box_unique33{
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -1304,7 +1282,7 @@ letter-spacing: 0.12px;
         width: 480px;
     }
 
-    .box5{
+    .box_unique5{
         width: 145px;
         height: 69px;
     }
@@ -1379,19 +1357,19 @@ letter-spacing: 0.12px;
     letter-spacing: 0.12px;
     }
 
-    .text21{
+    .text_unique21{
         align-self: center;
         width: 322px;
         height: 26px;
     }
 
-    .text22{
+    .text_unique22{
         align-self: center;
         width: 479px;
         height: 104px;
     }
 
-    .text23{
+    .text_unique23{
         align-self: center;
         width: 416px;
         height: 52px;
@@ -1402,13 +1380,13 @@ letter-spacing: 0.12px;
         width: 218px;
     }
 
-    .text24{
+    .text_unique24{
         
         height: 100px;
         width: 218px;
     }
 
-    .text25{
+    .text_unique25{
         height: 100px;
         width: 218px;
     }
@@ -1425,14 +1403,14 @@ letter-spacing: 0.12px;
         justify-content: space-between;
     }
 
-    .text26{
+    .text_unique26{
         display: flex;
         justify-content: space-between;
         height: 74px;
         width: 480px;
     }
 
-    .text27{
+    .text_unique27{
         display: flex;
         justify-content: space-between;
         width: 480px;
@@ -1446,21 +1424,21 @@ letter-spacing: 0.12px;
         flex-direction: column;
     }
 
-    .text28{
+    .text_unique28{
         width: 101px;
     }
 
-    .text29{
+    .text_unique29{
         margin-left: 100px;
         width: 165px;
         height: 30px;
     }
 
-    .text30{
+    .text_unique30{
         width: 180px;
     }
 
-    .text31{
+    .text_unique31{
         margin-left: 100px;
         width: 240px;
         height: 72px; 
@@ -1507,7 +1485,7 @@ letter-spacing: 0.12px;
         flex-direction: column;
     }
 
-    .text32{
+    .text_unique32{
         height: 100px;
         width: 440px;
     }
@@ -1530,7 +1508,7 @@ letter-spacing: 0.12px;
         justify-content: center;
     }
 
-    .text33{
+    .text_unique33{
         align-self: center;
         width: 300px;
         height: 30px;
@@ -1541,7 +1519,7 @@ letter-spacing: 0.12px;
         width: 40px;
     }
 
-    .text34{
+    .text_unique34{
         margin-top: 17px;
         margin-bottom: 29px;
         width: 384px;
@@ -1574,19 +1552,19 @@ letter-spacing: 0.12px;
         width: 480px;
     }
 
-    .text35{
+    .text_unique35{
         align-self: center;
         width: 129px;
         height: 26px;
     }
 
-    .text36{
+    .text_unique36{
         align-self: center;
         width: 450px;
         height: 52px;
     }
 
-    .text37{
+    .text_unique37{
         align-self: center;
         width: 300px;
         height: 52px;
