@@ -61,7 +61,7 @@ async function handleInput(e) {
   } catch (err) {
     console.error(err);
   } finally {
-    setupInput();
+    await setupInput(); 
   }
 }
 
