@@ -29,8 +29,3 @@ class Model:
             return res_image
         else:
             return None
-        
-
-
-
-
