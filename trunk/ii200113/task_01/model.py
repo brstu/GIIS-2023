@@ -7,9 +7,8 @@ class Model:
 
     def add_noisy(self,sigma, mean=0):
         generator = np.random.default_rng(42)
-        noise = generator.standard_normal()
+        noise = generator.standard_normal(mean, sigma, self.original_image.shape)
         self.noisy_image = cv2.add(self.original_image, noise)
-    
     def threshold_filter(self, threshold):
         if self.noisy_image is not None:
             height, width = self.noisy_image.shape
