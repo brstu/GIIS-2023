@@ -1,598 +1,138 @@
-const canvas = document.getElementById('canvas');
-const ctx = canvas.getContext('2d');
-canvas.width = 900;
-canvas.height = 600;
+import Grid from "./Grid.js"
+import Tile from "./Tile.js"
 
-const cellSize = 100;
-const cellGap = 3;
-const gameGrid = [];
-const defenders = [];
-const enemies = [];
-const enemyPositions = [];
-let numberOfResources = 300;
-let frame = 0;
-let enemiesInterval = 600; 
-let gameOver = false;
-const projectiles = [];
-let score = 0;
-const resources = [];
-const winningScore = 3000;
-let choosenDefender = 1;
-if(!localStorage.record){
-    localStorage.record = 0;
+const gameBoard = document.getElementById("game-board")
+
+const grid = new Grid(gameBoard)
+grid.randomEmptyCell().tile = new Tile(gameBoard)
+grid.randomEmptyCell().tile = new Tile(gameBoard)
+setupInput()
+
+function setupInput() {
+  window.addEventListener("keydown", handleInputOnce);
 }
 
-const mouse = {
-    x: undefined,
-    y: undefined,
-    width: 0.1,
-    height: 0.1,
-    clicked: false,
+function handleInputOnce(e) {
+  window.removeEventListener("keydown", handleInputOnce);
+  handleInput(e).then(setupInput);
 }
 
-canvas.addEventListener('mousedown', () => {
-    mouse.clicked = true;
-})
-
-
-canvas.addEventListener('mouseup', () => {
-    mouse.clicked = false;
-})
-
-let canvasPosition = canvas.getBoundingClientRect();
-
-canvas.addEventListener('mousemove', (e) => {
-    mouse.x = e.x - canvasPosition.left;
-    mouse.y = e.y - canvasPosition.top;
-})
-
-canvas.addEventListener('mouseleave', (e) => {
-    mouse.x = undefined;
-    mouse.y = undefined;
-})
-
-const controlsBar = {
-    width: canvas.width,
-    height: cellSize
+function move(direction) {
+  return new Promise((resolve) => {
+    if (canMove(direction)) {
+      resolve();
+      moveTiles(direction);
+      grid.cells.forEach((cell) => cell.mergeTiles());
+      const newTile = new Tile(gameBoard);
+      grid.randomEmptyCell().tile = newTile;
+    }
+  });
 }
 
-// cell
+function handleInput(e) {
+  return new Promise(async (resolve) => {
+    try {
+      switch (e.key) {
+        case "ArrowUp":
+          await move("up");
+          break;
+        case "ArrowDown":
+          await move("down");
+          break;
+        case "ArrowLeft":
+          await move("left");
+          break;
+        case "ArrowRight":
+          await move("right");
+          break;
+        default:
+          return;
+      }
 
-class Cell{
-    constructor(x, y){
-        this.x = x;
-        this.y = y;
-        this.width = cellSize;
-        this.height = cellSize;
+      if (!canMove("up") && !canMove("down") && !canMove("left") && !canMove("right")) {
+        await showLoseAlert();
+      }
+    } catch (err) {
+      console.error(err);
+    } finally {
+      resolve();
     }
-    draw(){
-        if(mouse.x && mouse.y && collision(this, mouse)){
-            ctx.strokeStyle = 'black';
-            ctx.strokeRect(this.x, this.y, this.width, this.height);
-        }
-    }
+  });
 }
 
-function createGrid(){
-    for(let y = 0; y < canvas.height; y += cellSize){
-        for(let x = 0; x < canvas.width; x += cellSize){
-            gameGrid.push(new Cell(x, y))
-        }
-    }
+async function showLoseAlert() {
+  await newTile.waitForTransition(true);
+  alert("You lose");
 }
 
-createGrid();
-function handleGameGrid(){
-    for(let i = 0; i < gameGrid.length; i++){
-        gameGrid[i].draw();
-    }
+function moveUp() {
+  return slideTiles(grid.cellsByColumn)
 }
 
-// projectile
-
-class Projectile{
-    constructor(x, y, power){
-        this.x = x;
-        this.y = y;
-        this.width = 10;
-        this.height = 10;
-        this.power = power;
-        this.speed = 5;
-    }
-    update(){
-        this.x += this.speed; 
-    }
-    draw(){
-        // ctx.fillStyle = 'black';
-        // ctx.beginPath();
-        // ctx.arc(this.x, this.y, this.width, 0, Math.PI * 2);
-        // ctx.fill();
-        ctx.fillStyle = '#eaeaea';
-        ctx.fillRect(this.x, this.y+5, 10, 2);
-    }
-}
-function handleProjectiles(){
-    for(let i = 0; i < projectiles.length; i++){
-        projectiles[i].update();
-        projectiles[i].draw();
-
-        for(let j = 0; j < enemies.length; j++){
-            if(enemies[j] && projectiles[i] && collision(projectiles[i], enemies[j])){
-                enemies[j].health -= projectiles[i].power;
-                projectiles.splice(i, 1);
-                i--;
-            }
-        }
-
-        if(projectiles[i] && projectiles[i].x > canvas.width - cellSize){
-            projectiles.splice(i, 1);
-            i--;
-        }
-    }
+function moveDown() {
+  return slideTiles(grid.cellsByColumn.map(column => [...column].reverse()))
 }
 
-
-// defender
-
-const defender1 = new Image();
-defender1.src = './defenders/jagger/Jagger67.png';
-
-const defender2 = new Image();
-defender2.src = './defenders/sniper/Sniper64.png';
-
-class Defender{
-    constructor(x, y){
-        this.x = x;
-        this.y = y;
-        this.width = cellSize - cellGap * 2;
-        this.height = cellSize - cellGap * 2;
-        this.shooting = false;
-        this.shootNow = false;
-        this.health = 100;
-        this.projectiles = [];
-        this.timer = 0;
-        this.frameX = 0;
-        this.frameY = 0;
-        this.spriteWidth = 128;
-        this.spriteHeight = 96;
-        this.minFrame = 0;
-        this.maxFrame = 10;
-        this.choosenDefender = choosenDefender;
-        if(this.choosenDefender === 2){
-            this.health = 50;
-        }
-    }
-
-    draw(){
-        console.log(this.choosenDefender) ;
-        ctx.fillStyle = 'gold';
-        ctx.font = '30px Pixelify Sans';
-        ctx.fillText(Math.floor(this.health), this.x + 15, this.y + 25);
-        if(this.choosenDefender === 1){
-            ctx.drawImage(defender1, this.frameX * this.spriteWidth, 0, this.spriteWidth, this.spriteHeight, this.x, this.y + 32, this.width, this.height)
-        } else if(this.choosenDefender === 2){
-            ctx.drawImage(defender2, this.frameX * this.spriteWidth, 0, this.spriteWidth, this.spriteHeight, this.x, this.y + 32, this.width, this.height)
-        }
-    }
-    update(){
-        // if(frame % 10 === 0){
-        //     if(this.frameX < this.maxFrame){
-        //         this.frameX++
-        //     } else {
-        //         this.frameX = this.minFrame;
-        //     }
-        //     if(this.frameX === 15) this.shootNow = true;
-        // }
-        // if(this.shooting){
-        //     // this.minFrame = 0;
-        //     // this.maxFrame = 16;
-        //     this.timer++;
-        //     if(this.timer % 100 === 0){
-        //         projectiles.push(new Projectile(this.x + 70, this.y + 50));
-        //     }
-        // } else {
-        //     this.timer = 0;
-        // }
-
-        // 
-
-        if(frame % 10 === 0){
-            if(this.frameX < this.maxFrame){
-                this.frameX++;
-            } else {
-                this.frameX = this.minFrame;
-            }
-            if(this.frameX === 10) this.shootNow = true;
-        }
-
-        if(this.shooting){
-            this.minFrame = 7;
-            this.maxFrame = 10;
-        } else {
-            this.minFrame = 0;
-            this.maxFrame = 6;
-        }
-        if(this.shooting && this.shootNow){
-            if(this.choosenDefender === 2){
-                projectiles.push(new Projectile(this.x + 70, this.y + 38, 20));
-            } else {
-                projectiles.push(new Projectile(this.x + 70, this.y + 43, 10));
-            }
-            this.shootNow = false;
-        }
-
-
-    }
-}
-canvas.addEventListener('click', (e) => {
-    const gridPositionX = mouse.x - (mouse.x % cellSize) + cellGap;
-    const gridPositionY = mouse.y - (mouse.y % cellSize) + cellGap;
-    if(gridPositionY < cellSize) return;
-    for(let i = 0; i < defenders.length; i++){
-        if(defenders[i].x === gridPositionX && defenders[i].y === gridPositionY){
-            return
-        }
-    }
-    let defenderCost
-    if(choosenDefender === 1){
-        defenderCost = 100;
-    } else {
-        defenderCost = 150;
-    }
-    if(numberOfResources >= defenderCost){
-        defenders.push(new Defender(gridPositionX, gridPositionY));
-        numberOfResources -= defenderCost;
-    } else {
-        floatingMessages.push(new FloatingMessage('need more resources', mouse.x, mouse.y, 15, '#d50000'))
-    }
-})
-function handleDefenders(){
-    for(let i = 0; i < defenders.length; i++){
-        defenders[i].draw();
-        defenders[i].update();
-        if(enemyPositions.indexOf(defenders[i].y) !== -1){
-            defenders[i].shooting = true;
-        } else {
-            defenders[i].shooting = false;
-        }
-        for(let j = 0; j < enemies.length; j++){
-            if(defenders[i] && collision(defenders[i], enemies[j])){
-                enemies[j].movement = 0;
-                enemies[j].minFrame = 7;
-                enemies[j].maxFrame = 10;
-                defenders[i].health -= .4;
-            }
-            if(defenders[i] && defenders[i].health <= 0){
-                defenders.splice(i, 1);
-                i--;
-                enemies[j].movement = enemies[j].speed;
-                enemies[j].minFrame = 0;
-                enemies[j].maxFrame = 6;
-            }
-        }
-    }
+function moveLeft() {
+  return slideTiles(grid.cellsByRow)
 }
 
-
-const card1 = {
-    x: 5,
-    y: 5,
-    width: 90,
-    height: 90,
-
+function moveRight() {
+  return slideTiles(grid.cellsByRow.map(row => [...row].reverse()))
 }
 
-const card2 = {
-    x: 105,
-    y: 5,
-    width: 90,
-    height: 90,
-}
-
-function chooseDefender(){
-    let card1stroke = 'gold';
-    let card2stroke = 'black';
-
-    if(collision(mouse, card1) && mouse.clicked){
-        choosenDefender = 1;
-    } else if(collision(mouse, card2) && mouse.clicked){
-        choosenDefender = 2;
-    }
-    if(choosenDefender === 1){
-        card1stroke = 'gold';
-        card2stroke = 'black';
-    } else if(choosenDefender){
-        card1stroke = 'black';
-        card2stroke = 'gold';
-    } else {
-        card1stroke = 'black';
-        card2stroke = 'black';
-    }
-
-    ctx.lineWidth = 1;
-    ctx.fillStyle = 'rgba(0,0,0,.2)';
-    ctx.fillRect(card1.x, card1.y, card1.width, card1.height);
-    ctx.strokeStyle = card1stroke;
-    ctx.strokeRect(card1.x, card1.y, card1.width, card1.height);
-    ctx.drawImage(defender1, 0, 0, 128, 128, -10, 15, 128 , 128);
-    ctx.fillRect(card2.x, card2.y, card2.width, card2.height);
-    ctx.drawImage(defender2, 0, 0, 128, 128, 85, 15, 128 , 128);
-    ctx.strokeStyle = card2stroke;
-    ctx.strokeRect(card2.x, card2.y, card2.width, card2.height);
-
-}
-
-
-// messgage
-
-const floatingMessages = [];
-
-class FloatingMessage{
-    constructor(value, x, y, size, color){
-        this.value = value;
-        this.x = x;
-        this.y = y;
-        this.size = size;
-        this.lifeSpan = 0;
-        this.color = color;
-        this.opacity = 1;
-    }
-    update(){
-        this.y -= .3;
-        this.lifeSpan += 1;
-        if(this.opacity >= .05) this.opacity -= .05;
-    }
-    draw(){
-        ctx.globalAlpha = this.opacity;
-        ctx.fillStyle = this.color;
-        ctx.font = this.size + 'px Pixelify Sans';
-        ctx.fillText(this.value, this.x, this.y)
-        ctx.globalAlpha = 1;
-    }
-}
-function handleFloatingMessages(){
-    for(let i = 0; i < floatingMessages.length; i++){
-        floatingMessages[i].update();
-        floatingMessages[i].draw();
-        if(floatingMessages[i].lifeSpan >= 50){
-            floatingMessages.splice(i, 1);
-            i--;
+function slideTiles(cells) {
+  return Promise.all(
+    cells.flatMap(group => {
+      const promises = []
+      for (let i = 1; i < group.length; i++) {
+        const cell = group[i]
+        if (cell.tile == null) continue
+        let lastValidCell
+        for (let j = i - 1; j >= 0; j--) {
+          const moveToCell = group[j]
+          if (!moveToCell.canAccept(cell.tile)) break
+          lastValidCell = moveToCell
         }
-    }
+
+        if (lastValidCell != null) {
+          promises.push(cell.tile.waitForTransition())
+          if (lastValidCell.tile != null) {
+            lastValidCell.mergeTile = cell.tile
+          } else {
+            lastValidCell.tile = cell.tile
+          }
+          cell.tile = null
+        }
+      }
+      return promises
+    })
+  )
 }
 
-
-// enemy
-
-const enemyTypes = [];
-
-const womanEnemy = new Image();
-womanEnemy.src = './enemies/woman/Woman.png';
-
-const wildEnemy = new Image();
-wildEnemy.src = './enemies/wild/Wild.png';
-
-const manEnemy = new Image();
-manEnemy.src = './enemies/man/Man.png';
-
-enemyTypes.push(wildEnemy);
-enemyTypes.push(womanEnemy);
-enemyTypes.push(manEnemy);
-
-function randomizeEnemy(){
-    return Math.floor(Math.random() * enemyTypes.length);
+function canMoveUp() {
+  return canMove(grid.cellsByColumn)
 }
 
-class Enemy{
-    constructor(verticalPosition){
-        this.x = canvas.width;
-        this.y = verticalPosition;
-        this.width = cellSize - cellGap * 2;
-        this.height = cellSize - cellGap * 2;
-        this.speed = Math.random() * .4 + .6;
-        this.movement = this.speed;
-        this.health = 140;
-        this.maxHealth = this.health;
-        this.currentEnemy = randomizeEnemy();
-        this.enemyType = enemyTypes[this.currentEnemy];
-        // this.frameX = 0;
-        this.frameY = 0;
-        this.minFrame = 0;
-        this.maxFrame = 6;
-        this.frameX = this.maxFrame
-        this.spriteWidth = 96;
-        this.spriteHeight = 96;
-        if(this.currentEnemy === 0){
-            this.speed = Math.random() * .8 + 1;
-            this.movement = this.speed;
-            this.health = 120;
-            this.maxFrame = 7;
-        } else if(this.currentEnemy === 1){
-            this.speed = Math.random() * .8 + 1;
-            this.movement = this.speed;
-            this.health = 80;
-        }
-    }
-    update(){
-        this.x -= this.movement; 
-        // if(frame % 10 === 0){
-        //     if(this.frameX < this.maxFrame) this.frameX++;
-        //     else this.frameX = this.minFrame;
-        // }
-        if(frame % 10 === 0){
-            if(this.frameX > this.minFrame) this.frameX--;
-            else this.frameX = this.maxFrame; 
-        }
-    }
-    draw(){
-        // ctx.fillStyle = 'red';
-        // ctx.fillRect(this.x, this.y, this.width, this.height);
-        ctx.fillStyle = 'black';
-        ctx.font = '30px Pixelify Sans';
-        ctx.fillText(Math.floor(this.health), this.x + 15, this.y + 30);
-        ctx.drawImage(this.enemyType, this.frameX * this.spriteWidth, 0, this.spriteWidth, this.spriteHeight, this.x, this.y, this.width, this.height );
-    }
-}
-function handleEnemies(){
-    for(let i = 0; i < enemies.length; i++){
-        enemies[i].update();
-        enemies[i].draw();
-        if(enemies[i].x < 0){
-            gameOver = true;
-        }
-        if(enemies[i].health <= 0){
-            let gainedResources = enemies[i].maxHealth/10;
-            floatingMessages.push(new FloatingMessage('+' + gainedResources, enemies[i].x, enemies[i].y, 30, 'black'));
-            floatingMessages.push(new FloatingMessage('+' + gainedResources, 350, 40, 30, 'gold'));
-            numberOfResources += gainedResources;
-            score += gainedResources;
-            const findThisIndex = enemyPositions.indexOf(enemies[i].y);
-            enemyPositions.splice(findThisIndex, 1);
-            enemies.splice(i, 1);
-            i--;
-        }
-    }
-    if(frame % enemiesInterval === 0 && score < winningScore){
-        let verticalPosition = Math.floor(Math.random() * 5 + 1) * cellSize + cellGap;
-        enemies.push(new Enemy(verticalPosition));
-        enemyPositions.push(verticalPosition);
-
-        if(enemiesInterval > 120){
-            console.log(enemiesInterval);
-            enemiesInterval -= 30;
-        }
-        if(score > 1000){
-            enemiesInterval = 80;
-        } else if(score > 2000){
-            enemiesInterval = 40;
-        }
-        if(defenders.length > 10){
-            enemiesInterval = 20;
-        }
-    }
+function canMoveDown() {
+  return canMove(grid.cellsByColumn.map(column => [...column].reverse()))
 }
 
-// resource
-
-const amounts = [20, 30, 40];
-
-const goldImage = new Image();
-goldImage.src = './assets/coin.png';
-
-class Resource{
-    constructor(){
-        this.x = Math.random() * (canvas.width - (cellSize));
-        this.y = (Math.floor(Math.random() * 5) + 1) * cellSize;
-        this.width = cellSize * .4;
-        this.height = cellSize * .4;
-        this.amount = amounts[Math.floor(Math.random() * amounts.length)];
-        this.spriteWidth = 60;
-        this.spriteHeight = 60;
-        this.frameX = 0;
-        this.frameY = 0;
-        this.minFrame = 0;
-        this.maxFrame = 7;
-    }
-    draw(){
-        // ctx.fillStyle = 'yellow';
-        // ctx.fillRect(this.x, this.y, this.width, this.height);
-        ctx.drawImage(goldImage, this.frameX * this.spriteWidth, 0, this.spriteWidth, this.spriteHeight, this.x, this.y, this.width, this.height)
-        if(frame % 10 === 0){
-            this.frameX++;
-            if(this.frameX === this.maxFrame){
-                this.frameX = this.minFrame;
-            }
-        } 
-        // ctx.fillStyle = 'black';
-        // ctx.font = '20px Pixelify Sans';
-        // ctx.fillText(this.amount, this.x + 15, this.y + 25);
-    }
-}
-function handleResources(){
-    if(frame % 500 === 0 && score < winningScore){
-        resources.push(new Resource())
-    }
-    for(let i = 0; i < resources.length; i++){
-        resources[i].draw();
-        if(resources[i] && mouse.x && mouse.y && collision(resources[i], mouse)){
-            numberOfResources += resources[i].amount;
-            floatingMessages.push(new FloatingMessage('+' + resources[i].amount, resources[i].x, resources[i].y, 30, 'black'));
-            floatingMessages.push(new FloatingMessage('+' + resources[i].amount, 430, 85, 30, 'gold'));
-            resources.splice(i, 1);
-            i--;
-        }
-    }
+function canMoveLeft() {
+  return canMove(grid.cellsByRow)
 }
 
-// status
-
-function handleGameStatus(){
-    ctx.fillStyle = 'gold';
-    ctx.font = '30px Pixelify Sans';
-    ctx.fillText('Score: ' + score, 205, 40);
-    ctx.fillText('Resources: ' + numberOfResources, 205, 80);
-    if(gameOver){
-
-        ctx.fillStyle = 'red';
-        ctx.font = '90px Pixelify Sans';
-        ctx.fillText('GAME OVER', 220, 330);
-        ctx.fillStyle='gold';
-        ctx.font = '50px Pixelify Sans';
-        if(score > localStorage.getItem('record')){
-            localStorage.record = score;
-        }
-        if(score < 100){
-            ctx.fillText('Your score is ' + score, 250, 380);
-        } else {
-            ctx.fillText('Your score is ' + score, 200, 380);
-        }
-        // ctx.fillText('game over', 100, 300);
-    }
-    if(score >= winningScore && enemies.length === 0){
-        ctx.fillStyle = 'black';
-        ctx.font = '60px Pixelify Sans';
-        ctx.fillText('Level Complete with ' + score + ' points', 130, 340);
-        if(score > localStorage.getItem('record')){
-            localStorage.record = score;
-        }
-    }
+function canMoveRight() {
+  return canMove(grid.cellsByRow.map(row => [...row].reverse()))
 }
 
-const btn = document.querySelector('#reload');
-btn.addEventListener('click', () => {
-    window.location.reload();
-})
-
-const btnBack = document.querySelector('#back');
-btnBack.addEventListener('click', () => {
-    window.location = 'start.html'
-})
-// animate
-
-function animate(){
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = '#262e28';
-    ctx.fillRect(0, 0, controlsBar.width, controlsBar.height);
-    handleGameGrid();
-    handleDefenders();
-    handleResources();
-    handleProjectiles();
-    handleEnemies();
-    chooseDefender();
-    handleGameStatus();
-    handleFloatingMessages();
-    frame++;
-    if(!gameOver)requestAnimationFrame(animate);
+function canMove(cells) {
+  return cells.some(group => {
+    return group.some((cell, index) => {
+      if (index === 0) return false
+      if (cell.tile == null) return false
+      const moveToCell = group[index - 1]
+      return moveToCell.canAccept(cell.tile)
+    })
+  })
 }
-
-animate();
-
-function collision(first, second){
-    if(!(first.x > second.x + second.width || first.x + first.width < second.x || first.y > second.y + second.height || first.y + first.height < second.y)){
-        return true;
-    }
-}
-
-window.addEventListener('resize', () => {
-    canvasPosition = canvas.getBoundingClientRect();
-});
