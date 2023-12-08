@@ -67,20 +67,16 @@ $(document).ready(function(){
 	      	if(top <=cornerRadius && left <=cornerRadius) {    
 	      		console.log(isCornerHit,'topRight corner_hits');
 	      		if(!isCornerHit) {
-	  			
-		      		
 		      		isCornerHit = true;       		
 	      		}
 	      	}
 
-	        if(top === 0) {
-	        	bottomLeft();
+			if(top === 0) {
+				bottomLeft();
 				clearInterval(topRightInterval);
-				return;
 			} else if(left === 0 ) {
 				topLeft();
 				clearInterval(topRightInterval);
-				return;
 			} else {
 				$('.square').css({
 					top:top-1+'px',
@@ -112,11 +108,9 @@ $(document).ready(function(){
 			if(top === squareInBottom ) {
 				topLeft();
 				clearInterval(rightBottomInterval);
-				return;
 			} else if(left === squareInRight ) {
 				bottomLeft();
 				clearInterval(rightBottomInterval);
-				return;
 			} else {
 				$('.square').css({
 					top:top+1+'px',
@@ -147,12 +141,10 @@ $(document).ready(function(){
 	        if(left === squareInRight) {	
 	        	topRight();
 				clearInterval(topLeftInterval);
-				return;
 			}
 			else if(top === 0) {
 				rightBottom();
 				clearInterval(topLeftInterval);
-				return;
 			} else {
 				$('.square').css({
 					top:top-1+'px',
