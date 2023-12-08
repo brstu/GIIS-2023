@@ -53,24 +53,24 @@ export default class Grid {
 }
 
 class Cell {
-  #cellElement
-  #x
-  #y
+  cellElement
+  x
+  y
   #tile
   #mergeTile
 
   constructor(cellElement, x, y) {
-    this.#cellElement = cellElement
-    this.#x = x
-    this.#y = y
+    this.cellElement = cellElement
+    this.x = x
+    this.y = y
   }
 
   get x() {
-    return this.#x
+    return this.x
   }
 
   get y() {
-    return this.#y
+    return this.y
   }
 
   get tile() {
@@ -80,8 +80,8 @@ class Cell {
   set tile(value) {
     this.#tile = value
     if (value == null) return
-    this.#tile.x = this.#x
-    this.#tile.y = this.#y
+    this.#tile.x = this.x
+    this.#tile.y = this.y
   }
 
   get mergeTile() {
@@ -91,8 +91,8 @@ class Cell {
   set mergeTile(value) {
     this.#mergeTile = value
     if (value == null) return
-    this.#mergeTile.x = this.#x
-    this.#mergeTile.y = this.#y
+    this.#mergeTile.x = this.x
+    this.#mergeTile.y = this.y
   }
 
   canAccept(tile) {

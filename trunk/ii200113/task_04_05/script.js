@@ -13,15 +13,15 @@ function setupInput() {
 }
 
 async function handleInput(e) {
-  try{
+  try {
     switch (e.key) {
-      case "ArrowUp":
+      case "ArrowUp": 
         if (!canMoveUp()) {
-          setupInput()
-          return
-        }
-        await moveUp()
-        break
+          setupInput();
+          return;
+        } 
+        await moveUp();
+        break;
       case "ArrowDown":
         if (!canMoveDown()) {
           setupInput()
@@ -47,19 +47,23 @@ async function handleInput(e) {
         setupInput()
         return
     }
-    grid.cells.forEach(cell => cell.mergeTiles())
-    const newTile = new Tile(gameBoard)
-    grid.randomEmptyCell().tile = newTile
+    grid.cells.forEach(cell => cell.mergeTiles());
+    const newTile = new Tile(gameBoard);
+    grid.randomEmptyCell().tile = newTile;
     if (!canMoveUp() && !canMoveDown() && !canMoveLeft() && !canMoveRight()) {
-      newTile.waitForTransition(true).then(() => {
-        alert("You lose")
-      })
-      return
+      setupInput();  
+      await showLoseAlert();    
+      return;
     }
-    setupInput()
+    setupInput();
   } catch (err) {
     console.log(err);
   }
+}
+
+async function showLoseAlert() {
+  await newTile.waitForTransition(true);
+  alert("You lose");
 }
 
 function moveUp() {
