@@ -3,16 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Mega Tower Mega Defense</title>
+    <link rel="stylesheet" href="start.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@500&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="overlay"></div>
-    <canvas id="canvas"></canvas>
-    <button class="btn" id="reload">
+    <button>
         <div class="top"></div>
         <div class="bottom"></div>
         <div class="left"></div>
@@ -21,19 +19,17 @@
         <div class="right shadow"></div>
         <div class="top light"></div>
         <div class="left light"></div>
-        <img src="./reset.png" alt="" style="width: 10px;">
+        Start Game
       </button>
-      <button class="btn" id="back" style="top: 130px; font-size: 10px;width: 22px;">
-        <div class="top"></div>
-        <div class="bottom"></div>
-        <div class="left"></div>
-        <div class="right"></div>
-        <div class="bottom shadow"></div>
-        <div class="right shadow"></div>
-        <div class="top light"></div>
-        <div class="left light"></div>
-        <
-      </button>
-    <script src="script.js"></script>
+      <h1></h1>
+      <script>
+        const btn = document.querySelector('button');
+        btn.addEventListener('click', () => {
+            window.location ='index.html'
+        })
+
+        const heading = document.querySelector('h1');
+        heading.innerText = 'Your record is ' + localStorage.getItem('record');
+      </script>
 </body>
 </html>

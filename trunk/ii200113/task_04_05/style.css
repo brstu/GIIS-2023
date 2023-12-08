@@ -1,0 +1,125 @@
+body{
+    /* background: black; */
+    background: url('./assets//battleground.jpg');
+    background-size: 50%;
+    background-position: bottom;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.overlay{
+    width: 100%;
+    height: 100vh;
+    backdrop-filter: blur(5px);
+}
+
+#canvas{
+    border: 1px solid white;
+    border-radius: 10px;
+    position: absolute;
+    top: 95%;
+    left: 50%;
+    transform: translate(-50%, -100%);
+    width: 900px;
+    height: 600px;
+    /* background: white; */
+    font-family: 'Pixelify Sans', sans-serif;
+    background: url('./assets//battleground.jpg');
+    background-size: 50%;
+    background-position: bottom;
+}
+
+.reset{
+    position: absolute;
+    top: 50px;
+    left: 50px;
+}
+
+
+
+button {
+    outline: none;
+    cursor: pointer;
+    font-family: 'Pixelify Sans';
+    padding: 2px 6px 2px 6px;
+    transform: scale(4);
+    transform-origin: 0 0;
+    border: 0;
+    background: #b0b55d;
+    position: absolute;
+    top: 25px;
+    left: 25px;
+    aspect-ratio: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  button:active .light {
+    background: #7a7f2a;
+  }
+  button:active .shadow,
+  button:active:after {
+    background: #dde0a8;
+  }
+  button div {
+    background: #000;
+    position: absolute;
+  }
+  button .left,
+  button .right {
+    top: 0px;
+    width: 1px;
+    height: 100%;
+  }
+  button .left {
+    left: -1px;
+  }
+  button .right {
+    right: -1px;
+  }
+  button .top,
+  button .bottom {
+    left: 0px;
+    width: 100%;
+    height: 1px;
+  }
+  button .top {
+    top: -1px;
+  }
+  button .bottom {
+    bottom: -1px;
+  }
+  button .light {
+    background: #dde0a8;
+    top: 0;
+    left: 0;
+  }
+  button .light.top,
+  button .shadow.bottom {
+    height: 1px;
+    width: 100%;
+  }
+  button .light.left,
+  button .shadow.right {
+    height: 100%;
+    width: 1px;
+  }
+  button .shadow,
+  button:after {
+    background: #7a7f2a;
+  }
+  button .shadow.right {
+    right: 0;
+  }
+  button .shadow.bottom {
+    bottom: 0;
+  }
+  button:after {
+    content: '';
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    bottom: 1px;
+    right: 1px;
+  }
+  

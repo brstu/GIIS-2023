@@ -16,11 +16,8 @@ let gameOver = false;
 const projectiles = [];
 let score = 0;
 const resources = [];
-const winningScore = 3000;
+const winningScore = 30;
 let choosenDefender = 1;
-if(!localStorage.record){
-    localStorage.record = 0;
-}
 
 const mouse = {
     x: undefined,
@@ -91,12 +88,12 @@ function handleGameGrid(){
 // projectile
 
 class Projectile{
-    constructor(x, y, power){
+    constructor(x, y){
         this.x = x;
         this.y = y;
         this.width = 10;
         this.height = 10;
-        this.power = power;
+        this.power = 20;
         this.speed = 5;
     }
     update(){
@@ -135,10 +132,10 @@ function handleProjectiles(){
 // defender
 
 const defender1 = new Image();
-defender1.src = './defenders/jagger/Jagger67.png';
+defender1.src = './defenders/sniper/Sniper64.png';
 
 const defender2 = new Image();
-defender2.src = './defenders/sniper/Sniper64.png';
+defender2.src = './defenders/jagger/Jagger67.png';
 
 class Defender{
     constructor(x, y){
@@ -158,7 +155,7 @@ class Defender{
         this.minFrame = 0;
         this.maxFrame = 10;
         this.choosenDefender = choosenDefender;
-        if(this.choosenDefender === 2){
+        if(this.choosenDefender === 1){
             this.health = 50;
         }
     }
@@ -213,11 +210,8 @@ class Defender{
             this.maxFrame = 6;
         }
         if(this.shooting && this.shootNow){
-            if(this.choosenDefender === 2){
-                projectiles.push(new Projectile(this.x + 70, this.y + 38, 20));
-            } else {
-                projectiles.push(new Projectile(this.x + 70, this.y + 43, 10));
-            }
+            console.log('run run run');
+            projectiles.push(new Projectile(this.x + 70, this.y + 50));
             this.shootNow = false;
         }
 
@@ -233,17 +227,12 @@ canvas.addEventListener('click', (e) => {
             return
         }
     }
-    let defenderCost
-    if(choosenDefender === 1){
-        defenderCost = 100;
-    } else {
-        defenderCost = 150;
-    }
+    let defenderCost = 100;
     if(numberOfResources >= defenderCost){
         defenders.push(new Defender(gridPositionX, gridPositionY));
         numberOfResources -= defenderCost;
     } else {
-        floatingMessages.push(new FloatingMessage('need more resources', mouse.x, mouse.y, 15, '#d50000'))
+        floatingMessages.push(new FloatingMessage('need more resources', mouse.x, mouse.y, 15, 'blue'))
     }
 })
 function handleDefenders(){
@@ -258,16 +247,12 @@ function handleDefenders(){
         for(let j = 0; j < enemies.length; j++){
             if(defenders[i] && collision(defenders[i], enemies[j])){
                 enemies[j].movement = 0;
-                enemies[j].minFrame = 7;
-                enemies[j].maxFrame = 10;
                 defenders[i].health -= .4;
             }
             if(defenders[i] && defenders[i].health <= 0){
                 defenders.splice(i, 1);
                 i--;
                 enemies[j].movement = enemies[j].speed;
-                enemies[j].minFrame = 0;
-                enemies[j].maxFrame = 6;
             }
         }
     }
@@ -366,22 +351,14 @@ function handleFloatingMessages(){
 
 const enemyTypes = [];
 
-const womanEnemy = new Image();
-womanEnemy.src = './enemies/woman/Woman.png';
+const enemy1 = new Image();
+enemy1.src = './enemies/woman/Run.png';
 
-const wildEnemy = new Image();
-wildEnemy.src = './enemies/wild/Wild.png';
+const enemy2 = new Image();
+enemy2.src = './enemies/wild/Run.png';
 
-const manEnemy = new Image();
-manEnemy.src = './enemies/man/Man.png';
-
-enemyTypes.push(wildEnemy);
-enemyTypes.push(womanEnemy);
-enemyTypes.push(manEnemy);
-
-function randomizeEnemy(){
-    return Math.floor(Math.random() * enemyTypes.length);
-}
+enemyTypes.push(enemy2);
+enemyTypes.push(enemy1)
 
 class Enemy{
     constructor(verticalPosition){
@@ -389,39 +366,23 @@ class Enemy{
         this.y = verticalPosition;
         this.width = cellSize - cellGap * 2;
         this.height = cellSize - cellGap * 2;
-        this.speed = Math.random() * .4 + .6;
+        this.speed = Math.random() * 0.2 + 0.4;
         this.movement = this.speed;
-        this.health = 140;
+        this.health = 100;
         this.maxHealth = this.health;
-        this.currentEnemy = randomizeEnemy();
-        this.enemyType = enemyTypes[this.currentEnemy];
-        // this.frameX = 0;
+        this.enemyType = enemyTypes[Math.floor(Math.random() * enemyTypes.length)];
+        this.frameX = 0;
         this.frameY = 0;
         this.minFrame = 0;
-        this.maxFrame = 6;
-        this.frameX = this.maxFrame
+        this.maxFrame = 7;
         this.spriteWidth = 96;
         this.spriteHeight = 96;
-        if(this.currentEnemy === 0){
-            this.speed = Math.random() * .8 + 1;
-            this.movement = this.speed;
-            this.health = 120;
-            this.maxFrame = 7;
-        } else if(this.currentEnemy === 1){
-            this.speed = Math.random() * .8 + 1;
-            this.movement = this.speed;
-            this.health = 80;
-        }
     }
     update(){
         this.x -= this.movement; 
-        // if(frame % 10 === 0){
-        //     if(this.frameX < this.maxFrame) this.frameX++;
-        //     else this.frameX = this.minFrame;
-        // }
         if(frame % 10 === 0){
-            if(this.frameX > this.minFrame) this.frameX--;
-            else this.frameX = this.maxFrame; 
+            if(this.frameX < this.maxFrame) this.frameX++;
+            else this.frameX = this.minFrame;
         }
     }
     draw(){
@@ -443,7 +404,7 @@ function handleEnemies(){
         if(enemies[i].health <= 0){
             let gainedResources = enemies[i].maxHealth/10;
             floatingMessages.push(new FloatingMessage('+' + gainedResources, enemies[i].x, enemies[i].y, 30, 'black'));
-            floatingMessages.push(new FloatingMessage('+' + gainedResources, 350, 40, 30, 'gold'));
+            floatingMessages.push(new FloatingMessage('+' + gainedResources, 250, 50, 30, 'gold'));
             numberOfResources += gainedResources;
             score += gainedResources;
             const findThisIndex = enemyPositions.indexOf(enemies[i].y);
@@ -456,19 +417,7 @@ function handleEnemies(){
         let verticalPosition = Math.floor(Math.random() * 5 + 1) * cellSize + cellGap;
         enemies.push(new Enemy(verticalPosition));
         enemyPositions.push(verticalPosition);
-
-        if(enemiesInterval > 120){
-            console.log(enemiesInterval);
-            enemiesInterval -= 30;
-        }
-        if(score > 1000){
-            enemiesInterval = 80;
-        } else if(score > 2000){
-            enemiesInterval = 40;
-        }
-        if(defenders.length > 10){
-            enemiesInterval = 20;
-        }
+        if(enemiesInterval > 120) enemiesInterval -= 30;
     }
 }
 
@@ -476,36 +425,20 @@ function handleEnemies(){
 
 const amounts = [20, 30, 40];
 
-const goldImage = new Image();
-goldImage.src = './assets/coin.png';
-
 class Resource{
     constructor(){
-        this.x = Math.random() * (canvas.width - (cellSize));
-        this.y = (Math.floor(Math.random() * 5) + 1) * cellSize;
-        this.width = cellSize * .4;
-        this.height = cellSize * .4;
-        this.amount = amounts[Math.floor(Math.random() * amounts.length)];
-        this.spriteWidth = 60;
-        this.spriteHeight = 60;
-        this.frameX = 0;
-        this.frameY = 0;
-        this.minFrame = 0;
-        this.maxFrame = 7;
+        this.x = Math.random() * (canvas.width - cellSize);
+        this.y = (Math.floor(Math.random() * 5) + 1) * cellSize + 25;
+        this.width = cellSize * .6;
+        this.height = cellSize * .6;
+        this.amount = amounts[Math.floor(Math.random() * amounts.length)]
     }
     draw(){
-        // ctx.fillStyle = 'yellow';
-        // ctx.fillRect(this.x, this.y, this.width, this.height);
-        ctx.drawImage(goldImage, this.frameX * this.spriteWidth, 0, this.spriteWidth, this.spriteHeight, this.x, this.y, this.width, this.height)
-        if(frame % 10 === 0){
-            this.frameX++;
-            if(this.frameX === this.maxFrame){
-                this.frameX = this.minFrame;
-            }
-        } 
-        // ctx.fillStyle = 'black';
-        // ctx.font = '20px Pixelify Sans';
-        // ctx.fillText(this.amount, this.x + 15, this.y + 25);
+        ctx.fillStyle = 'yellow';
+        ctx.fillRect(this.x, this.y, this.width, this.height);
+        ctx.fillStyle = 'black';
+        ctx.font = '20px Pixelify Sans';
+        ctx.fillText(this.amount, this.x + 15, this.y + 25);
     }
 }
 function handleResources(){
@@ -517,7 +450,7 @@ function handleResources(){
         if(resources[i] && mouse.x && mouse.y && collision(resources[i], mouse)){
             numberOfResources += resources[i].amount;
             floatingMessages.push(new FloatingMessage('+' + resources[i].amount, resources[i].x, resources[i].y, 30, 'black'));
-            floatingMessages.push(new FloatingMessage('+' + resources[i].amount, 430, 85, 30, 'gold'));
+            floatingMessages.push(new FloatingMessage('+' + resources[i].amount, 150, 30, 30, 'gold'));
             resources.splice(i, 1);
             i--;
         }
@@ -532,41 +465,19 @@ function handleGameStatus(){
     ctx.fillText('Score: ' + score, 205, 40);
     ctx.fillText('Resources: ' + numberOfResources, 205, 80);
     if(gameOver){
-
-        ctx.fillStyle = 'red';
+        ctx.fillStyle = 'black';
         ctx.font = '90px Pixelify Sans';
-        ctx.fillText('GAME OVER', 220, 330);
-        ctx.fillStyle='gold';
-        ctx.font = '50px Pixelify Sans';
-        if(score > localStorage.getItem('record')){
-            localStorage.record = score;
-        }
-        if(score < 100){
-            ctx.fillText('Your score is ' + score, 250, 380);
-        } else {
-            ctx.fillText('Your score is ' + score, 200, 380);
-        }
+        ctx.fillText('GAME OVER', 135, 330);
         // ctx.fillText('game over', 100, 300);
     }
     if(score >= winningScore && enemies.length === 0){
         ctx.fillStyle = 'black';
         ctx.font = '60px Pixelify Sans';
         ctx.fillText('Level Complete with ' + score + ' points', 130, 340);
-        if(score > localStorage.getItem('record')){
-            localStorage.record = score;
-        }
     }
 }
 
-const btn = document.querySelector('#reload');
-btn.addEventListener('click', () => {
-    window.location.reload();
-})
 
-const btnBack = document.querySelector('#back');
-btnBack.addEventListener('click', () => {
-    window.location = 'start.html'
-})
 // animate
 
 function animate(){
