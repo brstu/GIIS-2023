@@ -1,11 +1,10 @@
-from PyQt6.QtWidgets import QApplication, QWidget, QProgressBar, QLabel, QPushButton, QFileDialog, QHBoxLayout, QSlider, QGridLayout, QProgressDialog
+from PyQt6.QtWidgets import QApplication, QWidget, QProgressBar, QLabel, QPushButton, QFileDialog, QHBoxLayout, QSlider, QGridLayout
 from PyQt6.QtCore import Qt 
 from PyQt6.QtGui import QPixmap, QImage
 import sys
 import cv2
 from model import Model
 import threading
-
 
 class ImageProcessor(QWidget):
     def __init__(self):
@@ -123,7 +122,9 @@ class ImageProcessor(QWidget):
        
         self.model.add_noisy(value)
         if self.model.noisy_image is not None:
-            noisy_pixmap = QPixmap.fromImage(QImage(self.model.noisy_image, self.model.noisy_image.shape[1], self.model.noisy_image.shape[0], self.model.noisy_image.shape[1], QImage.Format.Format_Grayscale8))
+            noisy_pixmap = QPixmap.fromImage(QImage(self.model.noisy_image, 
+            self.model.noisy_image.shape[1], self.model.noisy_image.shape[0], 
+            self.model.noisy_image.shape[1], QImage.Format.Format_Grayscale8))
             noisy_pixmap = noisy_pixmap.scaled(300, 200)
             self.label_noisy.setPixmap(noisy_pixmap)
 
