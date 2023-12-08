@@ -6,6 +6,15 @@ document.addEventListener("DOMContentLoaded", () => {
   const width = 4;
   let score = 0;
   const crypto = require("crypto");
+
+  /**
+ * Generates a secure random number 
+ * between min and max
+ * 
+ * @param {number} min - Minimum number (inclusive)
+ * @param {number} max - Maximum number (inclusive)
+ * @returns {number} Random number between min and max
+ */
   function secureRandom() {
     return crypto.randomInt(256);
   }
@@ -20,6 +29,16 @@ document.addEventListener("DOMContentLoaded", () => {
     generate();
   }
   createBoard();
+
+  /**
+ * Generates a secure random number 
+ * between min and max
+ * 
+ * @param {number} min - Minimum number (inclusive)
+ * @param {number} max - Maximum number (inclusive)
+ * @returns {number} Random number between min and max
+ */
+
   function generate() {
     let randomNumber = secureRandom();
     if (squares[randomNumber].innerHTML == 0) {
