@@ -1,95 +1,167 @@
-(function($) {
-    const crypto = require('crypto');
-    const square = $('.square');
-    const documentWidth = $(document).width();
-    const documentHeight = $(document).height();
+(document).ready(function(){ 
+	const crypto = require("crypto");
+	let square =  (".square");
+	let documentWidth =  (document).width();
+	let documentHeight =  (document).height();
 
-    const squareWidth = square.width();
-    const squareHeight = square.height();
+	let squareInBottom = documentHeight;
+	let squareInRight = documentWidth;
+	let isCornerHit = false;
+	let cornerRadius = 10;
+	let speed = 2;
 
-    const squareInBottom = documentHeight - squareHeight;
-    const squareInRight = documentWidth - squareWidth;
-    let isCornerHit = false;
-    const cornerRadius = 10;
-    const speed = 2;
+	function secureRandom() {
+		return crypto.randomInt(256);
+	}
 
-    function secureRandom() {
-        return crypto.randomInt(256);
-    }
+	function changeColor(){
+		let r = secureRandom();
+		let g = secureRandom();
+		let b = secureRandom();
 
-    function changeColor() {
-        const r = secureRandom();
-        const g = secureRandom();
-        const b = secureRandom();
+		square.css({
+			background:"rgb(" + r + "," + g + ","+ b + ")"
+		})
+	}
 
-        square.css({
-            background: "rgb(" + r + "," + g + "," + b + ")"
-        });
-    }
+	function bottomLeft(){
+		changeColor();
+		console.log("bottomLeft");
+		let topRightInterval = setInterval(function(){
+			const top = parseInt( (".square").css("top"));
+			const left = parseInt( (".square").css("left"));
+					
+					if(top >= (squareInBottom-cornerRadius) && left <= cornerRadius) {      
+						console.log(isCornerHit,"bottomLeft corner_hits");
+						if(!isCornerHit) { 
+						
+							
+							isCornerHit = true; 
+						}		
+					}
+					if(top === squareInBottom) {
+						topRight();
+				clearInterval(topRightInterval);
+			} else if(left === 0) {		
+						rightBottom();
+				clearInterval(topRightInterval);
+			} else {
+					(".square").css({
+					top:top+1+"px",
+					left:left-1+"px"
+				});
+			}
+		},speed);
+	}
 
-    function moveSquare(topIncrement, leftIncrement, nextFunction) {
-        changeColor();
-        const moveInterval = setInterval(function() {
-            const top = parseInt(square.css('top'));
-            const left = parseInt(square.css('left'));
+	function topRight(){
+		changeColor();
+		console.log("topRight");
+		let topRightInterval = setInterval(function(){
+			const top = parseInt( (".square").css("top"));
+			const left = parseInt( (".square").css("left"));
+					
+					if(top <=cornerRadius && left <=cornerRadius) {    
+						console.log(isCornerHit,"topRight corner_hits");
+						if(!isCornerHit) {
+							isCornerHit = true;       		
+						}
+					}
 
-            if (topIncrement > 0 && top >= (squareInBottom - cornerRadius) && left <= cornerRadius) {
-                if (!isCornerHit) {
-                    isCornerHit = true;
-                }
-            } else if (topIncrement < 0 && top <= cornerRadius && left <= cornerRadius) {
-                if (!isCornerHit) {
-                    isCornerHit = true;
-                }
-            } else if (leftIncrement > 0 && top >= (squareInBottom - cornerRadius) && left >= (squareInRight - cornerRadius)) {
-                if (!isCornerHit) {
-                    isCornerHit = true;
-                }
-            } else if (leftIncrement < 0 && top <= cornerRadius && left >= (squareInRight - cornerRadius)) {
-                if (!isCornerHit) {
-                    isCornerHit = true;
-                }
-            } else {
-                isCornerHit = false;
-            }
+			if(top === 0) {
+				bottomLeft();
+				clearInterval(topRightInterval);
+			} else if(left === 0 ) {
+				topLeft();
+				clearInterval(topRightInterval);
+			} else {
+					(".square").css({
+					top:top-1+"px",
+					left:left-1+"px"
+				});
+			}
 
-            if (topIncrement > 0 && top === squareInBottom) {
-                clearInterval(moveInterval);
-                nextFunction();
-            } else if (topIncrement < 0 && top === 0) {
-                clearInterval(moveInterval);
-                nextFunction();
-            } else if (leftIncrement > 0 && left === squareInRight) {
-                clearInterval(moveInterval);
-                nextFunction();
-            } else if (leftIncrement < 0 && left === 0) {
-                clearInterval(moveInterval);
-                nextFunction();
-            } else {
-                square.css({
-                    top: top + topIncrement + 'px',
-                    left: left + leftIncrement + 'px'
-                });
-            }
-        }, speed);
-    }
+			
+			
+		},speed);
+	}
 
-    function bottomLeft() {
-        moveSquare(1, -1, topRight);
-    }
+	function rightBottom(){
+		changeColor();
+		console.log("rightBottom");
+		let rightBottomInterval = setInterval(function(){
+			const top = parseInt( (".square").css("top"));
+			const left = parseInt( (".square").css("left"));
 
-    function topRight() {
-        moveSquare(-1, -1, topLeft);
-    }
 
-    function rightBottom() {
-        moveSquare(1, 1, topLeft);
-    }
+			if(top >= squareInBottom-cornerRadius && left >= squareInRight-cornerRadius) {	
+				console.log(isCornerHit,"rightBottom corner_hits");
+						if(!isCornerHit) {
+						
+							isCornerHit = true;      		
+						}
+					}
 
-    function topLeft() {
-        moveSquare(-1, 1, rightBottom);
-    }
+			if(top === squareInBottom ) {
+				topLeft();
+				clearInterval(rightBottomInterval);
+			} else if(left === squareInRight ) {
+				bottomLeft();
+				clearInterval(rightBottomInterval);
+			} else {
+					(".square").css({
+					top:top+1+"px",
+					left:left+1+"px"
+				});				
+			}
+		},speed);	
+	}
 
-    moveSquare(1, 1, topLeft);
 
-})(jQuery);
+	function topLeft(){
+		changeColor();
+		console.log("topLeft");
+		let topLeftInterval = setInterval(function(){
+			const top = parseInt( (".square").css("top"));
+			const left = parseInt( (".square").css("left"));
+
+			if(top > cornerRadius && left < squareInRight-cornerRadius ) { 
+				isCornerHit = false;
+			}
+			if(top <= cornerRadius && left >= squareInRight-cornerRadius ) {
+				if(!isCornerHit) {
+				
+							
+							isCornerHit = true; 
+				}					
+					}
+					if(left === squareInRight) {	
+						topRight();
+				clearInterval(topLeftInterval);
+			}
+			else if(top === 0) {
+				rightBottom();
+				clearInterval(topLeftInterval);
+			} else {
+					(".square").css({
+					top:top-1+"px",
+					left:left+1+"px"
+				});
+		
+			}			
+		},speed);
+		
+	}
+
+	let startLoop = setInterval(function(){
+		const top = parseInt( (".square").css("top"));
+		if(top === squareInBottom){
+			topLeft();
+			clearInterval(startLoop);
+		}	
+		else {
+			rightBottom();	
+			clearInterval(startLoop);
+		}
+	},speed);
+});
