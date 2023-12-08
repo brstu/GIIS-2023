@@ -6,8 +6,8 @@ function secureRandom() {
 
 export default class Tile {
   #tileElement
-  #x
-  #y
+  Xpoint
+  Ypoint
   #value
 
   constructor(tileContainer, value = secureRandom() > 0.5 ? 2 : 4) {
@@ -37,12 +37,12 @@ export default class Tile {
   }
 
   set x(value) {
-    this.#x = value
+    this.Xpoint = value
     this.#tileElement.style.setProperty("--x", value)
   }
 
   set y(value) {
-    this.#y = value
+    this.Ypoint = value
     this.#tileElement.style.setProperty("--y", value)
   }
 
