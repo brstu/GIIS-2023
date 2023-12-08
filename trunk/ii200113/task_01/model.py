@@ -15,8 +15,6 @@ class Model:
             image = np.zeros((height+2, width+2), dtype=np.uint8)
             image[1:height+1, 1:width+1] = self.noisy_image.copy()
             res_image = image.copy()
-
-        
             for i in range(1, height+1):
                 for j in range(1, width+1):
                     block = image[i-1:i+2, j-1:j+2]
