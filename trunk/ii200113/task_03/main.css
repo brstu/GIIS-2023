@@ -173,7 +173,6 @@ button {
     height: 500px;
     right: -21%;
     top: 137%;
-    background: rgb(142, 173, 213 / 30%);
     filter: blur(100px);
     border-radius: 100%;
 }
