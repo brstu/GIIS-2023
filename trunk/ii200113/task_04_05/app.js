@@ -5,9 +5,14 @@ document.addEventListener('DOMContentLoaded', () =>  {
   let squares = []
   const width = 4
   let score = 0
+
+  const crypto = require('crypto');
+  function secureRandom() {
+    return crypto.randomInt(256);
+  }
   function createBoard() {
     for (let i=0; i < width*width; i++) {
-      square = document.createElement('div')
+      let square = document.createElement('div')
       square.innerHTML = 0
       gridDisplay.appendChild(square)
       squares.push(square)
@@ -15,9 +20,10 @@ document.addEventListener('DOMContentLoaded', () =>  {
     generate()
     generate()
   }
+  
   createBoard()
   function generate() {
-    randomNumber = Math.floor(Math.random() * squares.length)
+    let randomNumber = secureRandom();
     if (squares[randomNumber].innerHTML == 0) {
       squares[randomNumber].innerHTML = 2
       checkForGameOver()
@@ -115,8 +121,8 @@ document.addEventListener('DOMContentLoaded', () =>  {
   }
 
   function combineColumn() {
-    for (let i =0; i < 12; i++) {
-      if (squares[i].innerHTML === squares[i +width].innerHTML) {
+    for (const square of squares) {
+      if (square.innerHTML === squares[i +width].innerHTML) {
         let combinedTotal = parseInt(squares[i].innerHTML) + parseInt(squares[i +width].innerHTML)
         squares[i].innerHTML = combinedTotal
         squares[i +width].innerHTML = 0
@@ -169,8 +175,8 @@ document.addEventListener('DOMContentLoaded', () =>  {
   }
 
   function checkForWin() {
-    for (let i=0; i < squares.length; i++) {
-      if (squares[i].innerHTML == 2048) {
+    for (const square of squares) {
+      if (square.innerHTML == 2048) {
         resultDisplay.innerHTML = 'You WIN'
         document.removeEventListener('keyup', control)
         setTimeout(() => clear(), 3000)
@@ -180,8 +186,8 @@ document.addEventListener('DOMContentLoaded', () =>  {
 
   function checkForGameOver() {
     let zeros = 0
-    for (let i=0; i < squares.length; i++) {
-      if (squares[i].innerHTML == 0) {
+    for (const square of squares) {
+      if (square.innerHTML == 0) {
         zeros++
       }
     }
@@ -197,8 +203,8 @@ document.addEventListener('DOMContentLoaded', () =>  {
   }
 
   function addColours() {
-    for (let i=0; i < squares.length; i++) {
-      if (squares[i].innerHTML == 0) squares[i].style.backgroundColor = '#afa192'
+    for (const square of squares) {
+      if (square.innerHTML == 0) squares[i].style.backgroundColor = '#afa192'
       else if (squares[i].innerHTML == 2) squares[i].style.backgroundColor = '#eee4da'
       else if (squares[i].innerHTML  == 4) squares[i].style.backgroundColor = '#ede0c8' 
       else if (squares[i].innerHTML  == 8) squares[i].style.backgroundColor = '#f2b179' 
