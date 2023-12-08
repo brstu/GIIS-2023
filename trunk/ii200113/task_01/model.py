@@ -21,10 +21,10 @@ class Model:
                 for j in range(1, width+1):
                     block = image[i-1:i+2, j-1:j+2]
                     pixel = block[1, 1]
-                    sum = (block.sum()-pixel)/8
+                    summa = (block.sum()-pixel)/8
 
-                    if pixel-sum > threshold:
-                        res_image[i, j] = sum
+                    if pixel-summa > threshold:
+                        res_image[i, j] = summa
                     else:
                         res_image[i, j] = pixel
 
