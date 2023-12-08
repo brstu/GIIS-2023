@@ -4,7 +4,7 @@
 
 body {
     margin: 0;
-    font-family: 'Inter';
+    font-family: 'Inter', sans-serif;
     background-color: #FDFCFC;
     overflow-x: hidden;
 }
@@ -480,12 +480,9 @@ button {
     .footer-items {
         flex-direction: column;
         align-items: center;
-    }
-
-    .footer-items {
         text-align: center;
     }
-
+    
     .header {
         display: none;
     }
