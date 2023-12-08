@@ -1,22 +1,26 @@
 $(document).ready(function(){ 
+	const crypto = require('crypto');
+	let square = $('.square');
+	let documentWidth = $(document).width();
+	let documentHeight = $(document).height();
 
-	var square = $('.square');
-	var documentWidth = $(document).width();
-	var documentHeight = $(document).height();
+	let squareWidth = square.width();
+	let squareHeight = square.height();
 
-	var squareWidth = square.width();
-	var squareHeight = square.height();
+	let squareInBottom = documentHeight- squareHeight;
+	let squareInRight = documentWidth- squareWidth;
+	let isCornerHit = false;
+	let cornerRadius = 10;
+	let speed = 2;
 
-	var squareInBottom = documentHeight- squareHeight;
-	var squareInRight = documentWidth- squareWidth;
-	var isCornerHit = false;
-	var cornerRadius = 10;
-	var speed = 2;
+	function secureRandom() {
+		return crypto.randomInt(256);
+	}
 
 	function changeColor(){
-		var r = Math.round(Math.random()*255);
-		var g = Math.round(Math.random()*255);
-		var b = Math.round(Math.random()*255);
+		let r = secureRandom();
+		let g = secureRandom();
+		let b = secureRandom();
 
 		square.css({
 			background:"rgb(" + r + "," + g + ","+ b + ")"
@@ -26,7 +30,7 @@ $(document).ready(function(){
 	function bottomLeft(){
 		changeColor();
 		console.log('bottomLeft');
-		var topRightInterval = setInterval(function(){
+		let topRightInterval = setInterval(function(){
 			const top = parseInt($('.square').css('top'));
 			const left = parseInt($('.square').css('left'));
 	      	
@@ -41,11 +45,9 @@ $(document).ready(function(){
 	        if(top === squareInBottom) {
 	        	topRight();
 				clearInterval(topRightInterval);
-				return;
 			} else if(left === 0) {		
 	        	rightBottom();
 				clearInterval(topRightInterval);
-				return;
 			} else {
 				$('.square').css({
 					top:top+1+'px',
@@ -58,7 +60,7 @@ $(document).ready(function(){
 	function topRight(){
 		changeColor();
 		console.log('topRight');
-		var topRightInterval = setInterval(function(){
+		let topRightInterval = setInterval(function(){
 			const top = parseInt($('.square').css('top'));
 			const left = parseInt($('.square').css('left'));
 	      	
@@ -94,7 +96,7 @@ $(document).ready(function(){
 	function rightBottom(){
 		changeColor();
 		console.log('rightBottom');
-		var rightBottomInterval = setInterval(function(){
+		let rightBottomInterval = setInterval(function(){
 			const top = parseInt($('.square').css('top'));
 			const left = parseInt($('.square').css('left'));
 
@@ -128,7 +130,7 @@ $(document).ready(function(){
 	function topLeft(){
 		changeColor();
 		console.log('topLeft');
-		var topLeftInterval = setInterval(function(){
+		let topLeftInterval = setInterval(function(){
 			const top = parseInt($('.square').css('top'));
 			const left = parseInt($('.square').css('left'));
 
@@ -162,10 +164,8 @@ $(document).ready(function(){
 		
 	}
 
-	var startLoop = setInterval(function(){
-
+	let startLoop = setInterval(function(){
 		const top = parseInt($('.square').css('top'));
-		const left = parseInt($('.square').css('left'));
 		if(top === squareInBottom){
 			topLeft();
 			clearInterval(startLoop);
