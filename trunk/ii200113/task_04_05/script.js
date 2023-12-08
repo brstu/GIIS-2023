@@ -13,53 +13,53 @@ function setupInput() {
 }
 
 async function handleInput(e) {
-  switch (e.key) {
-    case "ArrowUp":
-      if (!canMoveUp()) {
+  try{
+    switch (e.key) {
+      case "ArrowUp":
+        if (!canMoveUp()) {
+          setupInput()
+          return
+        }
+        await moveUp()
+        break
+      case "ArrowDown":
+        if (!canMoveDown()) {
+          setupInput()
+          return
+        }
+        await moveDown()
+        break
+      case "ArrowLeft":
+        if (!canMoveLeft()) {
+          setupInput()
+          return
+        }
+        await moveLeft()
+        break
+      case "ArrowRight":
+        if (!canMoveRight()) {
+          setupInput()
+          return
+        }
+        await moveRight()
+        break
+      default:
         setupInput()
         return
-      }
-      await moveUp()
-      break
-    case "ArrowDown":
-      if (!canMoveDown()) {
-        setupInput()
-        return
-      }
-      await moveDown()
-      break
-    case "ArrowLeft":
-      if (!canMoveLeft()) {
-        setupInput()
-        return
-      }
-      await moveLeft()
-      break
-    case "ArrowRight":
-      if (!canMoveRight()) {
-        setupInput()
-        return
-      }
-      await moveRight()
-      break
-    default:
-      setupInput()
+    }
+    grid.cells.forEach(cell => cell.mergeTiles())
+    const newTile = new Tile(gameBoard)
+    grid.randomEmptyCell().tile = newTile
+    if (!canMoveUp() && !canMoveDown() && !canMoveLeft() && !canMoveRight()) {
+      newTile.waitForTransition(true).then(() => {
+        alert("You lose")
+      })
       return
+    }
+    setupInput()
+  } catch (err) {
+    console.log(err);
   }
-
-  grid.cells.forEach(cell => cell.mergeTiles())
-
-  const newTile = new Tile(gameBoard)
-  grid.randomEmptyCell().tile = newTile
-
-  if (!canMoveUp() && !canMoveDown() && !canMoveLeft() && !canMoveRight()) {
-    newTile.waitForTransition(true).then(() => {
-      alert("You lose")
-    })
-    return
-  }
-
-  setupInput()
 }
 
 function moveUp() {

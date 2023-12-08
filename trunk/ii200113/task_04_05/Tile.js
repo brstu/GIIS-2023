@@ -1,10 +1,16 @@
+const crypto = require("crypto");
+
+function secureRandom() {
+  return crypto.randomInt(100) / 100;
+}
+
 export default class Tile {
   #tileElement
   #x
   #y
   #value
 
-  constructor(tileContainer, value = Math.random() > 0.5 ? 2 : 4) {
+  constructor(tileContainer, value = secureRandom() > 0.5 ? 2 : 4) {
     this.#tileElement = document.createElement("div")
     this.#tileElement.classList.add("tile")
     tileContainer.append(this.#tileElement)

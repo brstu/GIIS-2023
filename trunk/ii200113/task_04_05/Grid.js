@@ -1,7 +1,11 @@
+const crypto = require("crypto");
 const GRID_SIZE = 4
 const CELL_SIZE = 20
 const CELL_GAP = 2
 
+function secureRandom() {
+  return crypto.randomInt(100) / 100;
+}
 export default class Grid {
   #cells
 
@@ -43,7 +47,7 @@ export default class Grid {
   }
 
   randomEmptyCell() {
-    const randomIndex = Math.floor(Math.random() * this.#emptyCells.length)
+    const randomIndex = Math.floor(secureRandom() * this.#emptyCells.length)
     return this.#emptyCells[randomIndex]
   }
 }
