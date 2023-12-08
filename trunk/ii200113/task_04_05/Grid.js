@@ -4,7 +4,7 @@ const CELL_SIZE = 20
 const CELL_GAP = 2
 
 function secureRandom() {
-  return crypto.randomInt(100) / 100;
+  return crypto.randomInt(100) / 1000;
 }
 export default class Grid {
   #cells
@@ -53,24 +53,24 @@ export default class Grid {
 }
 
 class Cell {
-  cellElement
-  x
-  y
+  CELLELEMENT
+  Xpoint
+  Ypoint
   #tile
   #mergeTile
 
   constructor(cellElement, x, y) {
-    this.cellElement = cellElement
-    this.x = x
-    this.y = y
+    this.CELLELEMENT = cellElement
+    this.Xpoint = x
+    this.Ypoint = y
   }
 
   get x() {
-    return this.x
+    return this.Xpoint
   }
 
   get y() {
-    return this.y
+    return this.Ypoint
   }
 
   get tile() {
@@ -80,8 +80,8 @@ class Cell {
   set tile(value) {
     this.#tile = value
     if (value == null) return
-    this.#tile.x = this.x
-    this.#tile.y = this.y
+    this.#tile.x = this.Xpoint
+    this.#tile.y = this.Ypoint
   }
 
   get mergeTile() {
@@ -91,8 +91,8 @@ class Cell {
   set mergeTile(value) {
     this.#mergeTile = value
     if (value == null) return
-    this.#mergeTile.x = this.x
-    this.#mergeTile.y = this.y
+    this.#mergeTile.x = this.Xpoint
+    this.#mergeTile.y = this.Ypoint
   }
 
   canAccept(tile) {
