@@ -4,7 +4,7 @@
 
 body {
     margin: 0;
-    font-family: 'Inter', sans-serif;
+    font-family: Inter, sans-serif;
     background-color: #FDFCFC;
     overflow-x: hidden;
 }
@@ -43,7 +43,7 @@ nav a {
     height: 679px;
     left: -50%;
     top: -50%;
-    background: rgba(142, 173, 213, 1);
+    background: rgb(142 173 213 / 1);
     filter: blur(306px);
 }
 
@@ -72,9 +72,8 @@ li {
 
 .head-titles {
     display: flex;
-    flex-direction: column;
     align-items: flex-start;
-    flex-wrap: wrap;
+    flex-flow: row wrap;
     max-height: 450px;
     margin-top: 97px;
 }
@@ -107,7 +106,7 @@ button {
     line-height: 28px;
     padding: 11px 31px;
     text-transform: uppercase;
-    color: #FFFFFF;
+    color: #FFF;
     border: none;
 }
 
@@ -174,7 +173,7 @@ button {
     height: 500px;
     right: -21%;
     top: 137%;
-    background: rgba(142, 173, 213, 0.3);
+    background: rgb(142, 173, 213 / 0.3);
     filter: blur(100px);
     border-radius: 100%;
 }
@@ -185,7 +184,7 @@ button {
     line-height: 100%;
     text-transform: capitalize;
     color: #272D38;
-    margin: 95px 0 26px 0;
+    margin: 95px 0 26px;
 }
 
 .post-subtitle {
@@ -193,7 +192,7 @@ button {
     font-size: 16px;
     line-height: 28px;
     text-transform: capitalize;
-    margin: 0 0 46px 0;
+    margin: 0 0 46px;
 }
 
 .team-working.reverse {
@@ -228,7 +227,7 @@ button {
     font-size: 48px;
     line-height: 100%;
     text-transform: capitalize;
-    margin: 16px 0 38px 0;
+    margin: 16px 0 38px;
 }
 
 .post-persons {
@@ -238,7 +237,7 @@ button {
 }
 
 .andrew-img {
-    margin: 48px 0 48px 0;
+    margin: 48px 0 48px;
 }
 
 .andrew-title {
@@ -268,7 +267,7 @@ button {
 }
 
 .custom-title {
-    margin: 100px 89px 16px 0;
+    margin: 100px 89px 16px;
 }
 
 .custom-subtitle {
@@ -277,7 +276,7 @@ button {
     line-height: 28px;
     text-transform: capitalize;
     width: 392px;
-    margin: 0 180px 46px 0;
+    margin: 0 180px 46px;
 }
 
 .customers-contact {
@@ -320,170 +319,5 @@ button {
 
 .footer-bot {
     text-align: center;
-    margin: 110px 0 10px 0;
-}
-
-@media (max-width:768px) {
-    .container {
-        padding: 0 25px;
-    }
-
-    .hero {
-        padding-bottom: 1px;
-    }
-
-    .hero::before {
-        width: 500px;
-        height: 500px;
-        left: -88%;
-        top: -37%;
-    }
-
-    .head-titles {
-        display: block;
-        max-height: none;
-    }
-
-    .head-title {
-        font-size: 40px;
-        text-align: center;
-        width: auto;
-    }
-
-    .head-titles button {
-        display: block;
-        margin-bottom: 48px;
-    }
-
-    .head-subtitle {
-        font-size: 16px;
-        text-align: center;
-        width: auto;
-        margin-bottom: 34px;
-    }
-
-    button {
-        margin: 0 auto;
-        line-height: normal;
-        font-size: 14px;
-    }
-
-    .business-people {
-        margin-left: 0;
-    }
-
-    .business-people img {
-        display: block;
-        margin: 0 auto;
-    }
-
-    img {
-        max-width: 70%;
-    }
-
-    .social-pages div {
-        flex: 0 0 17%;
-        height: auto;
-        width: auto;
-    }
-
-    .team-working {
-        flex-direction: column-reverse;
-        text-align: center;
-        align-content: center;
-    }
-
-    .team-working.reverse {
-        flex-direction: column-reverse;
-    }
-
-    .arrow {
-        transform: rotate(90.1deg);
-        margin: 0 0 25px 0;
-    }
-
-    .post-title {
-        font-weight: 700;
-        font-size: 32px;
-        margin: 88px 0 24px 0;
-    }
-
-    .post-subtitle {
-        margin: 0 0 46px 0;
-    }
-
-    .business-subs {
-        margin: 0 0 46px 0;
-    }
-
-    .team-working::after {
-
-        width: 500px;
-        height: 500px;
-        right: -46%;
-        top: 189%;
-    }
-
-    .testimonials {
-        flex-direction: column;
-        align-items: center;
-        margin-bottom: 120px;
-    }
-
-    .testimonials-title {
-        font-size: 12px;
-    }
-
-    .testimonials-subtitle {
-        font-size: 32px;
-        margin: 8px 0 0 0;
-    }
-
-    .post-persons {
-        margin: 20px 0;
-        width: 100%;
-    }
-
-    .customers {
-        flex-direction: column;
-        text-align: center;
-        width: 100%;
-        padding: 0 20px;
-
-    }
-
-    .customers div {
-        align-items: center;
-    }
-
-    .custom-subtitle {
-        width: 100%;
-    }
-
-    .custom-title {
-        margin: 56px 0 24px 0;
-    }
-
-    .customers-contact {
-        display: block;
-        margin: 0 auto;
-        line-height: normal;
-        font-size: 14px;
-        margin-bottom: 48px;
-        padding: 12px 34px 12px 34px;
-    }
-
-    .customers img {
-        display: none;
-    }
-
-    .footer-items {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-    
-    .header {
-        display: none;
-    }
+    margin: 110px 0 10px;
 }
