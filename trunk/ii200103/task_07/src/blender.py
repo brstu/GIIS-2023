@@ -24,4 +24,4 @@ if all_vertices:
     with open(output_filepath, 'w') as file:
         json.dump(all_vertices, file)
 else:
-    print("Ошибка: Не удалось найти объекты типа 'Mesh' с вершинами на сцене.")
+    print("Не удалось найти объекты типа 'Mesh' с вершинами на сцене.")
