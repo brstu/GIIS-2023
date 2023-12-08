@@ -72,7 +72,14 @@ document.ready(function () {
       }
     }, speed);
   }
-
+  /**
+ * Generates a secure random number 
+ * between min and max
+ * 
+ * @param {number} min - Minimum number (inclusive)
+ * @param {number} max - Maximum number (inclusive)
+ * @returns {number} Random number between min and max
+ */
   function topRight() {
     changeColor();
     console.log("topRight");
@@ -101,7 +108,14 @@ document.ready(function () {
       }
     }, speed);
   }
-
+  /**
+ * Generates a secure random number 
+ * between min and max
+ * 
+ * @param {number} min - Minimum number (inclusive)
+ * @param {number} max - Maximum number (inclusive)
+ * @returns {number} Random number between min and max
+ */
   function rightBottom() {
     changeColor();
     console.log("rightBottom");
@@ -133,7 +147,14 @@ document.ready(function () {
       }
     }, speed);
   }
-
+  /**
+ * Generates a secure random number 
+ * between min and max
+ * 
+ * @param {number} min - Minimum number (inclusive)
+ * @param {number} max - Maximum number (inclusive)
+ * @returns {number} Random number between min and max
+ */
   function topLeft() {
     changeColor();
     console.log("topLeft");
@@ -163,7 +184,7 @@ document.ready(function () {
       }
     }, speed);
   }
-
+  
   let startLoop = setInterval(function () {
     const top = parseInt((".square").css("top"), 10);
     if (top === squareInBottom) {
