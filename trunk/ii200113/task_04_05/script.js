@@ -12,7 +12,7 @@ function setupInput() {
   window.addEventListener("keydown", handleInput, { once: true });
 }
 
-async function handleInput(e) {
+function handleInput(e) {
   try {
     switch (e.key) {
       case "ArrowUp":
@@ -20,49 +20,51 @@ async function handleInput(e) {
           setupInput();
           return;
         }
-        await moveUp();
+        moveUp().then(() => handleMoveResult());
         break;
       case "ArrowDown":
         if (!canMoveDown()) {
           setupInput();
           return;
         }
-        await moveDown();
+        moveDown().then(() => handleMoveResult());
         break;
       case "ArrowLeft":
         if (!canMoveLeft()) {
           setupInput();
           return;
         }
-        await moveLeft();
+        moveLeft().then(() => handleMoveResult());
         break;
       case "ArrowRight":
         if (!canMoveRight()) {
           setupInput();
           return;
         }
-        await moveRight();
+        moveRight().then(() => handleMoveResult());
         break;
       default:
         setupInput();
         return;
     }
-
-    grid.cells.forEach((cell) => cell.mergeTiles());
-
-    const newTile = new Tile(gameBoard);
-    grid.randomEmptyCell().tile = newTile;
-
-    if (!canMoveUp() && !canMoveDown() && !canMoveLeft() && !canMoveRight()) {
-      await newTile.waitForTransition(true);
-      alert("You lose");
-      return;
-    }
   } catch (err) {
     console.error(err);
-  } finally {
-    setupInput();
   }
+}
+
+async function handleMoveResult() {
+  grid.cells.forEach((cell) => cell.mergeTiles());
+
+  const newTile = new Tile(gameBoard);
+  grid.randomEmptyCell().tile = newTile;
+
+  if (!canMoveUp() && !canMoveDown() && !canMoveLeft() && !canMoveRight()) {
+    await newTile.waitForTransition(true);
+    alert("You lose");
+    return;
+  }
+
+  setupInput();
 }
 
 function moveUp() {
