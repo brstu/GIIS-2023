@@ -27,20 +27,20 @@
     height: 200px;
     border-radius: 50%;
     overflow: hidden;
-    padding: 0px;
+    padding: 0;
     margin: 0 auto;
     margin-bottom: 10px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 40%);
     cursor: pointer;
     transition: all 0.5s ease-in-out;
   }
-  .day-night-circle:hover {
+  .day-night-circle :hover {
     background: #e9786b;
   }
   .sun {
     margin-top: 20px;
     background: #f2ef88;
-    box-shadow: 0 0 20px rgba(242, 239, 136, 0.4);
+    box-shadow: 0 0 20px rgba(242, 239, 136, 40%);
     width: 30%;
     height: 30%;
     border-radius: 50%;
@@ -59,7 +59,7 @@
     position: absolute;
     margin-top: 20px;
     background: #d9d8d0;
-    box-shadow: inset -10px 2px 0 0px #899098;
+    box-shadow: inset -10px 2px 0 0 #899098;
     width: 22.5%;
     height: 22.5%;
     border-radius: 100%;
@@ -77,7 +77,7 @@
     position: relative;
     background: #b9b8b0;
     border-radius: 50%;
-    box-shadow: inset 4px -2px 0 0px #535457;
+    box-shadow: inset 4px -2px 0 0 #535457;
   }
   .moon div:nth-child(1) {
     top: 25%;
@@ -111,9 +111,9 @@
   }
   .stars div:nth-child(n) {
     position: absolute;
-    background: rgba(255, 255, 255, 1);
+    background: rgba(255, 255, 255, 100%);
     border-radius: 50%;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 1);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 100%);
     overflow: hidden;
     width: 0.4%;
     height: 0.4%;
