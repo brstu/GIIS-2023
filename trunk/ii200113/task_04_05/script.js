@@ -72,7 +72,7 @@ function moveUp() {
 }
 
 function moveDown() {
-  return slideTiles(grid.cellsByColumn.map(column => [...column].reverse()))
+  return slideTiles(grid.cellsByColumn.map((column) => [...column].reverse()))
 }
 
 function moveLeft() {
@@ -80,12 +80,12 @@ function moveLeft() {
 }
 
 function moveRight() {
-  return slideTiles(grid.cellsByRow.map(row => [...row].reverse()))
+  return slideTiles(grid.cellsByRow.map((row) => [...row].reverse()))
 }
 
 function slideTiles(cells) {
   return Promise.all(
-    cells.flatMap(group => {
+    cells.flatMap((group) => {
       const promises = []
       for (let i = 1; i < group.length; i++) {
         const cell = group[i]
@@ -117,7 +117,7 @@ function canMoveUp() {
 }
 
 function canMoveDown() {
-  return canMove(grid.cellsByColumn.map(column => [...column].reverse()))
+  return canMove(grid.cellsByColumn.map((column) => [...column].reverse()))
 }
 
 function canMoveLeft() {
@@ -125,7 +125,7 @@ function canMoveLeft() {
 }
 
 function canMoveRight() {
-  return canMove(grid.cellsByRow.map(row => [...row].reverse()))
+  return canMove(grid.cellsByRow.map((row) => [...row].reverse()))
 }
 
 function canMove(cells) {
