@@ -28,11 +28,11 @@ export default class Tile {
     const backgroundLightness = 100 - power * 9;
     this.#tileElement.style.setProperty(
       "--background-lightness",
-      `${backgroundLightness}%`
+      `${backgroundLightness}%`,
     );
     this.#tileElement.style.setProperty(
       "--text-lightness",
-      `${backgroundLightness <= 50 ? 90 : 10}%`
+      `${backgroundLightness <= 50 ? 90 : 10}%`,
     );
   }
 
@@ -51,7 +51,7 @@ export default class Tile {
   }
 
   waitForTransition(animation = false) {
-    return new Promise(resolve => {
+    return new Promise((resolve) => {
       this.#tileElement.addEventListener(
         animation ? "animationend" : "transitionend",
         resolve,
@@ -59,6 +59,6 @@ export default class Tile {
           once: true,
         }
       );
-    })
+    });
   }
 }

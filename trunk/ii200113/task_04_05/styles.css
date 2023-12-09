@@ -40,7 +40,6 @@ body {
   top: calc(var(--y) * (var(--cell-size) + var(--cell-gap)) + var(--cell-gap));
   left: calc(var(--x) * (var(--cell-size) + var(--cell-gap)) + var(--cell-gap));
   font-weight: bold;
-  color: hsl(200deg, 25%, var(--text-lightness));
   animation: show 200ms ease-in-out;
   transition: 100ms ease-in-out;
 }

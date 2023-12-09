@@ -1,7 +1,7 @@
 const crypto = require("crypto");
-const GRID_SIZE = 4;
-const CELL_SIZE = 20;
-const CELL_GAP = 2;
+const Grid_size = 4;
+const Cell_size = 20;
+const Cell_gap = 2;
 
 function secureRandom() {
   return crypto.randomInt(100) / 1000;
@@ -10,16 +10,16 @@ export default class Grid {
   #cells;
 
   constructor(gridElement) {
-    gridElement.style.setProperty("--grid-size", GRID_SIZE);
-    gridElement.style.setProperty("--cell-size", `${CELL_SIZE}vmin`);
-    gridElement.style.setProperty("--cell-gap", `${CELL_GAP}vmin`);
+    gridElement.style.setProperty("--grid-size", Grid_size);
+    gridElement.style.setProperty("--cell-size", `${Cell_size}vmin`);
+    gridElement.style.setProperty("--cell-gap", `${Cell_gap}vmin`);
     this.#cells = createCellElements(gridElement).map((cellElement, index) => {
       return new Cell(
         cellElement,
-        index % GRID_SIZE,
-        Math.floor(index / GRID_SIZE)
-      )
-    })
+        index % Grid_size,
+        Math.floor(index / Grid_size)
+      );
+    });
   }
 
   get cells() {
@@ -28,18 +28,18 @@ export default class Grid {
 
   get cellsByRow() {
     return this.#cells.reduce((cellGrid, cell) => {
-      cellGrid[cell.y] = cellGrid[cell.y] || []
-      cellGrid[cell.y][cell.x] = cell
-      return cellGrid
-    }, [])
+      cellGrid[cell.y] = cellGrid[cell.y] || [];
+      cellGrid[cell.y][cell.x] = cell;
+      return cellGrid;
+    }, []);
   }
 
   get cellsByColumn() {
     return this.#cells.reduce((cellGrid, cell) => {
-      cellGrid[cell.x] = cellGrid[cell.x] || []
-      cellGrid[cell.x][cell.y] = cell
-      return cellGrid
-    }, [])
+      cellGrid[cell.x] = cellGrid[cell.x] || [];
+      cellGrid[cell.x][cell.y] = cell;
+      return cellGrid;
+    }, []);
   }
 
   get #emptyCells() {
@@ -112,7 +112,7 @@ class Cell {
 
 function createCellElements(gridElement) {
   const cells = [];
-  for (let i = 0; i < GRID_SIZE * GRID_SIZE; i++) {
+  for (let i = 0; i < Grid_size * Grid_size; i++) {
     const cell = document.createElement("div");
     cell.classList.add("cell");
     cells.push(cell);
