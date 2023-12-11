@@ -196,6 +196,7 @@ def main():
         check_collision(snake, fruit, bonuses)
 
         draw_elements(screen, snake, fruit, bonuses)
+        font = pygame.font.Font(None, 36)
         draw_score(screen, snake, font, white)
 
         pygame.display.update()
