@@ -2,16 +2,16 @@
     "use strict";
 
     let initProductQty = function() {
-        $('.product-qty').each(function() {
+        $(".product-qty").each(function() {
             let $el_product = $(this);
-            $el_product.find('.quantity-right-plus').click(function(e) {
+            $el_product.find(".quantity-right-plus").click(function(e) {
                 e.preventDefault();
-                let quantity = parseInt($el_product.find("#quantity").val());
+                let quantity = parseInt($el_product.find("#quantity").val(), 10);
                 $el_product.find("#quantity").val(quantity + 1);
             });
-            $el_product.find('.quantity-left-minus').click(function(e) {
+            $el_product.find(".quantity-left-minus").click(function(e) {
                 e.preventDefault();
-                let quantity = parseInt($el_product.find("#quantity").val());
+                let quantity = parseInt($el_product.find("#quantity").val(), 10);
                 if (quantity > 0) {
                     $el_product.find("#quantity").val(quantity - 1);
                 }
@@ -24,11 +24,13 @@
         $(".play-btn").click(function() {
             $videoSrc = $(this).data("src");
         });
+
         $("#myModal").on("shown.bs.modal", function() {
-            $("#video").attr('src', $videoSrc + "?autoplay=1&amp;modestbranding=1&amp;showinfo=0");
+            $("#video").attr("src", $videoSrc + "?autoplay=1&amp;modestbranding=1&amp;showinfo=0");
         });
+
         $("#myModal").on("hide.bs.modal", function() {
-            $("#video").attr('src', $videoSrc);
+            $("#video").attr("src", $videoSrc);
         });
 
         new Swiper(".main-swiper", {
@@ -61,7 +63,7 @@
                 1200: {
                     slidesPerView: 5,
                     spaceBetween: 20,
-                }
+                },
             },
         });
 
@@ -94,15 +96,13 @@
                 1200: {
                     slidesPerView: 5,
                     spaceBetween: 20,
-                }
+                },
             },
         });
 
         new Swiper(".thumb-swiper", {
             slidesPerView: 1,
         });
-
         initProductQty();
     });
-
 })(jQuery);
