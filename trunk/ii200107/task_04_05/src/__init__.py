@@ -39,7 +39,6 @@ class Snake:
         return self.positions[0]
 
     def update(self):
-        cur = self.get_head_position()
         x, y = self.positions[0]
 
         if self.direction == 0:
@@ -56,13 +55,13 @@ class Snake:
             self.positions = self.positions[:-1]
 
     def move(self, direction):
-        if direction == 0 and not self.direction == 1:
+        if direction == 0 != self.direction == 1:
             self.direction = 0
-        elif direction == 1 and not self.direction == 0:
+        elif direction == 1 != self.direction == 0:
             self.direction = 1
-        elif direction == 2 and not self.direction == 3:
+        elif direction == 2 != self.direction == 3:
             self.direction = 2
-        elif direction == 3 and not self.direction == 2:
+        elif direction == 3 != self.direction == 2:
             self.direction = 3
 
     def reset(self):
@@ -130,14 +129,60 @@ class Bonus:
 
 
 # Основная функция игры
+def handle_keydown_event(event, snake):
+    if event.key == pygame.K_UP:
+        snake.move(0)
+    elif event.key == pygame.K_DOWN:
+        snake.move(1)
+    elif event.key == pygame.K_LEFT:
+        snake.move(2)
+    elif event.key == pygame.K_RIGHT:
+        snake.move(3)
+
+def check_collision(snake, fruit, bonuses):
+    if snake.get_head_position() == fruit.position:
+        snake.length += 1
+        snake.increase_score(1)
+        fruit.randomize_position()
+
+    if random.random() < 0.01:
+        bonuses.append(Bonus())
+
+    for bonus in bonuses:
+        if snake.get_head_position() == bonus.position:
+            snake.length += 1
+            bonuses.remove(bonus)
+            snake.increase_score(5)
+
+    if (
+        snake.get_head_position()[0] < 0 or
+        snake.get_head_position()[1] < 0 or
+        snake.get_head_position()[0] > width - cell_size or
+        snake.get_head_position()[1] > height - cell_size
+    ):
+        snake.game_over()
+
+    for segment in snake.positions[1:]:
+        if segment == snake.get_head_position():
+            snake.game_over()
+
+def draw_elements(screen, snake, fruit, bonuses):
+    screen.fill(black)
+    draw_grid(screen)
+    snake.draw(screen)
+    fruit.draw(screen)
+    for bonus in bonuses:
+        bonus.render(screen)
+
+def draw_score(screen, snake, font, white):
+    score_text = font.render(f"Score: {snake.score}", True, white)
+    screen.blit(score_text, (10, 10))
+
 def main():
     clock = pygame.time.Clock()
     snake = Snake()
     fruit = Fruit()
-
-    bonus = Bonus()
     bonuses = []
-
 
     while True:
         for event in pygame.event.get():
@@ -145,52 +190,13 @@ def main():
                 pygame.quit()
                 sys.exit()
             elif event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_UP:
-                    snake.move(0)
-                elif event.key == pygame.K_DOWN:
-                    snake.move(1)
-                elif event.key == pygame.K_LEFT:
-                    snake.move(2)
-                elif event.key == pygame.K_RIGHT:
-                    snake.move(3)
+                handle_keydown_event(event, snake)
 
         snake.update()
-        if snake.get_head_position() == fruit.position:
-            snake.length += 1
-            snake.increase_score(1)
-            fruit.randomize_position()
+        check_collision(snake, fruit, bonuses)
 
-        if random.random() < 0.01:
-            bonuses.append(Bonus())
-
-        for bonus in bonuses:
-            if snake.get_head_position() == bonus.position:
-                snake.length += 1
-                bonuses.remove(bonus)
-                snake.increase_score(5)
-
-        if (
-            snake.get_head_position()[0] < 0 or
-            snake.get_head_position()[1] < 0 or
-            snake.get_head_position()[0] > width - cell_size or
-            snake.get_head_position()[1] > height - cell_size
-        ):
-            snake.game_over()
-
-        for segment in snake.positions[1:]:
-            if segment == snake.get_head_position():
-                snake.game_over()
-
-        screen.fill(black)
-        draw_grid(screen)
-        snake.draw(screen)
-        fruit.draw(screen)
-        for bonus in bonuses:
-            bonus.render(screen)
-
-        font = pygame.font.Font(None, 36)
-        score_text = font.render(f"Score: {snake.score}", True, white)
-        screen.blit(score_text, (10, 10))
+        draw_elements(screen, snake, fruit, bonuses)
+        draw_score(screen, snake, font, white)
 
         pygame.display.update()
         clock.tick(snake_speed)
