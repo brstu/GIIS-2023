@@ -77,15 +77,15 @@ class Snake:
     def increase_score(self, num):
         self.score += num
 
-    def game_over(self):
-        global font
-        font = pygame.font.Font(None, 36)
-        text = font.render("Game Over", True, white)
-        screen.blit(text, (50,100))
-        pygame.display.flip()
-        time.sleep(2)  # Пауза перед выходом
-        pygame.quit()
-        sys.exit()
+
+def game_over(self):
+    font = pygame.font.Font(None, 36)
+    text = font.render("Game Over", True, white)
+    screen.blit(text, (50,100))
+    pygame.display.flip()
+    time.sleep(2)  # Пауза перед выходом
+    pygame.quit()
+    sys.exit()
 
 
 # Класс фрукта
