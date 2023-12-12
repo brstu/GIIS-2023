@@ -55,6 +55,10 @@ class Triangle:
                (d2x*d2x + d2y*d2y) * (d1x*d3y-d3x*d1y) +
                (d3x*d3x + d3y*d3y) * (d1x*d2y-d2x*d1y))
         return det < 0
+        det = ((d1x*d1x + d1y*d1y) * (d2x*d3y-d3x*d2y) -
+               (d2x*d2x + d2y*d2y) * (d1x*d3y-d3x*d1y) +
+               (d3x*d3x + d3y*d3y) * (d1x*d2y-d2x*d1y))
+        return det < 0
     def plot_triangle(self):
         '''
         Plots closed triangle self
@@ -65,6 +69,13 @@ class Triangle:
 def for_edge(triangle, not_triangle):
     polygon = []
     for edge in triangle.edges:
+        shared_count = 0
+        for other_triangle in not_triangle:
+            for other_edge in other_triangle.edges:
+                if set(edge) == set(other_edge):
+                    shared_count += 1
+        if shared_count == 0:
+            polygon.append(edge)
         shared_count = 0
         for other_triangle in not_triangle:
             for other_edge in other_triangle.edges:
@@ -162,5 +173,6 @@ if __name__ == '__main__':
 
     triangles = bowyer_watson(points)
     for triangle in triangles:
+        triangle.plot_triangle()
         triangle.plot_triangle()
     plt.show()
