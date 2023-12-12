@@ -4,6 +4,7 @@ import json
 import os
 
 
+
 class Point:
     def __init__(self, x, y):
         '''
@@ -21,6 +22,7 @@ class Point:
         Plots x,y coordinates of self
         '''
         plt.plot([self.x], [self.y], 'ro')
+
 
 class Triangle:
     def __init__(self, p1, p2, p3):
@@ -64,7 +66,9 @@ class Triangle:
         Plots closed triangle self
         '''
         plt.plot([self.points[0].x, self.points[1].x, self.points[2].x, self.points[0].x],
+        plt.plot([self.points[0].x, self.points[1].x, self.points[2].x, self.points[0].x],
                  [self.points[0].y, self.points[1].y, self.points[2].y, self.points[0].y], "ro-")
+
 
 def for_edge(triangle, not_triangle):
     polygon = []
@@ -86,8 +90,10 @@ def for_edge(triangle, not_triangle):
     return polygon
 
 def dell(super_triangle, triangles, points):
+def dell(super_triangle, triangles, points):
     # Remove triangles which share boundaries with the super triangle
     triangles_to_remove = []
+    for triangle in triangles:
     for triangle in triangles:
         for point in triangle.points:
             if point in super_triangle.points:
@@ -156,6 +162,7 @@ def bowyer_watson(points):
             triangles.append(triangle)
     dell(super_triangle, triangles, points)
     return triangles
+
 
 
 if __name__ == '__main__':
