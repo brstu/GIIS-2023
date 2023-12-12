@@ -152,29 +152,34 @@ a:hover {
   .bg-gray {
     background: var(--gray-color);
   }
-  .bg-dark {
-    background: var(--dark-color);
-  }
-  .bg-light {
-    background: var(--light-color);
-  }
-  
-  .padding-xsmall {
-    padding-top: 0.5em;
-    padding-bottom: 0.5em;
-  }
-  .padding-small {
-    padding-top: 2em;
-    padding-bottom: 2em;
-  }
-  .padding-medium {
-    padding-top: 4em;
-    padding-bottom: 4em;
-  }
+.bg-dark {
+  background: var(--dark-color);
+}
+
+.bg-light {
+  background: var(--light-color);
+}
+
+.padding-small {
+  padding-top: 2em;
+  padding-bottom: 2em;
+}
+
+.padding-medium {
+  padding-top: 4em;
+  padding-bottom: 4em;
+}
+
+.padding-large {
+  padding-top: 7em;
+  padding-bottom: 7em;
+}
+
   .padding-large {
     padding-top: 7em;
     padding-bottom: 7em;
   }
+
   .padding-xlarge {
     padding-top: 9.5em;
     padding-bottom: 9.5em;
@@ -195,7 +200,6 @@ a:hover {
     font-weight: 400;
   }
   
-  
   .btn {
     font-size: 1.125rem;
     font-weight: 500;
@@ -206,9 +210,11 @@ a:hover {
     border-radius: 0;
     transition: 0.3s ease-in;
   }
+
   .btn:hover {
     color: var(--primary-color);
   }
+
   .btn:focus,
   .btn:active {
     box-shadow: none;
@@ -220,11 +226,13 @@ a:hover {
     border: 0;
     transition: 0.3s ease;
   }
+
   .btn-dark:hover{
     background-color: var(--primary-color);
     color: var(--light-color);
     border: 0;
   }
+
   .btn-dark:active:focus {
     box-shadow: none;
   }
@@ -236,23 +244,27 @@ a:hover {
     border: 0;
     transition: 0.3s ease;
   }
+
   .btn-primary:hover{
     background-color: var(--black-color);
     color: var(--light-color);
     border: 0;
   }
+
   .btn-primary:active:focus,
   .btn-primary:focus {
     box-shadow: none;
     background-color: var(--black-color);
     border: 0;
   }
+
   label{
     font-size: 14px;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 1px;
   }
+
   textarea,
   select,
   input{
@@ -265,6 +277,7 @@ a:hover {
     border-bottom: 1px solid var(--black-color);
     outline: none;
   }
+
   .form-control {
     font-size: inherit;
     font-weight: inherit;
@@ -275,9 +288,11 @@ a:hover {
     box-shadow: none;
     padding: 0;
   }
+
   .form-control::placeholder {
     color: var(--gray-color-600);
   }
+
   .form-control:focus {
     background: none;
     box-shadow: none;
@@ -292,11 +307,13 @@ a:hover {
     background: none;
     transition: 0.3s ease;
   }
+
   .swiper-prev:hover,
   .swiper-next:hover{
     color: var(--light-color);
     background-color: var(--black-color);
   }
+
   .swiper-prev.swiper-button-disabled,
   .swiper-next.swiper-button-disabled{
     color: var(--gray-color-500);
@@ -307,16 +324,19 @@ a:hover {
   .swiper-buttons span{
     color: var(--gray-color-500);
   }
+
   .swiper-buttons .swiper-prev.testimonial-arrow-prev,
   .swiper-buttons .swiper-next.testimonial-arrow-next{
     border: none;
     background: none;
     padding: 0;
   }
+
   .swiper-prev.testimonial-arrow-prev:hover,
   .swiper-next.testimonial-arrow-next:hover{
     color: var(--black-color);
   }
+
   .swiper-prev.testimonial-arrow-prev.swiper-button-disabled,
   .swiper-next.testimonial-arrow-next.swiper-button-disabled{
     color: var(--gray-color-500);
@@ -325,6 +345,7 @@ a:hover {
   #search-bar {
     position: relative;
   }
+
   #search-bar input[type="text"] {
     color: var(--dark-gray-color);
     height: 40px;
@@ -341,71 +362,88 @@ a:hover {
     transition: width .4s cubic-bezier(0.000, 0.795, 0.000, 1.000);
     cursor: pointer;
   }
+
   #search-bar input[type="text"]:focus:hover {
     border-bottom: 1px solid var(--black-color);
   }
+
   #search-bar input[type="text"]:focus {
     width: 200px;
     z-index: 1;
     border-bottom: 1px solid var(--black-color);
     cursor: text;
   }
+
   #search-bar button {
     background: transparent;
     border: none;
   }
+
   .site-header {
     width: 100%;
     background-color: var(--white-color);
   }
+
   .navbar-toggler svg.navbar-icon {
     width: 50px;
     height: 50px;
   }
+
   .navbar-nav .nav-item a.nav-link {
     margin-right: 80px;
     margin-left: 80px;
     color: var(--dark-color);
   }
+
   .navbar-nav .nav-item a.nav-link.active,
   .navbar-nav .nav-item a.nav-link:hover {
     color: var(--primary-color);
   }
+
   .dropdown-toggle::after {
     display: none;  
   }
+
   #header-nav .navbar-toggler:focus {
     box-shadow: none;
   }
+
   #header-nav .offcanvas.show {
     z-index: 9999;
     background-color: var(--gray-color-300);
   }
+
   #header-nav .offcanvas-end {
     width: 70%;
     border: none;
   }
+
   .offcanvas.show .offcanvas-body .navbar-nav {
     align-items: unset!important;
   }
+
   .offcanvas-body .dropdown-menu{
     min-width: 13rem;
     box-shadow: 0px 0px 60px rgba(0, 0, 0, 0.06);
     border: none;
     border-radius: 0;
   }
+
   .offcanvas-body .dropdown-menu .dropdown-item{
     color: var(--black-color);
   }
+
   .offcanvas-body .dropdown-menu .dropdown-item.active,
   .offcanvas-body .dropdown-menu .dropdown-item:hover,
   .offcanvas-body .dropdown-menu .dropdown-item:focus{
     background: none;
     color: var(--primary-color);
   }
+
   .cart-dropdown .dropdown-menu {
     min-width: 21rem;
   }
+
   @media only screen and (max-width: 564px) {
     .cart-dropdown .dropdown-menu {
       min-width: fit-content;
@@ -430,9 +468,11 @@ a:hover {
     margin-right: 0px;
     transition: opacity 1.5s ease-in-out;
   }
+
   .swiper-slide-active .banner-content{
     opacity: 1;
   }
+
   .swiper-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet, .swiper-pagination-horizontal.swiper-pagination-bullets .swiper-pagination-bullet{
     background-color: var(--gray-color-400);
     border: 1px solid var(--black-color);
@@ -442,10 +482,12 @@ a:hover {
     margin: 0 13px !important;
     transition: 0.3s ease;
   }
+
   .swiper-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet.swiper-pagination-bullet-active, .swiper-pagination-horizontal.swiper-pagination-bullets .swiper-pagination-bullet.swiper-pagination-bullet-active{
     background-color: var(--black-color);
     opacity: 1;
   }
+
   .product-store .product-card .cart-concern {
     bottom: 120px;
     left: 0;
@@ -455,9 +497,11 @@ a:hover {
     transition: 0.5s ease-out;
     opacity: 0;
   }
+
   .product-store .product-card:hover .cart-concern {
     opacity: 1;
   }
+
   .product-card .cart-concern svg {
     width: 16px;
     height: 16px;
@@ -472,6 +516,7 @@ a:hover {
     display: flex;
     align-items: center;
   }
+
   .modal-content {
     padding: 0;
     background-color: #f5f3ef;
@@ -482,26 +527,31 @@ a:hover {
   .accordion-item{
     background: none;
   }
+
   .accordion-button{
     background: none;
     font-size: 1.25rem;
     line-height: 127%;
     color: var(--black-color);
   }
+
   .accordion-button:focus {
     border: none;
     outline: 0;
     box-shadow: none;
   }
+
   .accordion-button:not(.collapsed) {
     color: var(--black-color);
     background: none;
     box-shadow: none;
   }
+
   .accordion-button:not(.collapsed)::after {
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23212529'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
     transform: rotate(-180deg);
   }
+
   .accordion-body{
     padding-top: 0;
   }
@@ -512,9 +562,11 @@ a:hover {
     color: var(--gray-color-500);
     transition: 0.3s ease;
   }
+
   .social-links svg:hover {
     color: var(--primary-color);
   }
+
   .social-links li {
     padding-right: 30px;
   }
@@ -526,9 +578,11 @@ a:hover {
     max-height: fit-content;
     padding: 60px;
   }
+
   #about.aos-init.aos-animate img.single-image{
     animation: parallax 0.8s ease-in-out forwards;
   }
+
   @keyframes parallax {
     from {
       clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
@@ -537,11 +591,13 @@ a:hover {
       clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
     }
   }
+
   @media only screen and (max-width: 1200px) {
     #about .about-content{
       min-width: 70%;
     }
   }
+
   @media only screen and (max-width: 992px) {
     #about .about-content{
       position: unset;
@@ -549,12 +605,15 @@ a:hover {
       background: none;
     }
   }
+
   #newsletter .form-control{
     font-size: inherit;
   }
+
   #newsletter form input{
     background: none;
   }
+
   #newsletter form input:focus{
     box-shadow: none;
   }
@@ -565,18 +624,22 @@ a:hover {
     outline: none;
     outline-offset: 0;
   }
+
   h5.widget-title {
     font-size: 1.4em;
     margin-bottom: 15px;
   }
+
   @media only screen and (max-width: 991px) {
     .widget-search-bar form {
       flex-wrap: wrap;
     }
   }
+
   .paging-navigation .pagination .page-numbers {
     color: var(--gray-color-500);
   }
+
   .paging-navigation .pagination .page-numbers:hover,
   .paging-navigation .pagination .page-numbers.current {
     color: var(--primary-color);
@@ -585,11 +648,13 @@ a:hover {
   .single-product .large-swiper{
     padding-left: 0;
   }
+
   .product-preview .swiper-slide {
     height: fit-content;
     padding-bottom: 10px;
     transition: cubic-bezier(0.22, 0.78, 0.71, 1.01);
   }
+
   .swiper-slide-thumb-active img{
     border: 1px solid var(--accent-color);
   }
@@ -597,25 +662,31 @@ a:hover {
   .product-info del{
     color: var(--gray-color-500);
   }
+
   .product-info hr{
     color: var(--gray-color-500);
   }
+
   .rating-container .rating {
     display: flex;
     padding-right: 4px;
     color: var(--black-color);
   }
+
   .product-info .product-price strong {
     font-size: 1.6em;
     padding-right: 10px;
   }
+
   .product-info .select-item{
     margin-right: 8px;
   }
+
   .input-group{
     padding: 6px;
     background-color: var(--gray-color-400);
   }
+
   .input-group button{
     border: none;
   }
@@ -623,6 +694,7 @@ a:hover {
   .nav-tabs {
     border: none;
   }
+
   .nav-tabs .nav-link {
     color: var(--black-color);
     background: none;
@@ -637,6 +709,7 @@ a:hover {
   .nav-tabs .nav-link:focus {
     box-shadow: none;
   }
+
   .nav-tabs button.nav-link.active {
     color: var(--primary-color);
     background: none;
@@ -644,6 +717,7 @@ a:hover {
   .nav-tabs button.nav-link:hover {
     color: var(--primary-color);
   }
+
   .tabs-listing .tab-content {
     padding: 40px;
   }
@@ -668,12 +742,15 @@ a:hover {
   .shopify-cart .table th {
     width: 36%;
   }
+
   .table>:not(caption)>*>*{
     padding: 1.5rem;
   }
+
   .shopify-cart .cart-product-detail{
     max-width: 250px;
   }
+
   @media screen and (max-width: 775px) {
     .shopify-cart .table thead{
       display: none;
@@ -692,13 +769,16 @@ a:hover {
   .widget.sidebar-recent-post .card-image{
     max-width: 120px;
   }
+
   #single-post-navigation .post-navigation span.page-nav-title {
     font-size: 1.5em;
   }
+
   .post-navigation svg {
     width: 30px;
     height: 45px;
   }
+
   .post-navigation:hover svg,
   .post-navigation:focus svg {
     fill: var(--primary-color);
