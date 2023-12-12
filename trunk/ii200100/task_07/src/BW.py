@@ -4,7 +4,6 @@ import json
 import os
 
 
-
 class Point:
     def __init__(self, x, y):
         '''
@@ -22,7 +21,6 @@ class Point:
         Plots x,y coordinates of self
         '''
         plt.plot([self.x], [self.y], 'ro')
-
 
 class Triangle:
     def __init__(self, p1, p2, p3):
@@ -57,18 +55,12 @@ class Triangle:
                (d2x*d2x + d2y*d2y) * (d1x*d3y-d3x*d1y) +
                (d3x*d3x + d3y*d3y) * (d1x*d2y-d2x*d1y))
         return det < 0
-        det = ((d1x*d1x + d1y*d1y) * (d2x*d3y-d3x*d2y) -
-               (d2x*d2x + d2y*d2y) * (d1x*d3y-d3x*d1y) +
-               (d3x*d3x + d3y*d3y) * (d1x*d2y-d2x*d1y))
-        return det < 0
     def plot_triangle(self):
         '''
         Plots closed triangle self
         '''
         plt.plot([self.points[0].x, self.points[1].x, self.points[2].x, self.points[0].x],
-        plt.plot([self.points[0].x, self.points[1].x, self.points[2].x, self.points[0].x],
                  [self.points[0].y, self.points[1].y, self.points[2].y, self.points[0].y], "ro-")
-
 
 def for_edge(triangle, not_triangle):
     polygon = []
@@ -80,20 +72,11 @@ def for_edge(triangle, not_triangle):
                     shared_count += 1
         if shared_count == 0:
             polygon.append(edge)
-        shared_count = 0
-        for other_triangle in not_triangle:
-            for other_edge in other_triangle.edges:
-                if set(edge) == set(other_edge):
-                    shared_count += 1
-        if shared_count == 0:
-            polygon.append(edge)
     return polygon
 
 def dell(super_triangle, triangles, points):
-def dell(super_triangle, triangles, points):
     # Remove triangles which share boundaries with the super triangle
     triangles_to_remove = []
-    for triangle in triangles:
     for triangle in triangles:
         for point in triangle.points:
             if point in super_triangle.points:
@@ -162,7 +145,6 @@ def bowyer_watson(points):
             triangles.append(triangle)
     dell(super_triangle, triangles, points)
     return triangles
-
 
 
 if __name__ == '__main__':
