@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://73ch87jak01y"]
+
+[ext_resource type="Texture2D" uid="uid://cfua4p8g31r25" path="res://assets/Default size/towerDefense_tile297.png" id="1_77240"]
+[ext_resource type="Script" path="res://Scripts/bullet.gd" id="1_o382h"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_22uib"]
+radius = 5.0
+height = 26.0
+
+[node name="bullet" type="CharacterBody2D"]
+collision_layer = 2
+script = ExtResource("1_o382h")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = -1.5708
+texture = ExtResource("1_77240")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(6, 0)
+rotation = -1.5708
+shape = SubResource("CapsuleShape2D_22uib")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(0.5, -4.76837e-07)
+scale = Vector2(1.85, 0.6)
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

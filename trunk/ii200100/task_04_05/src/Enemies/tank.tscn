@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://bwxdcgslwjhb7"]
+
+[ext_resource type="Script" path="res://Scripts/Tank.gd" id="1_o8i21"]
+[ext_resource type="Texture2D" uid="uid://bh1xsd20y57rs" path="res://assets/Default size/towerDefense_tile268.png" id="2_kpxfy"]
+[ext_resource type="Texture2D" uid="uid://br8444e4r2st2" path="res://assets/Default size/towerDefense_tile249.png" id="3_1v8ec"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pdgup"]
+size = Vector2(50, 34)
+
+[node name="Tank" type="PathFollow2D"]
+script = ExtResource("1_o8i21")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_kpxfy")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+rotation = 1.5708
+scale = Vector2(0.66, 0.66)
+texture = ExtResource("3_1v8ec")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_pdgup")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

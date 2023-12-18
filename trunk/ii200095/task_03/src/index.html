@@ -1,0 +1,661 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Seymour+One&display=swap" rel="stylesheet">
+    <title>Market</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="burger_menu">
+        <div class="burger_menu_container">
+            <div class="containdlyakrestika">
+                <img src="./svg/Logo.svg" alt="###" class="header_logo">
+                <button onclick="closeburger()" class="burger_krestik_btn">
+                    <img src="./svg/krestikkkk.svg" alt="#" class="burgerkrestik">
+                </button>
+            </div>
+            
+
+            <div class="dlya_dela" >
+                <button class="gobacktohome" onclick="gobacktohome320()">
+                    <p class="first_header_link g">Home</p>
+                </button>
+                <div class="">
+                    <a href="" class="second_header_link g">How it’s made?</a>
+                </div>
+                <div class="">
+                    <a href="" class="third_header_link g">Our products</a>
+                </div>
+                <div class="">
+                    <a href="" class="fourth_header_link g">Contact</a>
+                </div>
+                
+            </div>
+
+            <div class="knopa">
+                <button class="header_btnburg" onclick="openbuymenu320()">
+                    <div class="header_btn_container">
+                        <p class="header_btn_text">Buy now</p>
+                        <img src="./svg/headerBtnStrelka.svg" alt="###">
+                    </div>
+                </button>
+            </div>
+
+            
+        </div>
+        
+    </div>
+
+
+
+
+    <img src="./png/ice cream.png" alt="###" class="moroj">
+    <img src="./png/точки.png" alt="###" class="tochki">
+    <img src="./png/много мороженок 1.png" alt="###" class="tarelkaMoroj">
+    <div class="wrapper">
+        <div class="wrapper1024">
+            <div class="wrapper967x664">
+                <header class="header">
+                    <div class="header_container">
+                        <img src="./svg/Logo.svg" alt="###" class="header_logo">
+                        <div class="header_links">
+                            <div>
+                                <button class="gobacktohome" onclick="gobacktohome()">
+                                    <p class="first_header_link">Home</p>
+                                </button>
+                                
+                            </div>
+                            <div class="">
+                                <a href="" class="second_header_link">How it’s made?</a>
+                            </div>
+                            <div class="">
+                                <a href="" class="third_header_link">Our products</a>
+                            </div>
+                            <div class="">
+                                <a href="" class="fourth_header_link">Contact</a>
+                            </div>
+                        </div>
+                        <button class="header_btn" onclick="openbuymenu()">
+                            <div class="header_btn_container">
+                                <p class="header_btn_text">Buy now</p>
+                                <img src="./svg/headerBtnStrelka.svg" alt="###">
+                            </div>
+                        </button>
+                        <button class="burger" onclick="openburger()">
+                            <img src="./svg/Burger.svg" alt="#">
+                        </button>
+                    </div>
+                </header>
+
+                <div class="buy">
+                    <div class="title_text">Buy now</div>
+                    <div class="choise_block">
+                        <div class="choise choise1">
+                            <div class="elips elips1"></div>
+                            <img alt="ice cream" src="/png/kelsey-curtis-G5ZenftPPOA-unsplash 2.png" class="choise_img">
+                            <div class="choise_text">ice cream</div>
+                        </div>
+                        <div class="choise choise2">
+                            <div class="elips elips2"></div>
+                            <img alt="coffee" src="/png/pariwat-pannium-0_qbeF_0zn8-unsplash 1.png" class="choise_img">
+                            <div class="choise_text">ice coffee</div>
+                        </div>
+                        <div class="choise choise3">
+                            <div class="elips elips3"></div>
+                            <img alt="milkshake" src="/png/victor-rutka-4FujjkcI40g-unsplash 1.png" class="choise_img">
+                            <div class="choise_text">milkshake</div>
+                        </div>
+                    </div>
+
+                    <div class="btn_buy_block">
+                        <button class="buy_btn" onclick="calculate()">Calculate</button>
+                    </div>
+
+                    <form class="formakr">
+                        <input type="text" class="buy_input" placeholder="name">
+                        <input type="text" class="buy_input" placeholder="phone">
+                        <input type="text" class="buy_input Quantity" placeholder="Quantity" oninput="bill()">
+                        <input type="text" class="buy_input buy_input_comment" placeholder="comment">
+                    </form>
+                    <div class="btn_buy_block">
+                        <button class="buy_btn">Total: <div class="buy_btn_numb">0</div>$</button>
+                    </div>
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <div class="first_after_header_section">
+                    <p class="after_header_zagolovok">
+                        ice cream
+made with
+passion
+                    </p>
+                    <div class="info_about_cafes_foodtrucks">
+                        <div class="about_cafes">
+                            <p class="quantity_of_cafes">16</p>
+                            <p class="name_of_cafes">cafes</p>
+                        </div>
+                        <div class="about_foodtrucks">
+                            <p class="quantity_of_cafes">23</p>
+                            <p class="name_of_cafes">food trucks</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="button_section">
+                    <button class="products_btn">
+                        <div class="containter">
+                            <p class="products_btn_text">
+                                Products
+                            </p>
+                            
+                        </div>
+                            
+                        
+                        
+                    </button>
+                    <a href="" class="button_section_link">
+                        How it’s made?
+                    </a>
+                </div>
+                <div class="container_for_lorem_and_btn">
+                    <p class="lorem_text">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                    </p>
+                </div>
+
+
+
+            </div>
+            <div class="second_section">
+                <div class="container_zagolovkov">
+                        <h2 class="a100proc">100% natural</h2>
+                        <h1 class="products_text">products</h1>
+                </div>
+
+
+                <div class="container_for_productS">
+                    <div class="container_for_product">
+                        <div class="photo_cont per">
+                            <img src="./assets/png/Моро.png" alt="#" class="photo_content">
+                        </div>
+                        <div class="content_fon">
+                            <h1 class="product_name">
+                                ice cream
+                            </h1>
+                            <p class="product_description">
+                                Soft ice cream with a delicate taste. Made with milk, cream, sugar and natural stabilizer
+    
+    
+                            </p>
+                            <div class="black_arr">
+                                <img src="./assets/svg/чёрнаястрелка.svg" alt="$" class="black_arr_svg">
+                            
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container_for_product">
+                        <div class="photo_cont vt">
+                            <img src="./assets/png/Кофе.png" alt="#" class="photo_content">
+                        </div>
+                        <div class="content_fon1">
+                            <h1 class="product_name1">
+                                ice coffee
+                            </h1>
+                            <p class="product_description">
+                                Fragrant invigorating drink created from 100% natural ingredients without the use of preservatives and flavor enhancers
+
+
+
+                            </p>
+                            <div class="black_arr1">
+                                <img src="./assets/svg/чёрнаястрелка.svg" alt="$" class="black_arr_svg">
+                            
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container_for_product">
+                        <div class="photo_cont tr">
+                            <img src="./assets/png/Коктейли.png" alt="#" class="photo_content">
+                        </div>
+                        <div class="content_fon2">
+                            
+                            <h1 class="product_name">
+                                milkshakes
+                            </h1>
+                            <h2 class="product_description">
+                                Sweet drinks based on milk and ice cream, supplemented with syrups, fruits, berries and other sweets of your choice
+
+
+    
+                            </h2>
+                            <div class="black_arr2">
+                                <img src="./assets/svg/чёрнаястрелка.svg" alt="$" class="black_arr_svg">
+                            
+                            </div>
+                                
+                        </div>
+                    </div>
+                </div>
+                
+
+
+
+
+            </div>
+
+
+
+            <div class="third_section">
+                
+                    <p class="third_zagolovok_1">
+                        tradition and love 
+                    </p>
+                    <p class="third_zagolovok_2">
+                        how it’s made?
+                    </p>
+                    <div class="block_s_korovoi">
+                        <img src="./assets/png/Корова.png" alt="###" class="korova_img">
+                        <div class="content_box_korovi">
+                            <p class="description_korova1">
+                                Ice is a place where you will become not only a little happier, but also healthier. Health is the main value for us, and we follow it when creating our handmade desserts. 
+                            </p>
+                            <p class="description_korova2">
+                                We use traditional recipes and 100% natural ingredients. Our products are so natural that they can be given to children from the age of three years. Sweets lovers can expect 55 types of ice cream, 15 types of coffee and 23 milkshakes. 
+
+                            </p>
+                            <p class="description_korova3">
+                                This is enough to choose ice cream and coffee for any mood!
+                            </p>
+                            <button class="knopka_korovi">
+                                <div class="knopka_korovi_container">
+                                    <p class="knopka_korovi_btn_text">Read more</p>
+                                    <img src="./assets/svg/headerBtnStrelka.svg" alt="###" class="strelka_black">
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="video_wrapper">
+                        <div class="dlya_video">
+                            <img src="./assets/svg/play.svg" alt="##" class="playimg">
+                        </div>
+                    </div>
+
+                    <div class="wrapper_knopok_posle_korovi">
+                        <button class="knopka_poske_korovi" onclick="milkshakes()">
+                            <p class="text_knopki">
+                                Milkshakes
+                            </p>
+                        </button>
+                        <button class="knopka_poske_korovi" onclick="icecream()">
+                            <p class="text_knopki">
+                                Ice Cream
+                            </p>
+                        </button>
+                        <button class="knopka_poske_korovi" onclick="icecofee()">
+                            <p class="text_knopki">
+                                Ice Coffee
+                            </p>
+                        </button>
+                    </div>
+            </div>
+
+            <div class="fourth_section">
+                <div class="photo_wrapper">
+                    <div class="first_img_row">
+                        <img src="./assets/png/brooke-lark-8beTH4VkhLI-unsplash 1.png" alt="#" class="firstimg" id="1">
+                        <img src="./assets/png/courtney-cook-QYsRxRPygwU-unsplash 1.png" alt="#" class="secondimg" id="2">
+                        <img src="./assets/png/kenta-kikuchi-LZ6BTZnizD8-unsplash 1.png" alt="#" class="thirdimg" id="3">
+                    </div>
+                    <div class="second_img_row">
+                        <img src="./assets/png/image 2.png" alt="$" class="fourthimg" id="4">
+                        <img src="./assets/png/image 3.png" alt="3" class="fifthimg" id="5">
+                        <img src="./assets/png/image 4.png" alt="$" class="siximg" id="6">
+                    </div>
+                </div>
+
+                <div class="slider-container">
+                    <div class="slider">
+                      <div class="slide">
+                        <!-- Ваш контент для слайда 1 -->
+                        <div class="dasha">
+                            <div class="dasha_img_container">
+                                <img src="./assets/png/фото.png" alt="№" class="radius">
+                            </div>
+                            <div class="otziv_container">
+                                <p class="otziv_text">
+                                    Обожаю ваше кафе! Кофе, музыка, мороженное - лучшее сочетание!
+            
+            
+                                </p>
+                            </div>
+                            <div class="name_and_loc_container">
+                                <p class="name_and_loc_text">
+                                    Даша, Минск
+                                </p>
+                            </div>
+                        </div>
+                      </div>
+                      <div class="slide">
+                        <!-- Ваш контент для слайда 2 -->
+                        <div class="dima">
+                            <div class="dasha_img_container">
+                                <img src="./assets/png/dima.png" alt="№" class="radius">
+                            </div>
+                            <div class="otziv_container">
+                                <p class="otziv_text">
+                                    Иногда иду на работу и грущу: Не смогу кушать ваше лучшее мороженное на рабочем месте :(  Вы лучшие!
+                                </p>
+                            </div>
+                            <div class="name_and_loc_container">
+                                <p class="name_and_loc_text">
+                                    Дима, Брест
+                                </p>
+                            </div>
+                        </div>
+                      </div>
+                      <div class="slide">
+                        <!-- Ваш контент для слайда 3 -->
+                        <div class="diana">
+                            <div class="dasha_img_container">
+                                <img src="./assets/png/diana.png" alt="№" class="radius">
+                            </div>
+                            <div class="otziv_container">
+                                <p class="otziv_text">
+                                    Фуд-траки - это моя слабость! Лучшее, что можно придумать в жаркий день - это мороженное этих ребят! Спасибо!
+            
+                                </p>
+                            </div>
+                            <div class="name_and_loc_container">
+                                <p class="name_and_loc_text">
+                                    Диана, Минск
+                                </p>
+                            </div>
+                        </div>
+                      </div>
+                      <div class="slide">
+                        <div class="andrey">
+                            <div class="dasha_img_container">
+                                <img src="./assets/png/Andrey.png" alt="№" class="radius">
+                            </div>
+                            <div class="otziv_container">
+                                <p class="otziv_text">
+                                    Обожаю хавать мороженное у ребят - оно лучшее в городе! Спасибо за лучшее мороженное!
+            
+                                </p>
+                            </div>
+                            <div class="name_and_loc_container">
+                                <p class="name_and_loc_text">
+                                    Андрюха, Брест
+                                </p>
+                            </div>
+                        </div>
+                      </div>
+                      <!-- Добавьте дополнительные слайды при необходимости -->
+                    </div>
+                    <div class="slider_buttons">
+                        <button class="prev-button">Prev</button>
+                        <button class="next-button">Next</button>
+                    </div>
+                    
+                  </div>
+
+
+
+
+                
+
+
+            </div>
+
+            <div class="fifth_section">
+                <div class="wrapper994">
+                    <div class="container_food_descr">
+                        <p class="zagolovok_food_descr">
+                            CAFE
+                        </p>
+                        <p class="first_par">
+                            Brest
+                        </p>
+                        <p class="second_par">
+                            Suvorova 57, Brest, Brest region, Belarus
+                        </p>
+                        <img src="./assets/svg/gorizontLine.svg" alt="###" class="gorizont">
+                        <div class="working_time_container">
+                            <p class="days">
+                                Monday - Friday
+                            </p>
+                            <p class="time">
+                                06:00 AM - 10:00 PM
+                            </p>
+                        </div>
+                        <div class="working_time_container">
+                            <p class="days">
+                                Saturday - Sunday
+                            </p>
+                            <p class="time">
+                                08:00 AM - 16:00 PM
+                            </p>
+                        </div>
+                        <img src="./assets/svg/gorizontLine.svg" alt="" class="gorizont">
+                        <div class="contact_container">
+                            <p class="number">
+                                +375(29)253-55-17 
+                            </p>
+                            <p class="email">
+                                noreply@envato.com
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="container_food_descr1">
+                        <p class="zagolovok_food_descr izm1">
+                            FOOD TRUCK
+                        </p>
+                        <p class="first_par">
+                            Minsk
+                        </p>
+                        <p class="second_par">
+                            Nemiga 61, Minsk, Minsk region, Belarus
+                        </p>
+                        <img src="./assets/svg/gorizontLine.svg" alt="###" class="gorizont">
+                        <div class="working_time_container">
+                            <p class="days">
+                                Monday - Friday
+                            </p>
+                            <p class="time">
+                                06:00 AM - 10:00 PM
+                            </p>
+                        </div>
+                        <div class="working_time_container">
+                            <p class="days">
+                                Saturday - Sunday
+                            </p>
+                            <p class="time">
+                                08:00 AM - 16:00 PM
+                            </p>
+                        </div>
+                        <img src="./assets/svg/gorizontLine.svg" alt="" class="gorizont">
+                        <div class="contact_container">
+                            <p class="number">
+                                +375(29)762-55-12 
+                            </p>
+                            <p class="email">
+                                noreply@envato.com
+                            </p>
+                        </div>
+                    </div>
+
+
+                    <div class="container_food_descr2">
+                        <p class="zagolovok_food_descr">
+                            CAFE
+                        </p>
+                        <p class="first_par">
+                            New York
+                        </p>
+                        <p class="second_par">
+                            726 Sterling Pl, Brooklyn, NY 11222, USA
+                        </p>
+                        <img src="./assets/svg/gorizontLine.svg" alt="###" class="gorizont">
+                        <div class="working_time_container">
+                            <p class="days">
+                                Monday - Friday
+                            </p>
+                            <p class="time">
+                                06:00 AM - 10:00 PM
+                            </p>
+                        </div>
+                        <div class="working_time_container">
+                            <p class="days">
+                                Saturday - Sunday
+                            </p>
+                            <p class="time">
+                                08:00 AM - 16:00 PM
+                            </p>
+                        </div>
+                        <img src="./assets/svg/gorizontLine.svg" alt="" class="gorizont">
+                        <div class="contact_container">
+                            <p class="number">
+                                +61(0) 383 766 284 
+                            </p>
+                            <p class="email">
+                                noreply@envato.com
+                            </p>
+                        </div>
+                    </div>
+                    </div>
+
+
+
+                    <div class="switch_btn_container">
+                        <button class="our_locations">
+                            <p class="our_locations_btn_text">
+                                Our Locations
+                            </p>
+                            <img src="./assets/svg/headerBtnStrelka.svg" alt="###">
+                        </button>
+                        <button class="franchise">
+                            <p class="our_locations_btn_text1">
+                                Franchise
+                            </p>
+                            <img src="./assets/svg/headerBtnStrelka.svg" alt="###">
+                        </button>
+                    </div>
+
+                    <div class="feedback_conitainer">
+
+                        <div class="dlya_krestika">
+                            <img src="./assets/svg/krestik.svg" alt="#" class="krestik">
+                        </div>
+
+                        
+                        <p class="feedback_text">Feedback</p>
+                        <form action="#" method="post" target="_blank" class="forma">
+
+                            <div class="box">
+                                <input type="text" name="name" placeholder="Name" class="inputik" id="name" required>
+                            </div>
+                            
+                            <div class="box">
+                                <input type="tel" name="phone" placeholder="Phone" class="inputik" id="number" maxlength="21" required>   
+                            </div>
+                         
+                            <div class="box">
+                                <input type="email" name="mail" placeholder="Email"  class="inputik" id="email" required>
+                            </div>
+                            
+                            <div class="box">
+                              <textarea name="comment" placeholder="Comment" class="emailinput" id="message"></textarea>
+                            </div>
+                            
+                              <button class="submit_btn">
+                                    <p class="submit_btn_text">
+                                        Submit
+                                    </p>
+                              </button>
+                          </form>
+                    </div>
+
+
+
+
+
+                </div>
+                <footer class="footer">
+                    <div class="footer_contentbox1">
+                        <p class="footer_contentbox1_text">
+                            homemade ice cream made 
+                        </p>
+                        <div class="svg_container">
+                            <img src="./assets/svg/image 5 (2).svg" alt="3" class="figma">
+                            <img src="./assets/svg/github (2).svg" alt="3" class="git">
+                            <img src="./assets/svg/telegram.svg" alt="3" class="tg">
+                            <img src="./assets/svg/facebook.svg" alt="3" class="fb">
+                        </div>
+                    </div>
+                    <div class="footer_contentbox2">
+                        <p class="footer_contentbox2_text">
+                            with passion
+                        </p>
+                        
+                        <p class="footer_contentbox2_text2">
+                            <p color="black">Feel free to contact</p> +375 (29) 823-25-38
+Astapchick Evgeniy, AI-20
+Office: Moskovskaya 267, Brest
+                        </p>
+                    </div>
+                    <div class="container_belaya_polosa">
+                        <img src="./assets/svg/belayaPolosa.svg" alt="" class="belaya_polosa">
+                
+                    </div>
+                    <div class="final_contentbox">
+                        <p class="final_text">
+                            © 2023 - Future FastFood. All Rights Reserved. 
+                        </p>
+                    </div>
+                </footer>
+            </div>
+
+
+
+        </div>
+        
+    </div>
+
+
+    <script src="./script.js"></script>
+</body>
+</html>
