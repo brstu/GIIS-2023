@@ -2,8 +2,6 @@ from __future__ import annotations
 import os
 import random
 import time
-
-from pygame import display
 import pygame
 
 TEST = False
