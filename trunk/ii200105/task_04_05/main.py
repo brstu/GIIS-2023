@@ -147,7 +147,7 @@ class Block(pygame.sprite.Sprite):
         else:
             self.iscolide = 1
 
-    def _ball(self, ball: Ball):
+    def ball(self, ball: Ball):
         if ball.flag:
             return
         if pygame.sprite.collide_mask(ball, self.vl1):
@@ -1166,7 +1166,7 @@ class Board:
                         continue
                     self.board[i][j].update()
                     if pygame.sprite.spritecollide(self.board[i][j], self.b, False):
-                        self.board[i][j]._ball(self.ball)
+                        self.board[i][j].ball(self.ball)
                         self.board[i][j].collide__()
                         if self.ball.flag:
                             self.board[i][j].collide__()
