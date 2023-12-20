@@ -11,4 +11,4 @@
 |7 |Ковалец Вячеслав|[slavenia](https://github.com/slavenia)|[200106](./trunk/ii200106/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|||||||
 |8 |Яковчик Денис|[ElGansoDorado](https://github.com/ElGansoDorado)|[200115](./trunk/ii200115/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|||||||
 |9 |Ковашевич Никита|[Gigantrusskoymisli](https://github.com/gigantrusskoymisli)||||:white_check_mark:||||||||
-|10|Федорук Александр|[Zhirbolostt](https://github.com/Zhirbolostt)||||||||||||
+|10|Федорук Александр|[Zhirbolostt](https://github.com/Zhirbolostt)|200114|||:white_check_mark:||||||||
