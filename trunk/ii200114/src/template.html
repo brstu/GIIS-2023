@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Продажа билетов</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #495057;
+        }
+
+        header {
+            background-color: #343a40;
+            color: #ffffff;
+            text-align: center;
+            padding: 1em;
+        }
+
+        nav {
+            background-color: #495057;
+            color: #ffffff;
+            padding: 1em;
+            text-align: center;
+        }
+
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.2em;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #ffc107;
+        }
+
+        section {
+            margin: 20px;
+            text-align: center;
+        }
+
+        .ticket {
+            background-color: #ffffff;
+            border: 1px solid #ced4da;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 10px;
+            width: 300px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+            cursor: pointer;
+        }
+
+        .ticket:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .ticket h3 {
+            color: #343a40;
+            margin-bottom: 10px;
+        }
+
+        .ticket p {
+            color: #6c757d;
+            margin: 5px 0;
+        }
+
+        form {
+            margin-top: 20px;
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        form label {
+            display: block;
+            margin-bottom: 5px;
+            color: #343a40;
+        }
+
+        form input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+        }
+
+        form button {
+            padding: 10px;
+            background-color: #343a40;
+            color: #ffffff;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        form button:hover {
+            background-color: #ffc107;
+        }
+
+        #searchResults {
+            margin-top: 20px;
+        }
+
+        footer {
+            background-color: #343a40;
+            color: #ffffff;
+            text-align: center;
+            padding: 1em;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        #ticketDetails {
+            display: none;
+        }
+
+        #ticketDetails p {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Купля-продажа билетов</h1>
+    </header>
+
+    <nav>
+        <a href="#" onclick="showPage('home')">Главная</a>
+        <a href="#" onclick="showPage('search')">Поиск билетов</a>
+        <a href="#" onclick="showPage('profile')">Профиль</a>
+    </nav>
+
+    <section id="home">
+        <h2>Популярные билеты</h2>
+        <div class="ticket" onclick="showTicketDetails('Москва - Париж', '25 июля 2023', '$300')">
+            <h3>Москва - Париж</h3>
+            <p>Дата: 25 июля 2023</p>
+            <p>Цена: $300</p>
+        </div>
+
+        <div class="ticket" onclick="showTicketDetails('Нью-Йорк - Токио', '10 августа 2023', '$800')">
+            <h3>Нью-Йорк - Токио</h3>
+            <p>Дата: 10 августа 2023</p>
+            <p>Цена: $800</p>
+        </div>
+    </section>
+
+    <section id="search" style="display: none;">
+        <h2>Поиск билетов</h2>
+        <form onsubmit="searchTickets(); return false;">
+            <label for="from">Откуда:</label>
+            <input type="text" id="from" name="from" required>
+            <label for="to">Куда:</label>
+            <input type="text" id="to" name="to" required>
+            <button type="submit">Поиск</button>
+        </form>
+        <div id="searchResults"></div>
+    </section>
+
+    <section id="profile" style="display: none;">
+        <h2>Профиль пользователя</h2>
+        <p>Здесь будет информация о пользователе и его билетах...</p>
+    </section>
+
+    <section id="ticketDetails">
+        <h2>Детали билета</h2>
+        <p id="ticketTitle"></p>
+        <p id="ticketDate"></p>
+        <p id="ticketPrice"></p>
+    </section>
+
+    <footer>
+        <p>&copy; 2023 Продажа билетов</p>
+    </footer>
+
+    <script>
+        function showPage(pageId) {
+            // Скрыть все разделы
+            document.querySelectorAll('section').forEach(section => {
+                section.style.display = 'none';
+            });
+
+            // Показать выбранный раздел
+            document.getElementById(pageId).style.display = 'block';
+        }
+
+        function showTicketDetails(title, date, price) {
+            document.getElementById('ticketTitle').innerText = title;
+            document.getElementById('ticketDate').innerText = 'Дата: ' + date;
+            document.getElementById('ticketPrice').innerText = 'Цена: ' + price;
+            showPage('ticketDetails');
+        }
+
+        function searchTickets() {
+            const from = document.getElementById('from').value;
+            const to = document.getElementById('to').value;
+
+            // Здесь вы можете реализовать логику поиска и отобразить результаты
+            const searchResults = document.getElementById('searchResults');
+            searchResults.innerHTML = `<p>Результаты поиска от ${from} до ${to}:</p>
+                                        <div class="ticket" onclick="showTicketDetails('Откуда - Куда', 'Дата', 'Цена')">
+                                            <h3>Откуда - Куда</h3>
+                                            <p>Дата: 1 января 2024</p>
+                                            <p>Цена: $500</p>
+                                        </div>`;
+        }
+    </script>
+
+</body>
+</html>
