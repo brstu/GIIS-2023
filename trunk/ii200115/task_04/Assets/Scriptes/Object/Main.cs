@@ -1,14 +1,11 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using TMPro;
 using UnityEngine.UI;
-using Unity.VisualScripting;
-using TMPro.Examples;
 
 public class Main : MonoBehaviour
 {
     [SerializeField] private Player player;
-    [SerializeField] private TMP_Text coinText;
+    [SerializeField] private Text coinText;
     [SerializeField] private Image[] hearts;
     [SerializeField] private Sprite isLife, nonLife;
     [SerializeField] private GameObject pausePanel;
